@@ -1,0 +1,258 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Khách Đặt Bàn</title>
+<style>
+:root{--bg:#F8F4EC;--ink:#2E241C;--gold:#A8834C;--line:#D9C7A2;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#F8F4EC}}
+:root[data-theme="dark"]{--bg:#F8F4EC}
+html,body{margin:0;background:var(--bg)}html{overflow-anchor:none}
+main{padding:calc(58px + env(safe-area-inset-top,0px)) 0 64px}
+.tb{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;background:var(--bg);border-bottom:1px solid var(--line);padding:env(safe-area-inset-top,0px) 8px 0}
+.tb button{flex:1;min-width:0;border:0;background:none;padding:10px 1px 8px;font:600 12px "Be Vietnam Pro","Segoe UI",system-ui,sans-serif;color:#857463;cursor:pointer;border-bottom:2px solid transparent;line-height:1.2}
+.tb button small{display:block;font-weight:500;font-size:8.5px;letter-spacing:.03em;text-transform:uppercase;opacity:.8}
+.tb button.tg-g{color:#B4472F}.tb button.tg-g small{color:#B4472F}
+.tb button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+iframe{display:block;width:100%;height:900px;border:0;background:var(--bg);overflow:hidden}
+main iframe+iframe{border-top:6px solid var(--line)}
+
+.sb{position:fixed;left:0;right:0;bottom:0;height:64px;z-index:20;background:#FFFDF8;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 14px calc(env(safe-area-inset-bottom,0px));font-family:"Be Vietnam Pro",system-ui,sans-serif}
+.sb .w{flex:1;min-width:0;font-size:12.5px;color:#857463;line-height:1.3}.sb .w b{display:block;font-size:17px;color:var(--gold);font-variant-numeric:tabular-nums}
+.btn{border:0;border-radius:4px;background:var(--gold);color:#fff;font:600 14px "Be Vietnam Pro",system-ui,sans-serif;padding:11px 16px;cursor:pointer;text-align:center;text-decoration:none;display:block}
+.btn small{display:block;font-size:11px;font-weight:500;opacity:.85}.btn.g{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.btn:disabled{opacity:.45}
+.ov{position:fixed;inset:0;z-index:30;background:rgba(40,28,15,.5);display:flex;align-items:flex-end;justify-content:center}
+.sh{background:#FFFDF8;color:var(--ink);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:10px 10px 0 0;padding:16px 16px calc(18px + env(safe-area-inset-bottom,0px));font-family:"Be Vietnam Pro",system-ui,sans-serif}
+.sh h2{font:500 24px Lora,Georgia,serif;color:var(--gold);margin:0;letter-spacing:.04em}.hd{display:flex;justify-content:space-between;align-items:center}
+.x{border:1px solid var(--line);background:none;border-radius:4px;padding:6px 12px;cursor:pointer;font:500 13px inherit}
+.grp{margin-top:14px}.grp>b{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:4px}
+.ln{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14px}.ln small{display:block;color:#857463;font-size:12px}.ln span:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.grp>b .ed{display:inline-block;margin-right:10px;padding:2px 9px;border:1px solid var(--gold);border-radius:12px;font:600 11px "Be Vietnam Pro",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--gold);background:#fff;cursor:pointer;text-decoration:none}
+.sh h2 small{display:block;font:italic 12px Lora,Georgia,serif;color:#857463;letter-spacing:0}.x small{display:block;font-size:9.5px;color:#857463}.grp>b span small{display:inline;margin-left:6px;font:italic 500 10.5px Lora,Georgia,serif;letter-spacing:0;text-transform:none;color:#857463}.tot span small,.dep span small{display:block;font-size:11px;font-style:italic;color:#857463}.fm small.en{display:block;font-size:10.5px;font-style:italic;color:#A89A85}.ln small.en{font-style:italic;font-size:11px}.emp i{font-size:11px;color:#A89A85}
+.qt{display:inline-flex;align-items:center;gap:0;margin-top:5px;border:1px solid var(--gold);border-radius:14px;overflow:hidden}.qt button{border:0;background:#fff;color:var(--gold);width:30px;height:26px;font:600 16px system-ui;cursor:pointer;line-height:1}.qt b{min-width:26px;text-align:center;font-size:13.5px;color:var(--ink)}
+.ln.gift{background:#FBF3E4;border:1px dashed var(--gold);border-radius:6px;padding:7px 8px;margin-top:6px}.ln.gift>span:last-child{color:#2E7D32;font-weight:600}.ln.gift.no{background:#fff}
+.emp{color:#857463;font-size:13px;padding:6px 0}.emp a{color:var(--gold);cursor:pointer;text-decoration:underline}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:10px;border-top:2px solid var(--gold)}.tot b{font:600 26px Lora,serif;color:var(--gold)}
+.dep{display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;font-size:15px}.dep b{font:600 19px Lora,serif;color:var(--ink)}
+.top{max-width:720px;margin:0 auto;padding:16px 16px 14px;font-family:"Be Vietnam Pro",system-ui,sans-serif;background:#FFFDF8;border-bottom:6px solid var(--line)}
+.th{font:500 26px/1.1 Lora,Georgia,serif;color:var(--ink);text-align:center}.th small{display:block;font:italic 13px Lora,Georgia,serif;color:#857463;margin-top:3px}
+.tg{display:grid;grid-template-columns:1.25fr 1fr .8fr;gap:8px;margin-top:12px}
+.tg label{display:flex;flex-direction:column;gap:2px;font-size:13px;font-weight:600;color:var(--ink);min-width:0}.tg small{font-size:10.5px;font-weight:400;color:#857463}
+.tg input{font:15px "Be Vietnam Pro",system-ui,sans-serif;border:1px solid var(--line);border-radius:4px;padding:9px 6px;background:#fff;color:var(--ink);min-width:0;width:100%;box-sizing:border-box;margin-top:2px}
+.tn{font-size:12.5px;color:#857463;text-align:center;margin:10px 0 0}.tn i{display:block;font-size:11.5px}
+.fine{font-size:12px;color:#857463;margin-top:4px}
+.gp{display:block;max-width:720px;margin:14px auto 4px;border:2px solid var(--gold);border-radius:12px;overflow:hidden;background:#1A130F;color:#F3EADB;text-decoration:none;box-shadow:0 8px 22px rgba(40,28,15,.25)}.gpi{position:relative;height:190px;overflow:hidden}.gpi>img{width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block}.gpb{position:absolute;right:12px;bottom:12px;width:104px;height:104px;border-radius:50%;background:var(--gold);color:#1A130F;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-8deg);border:3px solid #1A130F;line-height:1.05}.gpb b{font:800 30px Lora,Georgia,serif}.gpb small{font-size:12px;font-weight:700}.gpt{padding:12px 14px 14px;text-align:center}.gpt>small{display:block;font-size:11px;letter-spacing:.14em;color:#E5C88F;font-weight:700}.gpt>b{display:block;font:600 23px/1.2 Lora,Georgia,serif;color:#fff;margin-top:4px}.gpd{display:inline-block;margin-top:6px;background:#F3EADB;color:#1A130F;font-weight:700;font-size:14px;padding:4px 12px;border-radius:14px}.gpq{display:block;margin-top:6px;font-size:14px;color:#F3EADB}.gpq b{font:800 22px Lora,Georgia,serif;color:#E5C88F}.gpt .en{display:block;font-size:11.5px;color:#BFAF95;margin-top:2px}.gpk{display:block;margin-top:10px;font:600 18px "Be Vietnam Pro",system-ui,sans-serif;color:#E5C88F}.gpk b{font-family:Lora,Georgia,serif}.gpk u{text-decoration:none;background:#B4472F;color:#fff;padding:0 6px;border-radius:4px}.gpt ul{list-style:none;margin:8px auto 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:520px}.gpt li{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:12px;font-weight:600;line-height:1.25;color:#fff}.gpt li img,.gpt li .pl{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}.gpt li .pl{display:flex;align-items:center;justify-content:center;background:#F3EADB;color:#6B4A2B;font:italic 600 13px/1.15 Lora,Georgia,serif}.gpt li.goke img{outline:2px solid #E5C88F;outline-offset:2px}.gpt li.gogift img{outline:2px solid #E5C88F;outline-offset:2px}.gpt li .vl{display:block;font-size:13px;font-weight:800;color:#E5C88F;white-space:nowrap}.gpt li .vl s{font-weight:400;color:#BFAF95;margin-right:3px}.gpt li .see{display:block;font-size:11.5px;font-weight:700;color:#1A130F;background:#E5C88F;padding:3px 10px;border-radius:12px;margin-top:2px}.gpt em{display:block;margin-top:12px;font-style:normal;background:var(--gold);color:#1A130F;font-weight:700;font-size:15px;padding:11px 14px;border-radius:24px}
+.hg{margin-top:12px;border:1px solid var(--line);border-radius:6px;background:#fff;padding:10px 12px;font-size:13px;color:var(--ink);line-height:1.4}.hg>b{display:block;font:500 17px Lora,Georgia,serif;color:var(--gold);text-align:center}.hg>b small{display:block;font:italic 11.5px Lora,Georgia,serif;color:#857463}.hg ol{margin:6px 0 0;padding-left:20px}.hg li{margin:5px 0}.hg i,.hg p i{display:block;font-size:11px;color:#857463}.hg p{margin:8px 0 0;font-size:12.5px;color:#857463;text-align:center}
+.rv{margin-top:14px;border:1px dashed var(--gold);border-radius:6px;background:#FBF3E4;padding:9px 11px;font-size:13px;color:var(--ink);line-height:1.4}.rv i{display:block;font-size:11px;color:#857463}
+.map{display:flex;align-items:center;justify-content:center;gap:8px;margin:10px auto 0;max-width:360px;border:1px solid var(--line);border-radius:6px;padding:8px 12px;background:#fff;color:var(--ink);text-decoration:none;font-size:13.5px;font-weight:600;line-height:1.25}.map svg{color:var(--gold);flex:0 0 auto}.map small{display:block;font-size:11px;font-weight:500;color:var(--gold)}
+.fm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:14px}.fm label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:#857463}.fm .w2{grid-column:1/-1}
+.nm{display:flex;gap:6px}.nm select{flex:0 0 96px;font:15px inherit;border:1px solid var(--line);border-radius:4px;padding:9px 6px;background:#fff;color:var(--ink)}
+.fm input{font:15px inherit;border:1px solid var(--line);border-radius:4px;padding:9px;background:#fff;color:var(--ink);min-width:0;width:100%;box-sizing:border-box}
+.err{margin-top:10px;border:1px solid #B4472F;color:#B4472F;border-radius:4px;padding:8px 10px;font-size:13px}
+.acts{display:grid;gap:8px;margin-top:12px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:70px;z-index:40;background:var(--ink);color:#fff;padding:9px 14px;border-radius:4px;font:13.5px system-ui;max-width:calc(100% - 32px)}
+.nv{position:fixed;left:10px;right:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;gap:8px;align-items:flex-end;max-width:420px;font-family:"Be Vietnam Pro",system-ui,sans-serif;animation:nvIn .25s ease-out}
+.nv .av{flex:0 0 56px;height:56px;border-radius:50%;box-shadow:0 3px 10px rgba(40,28,15,.28);background:#fff}.nv .av svg{display:block}
+.nv .bb{position:relative;flex:1;min-width:0;background:linear-gradient(180deg,#FFFDF8,#FBF3E4);border:1px solid var(--gold);border-radius:16px 16px 16px 4px;padding:9px 36px 10px 12px;box-shadow:0 6px 22px rgba(40,28,15,.18);color:var(--ink);font-size:14px;line-height:1.4}
+.nv .bb small{display:block;font-size:10.5px;color:var(--gold);font-weight:600;letter-spacing:.04em;margin-bottom:2px}
+.nv .bb i{display:block;font-size:11.5px;color:#857463;margin-top:2px}
+.nv .bx{position:absolute;top:5px;right:6px;width:26px;height:26px;border:1px solid #D9C7A2;border-radius:50%;background:#fff;color:#857463;font-size:17px;line-height:22px;cursor:pointer;padding:0}
+.nv .ac{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.nv .ac button{border:1px solid var(--gold);background:#fff;color:var(--gold);border-radius:16px;padding:6px 11px;font:600 12.5px "Be Vietnam Pro",system-ui,sans-serif;cursor:pointer}
+.nv .ac button.p{background:var(--gold);color:#fff}.nv .ac button.c{border-color:#C9B79A;color:#857463;font-weight:500}
+@keyframes nvIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.nv{animation:none}}
+body.gmode main>section.top,body.gmode main iframe:not(#f-setup){display:none!important}body.gmode main iframe#f-setup{border-top:0}
+#gview{display:none;max-width:720px;margin:0 auto;padding:4px 12px 6px;font-family:"Be Vietnam Pro",system-ui,sans-serif;background:#1A130F;color:#F3EADB;text-align:center}body.gmode #gview{display:block}
+#gview h2{margin:0;font:600 24px/1.2 Lora,Georgia,serif;color:#fff}#gview h2 small{display:block;font:700 11px "Be Vietnam Pro",sans-serif;letter-spacing:.14em;color:#E5C88F;margin-bottom:4px}
+#gview .gq{margin-top:6px;font-size:14px}#gview .gq b{font:800 20px Lora,Georgia,serif;color:#E5C88F}#gview .gd{display:inline-block;margin-top:6px;background:#F3EADB;color:#1A130F;font-weight:700;font-size:13.5px;padding:4px 12px;border-radius:14px}
+#gview .lv{display:flex;gap:12px;align-items:center;text-align:left;margin:12px auto 0;max-width:460px;background:#2A1F18;border:1px solid #5A4632;border-radius:10px;padding:8px}#gview .lv img{width:92px;height:92px;object-fit:cover;border-radius:8px;flex:0 0 92px}#gview .lv b{display:block;font-size:15px;color:#fff}#gview .lv s{color:#BFAF95}#gview .lv em{font-style:normal;font-weight:800;color:#E5C88F;margin-left:4px}#gview .lv small{display:block;font-size:12px;color:#BFAF95;margin-top:2px}
+#gview .gh{margin:12px 0 2px;font-size:13px;color:#E5C88F}#gview .gb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 8px}#gview .gb button{border:0;border-radius:22px;padding:9px 14px;font:700 13.5px "Be Vietnam Pro",sans-serif;cursor:pointer;background:var(--gold);color:#1A130F}#gview .gb button.o{background:transparent;color:#E5C88F;border:1px solid #E5C88F}
+[hidden]{display:none!important}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600&display=swap">
+<div class="tb" role="tablist">
+<button role="tab" data-t="mon" aria-selected="true">Món lẻ<small>À la carte</small></button>
+<button role="tab" data-t="nuoc" aria-selected="false">Đồ uống<small>Drinks</small></button>
+<button role="tab" data-t="set" aria-selected="false">Menu set<small>Set menu</small></button>
+<button role="tab" data-t="garden" class="tg-g" aria-selected="false">🎁 Sảnh Garden<small>Ưu đãi · Offer</small></button>
+<button role="tab" data-t="setup" aria-selected="false">Set up bàn<small>Decoration</small></button>
+<button role="tab" data-t="banh" aria-selected="false">Bánh &amp; Hoa<small>Cake &amp; Flowers</small></button>
+<button role="tab" data-t="ban" aria-selected="false">Chọn bàn<small>Table</small></button>
+</div>
+<main><section class="top" aria-label="Thông tin đặt bàn">
+<div class="th">Đặt bàn tại Apes<small>Book your table</small></div>
+<a class="map" href="https://maps.app.goo.gl/nZ3rg3JYCQNzRKnS6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span>78 Trần Phú, Thủ Dầu Một<small>Xem bản đồ &amp; chỉ đường · Directions</small></span></a>
+
+<div class="tg">
+<label>Ngày đến *<small>Date</small><input id="hDate" type="date"></label>
+<label>Giờ đến *<small>Time 17:00–23:00</small><input id="hTime" type="time" min="17:00" max="22:59"></label>
+<label>Số khách *<small>Guests</small><input id="hPax" type="number" min="1" inputmode="numeric" placeholder="2"></label>
+</div><div class="hg"><b>Cách đặt bàn<small>How to book</small></b>
+<ol><li>Quý khách chọn <b>món ăn, đồ uống, menu set, trang trí bàn, bánh kem, hoa…</b><i>Choose dishes, drinks, set menus, table décor, cake, flowers…</i></li><li>Bấm nút <b>Xem tổng kết</b> để xem lại mình đã order gì.<i>Tap “Summary” to review your order.</i></li><li>Cuối phiếu tổng kết, bấm nút <b>“Bấm đặt”</b> – phiếu order của Quý khách sẽ chuyển đến email nhà hàng. Nhà hàng sẽ gửi phiếu order để Quý khách chuyển cọc.<i>Tap “Book now” – your order is sent to the restaurant, and we will send it back to you for the deposit.</i></li></ol></div></section><section id="gview" aria-label="Quà tặng Sảnh Garden"><a class="gp" id="gpGo" href="#ban"><div class="gpt"><small>🎁 ƯU ĐÃI ĐẶC BIỆT · SẢNH GARDEN</small><b>Đặt bàn Sảnh Garden – Vòm đèn hoa</b><span class="gpq">Bill từ <b>450K</b>/người (món ăn + đồ uống)</span><span class="gpd">📅 Áp dụng từ 01/11 đến 09/11/2026</span><i class="en">Garden Hall offer · 01–09 Nov 2026 · from 450K/guest</i><span class="gpk">Apes <u>TẶNG</u> tổng quà đến <b style="font-size:27px;color:#F5D79A;white-space:nowrap">385K<small style="font-size:17px">/1 bàn</small></b></span><ul><li class="gogift" title="Xem 7 mẫu set up miễn phí"><img src="img/setupfree.jpg" alt=""><span>Set up bàn<br>miễn phí (7 mẫu)</span><small class="vl"><s>80K</s> 0đ</small><small class="see">Xem 7 mẫu ›</small></li><li><img src="img/chocolava.jpg" alt=""><span>Bánh Choco Lava,<br>kem &amp; vẽ chữ</span><small class="vl"><s>185K</s> 0đ</small></li><li class="goke" title="Xem 2 mẫu kệ hoa tiệc"><img src="img/kehoa.jpg" alt=""><span>Kệ hoa tiệc<br>miễn phí (2 mẫu)</span><small class="vl"><s>120K</s> 0đ</small><small class="see">Xem 2 mẫu ›</small></li></ul><em>Chọn bàn Sảnh Garden ngay →</em></div></a><div class="gh">Mời anh/chị chọn <b>1 mẫu set up tặng</b> và <b>1 kệ hoa tiệc</b> bên dưới ↓<i style="display:block;font-style:normal;color:#BFAF95;font-size:11.5px">Choose 1 free table set-up and 1 flower stand below</i></div><div class="gb"><button type="button" class="o" id="gvAll">← Xem toàn bộ menu</button></div></section><iframe id="f-mon" src="mon.html" title="Menu món ăn" scrolling="no"></iframe><iframe id="f-nuoc" data-src="nuoc.html" title="Menu đồ uống" scrolling="no"></iframe><iframe id="f-set" data-src="set.html" title="Menu set" scrolling="no"></iframe><iframe id="f-setup" data-src="setup.html" title="Set up bàn" scrolling="no"></iframe><iframe id="f-banh" data-src="banh.html" title="Bánh kem và hoa tươi" scrolling="no"></iframe><iframe id="f-ban" data-src="ban.html" title="Chọn bàn" scrolling="no"></iframe></main>
+
+<div class="sb"><div class="w" id="sbW">Bạn hãy bấm <b style="display:inline;font-size:inherit;color:var(--gold)">Xem tổng kết</b> để xem lại nội dung đã chọn.</div><button class="btn" id="sbGo" disabled>Xem tổng kết<small>Summary</small></button></div>
+<div class="ov" id="ov" hidden><div class="sh" role="dialog" aria-modal="true" aria-labelledby="shT">
+<div class="hd"><h2 id="shT">TỔNG KẾT ĐẶT BÀN<small>Booking summary</small></h2><button class="x" id="shX">Đóng<small>Close</small></button></div>
+<div id="sum"></div>
+<div class="fm">
+<label class="w2">Anh/chị đang nhắn Apes qua *<small class="en">Your Zalo/Facebook name chatting with Apes</small><span class="nm"><select id="kCh" aria-label="Kênh liên hệ"><option value="ZL">Zalo</option><option value="FB">Facebook</option></select><input id="kName" placeholder="Tên Zalo/FB đang kết nối với nhà hàng" autocomplete="name"></span></label>
+<label>Số điện thoại *<small class="en">Phone</small><input id="kPhone" type="tel" inputmode="tel"></label>
+<label>Ngày đến *<small class="en">Date</small><input id="kDate" type="date"></label>
+<label>Giờ đến * (17:00–23:00)<small class="en">Time</small><input id="kTime" type="time" min="17:00" max="22:59"></label>
+<label>Số khách *<small class="en">Guests</small><input id="kPax" type="number" min="1" inputmode="numeric" placeholder="2"></label>
+<label>Bàn (chọn ở mục Chọn bàn)<small class="en">Table</small><input id="kTbl" placeholder="Nhà hàng xếp giúp"></label>
+<label class="w2">Ghi chú<small class="en">Notes</small><input id="kNote" placeholder="Dị ứng, ít cay, yêu cầu thêm…"></label>
+</div>
+<div class="rv">Anh/chị <b>xem lại phiếu ở trên</b>. Đúng hết rồi thì bấm <b>“Gửi / Submit”</b> ở cuối để gửi phiếu về nhà hàng.<i>Review above, then tap “Submit” to send.</i></div>
+<div class="err" id="kErr" hidden></div>
+<div class="acts"><a class="btn" id="kForm" href="#" target="_blank" rel="noopener">Bấm đặt<small>Gửi phiếu cho nhà hàng · Book now</small></a>
+<a class="btn g" id="kZalo" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Copy phiếu &amp; mở Zalo<small>Vào Zalo chạm giữ ô tin nhắn → Dán → Gửi</small></a></div>
+<p class="fine">Nhân viên Apes sẽ gọi xác nhận và gửi số tài khoản để chuyển cọc. Hotline 0916 398 797.<i style="display:block">Our staff will contact you to confirm.</i></p>
+</div></div><div class="toast" id="toast" hidden></div>
+<div class="nv" id="nv" hidden role="status" aria-live="polite"><div class="av" aria-hidden="true"><svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><defs><clipPath id="nvC"><circle cx="32" cy="32" r="31"/></clipPath></defs><g clip-path="url(#nvC)"><rect width="64" height="64" fill="#F3E6CF"/><path d="M8 64c2-11 11-17 24-17s22 6 24 17z" fill="#FFFFFF"/><path d="M8 64c2-11 9-16 18.5-16.8L31 64z" fill="#1E1A18"/><path d="M56 64c-2-11-9-16-18.5-16.8L33 64z" fill="#1E1A18"/><path d="M26 46.4l6 5.2 6-5.2-1.6-1.6h-8.8z" fill="#FFFFFF" stroke="#DDD6CB" stroke-width=".6"/><path d="M30.5 50.6h3l-.7 2.3 1.5 8.6-2.3 2.5-2.3-2.5 1.5-8.6z" fill="#0E0C0B"/><circle cx="29.2" cy="58" r=".7" fill="#C9A66B"/><circle cx="29.6" cy="61.5" r=".7" fill="#C9A66B"/><rect x="27.5" y="38" width="9" height="9" rx="3" fill="#EDC3A0"/><ellipse cx="20.8" cy="31.5" rx="1.8" ry="2.6" fill="#EDC3A0"/><ellipse cx="43.2" cy="31.5" rx="1.8" ry="2.6" fill="#EDC3A0"/><ellipse cx="32" cy="31" rx="11" ry="12.5" fill="#F3D0B0"/><path d="M20.6 30.5c-1.4-9.5 4.3-15 11.4-15s12.8 5.5 11.4 15c-1-4.6-3.6-7.6-6.6-8.6-3.4 1.6-8.6 1.9-12.8.6-1.9 1.5-3 4.3-3.4 8z" fill="#2B211B"/><ellipse cx="27.5" cy="31.5" rx="1.4" ry="1.7" fill="#2E241C"/><ellipse cx="36.5" cy="31.5" rx="1.4" ry="1.7" fill="#2E241C"/><path d="M25.3 28q2.2-1.2 4.4 0M34.3 28q2.2-1.2 4.4 0" stroke="#2B211B" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M28.6 37.2q3.4 2.6 6.8 0" stroke="#8A4A3A" stroke-width="1.4" fill="none" stroke-linecap="round"/></g><circle cx="32" cy="32" r="31" fill="none" stroke="#A8834C" stroke-width="2"/></svg></div><div class="bb"><small>Minh · Nhân viên Apes<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#3BA55C;margin-left:6px;vertical-align:1px"></span></small><div id="nvT"></div><div class="ac" id="nvA"></div><button class="bx" id="nvX" aria-label="Đóng">×</button></div></div>
+<script>
+const SRC={set:'set.html',ban:'ban.html',mon:'mon.html',nuoc:'nuoc.html',setup:'setup.html',banh:'banh.html'};
+const TOP=()=>document.querySelector('.tb').offsetHeight;
+function mark(t){ document.querySelectorAll('.tb button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.t===t))); }
+let jumping=0;
+/* tải từng phần khi khách kéo tới hoặc bấm tab */
+function loadF(f){ if(f&&!f.getAttribute('src')&&f.dataset.src) f.src=f.dataset.src; }
+function whenReady(id,fn){ const f=document.getElementById(id); loadF(f); let n=0; (function w(){ let ok=false; try{ const d=f.contentDocument; ok=!!(f.getAttribute('src')&&d&&d.URL!=='about:blank'&&d.readyState==='complete'); }catch(e){} if(ok){ fit(); setTimeout(()=>{ fit(); fn(); },250); } else if(++n<120) setTimeout(w,100); })(); }
+(function(){ const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ loadF(e.target); io.unobserve(e.target); } }),{rootMargin:'1200px 0px'}):null;
+  const has=k=>{ try{ const x=localStorage.getItem(k); return !!x&&!/^(\[\]|\{\}|0|null|""|\{"SC":\{\},"PK":\{\}\}|\{"pick":(0|null),"adds":\[\]\})$/.test(x); }catch(e){ return false; } };
+  const KEEP={'f-nuoc':['apesDrinkP2'],'f-set':['apes_set_v1'],'f-setup':['apes_su','apes_ke'],'f-banh':['apes_bh']};
+  let tbl=''; try{ tbl=(JSON.parse(localStorage.getItem('apes_kdb')||'{}').kTbl||''); }catch(e){}
+  document.querySelectorAll('main iframe[data-src]').forEach(f=>{ if((KEEP[f.id]||[]).some(has)||(f.id==='f-ban'&&tbl)) loadF(f); else if(io) io.observe(f); else loadF(f); });
+})();
+function gmode(on){ document.body.classList.toggle('gmode',on); try{ const d=document.getElementById('f-setup').contentDocument; d.documentElement.classList.toggle('gmode',on); if(!d.getElementById('gmcss')){ const st=d.createElement('style'); st.id='gmcss'; st.textContent='.gmode header,.gmode .lead,.gmode .extra,.gmode footer,.gmode #grid section.gs:not(:has(.kec)){display:none!important}'; d.head.appendChild(st); } }catch(e){} setTimeout(fit,50); setTimeout(fit,400); }
+function show(t){ if(t==='garden'){ loadF(document.getElementById('f-setup')); try{ document.getElementById('nv').hidden=true; }catch(e){} gmode(true); mark(t); jumping=Date.now(); window.scrollTo({top:0,behavior:'instant'}); return; } if(document.body.classList.contains('gmode')) gmode(false); const f=document.getElementById('f-'+t); if(!f) return; loadF(f); mark(t); jumping=Date.now();
+ const go=()=>window.scrollTo({top:t==='mon'?0:f.offsetTop-TOP()+1,behavior:'instant'}); go(); const tok={t}; SHOWN=tok; const again=()=>{ if(SHOWN===tok&&!document.body.classList.contains('gmode')){ jumping=Date.now(); go(); mark(t); } };
+ whenReady(f.id,()=>{ again(); setTimeout(again,700); setTimeout(again,1600); setTimeout(again,3000); }); try{ history.replaceState(null,'','#'+t); }catch(e){} }
+let SHOWN='';
+/* chiều cao iframe theo nội dung + lớp phủ bên trong iframe hiện đúng chỗ đang xem */
+const OVCSS='html,body{overflow:hidden!important} .ov,.lb{position:absolute!important;inset:auto!important;left:0!important;right:0!important;top:var(--vt,0px)!important;height:var(--vh,100vh)!important} .ov>*{max-height:calc(var(--vh,100vh) - 16px)!important} .lb img{max-height:calc(var(--vh,100vh) - 90px)!important} .toast{position:absolute!important;top:calc(var(--vt,0px) + var(--vh,100vh) - 70px)!important;bottom:auto!important}';
+function fit(){ const top=TOP(), vh=innerHeight-top-64;
+  document.querySelectorAll('main iframe').forEach(f=>{ try{ if(!f.getAttribute('src')) return; const d=f.contentDocument; if(!d||!d.body||d.URL==='about:blank'||d.readyState==='loading') return;
+    const vt=Math.max(0,scrollY+top-f.offsetTop); d.documentElement.style.setProperty('--vt',vt+'px'); d.documentElement.style.setProperty('--vh',vh+'px');
+    const open=[...d.querySelectorAll('.ov,.lb')].some(o=>!o.hidden&&getComputedStyle(o).display!=='none');
+    if(!open){ const h=Math.max(d.body.scrollHeight,d.body.offsetHeight); if(Math.abs(h-f.clientHeight)>2){ const old=f.clientHeight, above=f.offsetTop+f.offsetHeight<=scrollY+top; f.style.height=h+'px'; if(above) window.scrollBy({top:h-old,behavior:'instant'}); } } }catch(e){} });
+  if(document.body.classList.contains('gmode')){ mark('garden'); return; }
+  if(Date.now()-jumping>900){ let cur='mon'; document.querySelectorAll('main iframe').forEach(f=>{ if(f.offsetTop-top-40<=scrollY) cur=f.id.slice(2); }); if(scrollY+innerHeight>=document.documentElement.scrollHeight-4) cur='ban'; mark(cur); } }
+function padTop(){ try{ document.querySelector('main').style.paddingTop=document.querySelector('.tb').offsetHeight+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0; const fitT=()=>{ if(fitQ) return; fitQ=setTimeout(()=>{ fitQ=0; fit(); },150); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(fit,2000);
+['wheel','touchstart','keydown'].forEach(k=>addEventListener(k,()=>{ SHOWN=''; },{passive:true}));
+document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(b.dataset.t);});
+const h=(location.hash||'').slice(1); if(SRC[h]) setTimeout(()=>show(h),1200);
+
+const CHECK_URL='https://script.google.com/macros/s/AKfycbwfW4VJNrXopoKCDiEJCzl1j6d4fQrVSFjUAYesB7mIlpQj4GGVucjpqvZae1sZ-fOZYA/exec';
+const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSe5evOKq9HNmMRkpO8_TDH-U1voqXLBxv9S5B6QSXSzqgzG9g/viewform',FORM_ENTRY='entry.172677733';
+const $=q=>document.querySelector(q), vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
+const esc=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(t){const e=$('#toast');e.textContent=t;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>e.hidden=true,2800);}
+const HIDE='.wbar,.bar,#bar,#form,.form,#sOv{display:none!important} body{padding-bottom:24px!important} footer{padding-bottom:24px!important}';
+document.querySelectorAll('iframe').forEach(f=>f.addEventListener('load',()=>{ if(!f.getAttribute('src')) return; if(f.id==='f-setup'&&document.body.classList.contains('gmode')) setTimeout(()=>gmode(true),30); try{ const st=f.contentDocument.createElement('style'); st.textContent=HIDE+OVCSS; f.contentDocument.head.appendChild(st);
+  if(f.id==='f-setup'){ f.contentDocument.addEventListener('click',ev=>{ if(ev.target.closest('.go')){ ev.preventDefault(); ev.stopImmediatePropagation(); setTimeout(()=>$('#sbGo').click(),80); } },true); } f.contentWindow.addEventListener('click',()=>{setTimeout(refresh,60);setTimeout(fit,80);}); f.contentWindow.addEventListener('input',()=>setTimeout(refresh,60)); }catch(e){} refresh(); fit(); setTimeout(fit,600); }));
+function ev(id,code){ try{ return document.getElementById(id).contentWindow.eval(code); }catch(e){ return null; } }
+function collect(){
+  const pick=(id)=>{ const r=ev(id,`JSON.stringify(cart.map((e,i)=>{const d=D[e.k],v=d.v.find(x=>x.k===e.v);return {i,en:d.en||'',n:d.vn+(v.l?' ('+v.l.split(' · ')[0]+')':''),q:e.q,p:v.p*1000,o:e.o?[e.o.done&&'độ chín '+e.o.done,e.o.sauce,e.o.side&&'ăn kèm '+e.o.side].filter(Boolean).join(', '):''}}))`); return r?JSON.parse(r):[]; };
+  const sets=(()=>{ const r=ev('f-set','typeof getSets=="function"?JSON.stringify(getSets()):"[]"'); try{ return r?JSON.parse(r):[]; }catch(e){ return []; } })(), food=sets.concat(pick('f-mon').map(x=>({...x,f:'f-mon'}))), drink=pick('f-nuoc').map(x=>({...x,f:'f-nuoc'}));
+  const su=ev('f-setup',`JSON.stringify({it:pick?{no:ALL[pick].no,lb:ALL[pick].lb||'',p:ALL[pick].p*1000,n:ALL[pick].n,b:(BV[pick]||'')}:null,ad:ADDONS.filter(a=>adds.has(a.k)).map(a=>({n:a.n,p:a.p}))})`);
+  const bh=ev('f-banh','JSON.stringify(BH)'); const ke=+ev('f-setup','typeof KE==="undefined"?0:KE')||0;
+  return {food,drink,ke,su:su?JSON.parse(su):{it:null,ad:[]},bh:bh?JSON.parse(bh):[]};
+}
+let C={food:[],drink:[],su:{it:null,ad:[]},bh:[]};
+const GARDEN=['A2','A3','A4','A6','A7','A8','A9','A10'], GIFT='QUÀ TẶNG Sảnh Garden: Set up bàn + Choco Lava (185K) + ghi chữ trên dĩa + kệ hoa tiệc';
+const PROMO_FROM='2026-11-01', PROMO_TO='2026-11-09';
+function promo(){ const dd=(($('#kDate')||{}).value||($('#hDate')||{}).value||''); if(!dd||dd<PROMO_FROM||dd>PROMO_TO) return null; const t=(($('#kTbl')||{}).value||'').trim().toUpperCase(); if(!GARDEN.includes(t)) return null; const pax=Math.max(1,+(($('#kPax')||{}).value)||+(($('#hPax')||{}).value)||1), need=450000*pax, have=C.food.reduce((s,x)=>s+x.p*x.q,0)+C.drink.reduce((s,x)=>s+x.p*x.q,0); return {ok:have>=need,need,have,miss:Math.max(0,need-have),pax}; }
+const pad=n=>String(n).padStart(2,'0');
+function totals(){ const a=C.food.reduce((s,x)=>s+x.p*x.q,0), b=C.drink.reduce((s,x)=>s+x.p*x.q,0), c=(C.su.it?C.su.it.p:0)+C.su.ad.reduce((s,x)=>s+x.p,0), e=C.bh.reduce((s,x)=>s+x.p,0), t=a+b+c+e, f=a+b, base=f>1500000?500000:f>=1200000?300000:200000, d=base+c+e; return {a,b,c,e,t,d,base,r:Math.max(0,t-d)}; }
+function refresh(){ C=collect(); try{ if(C.su.it&&C.su.it.lb&&GARDEN.includes((($('#kTbl')||{}).value||'').trim().toUpperCase())){ C.su.it.p0=C.su.it.p; C.su.it.p=0; } }catch(e){} try{ const di=ev('f-set','typeof decoIncl==="function"?decoIncl():""'); if(di&&C.su.it&&!C.su.it.p0&&C.su.it.p>0){ C.su.it.base=C.su.it.p; C.su.it.p=Math.max(0,C.su.it.p-130000); C.su.it.inc=di; } }catch(e){} const T=totals(), n=C.food.reduce((s,x)=>s+x.q,0)+C.drink.reduce((s,x)=>s+x.q,0)+(C.su.it?1:0)+C.su.ad.length+C.bh.length;
+  $('#sbW').innerHTML=n?`${n} lựa chọn · <span style="color:var(--ink)">Sau khi chọn xong, bạn bấm <span style="color:var(--gold);font-weight:600">Xem tổng kết</span> →</span><b>${vnd(T.t)}</b>`:'Bạn hãy bấm <b style="display:inline;font-size:inherit;color:var(--gold)">Xem tổng kết</b> để xem lại nội dung đã chọn.';
+  $('#sbGo').disabled=!n; if(!$('#ov').hidden) draw(); }
+function draw(){ const T=totals(); const L=(arr)=>arr.map(x=>`<div class="ln"><span>${esc(x.n)} × ${x.q}${x.en?`<small class="en">${esc(x.en)}</small>`:''}${x.o?`<small>${esc(x.o)}</small>`:''}</span><span>${vnd(x.p*x.q)}</span></div>`).join('');
+  const go=t=>`<div class="emp">Chưa chọn · <a data-go="${t}">chọn thêm</a> <i>Not selected · add</i></div>`;
+  let su=''; if(C.su.it) su+=`<div class="ln"><span>Set up bàn ${C.su.it.lb||'No. '+pad(C.su.it.no)}${C.su.it.n?`<small>${esc(C.su.it.n)}</small>`:''}<small>Nội dung bảng để bàn: ${C.su.it.b?esc(C.su.it.b):'<i>(chưa ghi)</i>'}</small>${C.su.it.lb&&!C.su.it.p0?'<small>Mẫu tặng – miễn phí khi chọn bàn Sảnh Garden (A2–A10)</small>':''}${C.su.it.inc?'<small>'+esc(C.su.it.inc)+' đã gồm trang trí đến 130.000đ – mẫu này '+vnd(C.su.it.base)+(C.su.it.p?' nên bù '+vnd(C.su.it.p)+' + VAT':' nên không tính thêm')+'</small>':''}</span><span>${C.su.it.p0?'Tặng <s style="color:#A89A85;font-weight:400">'+vnd(C.su.it.p0)+'</s>':C.su.it.inc&&!C.su.it.p?'Gồm trong set':vnd(C.su.it.p)}</span></div>`;
+  su+=C.su.ad.map(a=>`<div class="ln"><span>${esc(a.n)}</span><span>${vnd(a.p)}</span></div>`).join('');
+  const bhL=x=>`<div class="ln"><span>${esc(x.n)} ${x.code}${x.s?' · size '+x.s:''}<small>${x.t==='cake'?'Chữ trên bánh: '+(x.msg?esc(x.msg):'<i>(chưa ghi)</i>'):'Ghi chú: '+(x.note?esc(x.note):'—')}</small></span><span>${vnd(x.p)}</span></div>`;
+  const tb=v('kTbl'); $('#sum').innerHTML=`<div class="grp"><b><span>Bàn<small>Table</small></span><span></span></b><div class="ln"><span>${tb?'Bàn '+esc(tb):'Nhờ nhà hàng xếp bàn'}<small>${fd(v('kDate'))||'Chưa chọn ngày'}${v('kTime')?' · '+v('kTime'):''}${v('kPax')?' · '+v('kPax')+' khách':''}</small></span><span></span></div>${(()=>{const P=promo(); if(!P) return ''; return P.ok?`<div class="ln gift"><span>🎁 Quà tặng Sảnh Garden<small>Set up bàn · Choco Lava (185K) · Ghi chữ trên dĩa · ${C.ke?'Tặng kệ tiệc 0'+C.ke:'Kệ hoa tiệc (chưa chọn mẫu)'}</small><small class="en">Garden Hall gift</small></span><span>Tặng</span></div>`:`<div class="ln gift no"><span>🎁 Ưu đãi Sảnh Garden<small>Gọi thêm <b>${vnd(P.miss)}</b> món + nước (đủ 450K/người) để được tặng set up, Choco Lava, chữ trên dĩa &amp; kệ hoa tiệc.</small></span><span></span></div>`; })()}</div>
+  ${(()=>{ const S=C.food.filter(x=>x.f==='f-set'), F=C.food.filter(x=>x.f!=='f-set'), sm=a=>a.reduce((s,x)=>s+x.p*x.q,0); return (S.length?`<div class="grp"><b><span>Menu set<small>Set menu</small></span><span>${vnd(sm(S))}</span></b>${L(S)}</div>`:'')+`<div class="grp"><b><span>Món ăn${S.length?' lẻ':''}<small>${S.length?'À la carte':'Food'}</small></span><span>${vnd(sm(F))}</span></b>${F.length?L(F):(S.length?'<div class="emp">Không gọi thêm món lẻ · <a data-go="mon">xem món lẻ</a></div>':go('mon'))}</div>`; })()}
+  <div class="grp"><b><span>Đồ uống<small>Drinks</small></span><span>${vnd(T.b)}</span></b>${C.drink.length?L(C.drink):go('nuoc')}</div>
+  <div class="grp"><b><span>Set up bàn<small>Decoration</small></span><span>${vnd(T.c)}</span></b>${su||go('setup')}</div>
+  <div class="grp"><b><span>Bánh &amp; Hoa<small>Cake &amp; Flowers</small></span><span>${vnd(T.e)}</span></b>${C.bh.length?C.bh.map(bhL).join(''):go('banh')}</div>
+  <div class="tot"><span>Tạm tính<small>Subtotal</small></span><b>${vnd(T.t)}</b></div><div class="dep"><span>Cọc bàn<small>Deposit</small></span><b>${vnd(T.d)}</b></div><div class="dep"><span>Còn lại<small>Balance</small></span><b>${vnd(T.r)}</b></div><p class="fine">Giá theo menu, chưa gồm VAT 8%. Nhà hàng xác nhận lại tổng tiền khi liên hệ.<i style="display:block">Menu prices, excl. 8% VAT.</i></p>`; }
+$('#sum').addEventListener('click',e=>{const q=e.target.closest('[data-q]'); if(q){ const [f,i,d]=q.dataset.q.split('|'); ev(f,`(()=>{const e=cart[${+i}]; if(!e) return; e.q+=${+d}; if(e.q<=0) cart.splice(${+i},1); paint();})()`); refresh(); draw(); return; } const a=e.target.closest('[data-go]'); if(a){ $('#ov').hidden=true; show(a.dataset.go); }});
+$('#sbGo').onclick=()=>{ refresh(); draw(); $('#ov').hidden=false; };
+$('#shX').onclick=()=>$('#ov').hidden=true; $('#ov').addEventListener('click',e=>{ if(e.target.id==='ov') $('#ov').hidden=true; });
+const K=['kCh','kName','kPhone','kDate','kTime','kPax','kTbl','kNote'];
+try{ const o=JSON.parse(localStorage.getItem('apes_kdb')||'{}'); K.forEach(k=>{ if(o[k]) $('#'+k).value=o[k]; }); }catch(e){}
+document.addEventListener('input',e=>{ if(K.includes(e.target.id)){ const o={}; K.forEach(k=>o[k]=$('#'+k).value); try{localStorage.setItem('apes_kdb',JSON.stringify(o))}catch(x){} } });
+const PAIR={hDate:'kDate',hTime:'kTime',hPax:'kPax'};
+function syncTop(fromTop){ Object.entries(PAIR).forEach(([h,k])=>{ if(fromTop) $('#'+k).value=$('#'+h).value; else $('#'+h).value=$('#'+k).value; }); const o={}; K.forEach(k=>o[k]=$('#'+k).value); try{localStorage.setItem('apes_kdb',JSON.stringify(o))}catch(x){} }
+syncTop(false);
+document.addEventListener('input',e=>{ if(PAIR[e.target.id]) syncTop(true); else if(Object.values(PAIR).includes(e.target.id)) syncTop(false); });
+/* chọn bàn: ngày ↔ khung Chọn bàn, bàn ↔ ô Bàn */
+function banWin(){ try{ return document.getElementById('f-ban').contentWindow; }catch(e){ return null; } }
+function saveK(){ const o={}; K.forEach(k=>o[k]=$('#'+k).value); try{localStorage.setItem('apes_kdb',JSON.stringify(o))}catch(x){} }
+function banDate(){ const w=banWin(); if(w&&w.setDate) w.setDate($('#kDate').value||$('#hDate').value); }
+window.onBanPick=t=>{ $('#kTbl').value=t||''; saveK(); };
+document.addEventListener('input',e=>{ if(e.target.id==='hDate'||e.target.id==='kDate') setTimeout(banDate,30); if(e.target.id==='kTbl'){ const w=banWin(); if(w&&w.setPick) w.setPick(e.target.value); } });
+document.getElementById('f-ban').addEventListener('load',()=>{ if(!document.getElementById('f-ban').getAttribute('src')) return; const w=banWin(); if(!w) return; const go=()=>{ if(!w.setDate) return setTimeout(go,100); banDate(); if($('#kTbl').value) w.setPick($('#kTbl').value); else if(w.getPick()) window.onBanPick(w.getPick()); }; go(); });
+setTimeout(()=>{ const w=banWin(); if(w&&w.setDate) banDate(); },1500);
+try{ const td=new Date(), z=n=>String(n).padStart(2,'0'), mn=td.getFullYear()+'-'+z(td.getMonth()+1)+'-'+z(td.getDate()); $('#hDate').min=mn; $('#kDate').min=mn; }catch(e){}
+const v=k=>$('#'+k).value.trim(); const fd=s=>{ if(!s) return ''; const [y,m,d]=s.split('-'); return d+'/'+m+'/'+y; };
+function msg(){ const T=totals(); const L=[]; const add=(h,arr)=>{ if(arr.length){ L.push('',h+':'); arr.forEach((x,i)=>L.push(`${i+1}. ${x.n} × ${x.q} = ${vnd(x.p*x.q)}`+(x.o?`\n   – ${x.o}`:''))); } };
+  L.push('APES · PHIẾU ĐẶT BÀN','━━━━━━━━━━━━━━━━',`Khách: ${v('kCh')}: ${v('kName')||v('kPhone')} · ${v('kPax')} khách`,`SĐT: ${v('kPhone')}`,`Ngày: ${fd(v('kDate'))} · ${v('kTime')}`,v('kTbl')?'Bàn: '+v('kTbl'):'Bàn: nhờ nhà hàng xếp giúp');
+  add('MÓN ĂN',C.food); add('ĐỒ UỐNG',C.drink);
+  if(C.su.it||C.su.ad.length){ L.push('','SET UP BÀN:'); if(C.su.it){ L.push(`• ${C.su.it.lb||'No. '+pad(C.su.it.no)} = ${vnd(C.su.it.p)}`); L.push(`  Nội dung bảng để bàn: ${C.su.it.b||'(chưa ghi)'}`); if(C.su.it.inc) L.push(`  ${C.su.it.inc} gồm trang trí đến 130.000đ – mẫu ${vnd(C.su.it.base)}${C.su.it.p?', bù '+vnd(C.su.it.p):', không tính thêm'}`); } C.su.ad.forEach(a=>L.push(`• ${a.n} = ${vnd(a.p)}`)); }
+  if(C.bh.length){ L.push('','BÁNH & HOA:'); C.bh.forEach(x=>{ L.push(`• ${x.n} ${x.code}${x.s?' size '+x.s:''} = ${vnd(x.p)}`); L.push('  '+(x.t==='cake'?'Chữ trên bánh: '+(x.msg||'(chưa ghi)'):'Ghi chú: '+(x.note||'—'))); }); }
+  L.push('','Tạm tính: '+vnd(T.t)+' (chưa VAT 8%)','Cọc bàn: '+vnd(T.d),'Còn lại: '+vnd(T.r)); if(v('kNote')) L.push('Ghi chú: '+v('kNote')); L.push('━━━━━━━━━━━━━━━━','Chờ nhà hàng xác nhận & gửi số tài khoản cọc.'); return L.join('\n'); }
+function check(){ const e=[]; if(!v('kName')) e.push('tên Zalo/Facebook'); if(v('kPhone').replace(/\D/g,'').length<9) e.push('số điện thoại'); if(!v('kDate')) e.push('ngày đến'); const t=v('kTime'); if(!t) e.push('giờ đến'); else if(t<'17:00'||t>'22:59') e.push('giờ đến trong 17:00–23:00'); if(!v('kPax')) e.push('số khách');
+  const b=$('#kErr'); if(e.length){ b.textContent='Anh/chị bổ sung giúp: '+e.join(', '); b.hidden=false; b.scrollIntoView({block:'center'}); return false; } b.hidden=true; return true; }
+function fields(){ const T=totals(); const it=(arr,sum)=>arr.length?arr.map(x=>`• ${x.n} × ${x.q} — ${vnd(x.p*x.q)}`+(x.o?`\n   ${x.o}`:'')).join('\n')+`\nCộng: ${vnd(sum)}`:'Không chọn';
+  let su=[]; if(C.su.it){ su.push(`• Set up bàn ${C.su.it.lb||'No. '+pad(C.su.it.no)} — ${vnd(C.su.it.p)}`); su.push(`   Nội dung bảng để bàn: ${C.su.it.b||'(chưa ghi)'}`); if(C.su.it.inc) su.push(`   ${C.su.it.inc} gồm trang trí đến 130.000đ; mẫu giá ${vnd(C.su.it.base)}${C.su.it.p?' → bù '+vnd(C.su.it.p)+' + VAT':' → không tính thêm'}`); } C.su.ad.forEach(a=>su.push(`• ${a.n} — ${vnd(a.p)}`)); { const P=promo(); if(P&&P.ok) su.push('• '+GIFT+(C.ke?' (Tặng kệ tiệc 0'+C.ke+')':' (kệ hoa: nhà hàng chọn giúp)')+' — 0đ'); } if(su.length) su.push(`Cộng: ${vnd(T.c)}`);
+  const bh=C.bh.map(x=>`• ${x.n} ${x.code}${x.s?' · size '+x.s:''} — ${vnd(x.p)}\n   `+(x.t==='cake'?'Chữ trên bánh: '+(x.msg||'(chưa ghi)'):'Ghi chú: '+(x.note||'—'))); if(bh.length) bh.push(`Cộng: ${vnd(T.e)}`);
+  return {'entry.311691300':`${v('kCh')}: ${v('kName')||v('kPhone')} · ${v('kPhone')}`,
+   'entry.1668269425':`${fd(v('kDate'))} lúc ${v('kTime')} · ${v('kPax')} khách · `+(v('kTbl')?'Bàn '+v('kTbl'):'Nhờ nhà hàng xếp bàn'),
+   'entry.787910496':it(C.food,T.a),'entry.1317244926':it(C.drink,T.b),'entry.235255954':su.length?su.join('\n'):'Không chọn','entry.482914039':bh.length?bh.join('\n'):'Không chọn',
+   'entry.1703911514':`${vnd(T.t)} (chưa gồm VAT 8%)`,'entry.1824019516':vnd(T.d),'entry.1039246301':vnd(T.r),'entry.600947442':v('kNote')||'—'}; }
+$('#kForm').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } const F=fields(); const fu=FORM_URL+'?usp=pp_url&'+Object.entries(F).map(([k,x])=>k+'='+encodeURIComponent(x)).join('&'); e.currentTarget.href=v('kTbl')?CHECK_URL+'?a=kt&d='+encodeURIComponent(fd(v('kDate')))+'&b='+encodeURIComponent(v('kTbl'))+'&u='+encodeURIComponent(fu):fu; });
+$('#kZalo').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } try{ navigator.clipboard.writeText(msg()).then(()=>toast('Đã copy phiếu – vào Zalo chạm giữ ô tin nhắn → Dán → Gửi'),()=>toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé')); }catch(x){ toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé'); } });
+setInterval(()=>{ if($('#ov').hidden&&!document.hidden) refresh(); },5000);
+function goKe(){ if(!document.body.classList.contains('gmode')) show('setup'); whenReady('f-setup',()=>{ SHOWN=null; try{ const f=document.getElementById('f-setup'), sec=f.contentDocument.getElementById('ke1'); if(sec) window.scrollTo({top:f.offsetTop+sec.getBoundingClientRect().top+(f.contentWindow.scrollY||0)-TOP()-8,behavior:'instant'}); }catch(x){} }); }
+function goGift(){ if(!document.body.classList.contains('gmode')) show('setup'); whenReady('f-setup',()=>{ SHOWN=null; try{ const f=document.getElementById('f-setup'), d=f.contentDocument; const sec=[...d.querySelectorAll('section.gs')].find(x=>/Mẫu tặng/.test(x.textContent)); if(sec) window.scrollTo({top:f.offsetTop+sec.getBoundingClientRect().top+(f.contentWindow.scrollY||0)-TOP()-8,behavior:'instant'}); }catch(x){} }); }
+$('#gpGo').addEventListener('click',e=>{ if(e.target.closest('.gogift')){ e.preventDefault(); e.stopImmediatePropagation(); goGift(); return; } if(e.target.closest('.goke')){ e.preventDefault(); e.stopImmediatePropagation(); goKe(); return; } },true);
+$('#gpGo').addEventListener('click',e=>{ e.preventDefault(); show('ban'); whenReady('f-ban',()=>{ SHOWN=null; try{ const w=banWin(); w.eval("zoneId='garden'; render();"); const f=document.getElementById('f-ban'); setTimeout(()=>{ const z=f.contentDocument.getElementById('zone'); window.scrollTo({top:f.offsetTop+z.offsetTop-TOP()-6,behavior:'instant'}); },350); }catch(x){} }); });
+
+document.getElementById('gvAll').onclick=()=>show('mon');
+
+/* ---- Nhân viên Apes trò chuyện với khách ---- */
+const NV={last:''};
+function say(html,en,acts){ html=String(html).replace(/([.!?…]|🎁)\s+(?=(<b>)?[\p{Lu}0-9])/gu,'$1<br>'); const n=$('#nv'); $('#nvT').innerHTML=html+(en?`<i>${en}</i>`:''); const AC=(acts||[]).filter(a=>a[0]!=='Để sau'); $('#nvA').innerHTML=AC.map((a,i)=>`<button type="button" data-i="${i}" class="${i===0?'p':''}">${a[0]}</button>`).join('')+'<button type="button" class="c" data-c="1">Đóng</button>'; NV.acts=(acts||[]).filter(a=>a[0]!=='Để sau'); n.hidden=false; n.style.animation='none'; void n.offsetWidth; n.style.animation=''; clearTimeout(NV.h); NV.h=setTimeout(()=>n.hidden=true,12000); }
+$('#nvX').onclick=()=>{ $('#nv').hidden=true; };
+$('#nvA').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.c){ $('#nv').hidden=true; return; } const a=NV.acts[+b.dataset.i]; $('#nv').hidden=true; if(a&&a[1]) a[1](); });
+const goSum=()=>$('#sbGo').disabled?show('mon'):$('#sbGo').click();
+let NVP=null;
+function boardFocus(){ try{ const f=document.getElementById('f-setup'), w=f.contentWindow, d=f.contentDocument, el=d.querySelector('[data-bv="'+w.eval('pick')+'"]')||d.getElementById('fBoard'); if(!el) return show('setup'); window.scrollTo({top:f.offsetTop+el.getBoundingClientRect().top+(w.scrollY||0)-180,behavior:'instant'}); setTimeout(()=>el.focus({preventScroll:true}),500); }catch(e){ show('setup'); } }
+function nvWatch(){ if(!$('#ov').hidden){ NVP=null; } try{ const fs=document.getElementById('f-setup'), ae=fs.contentDocument.activeElement; if(document.activeElement===fs && ae && ae.matches('[data-bv],#fBoard')) return; }catch(e){}
+  const f=C.food.reduce((s,x)=>s+x.q,0), d=C.drink.reduce((s,x)=>s+x.q,0), su=(C.su.it?'n'+C.su.it.no:'')+'|'+C.su.ad.length, bh=C.bh.length;
+  if(NVP){
+    if(f>NVP.f){ const x=C.food[C.food.length-1]; const it=C.food.find(y=>!NVP.fn.includes(y.n+y.q))||x; if(it.f==='f-set'){ say(`Dạ em đã ghi <b>${esc(it.n)}</b> cho anh/chị rồi ạ. Anh/chị có muốn Apes <b>trang trí bàn</b> cho buổi hẹn thêm đặc biệt, hay gọi thêm món lẻ không ạ?`,'Your set menu is noted! Add a table decoration or more dishes?',[['Xem set up bàn',()=>show('setup')],['Gọi thêm món lẻ',()=>show('mon')],['Chọn đồ uống',()=>show('nuoc')]]); } else
+      say(`Dạ em đã ghi <b>${esc(it.n)}</b> cho anh/chị rồi ạ. Anh/chị chọn thêm món nữa không ạ?`,'Noted! Anything else?',[['Chọn thêm món',()=>{}],['Chọn đồ uống',()=>show('nuoc')]]); }
+    else if(d>NVP.d){ const it=C.drink.find(y=>!NVP.dn.includes(y.n+y.q))||C.drink[C.drink.length-1];
+      say(`Dạ em ghi <b>${esc(it.n)}</b> rồi ạ. Anh/chị có muốn Apes trang trí bàn cho buổi hẹn thêm đặc biệt không ạ?`,'Would you like a table decoration?',[['Xem set up bàn',()=>show('setup')],['Chọn thêm nước',()=>{}]]); }
+    else if(su!==NVP.su && C.su.it && !C.su.it.b){
+      say(`Dạ mẫu set up <b>${C.su.it.lb||'No. '+pad(C.su.it.no)}</b> rất xinh ạ! Để Apes chuẩn bị chu đáo, anh/chị vui lòng cho em xin <b>nội dung muốn ghi trên bảng nhỏ để bàn</b> (ví dụ: Happy Birthday Lan) được không ạ? Em cảm ơn anh/chị nhiều ạ.`,'May we have the message for your small table board?',[['Ghi nội dung bảng',boardFocus],['Để sau',()=>{}]]); }
+    else if(C.su.it && C.su.it.b && !NVP.b && su===NVP.su){
+      say(`Dạ em đã ghi nội dung bảng: <b>“${esc(C.su.it.b)}”</b>. Em cảm ơn anh/chị ạ! Anh/chị có muốn đặt thêm <b>bánh kem</b> hay <b>hoa tươi</b> không ạ?`,'Thank you! Would you like a cake or flowers?',[['Xem bánh & hoa',()=>show('banh')],['Sửa nội dung bảng',boardFocus],['Không cần, chọn bàn',()=>show('ban')]]); }
+    else if(su!==NVP.su && (C.su.it||C.su.ad.length)){
+      say(`Dạ em đã ghi rồi ạ. Anh/chị có muốn đặt thêm <b>bánh kem</b> hay <b>hoa tươi</b> không ạ?`,'Add a cake or flowers?',[['Xem bánh & hoa',()=>show('banh')],['Không cần, chọn bàn',()=>show('ban')]]); }
+    else if(bh>NVP.bh){
+      say(`Dạ em ghi rồi ạ. Mời anh/chị chọn <b>bàn</b> mình thích ở phía dưới nhé.`,'Noted! Now pick your table below.',[['Chọn bàn',()=>show('ban')],['Xem tổng kết',goSum]]); }
+  }
+  const PP=promo(); if(NVP && PP && PP.ok && !NVP.pok) say(`Dạ chúc mừng anh/chị! Phiếu đã đủ <b>450K/người</b> ở Sảnh Garden, Apes <b>tặng set up bàn, bánh Choco Lava (185K), ghi chữ trên dĩa và kệ hoa tiệc</b> ạ 🎁`,'Congrats! Your Garden Hall gift is unlocked.',[['Xem tổng kết',goSum]]);
+  NVP={pok:!!(PP&&PP.ok),f,d,su,bh,b:C.su.it?C.su.it.b:'',fn:C.food.map(y=>y.n+y.q),dn:C.drink.map(y=>y.n+y.q)}; }
+const _refresh=refresh; refresh=function(){ _refresh(); try{ nvWatch(); }catch(e){} };
+const _pick=window.onBanPick; window.onBanPick=t=>{ _pick(t); const P=t?promo():null; if(P){ say(P.ok?`Dạ bàn <b>${esc(t)}</b> ở Sảnh Garden ạ! Phiếu của anh/chị đủ ưu đãi: Apes <b>tặng set up bàn, bánh Choco Lava, ghi chữ trên dĩa và kệ hoa tiệc</b> ạ 🎁`:`Dạ bàn <b>${esc(t)}</b> ở Sảnh Garden đang có ưu đãi ạ! Anh/chị gọi thêm <b>${vnd(P.miss)}</b> món + nước (đủ 450K/người) là Apes tặng set up bàn, bánh Choco Lava, chữ trên dĩa và kệ hoa tiệc ạ 🎁`,'Garden Hall offer: from 450K/guest.',P.ok?[['Xem tổng kết',goSum]]:[['Chọn thêm món',()=>show('mon')],['Xem tổng kết',goSum]]); return; } if(t) say(`Dạ bàn <b>${esc(t)}</b> là lựa chọn rất đẹp ạ! Anh/chị bấm <b>Xem tổng kết</b> để xem lại phiếu giúp em nhé.`,'Great table! Tap Summary to review.',[['Xem tổng kết',goSum]]); };
+let nvTop=false; document.addEventListener('change',e=>{ if(nvTop||!['hDate','hTime','hPax'].includes(e.target.id)) return; if(v('hDate')&&v('hTime')&&v('hPax')){ nvTop=true; say(`Dạ em cảm ơn anh/chị. Mời anh/chị <b>gọi món lẻ</b> hoặc chọn <b>Menu set</b> cho 2 người ở phía dưới nhé.`,'Thank you! Order à la carte or choose a set menu.',[['Gọi món lẻ',()=>show('mon')],['Xem Menu set',()=>show('set')]]); } });
+const _go=$('#sbGo').onclick; $('#sbGo').onclick=()=>{ _go(); $('#nv').hidden=true; };
+setTimeout(()=>{ if(!$('#ov').hidden||(v('hDate')&&v('hTime')&&v('hPax'))) return; say(`Dạ chào anh/chị, Apes rất vui được phục vụ ạ! Anh/chị cho em xin <b>ngày, giờ đến</b> và <b>số khách</b> ở trên nhé. Từ <b>01/11 đến 09/11/2026</b>, đặt bàn <b>Sảnh Garden</b> bill từ 450K/người được <b>tặng set up, Choco Lava, chữ trên dĩa &amp; kệ hoa tiệc</b> đó ạ 🎁`,'Welcome to Apes! Garden Hall offer from 450K/guest.',[['Xem ưu đãi Garden',()=>show('garden')]]); },1500);
+</script>
+</body></html>

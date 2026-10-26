@@ -1,0 +1,173 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Apes Set Up Bàn</title>
+<style>
+:root{--paper:#f8f4ec;--surface:#fffdf8;--ink:#33463c;--text:#3d3a34;--muted:#7a7264;--gold:#9c7535;--line:rgba(156,117,53,.28);--on-gold:#fff;--deep:#efe5d2;color-scheme:light;
+--display:"Cormorant Garamond",Georgia,serif;--body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif}
+
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--text);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header{text-align:center;padding:34px 0 10px}
+.br{font:500 11px var(--body);letter-spacing:.42em;color:var(--gold)}
+h1{font:500 40px/1.05 var(--display);color:var(--ink);margin:10px 0 4px}
+h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin-top:6px}
+.lead{color:var(--muted);font-size:13.5px;text-align:center;margin:10px auto 18px;max-width:560px}
+.lead i{display:block;font-size:12px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:none;position:sticky;top:0;background:var(--paper);z-index:5}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 14px;border-radius:3px;font:500 13.5px var(--body);line-height:1.25;text-align:center;cursor:pointer}
+.chip small{display:block;font-size:11px;opacity:.7;font-style:italic}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.gs{margin-top:26px}.gh{font:500 30px/1.1 var(--display);color:var(--ink);text-align:center;margin:0 0 12px}.gh small{display:block;font:600 11px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:5px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.card .im{border:0;padding:0;background:none;cursor:zoom-in;display:block}
+.card img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.ph{position:relative}
+.card .im{width:100%}
+.ov{position:absolute;left:8px;right:8px;bottom:8px;border:1px solid var(--gold);background:rgba(255,253,248,.92);color:var(--gold);border-radius:3px;padding:8px 6px;font:600 13.5px var(--body);cursor:pointer;backdrop-filter:blur(4px)}
+.card.on .ov{background:var(--gold);color:var(--on-gold)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:6px;padding:8px 10px 0}
+.row .code{padding:0}
+.pr{font-weight:600;color:var(--gold);font-size:14.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bd{display:block;padding:0 10px 8px;font-size:12px;color:var(--ink);font-weight:600}
+.bd input{margin-top:4px;font-size:14px;font-weight:400;padding:8px}
+input::placeholder{color:var(--muted);opacity:1}
+input:focus::placeholder{color:transparent}
+.vr{display:flex;align-items:center;justify-content:space-between;gap:4px;padding:4px 10px 4px}
+.vr .vat{padding:0;flex:1;min-width:0}
+.vr .sb{margin:0;flex:0 0 auto;padding:5px 9px;font-size:12.5px;white-space:nowrap}
+.sb{margin:8px 10px 4px;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:3px;padding:9px 6px;font:600 13.5px var(--body);cursor:pointer}
+.card.on .sb{background:var(--gold);color:var(--on-gold)}
+.card .nt{padding-bottom:6px}
+.go{margin:0 10px 10px;border:0;background:var(--ink);color:var(--paper);border-radius:3px;padding:9px 6px;font:600 13px var(--body);cursor:pointer}
+.code{font:600 19px var(--display);color:var(--ink);padding:8px 10px 0}
+.card.on .code::after{content:" ✓";color:var(--gold)}
+.pb{margin:6px 10px 0;display:flex;align-items:center;justify-content:space-between;gap:6px;border:1px solid var(--gold);background:transparent;color:var(--gold);border-radius:3px;padding:7px 9px;cursor:pointer;font:600 14px var(--body);font-variant-numeric:tabular-nums;text-align:left}
+.pb span{font-size:12px;font-weight:500;white-space:nowrap}
+.card.on .pb{background:var(--gold);color:var(--on-gold)}
+.vat{padding:3px 10px 0;font-size:11.5px;color:var(--muted)}
+.nt{padding:2px 10px 10px;font-size:11.5px;color:var(--muted);min-height:1em}
+.nt i{display:block}
+.extra{margin-top:22px;border:1px solid var(--line);border-radius:6px;padding:14px;background:var(--surface)}
+.extra h2{font:500 24px var(--display);color:var(--ink);margin:0}
+.extra h2 i{font-size:15px;color:var(--muted)}
+.smk{display:block;width:100%;border:0;padding:0;margin:10px 0;cursor:zoom-in;background:none}
+.smk img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;display:block}
+.ad{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.ad b{font-weight:500;color:var(--ink);display:block}.ad i{font-size:12px;color:var(--muted)}
+.ad .pb{margin:0;flex:0 0 auto}.ad.on .pb{background:var(--gold);color:var(--on-gold)}
+.form{margin-top:22px;border:1px solid var(--gold);border-radius:6px;padding:14px;background:var(--surface)}
+.form h2{font:500 24px var(--display);color:var(--ink);margin:0 0 8px}
+.sel{font-size:14px;margin-bottom:10px}.sel div{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed var(--line)}
+.sel .tt{font-weight:600;color:var(--gold);border:0;margin-top:4px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fg label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}.fg .w{grid-column:1/-1}
+input{font:inherit;font-size:15px;color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:9px;min-width:0;width:100%}
+.acts{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.cta{display:block;text-align:center;text-decoration:none;border:0;border-radius:3px;padding:12px;font:600 15px var(--body);cursor:pointer;background:var(--gold);color:var(--on-gold)}
+.cta.g{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.cta small{display:block;font-size:11px;font-weight:500;opacity:.85}
+.err{color:#9b3a28;border:1px solid #d9735c;background:rgba(217,115,92,.12);border-radius:3px;padding:8px 10px;font-size:13px;margin-top:10px}
+.fine{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 0 120px}
+footer a{color:var(--gold)}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,253,248,.97);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));z-index:20}
+.bar .in{max-width:720px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.bar .who{flex:1;min-width:0;font-size:12.5px;color:var(--muted)}.bar .who b{display:block;color:var(--ink);font-size:14px}
+.bar .cta{padding:10px 16px}
+.lb{position:fixed;inset:0;background:rgba(8,12,10,.94);z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.lb img{max-width:100%;max-height:76vh;border-radius:6px}
+.lb b{color:var(--ink);font:500 22px var(--display);margin-top:10px}
+.lb button{margin-top:10px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:90px;background:var(--ink);color:var(--paper);padding:9px 14px;border-radius:6px;font-size:13.5px;z-index:50;max-width:calc(100% - 32px)}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<div class="wrap">
+<header><img src="img/logo.png" alt="Logo Apes" style="width:56px;height:56px;display:block;margin:0 auto 6px"><div class="br">APES RESTAURANT</div><h1>Mẫu set up bàn<small>Table decoration</small></h1></header>
+<p class="lead">Bấm vào ảnh để xem lớn. Ghi chữ trên bảng nhỏ để bàn vào ô dưới hình, rồi bấm <b>“＋ Chọn mẫu này”</b> (mỗi bàn 1 mẫu). Giá chưa gồm VAT 8%.<i>Tap a photo to enlarge. Tap “Choose” on the photo, then write your board message below it. Prices excl. 8% VAT.</i></p>
+<div id="grid"></div>
+<div class="extra"><h2>Hiệu ứng khói <i>Dry-ice smoke</i></h2>
+<p class="lead" style="text-align:left;margin:4px 0 0">Thêm khói đá cho set up bàn thêm lung linh. Giá chưa gồm VAT 8%.<i>Add dry-ice smoke to your set-up. Prices excl. 8% VAT.</i></p>
+<button class="smk" id="smk"><img loading="lazy" src="img/smoke.jpg" alt="Bàn tiệc có hiệu ứng đá khói tại Apes"></button><div id="adds"></div></div>
+<div class="form" id="form"><h2>Phiếu đặt set up</h2><div class="sel" id="sel"></div>
+<div class="fg">
+<label>Tên khách · Name<input id="fName" autocomplete="name"></label>
+<label>Số điện thoại · Phone<input id="fPhone" type="tel" inputmode="tel"></label>
+<label>Ngày · Date<input id="fDate" type="date"></label>
+<label>Giờ · Time<input id="fTime" type="time" min="17:00" max="22:30"></label>
+<label>Số khách · Guests<input id="fPax" type="number" min="1" value="2"></label>
+<label>Bàn (nếu đã đặt) · Table<input id="fTbl" placeholder="VD: B3"></label>
+<label class="w">Nội dung bảng để bàn<input id="fBoard"></label>
+<label class="w">Ghi chú set up · Note<input id="fNote" placeholder="VD: thêm bóng màu hồng, để hoa bên trái"></label>
+</div><div class="err" id="err" hidden></div>
+<div class="acts"><a class="cta" id="sendForm" href="#" target="_blank" rel="noopener">Gửi phiếu đặt ngay<small>Send now – no Zalo needed</small></a>
+<a class="cta g" id="sendZalo" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Copy phiếu &amp; mở Zalo<small>Copy &amp; open Zalo</small></a></div>
+<p class="fine">Nhân viên sẽ gọi xác nhận và gửi số tài khoản để chuyển cọc. Hotline <a href="tel:0916398797" style="color:var(--gold)">0916 398 797</a>.</p></div>
+<footer>APES Restaurant · 78 Trần Phú, KDC Chánh Nghĩa, Thủ Dầu Một<br>Zalo 0385 285 768 · Hotline 0916 398 797<br><a href="https://claude.ai/artifact/ARVuwo9zfWu1dod5dg5CwY" target="_blank" rel="noopener">Xem menu đầy đủ &amp; set menu →</a></footer>
+</div>
+<div class="bar" id="bar" hidden><div class="in"><div class="who"><b id="barT"></b><span id="barS"></span></div><button class="cta" id="barGo">Điền phiếu →</button></div></div>
+<div class="lb" id="lb" hidden><img id="lbI" alt=""><b id="lbT"></b><button class="cta g" id="lbX">Đóng · Close</button></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+const DECOR=[{"g": "Hẹn hò · Tối giản", "en": "Intimate Dinner", "k": "date", "items": [{"c": 7, "p": 160, "n": "", "no": 1}, {"c": 47, "p": 160, "n": "", "no": 2}, {"c": 53, "p": 160, "n": "", "no": 3}, {"c": 6, "p": 130, "n": "", "no": 4}, {"c": 48, "p": 130, "n": "", "no": 5}, {"c": 55, "p": 130, "n": "", "no": 6}, {"c": 4, "p": 80, "n": "", "no": 7}, {"c": 5, "p": 80, "n": "", "no": 8}, {"c": 2, "p": 50, "n": "", "no": 9}, {"c": 57, "p": 50, "n": "", "no": 10}, {"c": 1, "p": 0, "n": "", "no": 11}]}, {"g": "Kỷ niệm · Tình yêu", "en": "Love & Anniversary", "k": "love", "items": [{"c": 17, "p": 290, "n": "", "no": 12}, {"c": 56, "p": 290, "n": "", "no": 13}, {"c": 16, "p": 260, "n": "", "no": 14}, {"c": 54, "p": 260, "n": "", "no": 15}, {"c": 14, "p": 190, "n": "", "no": 16}, {"c": 15, "p": 190, "n": "", "no": 17}, {"c": 51, "p": 190, "n": "", "no": 18}, {"c": 52, "p": 190, "n": "", "no": 19}, {"c": 11, "p": 160, "n": "", "no": 20}, {"c": 49, "p": 160, "n": "", "no": 21}, {"c": 60, "p": 160, "n": "", "no": 22}, {"c": 8, "p": 130, "n": "", "no": 23}, {"c": 10, "p": 130, "n": "", "no": 24}, {"c": 50, "p": 130, "n": "", "no": 25}]}, {"g": "Sinh nhật", "en": "Birthday", "k": "bday", "items": [{"c": 39, "p": 450, "n": "", "no": 26}, {"c": 40, "p": 450, "n": "", "no": 27}, {"c": 38, "p": 310, "n": "", "no": 28}, {"c": 34, "p": 260, "n": "", "no": 29}, {"c": 36, "p": 260, "n": "2 bó hoa & bánh kem do khách tự mang tới", "no": 30}, {"c": 37, "p": 260, "n": "", "no": 31}, {"c": 30, "p": 190, "n": "", "no": 32}, {"c": 32, "p": 190, "n": "", "no": 33}, {"c": 61, "p": 190, "n": "", "no": 34}, {"c": 62, "p": 190, "n": "", "no": 35}, {"c": 63, "p": 190, "n": "", "no": 36}, {"c": 64, "p": 190, "n": "", "no": 37}, {"c": 28, "p": 160, "n": "Bó hoa & hộp quà do khách tự mang tới", "no": 38}, {"c": 59, "p": 160, "n": "", "no": 39}, {"c": 19, "p": 130, "n": "", "no": 40}, {"c": 27, "p": 130, "n": "", "no": 41}, {"c": 46, "p": 130, "n": "", "no": 42}, {"c": 58, "p": 130, "n": "", "no": 43}]}, {"g": "Tiệc & sự kiện lớn", "en": "Grand Backdrop", "k": "grand", "items": [{"c": 45, "p": 3500, "n": "Bó hoa do khách tự mang tới", "no": 44}, {"c": 43, "p": 1500, "n": "", "no": 45}, {"c": 44, "p": 1500, "n": "", "no": 46}]}, {"g": "Mẫu tặng · miễn phí khi ngồi Sảnh Garden", "en": "Free with a Garden Hall table", "k": "gift", "items": [{"c": 65, "p": 80, "n": "", "no": 47, "lb": "Tặng 01"}, {"c": 66, "p": 80, "n": "", "no": 48, "lb": "Tặng 02"}, {"c": 67, "p": 80, "n": "", "no": 49, "lb": "Tặng 03"}, {"c": 68, "p": 80, "n": "", "no": 50, "lb": "Tặng 04"}, {"c": 69, "p": 80, "n": "", "no": 51, "lb": "Tặng 05"}, {"c": 70, "p": 120, "n": "", "no": 52, "lb": "Tặng 06"}, {"c": 72, "p": 80, "n": "", "no": 54, "lb": "Tặng 07"}]}];
+const DNE={'Bó hoa & hộp quà do khách tự mang tới':'Bouquet & gift box brought by guest','Bó hoa do khách tự mang tới':'Bouquet brought by guest','2 bó hoa & bánh kem do khách tự mang tới':'2 bouquets & cake brought by guest'};
+const ADDONS=[{k:'khoi_ban',n:'Đá khói bàn',en:'Dry-ice smoke for the table',p:180000},{k:'khoi_nhan',n:'Đá khói cho dĩa để nhẫn',en:'Dry-ice smoke for the ring plate',p:80000}];
+const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSe5evOKq9HNmMRkpO8_TDH-U1voqXLBxv9S5B6QSXSzqgzG9g/viewform',FORM_ENTRY='entry.172677733';
+const $=s=>document.querySelector(s), pad=n=>String(n).padStart(2,'0');
+const vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let grp=DECOR[1].k, pick=null, adds=new Set(), BV={};
+try{BV=JSON.parse(localStorage.getItem('apes_su_bv')||'{}')||{};}catch(e){}
+try{const s=JSON.parse(localStorage.getItem('apes_su')||'{}'); pick=s.pick||null; if(pick===71) pick=null; adds=new Set(s.adds||[]);}catch(e){}
+const save=()=>{try{localStorage.setItem('apes_su',JSON.stringify({pick,adds:[...adds]}))}catch(e){}};
+const ALL={}; DECOR.forEach(g=>g.items.forEach(it=>ALL[it.c]=it));
+function toast(m){const t=$('#toast');t.textContent=m;t.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>t.hidden=true,2600);}
+function chips(){ $('#chips').innerHTML=DECOR.map(g=>`<button class="chip" data-k="${g.k}" aria-pressed="${g.k===grp}">${esc(g.g)} <span style="opacity:.6">${g.items.length}</span><small>${esc(g.en)}</small></button>`).join(''); }
+function grid(){ $('#grid').innerHTML=DECOR.map(g=>`<section class="gs"><h2 class="gh">${esc(g.g)}<small>${esc(g.en)}</small></h2><div class="grid">`+g.items.map(it=>{const on=pick===it.c;return `<div class="card${on?' on':''}" data-c="${it.c}">
+ <div class="ph"><button class="im" data-zoom="1" aria-label="Xem lớn ${it.lb||'No. '+pad(it.no)}"><img loading="lazy" src="img/d${pad(it.c)}.jpg" alt="Set up bàn ${it.lb||'No. '+pad(it.no)}"></button></div>
+ <div class="row"><span class="code">${it.lb||'No. '+pad(it.no)}</span><span class="pr">${it.lb?'<s style="color:#A89A85;font-weight:400;font-size:.8em">'+vnd(it.p*1000)+'</s> 0đ':it.p?vnd(it.p*1000):'Miễn phí · Free'}</span></div>
+ <div class="vr"><span></span><button class="sb" data-pick="1">${on?'✓ Đã chọn':'＋ Chọn'}</button></div>
+ <div class="nt">${esc(it.n)}${DNE[it.n]?`<i>${DNE[it.n]}</i>`:''}</div>
+ <label class="bd"><input data-bv="${it.c}" value="${esc(BV[it.c]||'')}" placeholder="Ghi nội dung bảng để bàn" aria-label="Ghi nội dung bảng để bàn"></label>
+ ${on?`<button class="go" data-go="1">Điền thông tin →</button>`:''}</div>`}).join('')+'</div></section>').join(''); }
+function addsR(){ $('#adds').innerHTML=ADDONS.map(a=>{const on=adds.has(a.k);return `<div class="ad${on?' on':''}"><div><b>${esc(a.n)}</b><i>${esc(a.en)}</i></div><button class="pb" data-add="${a.k}"><b>${vnd(a.p)}</b><span>${on?'✓ Đã chọn':'＋ Chọn'}</span></button></div>`}).join(''); }
+function lines(){ const L=[]; if(pick){const it=ALL[pick]; L.push(['Set up bàn '+(it.lb||'No. '+pad(it.no))+(it.n?' ('+it.n+')':''),it.p*1000]);} ADDONS.forEach(a=>{if(adds.has(a.k)) L.push([a.n,a.p]);}); return L; }
+function sum(){ const L=lines(), t=L.reduce((s,x)=>s+x[1],0);
+ $('#sel').innerHTML=L.length?L.map(x=>`<div><span>${esc(x[0])}</span><span>${vnd(x[1])}</span></div>`).join('')+`<div class="tt"><span>Tạm tính (chưa VAT 8%)</span><span>${vnd(t)}</span></div><div style="border:0;color:var(--muted)"><span>Đã gồm VAT 8%</span><span>${vnd(Math.round(t*1.08))}</span></div>`:'<span style="color:var(--muted)">Chưa chọn mẫu nào – bấm vào ô giá ở mẫu anh/chị thích.</span>';
+ $('#bar').hidden=!L.length; if(L.length){ $('#barT').textContent=(pick?(ALL[pick].lb||'No. '+pad(ALL[pick].no)):'Hiệu ứng khói')+' · '+vnd(t); $('#barS').textContent='chưa gồm VAT 8%'; } }
+let KE=0; try{ KE=+localStorage.getItem('apes_ke')||0; }catch(e){}
+function keR(){ const sec=[...document.querySelectorAll('#grid section.gs')].find(x=>/Mẫu tặng/.test(x.textContent)); if(!sec) return; const grid=sec.querySelector('.grid'); grid.querySelectorAll('.kec').forEach(x=>x.remove());
+ grid.insertAdjacentHTML('beforeend',[1,2].map(i=>{const on=KE===i;return '<div class="card kec'+(on?' on':'')+'" id="ke'+i+'"><div class="ph"><img loading="lazy" src="img/ke0'+i+'.jpg" alt="Tặng kệ tiệc 0'+i+'" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"></div><div class="row"><span class="code">Tặng kệ tiệc 0'+i+'</span><span class="pr"><s style="color:#A89A85;font-weight:400;font-size:.8em">120.000đ</s> 0đ</span></div><button class="pb" data-ke="'+i+'" style="margin-bottom:10px"><b>'+(i===1?'Kệ hoa tông cam':'Kệ hoa tông hồng')+'</b><span>'+(on?'✓ Đã chọn':'＋ Chọn')+'</span></button></div>';}).join('')); }
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-ke]'); if(!b) return; const i=+b.dataset.ke; KE=KE===i?0:i; try{ localStorage.setItem('apes_ke',String(KE)); }catch(x){} keR(); });
+function render(){ grid(); keR(); addsR(); sum(); save(); }
+
+$('#grid').addEventListener('input',e=>{const c=e.target.dataset.bv; if(!c) return; BV[c]=e.target.value; try{localStorage.setItem('apes_su_bv',JSON.stringify(BV))}catch(x){} if(pick===+c){ $('#fBoard').value=e.target.value; $('#fBoard').dispatchEvent(new Event('input',{bubbles:true})); }});
+$('#grid').addEventListener('click',e=>{const c=e.target.closest('.card'); if(!c) return; const it=ALL[+c.dataset.c];
+ if(e.target.closest('[data-bv]')) return;
+ if(e.target.closest('[data-go]')){ $('#form').scrollIntoView({behavior:'smooth'}); return; }
+ if(e.target.closest('[data-pick]')){ pick=pick===it.c?null:it.c; if(pick){ $('#fBoard').value=BV[it.c]||$('#fBoard').value; $('#fBoard').dispatchEvent(new Event('input',{bubbles:true})); } render(); toast(pick?'Đã chọn '+(it.lb||'No. '+pad(it.no))+(BV[it.c]?' · bảng: '+BV[it.c]:''):'Đã bỏ chọn'); return; }
+ if(e.target.closest('[data-zoom]')){ $('#lbI').src='img/d'+pad(it.c)+'.jpg'; $('#lbT').textContent=(it.lb||'No. '+pad(it.no))+' · '+(it.p?vnd(it.p*1000):'Miễn phí'); $('#lb').hidden=false; } });
+$('#adds').addEventListener('click',e=>{const b=e.target.closest('[data-add]'); if(!b) return; const k=b.dataset.add; adds.has(k)?adds.delete(k):adds.add(k); render();});
+$('#smk').addEventListener('click',()=>{ $('#lbI').src='img/smoke.jpg'; $('#lbT').textContent='Hiệu ứng khói · Dry-ice smoke'; $('#lb').hidden=false; });
+$('#lbX').addEventListener('click',()=>$('#lb').hidden=true); $('#lb').addEventListener('click',e=>{if(e.target.id==='lb') $('#lb').hidden=true;});
+$('#barGo').addEventListener('click',()=>$('#form').scrollIntoView({behavior:'smooth'}));
+const F=['fName','fPhone','fDate','fTime','fPax','fTbl','fBoard','fNote'];
+try{const s=JSON.parse(localStorage.getItem('apes_su_f')||'{}'); F.forEach(k=>{ if(s[k]) $('#'+k).value=s[k]; });}catch(e){}
+document.addEventListener('input',e=>{ if(F.includes(e.target.id)){ const o={}; F.forEach(k=>o[k]=$('#'+k).value); try{localStorage.setItem('apes_su_f',JSON.stringify(o))}catch(x){} } });
+const v=k=>$('#'+k).value.trim();
+function fmtD(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return d+'/'+m+'/'+y; }
+function msg(){ const L=lines(), t=L.reduce((s,x)=>s+x[1],0);
+ return ['APES · PHIẾU ĐẶT SET UP BÀN','━━━━━━━━━━━━━━━━','Khách: '+v('fName')+' · '+v('fPax')+' khách','SĐT: '+v('fPhone'),'Ngày: '+fmtD(v('fDate'))+' · '+v('fTime'),v('fTbl')?'Bàn: '+v('fTbl'):'Bàn: nhờ nhà hàng xếp giúp','',
+ ...L.map(x=>'• '+x[0]+': '+vnd(x[1])),'Tạm tính: '+vnd(t)+' (chưa VAT 8%) · Gồm VAT: '+vnd(Math.round(t*1.08)),'',
+ 'Nội dung bảng để bàn: '+(v('fBoard')||'(chưa ghi)'),v('fNote')?'Ghi chú: '+v('fNote'):'','━━━━━━━━━━━━━━━━','Chờ nhà hàng xác nhận & gửi số tài khoản cọc.'].filter((x,i,a)=>x!==''||a[i-1]!=='').join('\n'); }
+function check(){ const e=[]; if(!pick&&!adds.size) e.push('Chọn 1 mẫu set up (bấm vào ô giá)'); if(!v('fName')) e.push('Tên khách'); if(!/\d{9,}/.test(v('fPhone').replace(/\D/g,''))) e.push('Số điện thoại'); if(!v('fDate')) e.push('Ngày'); if(!v('fTime')) e.push('Giờ');
+ const b=$('#err'); if(e.length){ b.innerHTML='<b>Anh/chị bổ sung giúp:</b> '+e.join(', '); b.hidden=false; $('#form').scrollIntoView({behavior:'smooth'}); return false; } b.hidden=true; return true; }
+$('#sendForm').addEventListener('click',e=>{ if(!check()){ e.preventDefault(); return; } e.currentTarget.href=FORM_URL+'?usp=pp_url&'+FORM_ENTRY+'='+encodeURIComponent(msg()); });
+$('#sendZalo').addEventListener('click',e=>{ if(!check()){ e.preventDefault(); return; } const t=msg(); try{ navigator.clipboard.writeText(t).then(()=>toast('Đã copy phiếu – vào Zalo chạm giữ ô tin nhắn → Dán → Gửi'),()=>toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé')); }catch(x){ toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé'); } });
+{ const d=new Date(); $('#fDate').min=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+render();
+</script>
+</body></html>

@@ -1,0 +1,205 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+<title>Menu set</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:wght@400;500;600&family=Dancing+Script:wght@600;700&display=swap">
+<style>
+:root{--bg:#F8F4EC;--card:#FFFDF8;--ink:#2E241C;--mut:#857463;--gold:#A8834C;--gold2:#C9AE7C;--line:#E4D6BB;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#F8F4EC}}
+:root[data-theme="dark"]{--bg:#F8F4EC}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Be Vietnam Pro",system-ui,sans-serif}
+button{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:18px 12px 26px}
+.hd{text-align:center;background:var(--card);border:1px solid var(--gold2);outline:1px solid var(--gold2);outline-offset:-6px;padding:20px 14px 14px}
+.hd small{display:block;font-size:10px;letter-spacing:.32em;color:var(--gold);font-weight:500}
+.hd h1{margin:6px 0 0;font:400 30px/1.1 Lora,Georgia,serif;letter-spacing:.14em;color:var(--gold)}
+.hd p{margin:4px 0 0;font:500 15px Lora,Georgia,serif}
+.hd p i{display:block;font-size:12px;color:var(--mut);font-weight:400}
+.tbl{margin-top:10px}
+.tbl h2{margin:0 0 4px;text-align:center;font:600 11px "Be Vietnam Pro",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.tbl h2 i{font-weight:400;letter-spacing:.04em;text-transform:none;color:var(--mut)}
+.tg{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(6,auto);column-gap:30px;background:linear-gradient(var(--gold),var(--gold)) center/1.5px 100% no-repeat;border-top:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);padding:2px 0;margin-top:4px}@media (max-width:420px){.tg{column-gap:18px}.tr .n{font-size:14px}.tr .p{font-size:12.5px}}
+.tr{display:flex;align-items:baseline;gap:6px;width:100%;border:0;border-bottom:1px dashed var(--line);background:none;padding:7px 2px;text-align:left;cursor:pointer;min-width:0}
+.tr .n{flex:1;min-width:0;font:italic 600 15px Lora,Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tr .p{font-weight:600;color:var(--gold);font-variant-numeric:tabular-nums;font-size:13.5px;white-space:nowrap}
+.tr sup,.tf sup{font-size:9px;color:var(--gold)}
+.tr.on .n{color:var(--gold)}
+.tf{font-size:11px;color:var(--mut);text-align:center;margin-top:6px;line-height:1.4}
+.bs{color:var(--gold);font-style:normal}
+
+/* thẻ set = tấm menu */
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}.cd{min-width:0;width:100%}
+@media (min-width:640px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cd{position:relative;aspect-ratio:720/1019;background:#fff center/100% 100% no-repeat;border-radius:4px;box-shadow:0 4px 16px rgba(60,40,20,.14);scroll-margin-top:70px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:14% 15% 9%;color:var(--c,#3a2f26)}
+.cd.on{box-shadow:0 0 0 3px var(--gold),0 4px 16px rgba(60,40,20,.14)}
+.cd .br{font:500 10px "Be Vietnam Pro",sans-serif;letter-spacing:.3em;opacity:.8}
+.cd h3{margin:2px 0 0;font:700 34px/1.05 "Dancing Script",cursive;color:var(--t,var(--c))}
+.cd .best{font-size:9.5px;letter-spacing:.18em;font-weight:600;margin-top:2px;color:var(--t,var(--c))}
+.cd .pr{margin-top:4px;font:600 17px Lora,Georgia,serif;letter-spacing:.04em;color:var(--t,var(--c))}
+.cd .pr small{display:block;font:italic 11px Lora,Georgia,serif;opacity:.85;letter-spacing:0}
+.cd .ph{display:flex;justify-content:center;gap:5px;margin-top:8px;flex-wrap:nowrap;width:100%}.cd .ph button{flex:0 0 48px;width:48px;height:48px;border-radius:50%;padding:2px;border:1px solid var(--t,var(--gold));background:#fff;cursor:zoom-in;flex:0 0 auto}.cd .ph img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.cd .ds.wi{display:flex;align-items:center;justify-content:center;gap:8px;text-align:left}.cd .ds.wi>div{min-width:0}.cd .dp{flex:0 0 40px;width:40px;height:40px;border-radius:50%;padding:1.5px;border:1px solid var(--t,var(--gold));background:#fff;cursor:zoom-in}.cd .dp img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.cd .co{margin-top:7px;width:100%}
+.cd .co h4{margin:0 0 2px;font:600 10.5px "Be Vietnam Pro",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--t,var(--c))}
+.cd .co h4 i{font-style:normal;font-weight:400;letter-spacing:.06em;text-transform:none;opacity:.8}
+.cd .ds{margin:2px 0;line-height:1.2}
+.cd .ds b{font:600 13.5px "Be Vietnam Pro",sans-serif}
+.cd .ds b span{font-weight:500;opacity:.8;font-size:12px}
+.cd .ds small{display:block;font:italic 11.5px Lora,Georgia,serif;opacity:.82}
+.cd .nt{margin-top:6px;font:italic 11.5px Lora,Georgia,serif;opacity:.9}
+.cd .act{margin-top:auto;padding-top:10px;width:100%;display:flex;flex-direction:column;gap:6px;align-items:center}
+.cd .sel{width:100%;max-width:240px;border:0;border-radius:3px;padding:9px 10px;background:var(--t,var(--gold));color:#fff;font-weight:600;font-size:14px;cursor:pointer;line-height:1.2}
+.cd .sel small{display:block;font-weight:400;font-size:10.5px;opacity:.9}
+.cd .lk{border:0;background:none;padding:2px 4px;font-size:12px;text-decoration:underline;cursor:pointer;color:var(--t,var(--c))}
+.cd .onr{display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap}
+.cd .onr b{font-size:13px;color:var(--t,var(--c))}
+.st{display:inline-flex;align-items:center;border:1px solid var(--gold);border-radius:16px;overflow:hidden;background:#fff}
+.st button{border:0;background:none;width:30px;height:28px;font-size:17px;color:var(--gold);cursor:pointer}
+.st span{min-width:20px;text-align:center;font-weight:600}
+
+/* hộp chọn khi bấm Chọn set */
+.ov{position:fixed;inset:0;z-index:50;background:rgba(30,20,12,.55);display:flex;align-items:flex-end;justify-content:center}
+.sh{background:#FFFDF8;width:100%;max-width:520px;max-height:88vh;overflow:auto;border-radius:10px 10px 0 0;padding:14px 14px 16px}
+.sh .hh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.sh h3{margin:0;font:700 26px "Dancing Script",cursive;color:var(--gold)}
+.sh h3 small{display:block;font:500 12px "Be Vietnam Pro",sans-serif;color:var(--mut)}
+.sh .x{border:1px solid var(--line);background:#fff;border-radius:4px;padding:5px 10px;cursor:pointer;font-size:12.5px}
+.blk{margin-top:10px;padding:9px 10px;border:1px dashed var(--gold2);border-radius:6px;background:#FBF6EC}
+.blk.miss{border-color:#B4472F;background:#FCEEE9}
+.blk .h{font-size:13px;font-weight:600}
+.blk .h i{display:block;font-weight:400;font-style:italic;color:var(--mut);font-size:11px}
+.dk{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.dk.one{grid-template-columns:1fr}
+.dk .pc{display:flex;flex-direction:column;gap:5px}
+.dk .pc b{font-size:12px;color:var(--gold)}
+.dk select{font:13px "Be Vietnam Pro",sans-serif;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:8px 6px;min-width:0;width:100%}
+.dk select.mi{border-color:#B4472F}
+.wg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:6px}
+.wg button{display:flex;gap:8px;align-items:center;text-align:left;border:1px solid var(--line);background:#fff;border-radius:6px;padding:5px;cursor:pointer}
+.wg button img{width:42px;height:42px;border-radius:4px;object-fit:cover;flex:0 0 42px}
+.wg button b{display:block;font-size:12.5px}
+.wg button span{display:block;font-size:10.5px;color:var(--mut);line-height:1.25}
+.wg button[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.dsn{margin-top:6px;font-size:11.5px;color:var(--mut);line-height:1.4}
+.dsn b{color:var(--gold)}
+.dsx{margin-top:5px;font-size:12.5px;color:#B4472F;font-weight:600}
+.ok{margin-top:12px;width:100%;border:0;border-radius:4px;padding:12px;background:var(--gold);color:#fff;font-weight:600;font-size:15px;cursor:pointer}
+.ok small{display:block;font-weight:400;font-size:11px;opacity:.9}
+.err{margin-top:8px;color:#B4472F;font-size:12.5px;text-align:center}
+
+/* xem ảnh món */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(20,14,8,.9);display:flex;align-items:center;justify-content:center;padding:12px}
+.lb .bx{max-width:560px;width:100%;text-align:center;color:#F3EADB}
+.lb img{max-width:100%;max-height:62vh;border-radius:6px;display:block;margin:0 auto}
+.lb .t{margin-top:8px;font:500 15px Lora,Georgia,serif}
+.lb .nv{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.lb .nv button{border:1px solid #C9AE7C;background:none;color:#F3EADB;border-radius:4px;padding:7px 14px;cursor:pointer}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:70;background:var(--ink);color:#fff;padding:9px 14px;border-radius:4px;font-size:13.5px;max-width:calc(100% - 32px);text-align:center}
+[hidden]{display:none!important}
+</style>
+<main class="wrap">
+<header class="hd"><small>APES RESTAURANT</small><h1>SET MENU</h1><p>Thực đơn set cho 2 khách<i>Set menus for two</i></p>
+<section class="tbl" aria-label="Bảng giá set menu"><h2>Bảng giá set menu <i>· bấm tên set để xem</i></h2><div class="tg" id="tg"></div><div class="tf"><b class="bs">★</b> Best seller · <sup>✦</sup> giá đã gồm VAT 8%, còn lại chưa gồm VAT 8%</div></section></header>
+<div class="cards" id="cards"></div>
+</main>
+<div class="ov" id="ov" hidden><div class="sh" role="dialog" aria-modal="true" id="sh"></div></div>
+<div class="lb" id="lb" hidden><div class="bx"><img id="lbI" alt=""><div class="t" id="lbT"></div><div class="nv"><button id="lbP">‹ Trước</button><button id="lbX">Đóng · Close</button><button id="lbN">Sau ›</button></div></div></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+const SETS=[{"n": "Fresco", "g": 2, "price": 1900000, "tax": "Chưa gồm VAT 8%", "tag": "Trải nghiệm cao cấp với tôm hùm & sò điệp", "img": ["fb13", "fb14", "fb15"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad cá ngừ", "en": "Tuna Salad", "img": "i_ca_ngu", "desc": "Cá ngừ áp chảo · ô liu · rau củ · sốt trộn", "descEn": "Seared tuna · olive · vegetables · dressing"}, {"q": "2", "vn": "Súp bông cải trắng", "en": "Cauliflower Soup", "img": "fb13", "desc": "Bông cải trắng · kem · bánh mì", "descEn": "Cauliflower · cream · bread"}]}, {"h": "Món chính", "d": [{"q": "", "vn": "Cồi sò điệp áp chảo sốt bắp (2 con)", "en": "Scallops with Corn Sauce", "img": "c_so_diep_bap", "desc": "Cồi sò điệp áp chảo · sốt bắp · măng tây · nấm", "descEn": "Seared scallops · corn sauce · asparagus · mushroom"}, {"q": "", "vn": "Tôm hùm & cơm Ý risotto (1 phần)", "en": "Lobster Risotto", "img": "i_tom_hum_ri", "desc": "Tôm hùm · vẹm · tôm · cơm Ý risotto · sốt cà", "descEn": "Lobster · mussels · prawn · risotto · tomato sauce"}, {"q": "", "vn": "Bò Wellington 100g", "en": "Beef Wellington", "img": "i_wellington", "desc": "Thăn bò · bánh ngàn lớp · rau củ · sốt", "descEn": "Beef tenderloin · puff pastry · vegetables · sauce", "done": true}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Kem chanh Nhật", "en": "Yuzu Sorbet", "img": "fb15", "desc": "Kem chanh Nhật (yuzu)", "descEn": "Japanese yuzu sorbet"}]}, {"h": "Đồ uống", "d": [{"q": "", "vn": "Đã bao gồm đồ uống", "en": "Drinks included"}]}], "note": "Vui lòng đặt trước 6 tiếng (món tôm hùm & Wellington)", "tagEn": "A premium experience with lobster & scallops", "noteEn": "Please order 6 hours ahead (lobster & Wellington)", "taxEn": "excl. 8% VAT"}, {"n": "Simple Love", "g": 2, "price": 1860000, "tax": "Chưa gồm VAT 8% · đã gồm trang trí bàn & đồ uống", "tag": "Đơn giản chỉ là Yêu", "img": ["sl_salad", "sl_scallop", "sl_set"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Bánh cua", "en": "Crab Pancake", "img": "banh_cua2", "desc": "Bánh cua chiên · trứng cá", "descEn": "Fried crab cake · caviar"}, {"q": "2", "vn": "Salad Ý Buffalo Caprese", "en": "Buffalo Caprese Salad", "img": "sl_salad", "desc": "Phô mai Buffalo · cà chua · húng quế · dầu ô liu", "descEn": "Buffalo mozzarella · tomato · basil · olive oil"}, {"q": "2", "vn": "Cồi sò điệp sốt kem Pháp & mứt cà chua bi", "en": "Scallops with Cherry Tomato Jam & French Cream Sauce", "img": "sl_scallop", "desc": "Cồi sò điệp áp chảo · sốt kem Pháp · mứt cà chua bi", "descEn": "Seared scallops · French cream sauce · cherry tomato jam"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Mì Ý đen hải sản", "en": "Ocean Spaghetti"}, {"q": "2", "vn": "Bò tenderloin sốt bia Apes", "en": "Tenderloin with Apes Beer Sauce", "img": "c_tenderloin", "desc": "Bò tenderloin · sốt bia Apes · khoai tây nghiền · nấm", "descEn": "Beef tenderloin · Apes beer sauce · mashed potato · mushroom", "done": true}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Tiramisu sô-cô-la", "en": "Chocolate Tiramisu"}]}, {"h": "Đã bao gồm", "d": [{"q": "", "vn": "Trang trí bàn tiệc + đồ uống", "en": "Table décor + drinks"}]}], "note": "Riêng ngày 14/2: chỉ 1.620.000đ/cặp", "tagEn": "Simply, it’s love", "taxEn": "excl. 8% VAT · décor & drinks included", "noteEn": "Valentine’s Day (14 Feb) only 1,620,000đ per couple"}, {"n": "Feasty", "g": 2, "price": 1600000, "tax": "Chưa gồm VAT 8%", "tag": "Bữa tiệc nhỏ sang trọng cho hai người", "img": ["x_fruit", "x_cod"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad trái cây sốt cam", "en": "Fruit Salad with Orange Sauce", "img": "i_trai_cay", "desc": "Cam · dâu tây · nho đen · xà lách", "descEn": "Orange · strawberry · black grape · lettuce"}, {"q": "2", "vn": "Súp Thái Tom Yum", "en": "Thai Tom Yum Soup", "img": "i_tomyum", "desc": "Tôm · hải sản · nấm · cà chua · nước súp chua cay", "descEn": "Prawn · seafood · mushroom · tomato · hot & sour broth"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Sườn cừu nướng", "en": "Grilled Lamb Chops", "img": "i_cuu_tm", "desc": "Sườn cừu nướng · sốt vang đỏ · khoai tây nghiền", "descEn": "Grilled lamb chops · red wine sauce · mashed potato", "done": true}, {"q": "2", "vn": "Cá tuyết áp chảo", "en": "Pan-seared Cod Fish", "img": "i_ca_tuyet", "desc": "Cá tuyết áp chảo · sốt xanh · rau củ", "descEn": "Pan-seared cod · green sauce · vegetables"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Món tráng miệng trong ngày", "en": "Daily Dessert"}]}, {"h": "Đồ uống", "d": [{"q": "", "vn": "Đã bao gồm đồ uống", "en": "Drinks included"}]}], "note": "", "tagEn": "An elegant little feast for two", "taxEn": "excl. 8% VAT"}, {"n": "The Tasty", "g": 2, "price": 1600000, "tax": "Chưa gồm VAT 8%", "tag": "Tinh hoa Beef Wellington & cá hồi", "img": ["fb11", "fb12"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad tôm", "en": "Prawn Salad"}, {"q": "", "vn": "Sò điệp Nhật áp chảo (2 con)", "en": "Sautéed Scallops", "img": "i_so_diep", "desc": "Sò điệp Nhật áp chảo · lá vàng · sốt cà chua", "descEn": "Seared Japanese scallops · gold leaf · tomato sauce"}]}, {"h": "Món chính", "d": [{"q": "", "vn": "Bò Wellington 200g", "en": "Beef Wellington", "img": "i_wellington", "desc": "Thăn bò · bánh ngàn lớp · rau củ · sốt", "descEn": "Beef tenderloin · puff pastry · vegetables · sauce", "done": true}, {"q": "", "vn": "Cá hồi nướng sốt mù tạt vàng 200g", "en": "Grilled Salmon", "img": "i_ca_hoi", "desc": "Cá hồi nướng · sốt mù tạt vàng · khoai tây nghiền · bông cải · cà rốt", "descEn": "Grilled salmon · yellow mustard sauce · mashed potato · broccoli · carrot", "done": true}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Món tráng miệng trong ngày", "en": "Daily Dessert"}]}, {"h": "Đồ uống", "d": [{"q": "", "vn": "Đã bao gồm đồ uống", "en": "Drinks included"}]}], "note": "Vui lòng đặt trước 6 tiếng (món Wellington)", "tagEn": "The finest Beef Wellington & salmon", "noteEn": "Please order 6 hours ahead (Wellington)", "taxEn": "excl. 8% VAT"}, {"n": "Miss You", "g": 2, "price": 1090000, "tax": "Đã gồm VAT 8%", "tag": "Đầy đặn hơn cho buổi hẹn trọn vẹn", "img": ["x_pumpkin", "x_chicken"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad trái cây sốt cam", "en": "Fruit Salad with Orange Sauce", "img": "i_trai_cay", "desc": "Cam · dâu tây · nho đen · xà lách", "descEn": "Orange · strawberry · black grape · lettuce"}, {"q": "2", "vn": "Súp bí đỏ kiểu Mỹ", "en": "Pumpkin Soup", "img": "i_bi_do", "desc": "Bí đỏ · kem sữa", "descEn": "Pumpkin · cream"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Ức gà cuộn thảo mộc Địa Trung Hải", "en": "Mediterranean Herb Chicken Roll", "img": "c_ga_cuon", "desc": "Ức gà cuộn thảo mộc · sốt BBQ · bó xôi · nấm mỡ", "descEn": "Herb chicken roll · BBQ sauce · spinach · button mushroom"}, {"q": "2", "vn": "Sườn cừu nướng", "en": "Grilled Lamb Chops", "img": "i_cuu_tm", "desc": "Sườn cừu nướng · sốt vang đỏ · khoai tây nghiền", "descEn": "Grilled lamb chops · red wine sauce · mashed potato", "done": true}, {"q": "1", "vn": "Mì Ý rau củ", "en": "Veggie Spaghetti"}, {"q": "1", "vn": "Mì Ý sốt kem thịt xông khói", "en": "Carbonara"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Bánh mì nướng kiểu Pháp", "en": "French Toast", "img": "i_french_toast", "desc": "Bánh mì nướng trứng · dâu tây · đường bột", "descEn": "Egg-dipped toast · strawberry · powdered sugar"}]}, {"h": "Đồ uống", "d": [{"q": "", "vn": "Đã bao gồm đồ uống", "en": "Drinks included"}]}], "note": "", "tagEn": "A fuller menu for a perfect date", "taxEn": "VAT 8% included"}, {"n": "My Honey", "g": 2, "price": 998000, "tax": "Chưa gồm VAT 8%", "tag": "Ngọt ngào như chính người thương", "img": ["x_tomyum", "x_duck"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad Thái tôm xoài", "en": "Thai Prawn Salad", "img": "i_salad_tom_xoai", "desc": "Tôm · xoài · rau mầm · rau thơm · sốt chấm", "descEn": "Prawn · mango · sprouts · herbs · dipping sauce"}, {"q": "2", "vn": "Súp Tom Yum", "en": "Tom Yum Soup", "img": "i_tomyum", "desc": "Tôm · hải sản · nấm · cà chua · nước súp chua cay", "descEn": "Prawn · seafood · mushroom · tomato · hot & sour broth"}, {"q": "2", "vn": "Bào ngư nướng", "en": "Grilled Abalone"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Ức vịt nướng thảo mộc", "en": "Herb-grilled Duck Breast", "img": "i_uc_vit", "desc": "Ức vịt · sốt · rau củ", "descEn": "Duck breast · sauce · vegetables"}, {"q": "2", "vn": "Mì Ý sốt kem thịt xông khói", "en": "Carbonara"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Món tráng miệng trong ngày", "en": "Daily Dessert"}]}], "note": "", "tagEn": "As sweet as the one you love", "taxEn": "excl. 8% VAT"}, {"n": "U & I", "g": 2, "price": 942000, "tax": "Chưa gồm VAT 8%", "tag": "Chỉ hai ta – một buổi tối thật riêng", "img": ["fb09", "fb10"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad trái cây sốt cam", "en": "Fruit Salad", "img": "i_trai_cay", "desc": "Cam · dâu tây · nho đen · xà lách", "descEn": "Orange · strawberry · black grape · lettuce"}, {"q": "2", "vn": "Súp bào ngư", "en": "Abalone Soup", "img": "i_bao_ngu", "desc": "Bào ngư · đông trùng hạ thảo · táo đỏ Tân Cương · nấm · cà rốt · hành lá", "descEn": "Abalone · cordyceps · Xinjiang red dates · mushroom · carrot · scallion"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Thăn vai bò Mỹ 100g", "en": "Top Blade", "img": "fb18", "desc": "Thăn vai bò Mỹ", "descEn": "US top blade", "done": true, "side": [["Khoai tây chiên", "French Fries"], ["Khoai tây nghiền", "Mashed Potatoes"]], "sauce": [["Sốt nấm", "Mushroom Sauce"], ["Sốt tiêu đen", "Pepper Sauce"], ["Sốt vang đỏ", "Red Wine Sauce"]]}, {"q": "2", "vn": "Mì Ý gà sốt kem nấm", "en": "Chicken Spaghetti"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Panna cotta chanh dây", "en": "Passion Fruit Panna Cotta", "img": "pc_chanhday", "desc": "Panna cotta · sốt chanh dây", "descEn": "Panna cotta · passion fruit sauce"}]}], "note": "", "tagEn": "Just the two of us – an evening all our own", "taxEn": "excl. 8% VAT"}, {"n": "Miss You 2", "g": 2, "price": 890000, "tax": "Đã gồm VAT 8%", "tag": "Bữa tối lãng mạn, đã bao gồm đồ uống", "img": ["fb07", "fb08"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad trái cây sốt cam", "en": "Fruit Salad with Orange Sauce", "img": "i_trai_cay", "desc": "Cam · dâu tây · nho đen · xà lách", "descEn": "Orange · strawberry · black grape · lettuce"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Ức gà cuộn thảo mộc Địa Trung Hải", "en": "Mediterranean Herb Chicken Roll", "img": "c_ga_cuon", "desc": "Ức gà cuộn thảo mộc · sốt BBQ · bó xôi · nấm mỡ", "descEn": "Herb chicken roll · BBQ sauce · spinach · button mushroom"}, {"q": "2", "vn": "Sườn cừu nướng", "en": "Grilled Lamb Chops", "img": "i_cuu_tm", "desc": "Sườn cừu nướng · sốt vang đỏ · khoai tây nghiền", "descEn": "Grilled lamb chops · red wine sauce · mashed potato", "done": true}, {"q": "2", "vn": "Mì Ý sốt kem thịt xông khói", "en": "Carbonara"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Bánh mì nướng kiểu Pháp", "en": "French Toast", "img": "i_french_toast", "desc": "Bánh mì nướng trứng · dâu tây · đường bột", "descEn": "Egg-dipped toast · strawberry · powdered sugar"}]}, {"h": "Đồ uống", "d": [{"q": "", "vn": "Đã bao gồm đồ uống", "en": "Drinks included"}]}], "note": "", "tagEn": "A romantic dinner, drinks included", "taxEn": "VAT 8% included"}, {"n": "With Love", "g": 2, "price": 850000, "tax": "Chưa gồm VAT 8%", "tag": "Gửi trọn yêu thương trong từng món ăn", "img": ["fb05", "fb06"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad Nga", "en": "Russian Salad", "img": "c_salad_nga", "desc": "Rau củ · sốt kem · rau mùi tây", "descEn": "Diced vegetables · creamy dressing · parsley"}, {"q": "2", "vn": "Bào ngư nướng", "en": "Grilled Abalone"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Mì Ý gà sốt kem", "en": "Creamy Chicken Spaghetti"}, {"q": "2", "vn": "Thăn vai bò nướng", "en": "Grilled Top Blade", "img": "fb18", "desc": "Thăn vai bò Mỹ", "descEn": "US top blade", "done": true, "side": [["Khoai tây chiên", "French Fries"], ["Khoai tây nghiền", "Mashed Potatoes"]], "sauce": [["Sốt nấm", "Mushroom Sauce"], ["Sốt tiêu đen", "Pepper Sauce"], ["Sốt vang đỏ", "Red Wine Sauce"]]}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Panna cotta chanh dây", "en": "Passion Fruit Panna Cotta", "img": "pc_chanhday", "desc": "Panna cotta · sốt chanh dây", "descEn": "Panna cotta · passion fruit sauce"}]}], "note": "", "tagEn": "All our love, served in every dish", "taxEn": "excl. 8% VAT"}, {"n": "Together", "g": 2, "price": 724000, "tax": "Chưa gồm VAT 8%", "tag": "Cùng nhau bước tiếp những cung bậc tình yêu", "img": ["fb03", "fb04"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Salad tôm xoài", "en": "Thai Prawn Salad with Mango", "img": "i_salad_tom_xoai", "desc": "Tôm · xoài · rau mầm · rau thơm · sốt chấm", "descEn": "Prawn · mango · sprouts · herbs · dipping sauce"}, {"q": "2", "vn": "Vẹm xanh sốt thảo mộc", "en": "Green-shell Mussels", "img": "i_vem", "desc": "Vẹm xanh New Zealand · sốt kem thảo mộc · cà chua", "descEn": "NZ green mussels · herb cream sauce · tomato"}]}, {"h": "Món chính", "d": [{"q": "2", "vn": "Thăn vai bò Mỹ", "en": "Top Blade", "img": "fb18", "desc": "Thăn vai bò Mỹ", "descEn": "US top blade", "done": true, "side": [["Khoai tây chiên", "French Fries"], ["Khoai tây nghiền", "Mashed Potatoes"]], "sauce": [["Sốt nấm", "Mushroom Sauce"], ["Sốt tiêu đen", "Pepper Sauce"], ["Sốt vang đỏ", "Red Wine Sauce"]]}, {"q": "2", "vn": "Mì Ý sốt kem thịt xông khói", "en": "Carbonara"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Panna cotta chanh dây", "en": "Passion Fruit Panna Cotta", "img": "pc_chanhday", "desc": "Panna cotta · sốt chanh dây", "descEn": "Panna cotta · passion fruit sauce"}]}], "note": "", "tagEn": "Stepping forward together through every shade of love", "taxEn": "excl. 8% VAT"}, {"n": "Menu for Us", "g": 2, "price": 632000, "tax": "Đã gồm VAT 8%", "tag": "Nhẹ nhàng, ấm áp – dành riêng cho anh và em", "img": ["fb01", "fb02"], "c": [{"h": "Khai vị", "d": [{"q": "2", "vn": "Súp bí đỏ kiểu Mỹ", "en": "American Pumpkin Soup", "img": "i_bi_do", "desc": "Bí đỏ · kem sữa", "descEn": "Pumpkin · cream"}, {"q": "1", "vn": "Tacos bò hầm Mexico", "en": "Mexican Beef Stew Tacos", "img": "c_tacos", "desc": "Bò hầm 48 giờ · bánh tortilla · sốt kem chua", "qn": "1 phần · dùng chung", "descEn": "48-hour braised beef · tortilla · sour cream"}]}, {"h": "Món chính", "d": [{"q": "1", "vn": "Ức gà cuộn thảo mộc Địa Trung Hải", "en": "Mediterranean Herb Chicken Roll", "img": "c_ga_cuon", "desc": "Ức gà cuộn thảo mộc · sốt BBQ · bó xôi · nấm mỡ", "qn": "1 phần · chia 2 đĩa", "descEn": "Herb chicken roll · BBQ sauce · spinach · button mushroom"}, {"vn": "Mì Ý", "pl": "Mì Ý", "q": "2", "pick": [{"n": "Mì Ý rau củ sốt cà chua Napoli", "en": "Veggie Spaghetti", "desc": "Rau củ · sốt cà chua Napoli", "descEn": "Vegetables · Napoli tomato sauce"}, {"n": "Mì Ý sốt pesto Ý", "en": "Pesto Spaghetti", "desc": "Sốt pesto húng quế", "descEn": "Basil pesto sauce"}], "en": "Spaghetti"}]}, {"h": "Tráng miệng", "d": [{"q": "", "vn": "Bánh mì nướng kiểu Pháp", "en": "French Toast", "img": "i_french_toast", "desc": "Bánh mì nướng trứng · dâu tây · đường bột", "descEn": "Egg-dipped toast · strawberry · powdered sugar"}]}, {"h": "Đồ uống", "d": [{"q": "2", "vn": "Welcome drink", "en": ""}]}], "note": "", "tagEn": "Gentle and warm – made just for the two of us", "taxEn": "VAT 8% included"}], WD=[{"img": "wd1", "n": "Violet Bloom", "vn": "Trà hoa đậu biếc · soda · nước ép chanh · đường", "descEn": "Butterfly pea tea · soda · lemon juice · sugar"}, {"img": "wd2", "n": "Pink Cloud", "vn": "Sữa Yakult · nước dừa · siro dâu · nước ép chanh", "descEn": "Yakult · coconut water · strawberry syrup · lemon juice"}, {"img": "wd3", "n": "Green Garden", "vn": "Dưa leo · chanh dây xay nhuyễn · lá bạc hà · soda", "descEn": "Cucumber · passion fruit purée · mint · soda"}, {"img": "wd4", "n": "Ruby Kiss", "vn": "Nước ép lựu đỏ · siro dâu · nước ép chanh", "descEn": "Pomegranate juice · strawberry syrup · lemon juice"}], BG={"Fresco": ["fresco", "#f8f3ef"], "Simple Love": ["simple_love", "#efebfc"], "Feasty": ["feasty", "#ffffff"], "The Tasty": ["the_tasty", "#ede9e8"], "Miss You": ["miss_you", "#fbf6f2"], "My Honey": ["my_honey", "#fef6f4"], "U & I": ["u_i", "#ffffff"], "Miss You 2": ["miss_you_2", "#fbf6f3"], "With Love": ["with_love", "#f7f5f0"], "Together": ["together", "#fef6ea"], "Menu for Us": ["menu_for_us", "#ffffff"]};
+const STY={'Fresco':['#3d3a2e','#5c5a40'],'Simple Love':['#2f2560','#3b2b6b'],'Feasty':['#4a3b2e','#8a6a4a'],'The Tasty':['#5a4b4b','#7a6464'],'Miss You':['#2e2a26','#2e2a26'],'Miss You 2':['#2e2a26','#2e2a26'],'My Honey':['#7a2a35','#d0384f'],'U & I':['#6a3a55','#c2558f'],'With Love':['#33332b','#3a3a32'],'Together':['#4a3022','#b5652b'],'Menu for Us':['#5a3a1e','#b8742e']};
+const PAD={'Menu for Us':'24% 15% 9%','Together':'15% 16% 13%','U & I':'27% 15% 10%','My Honey':'17% 13% 13%','Simple Love':'13% 9% 12% 24%','Fresco':'14% 22% 9%','With Love':'12% 15% 12%'};
+const DONE5=[['Tái','Rare'],['Tái vừa','Medium Rare'],['Chín tới','Medium'],['Chín vừa','Medium Well'],['Chín kỹ','Well Done']];
+const BEST=new Set(['With Love','My Honey','U & I','Miss You','Together','Fresco']);
+const CEN={'Khai vị':'Starters','Món chính':'Main Course','Món kèm':'Sides','Tráng miệng':'Dessert','Đồ uống':'Drinks','Đã bao gồm':'Included'};
+const $=q=>document.querySelector(q), esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ', kk=n=>(n/1000).toLocaleString('vi-VN').replace(/,/g,'.')+'K';
+const sn=c=>/^Menu /i.test(c.n)?'Set '+c.n:'Set menu '+c.n;
+const inc=c=>/Đã gồm VAT/.test(c.tax||''), unit=c=>inc(c)?Math.round(c.price/1.08):c.price;
+const DRINK_FREE=75000, DECO_FREE=130000;
+SETS.forEach(c=>c.c.forEach(s=>s.d.forEach(d=>{ if(/^(Đã bao gồm đồ uống|Trang trí bàn tiệc \+ đồ uống)$/.test(d.vn)) d.dsel=c.g; })));
+const DGRP={cb:'Bia thủ công',b:'Bia',bc:'Beer cocktail',sg:'Signature cocktail',cl:'Cocktail',mx:'Mixed drink',mk:'Mocktail',sd:'Soda',ju:'Nước ép',te:'Trà',ht:'Trà nóng',cw:'Cold brew',sf:'Nước ngọt'};
+let _DRK=null;
+function DRK(){ if(_DRK) return _DRK; const out=[]; try{ const D=parent.document.getElementById('f-nuoc').contentWindow.eval('D'); Object.keys(D).forEach(k=>{ if(k==='cb6') return; const d=D[k], g=DGRP[(k.match(/^[a-z]+/)||[''])[0]]||'Đồ uống';
+  d.v.forEach(v=>{ if(/Tháp|Bình|Pot|Tower/i.test(v.l||'')) return; const lb=(v.l||'').split(' · ')[0]; out.push({v:d.vn+(lb&&!/^Ly/i.test(lb)?' – '+lb:''),p:v.p*1000,g}); }); }); }catch(e){}
+  if(out.length) _DRK=out; return out; }
+const drkOf=v=>DRK().find(x=>x.v===v);
+let SC={}, PK={};
+try{ const o=JSON.parse(localStorage.getItem('apes_set_v1')||'{}'); SC=o.SC||{}; PK=o.PK||{}; Object.keys(SC).forEach(n=>{ if(!SETS.some(c=>c.n===n)) delete SC[n]; }); }catch(e){}
+const save=()=>{ try{ localStorage.setItem('apes_set_v1',JSON.stringify({SC,PK})); }catch(e){} };
+function toast(t){ const e=$('#toast'); e.textContent=t; e.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>e.hidden=true,3200); }
+const isWD=d=>/^Welcome drink/i.test(d.vn);
+function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
+  if(d.dsel){ for(let k=1;k<=d.dsel;k++) G.push({L:'Đồ uống ly '+k,kind:'d',d,k}); }
+  else if(isWD(d)) G.push({L:'Welcome drink',kind:'w',d,opts:WD.map(w=>({n:w.n,img:w.img,desc:w.vn}))});
+  else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc}))});
+  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:DONE5,lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:d.sauce,lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:d.side,lab:'Ăn kèm · Side'}); } }
+ })); return G; }
+const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]);
+function optText(c){ const P=PK[c.n]||{}, by={}, out=[];
+  groups(c).forEach(g=>{ const v=P[g.L]||'…'; if(g.kind!=='c') out.push(g.L+': '+v); else { const key=g.d.vn; (by[key]=by[key]||{})[g.k]=((by[key]||{})[g.k]||[]).concat(v); } });
+  Object.keys(by).forEach(k=>{ const ps=by[k], ks=Object.keys(ps); out.push(k+': '+ks.map(i=>(ks.length>1?'phần '+i+' ':'')+ps[i].join(', ')).join(' / ')); });
+  return out.join(' · '); }
+window.decoIncl=()=>{ const c=SETS.find(c=>SC[c.n]&&c.c.some(s=>s.d.some(d=>/trang trí/i.test(d.vn)))); return c?sn(c):''; };
+function surs(c){ const P=PK[c.n]||{}, out=[]; groups(c).filter(g=>g.kind==='d').forEach(g=>{ const x=drkOf(P[g.L]); if(x&&x.p>DRINK_FREE) out.push({k:g.k,x,diff:x.p-DRINK_FREE}); }); return out; }
+window.getSets=()=>SETS.filter(c=>SC[c.n]).flatMap(c=>[({n:sn(c)+' ('+c.g+' khách)',en:'Set menu · '+c.g+' guests',q:SC[c.n],p:unit(c),o:[optText(c),inc(c)?'giá menu '+vnd(c.price)+' đã gồm VAT 8% → tính '+vnd(unit(c))+' chưa VAT':''].filter(Boolean).join(' · '),f:'f-set'})].concat(surs(c).map(o=>({n:'Bù đồ uống: '+o.x.v+' (ly '+o.k+' · '+sn(c)+')',en:'Drink upgrade',q:SC[c.n],p:o.diff,o:'Set gồm đồ uống đến '+vnd(DRINK_FREE)+'/ly; '+o.x.v+' giá '+vnd(o.x.p)+' nên bù '+vnd(o.diff)+' + VAT',f:'f-set'}))));
+
+/* ảnh món của set (bấm xem) */
+function pics(c){ const L=[]; c.c.forEach(s=>s.d.forEach(d=>{ if(d.img&&!L.some(x=>x.k===d.img)) L.push({k:d.img,t:d.vn}); })); c.img.forEach(k=>{ if(!L.some(x=>x.k===k)) L.push({k,t:'Set menu '+c.n}); }); return L; }
+let LB=null;
+function lbShow(){ const x=LB.L[LB.i]; $('#lbI').src='s/'+x.k+'.jpg'; $('#lbT').textContent=x.t+'  ('+(LB.i+1)+'/'+LB.L.length+')'; $('#lb').hidden=false; }
+
+/* thẻ set giống tấm menu */
+function card(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=BG[c.n];
+  const dishes=c.c.map(s=>`<div class="co"><h4>${esc(s.h)} <i>· ${CEN[s.h]||''}</i></h4>${s.d.map(d=>`<div class="ds${d.img?' wi':''}">${d.img?`<button type="button" class="dp" data-pset="${esc(c.n)}" data-pk="${d.img}" aria-label="Xem ảnh ${esc(d.vn)}"><img loading="lazy" src="s/${d.img}.jpg" alt=""></button>`:''}<div><b>${esc(d.vn)}${d.qn?` <span>(${esc(d.qn)})</span>`:(d.q&&+d.q>1?` <span>x${esc(d.q)}</span>`:'')}</b>${d.en?`<small>${esc(d.en)}</small>`:''}</div></div>`).join('')}</div>`).join('');
+  const per=vnd(Math.round(c.price/c.g/1000)*1000);
+  return `<article class="cd${q?' on':''}" data-set="${esc(c.n)}" style="--c:${S[0]};--t:${S[1]};${bg?`background-image:url(bg/${bg[0]}.jpg);background-color:${bg[1]};`:''}${PAD[c.n]?`padding:${PAD[c.n]};`:''}">
+   <div class="br">APES RESTAURANT</div><h3>${esc(c.n)}</h3>${BEST.has(c.n)?'<div class="best">★ BEST SELLER</div>':''}
+   <div class="pr">${vnd(c.price)} / ${c.g} khách<small>≈ ${per}/khách · ${esc(c.tax)}</small></div>
+   ${dishes}
+   ${c.note?`<div class="nt">✦ ${esc(c.note)}</div>`:''}
+   <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
+     :`<button type="button" class="sel" data-sel="${esc(c.n)}">Chọn set ${esc(c.n)}<small>Select this set</small></button>`}</div>
+  </article>`; }
+
+/* hộp chọn độ chín / đồ uống khi bấm Chọn set */
+let MS=null, MERR=false;
+function drawM(){ const c=SETS.find(x=>x.n===MS), P=PK[c.n]||{}, G=groups(c); let h=`<div class="hh"><h3>${esc(c.n)}<small>Mời anh/chị chọn giúp em vài lựa chọn · Please choose</small></h3><button type="button" class="x" id="mX">Đóng</button></div>`;
+  const byD=[]; G.forEach(g=>{ if(!byD.includes(g.d)) byD.push(g.d); });
+  byD.forEach(d=>{ const gs=G.filter(g=>g.d===d), ms=MERR&&gs.some(g=>!P[g.L]);
+    if(d.dsel){ const L=DRK(), sx=surs(c);
+      const opts=sel=>{ let o='<option value="">— Chọn đồ uống —</option>', last=''; L.forEach(x=>{ if(x.g!==last){ if(last) o+='</optgroup>'; o+=`<optgroup label="${esc(x.g)}">`; last=x.g; } o+=`<option value="${esc(x.v)}"${sel===x.v?' selected':''}>${esc(x.v)} – ${Math.round(x.p/1000)}k${x.p>DRINK_FREE?' · bù '+Math.round((x.p-DRINK_FREE)/1000)+'k':' · miễn phí'}</option>`; }); return o+(last?'</optgroup>':''); };
+      h+=`<div class="blk${ms?' miss':''}"><div class="h">Đồ uống trong set – ${d.dsel} ly (mỗi khách 1 ly)<i>Drinks – 1 per guest</i></div>`+(L.length?`<div class="dk">${gs.map(g=>`<div class="pc"><b>Ly ${g.k}</b><select data-l="${esc(g.L)}"${ms&&!P[g.L]?' class="mi"':''}>${opts(P[g.L]||'')}</select></div>`).join('')}</div>`:'<div class="dsn">Nhân viên sẽ hỏi anh/chị chọn đồ uống khi xác nhận.</div>')+`<div class="dsn">${/trang trí/i.test(d.vn)?'Set up bàn đến <b>130K</b> &amp; ':''}Đồ uống đến <b>75K/ly</b> đã gồm trong set – chọn loại cao hơn chỉ <b>bù phần chênh lệch + VAT</b>.</div>${sx.length?`<div class="dsx">Bù thêm: ${sx.map(o=>esc(o.x.v)+' +'+vnd(o.diff)).join(' · ')} (chưa VAT)</div>`:''}</div>`; }
+    else if(gs[0].kind==='w'){ const g=gs[0], sel=P[g.L];
+      h+=`<div class="blk${ms?' miss':''}"><div class="h">${esc(g.L)}${+d.q>1?' (cho cả '+d.q+' '+(isWD(d)?'ly':'phần')+')':''}<i>Choose 1</i></div><div class="wg">${g.opts.map(o=>`<button type="button" data-l="${esc(g.L)}" data-v="${esc(o.n)}" aria-pressed="${sel===o.n}">${o.img?`<img loading="lazy" src="s/${o.img}.jpg" alt="">`:''}<div><b>${esc(o.n)}</b>${o.desc?`<span>${esc(o.desc)}</span>`:''}</div></button>`).join('')}</div></div>`; }
+    else { const ks=[...new Set(gs.map(g=>g.k))];
+      h+=`<div class="blk${ms?' miss':''}"><div class="h">${esc(d.vn)}${d.q&&+d.q>1?' x'+esc(d.q):''} – chọn ${d.done?'độ chín':''}${d.sauce?', sốt':''}${d.side?', ăn kèm':''}<i>${esc(d.en||'')}</i></div><div class="dk${ks.length<2?' one':''}">${ks.map(k=>`<div class="pc">${ks.length>1?`<b>Phần ${k}</b>`:''}${gs.filter(g=>g.k===k).map(g=>`<select data-l="${esc(g.L)}"${ms&&!P[g.L]?' class="mi"':''}><option value="">— ${esc(g.lab.split(' · ')[0])} —</option>${g.opts.map(o=>`<option value="${esc(o[0])}"${P[g.L]===o[0]?' selected':''}>${esc(o[0])} · ${esc(o[1])}</option>`).join('')}</select>`).join('')}</div>`).join('')}</div></div>`; }
+  });
+  const m=missing(c);
+  h+=`<button type="button" class="ok" id="mOk">${SC[c.n]?'Lưu lựa chọn':'Xác nhận chọn set '+esc(c.n)}<small>${vnd(c.price)} / ${c.g} khách</small></button>${MERR&&m.length?'<div class="err">Anh/chị chọn giúp đủ các ô viền đỏ nhé · Please complete the red boxes</div>':''}`;
+  $('#sh').innerHTML=h; }
+function openM(n){ MS=n; MERR=false; drawM(); $('#ov').hidden=false; }
+function closeM(){ $('#ov').hidden=true; MS=null; }
+function pickSet(c){ SC[c.n]=SC[c.n]||1; save(); render(); toast('Đã chọn '+sn(c)+' ✓'); try{ parent.refresh&&parent.refresh(); }catch(z){} }
+
+function render(){ $('#tg').innerHTML=SETS.map(c=>`<button type="button" class="tr${SC[c.n]?' on':''}" data-jump="${esc(c.n)}"><span class="n">${SC[c.n]?'✓ ':''}${esc(c.n)}${BEST.has(c.n)?' <b class="bs">★</b>':''}</span><span class="p">${kk(c.price)}${inc(c)?'<sup>✦</sup>':''}</span></button>`).join('');
+  $('#cards').innerHTML=SETS.map(card).join(''); save(); }
+function goEl(el,off){ try{ const f=window.frameElement; if(f&&parent!==window){ let tb=70; try{ tb=parent.document.querySelector('.tb').offsetHeight; }catch(x){} parent.scrollTo({top:f.offsetTop+el.getBoundingClientRect().top+(window.scrollY||0)-tb-(off||8),behavior:'instant'}); return; } }catch(e){} el.scrollIntoView({behavior:'instant',block:'start'}); }
+document.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return;
+  if(b.id==='mX'){ closeM(); return; }
+  if(b.id==='mOk'){ const c=SETS.find(x=>x.n===MS); if(missing(c).length){ MERR=true; drawM(); const el=$('#sh .miss'); if(el) el.scrollIntoView({block:'center'}); return; } closeM(); pickSet(c); return; }
+  if(b.id==='lbX'){ $('#lb').hidden=true; return; } if(b.id==='lbP'){ LB.i=(LB.i-1+LB.L.length)%LB.L.length; lbShow(); return; } if(b.id==='lbN'){ LB.i=(LB.i+1)%LB.L.length; lbShow(); return; }
+  if(b.dataset.v!==undefined && MS){ (PK[MS]=PK[MS]||{})[b.dataset.l]=b.dataset.v; save(); drawM(); return; }
+  if(b.dataset.pset){ const L=pics(SETS.find(x=>x.n===b.dataset.pset)); LB={L,i:Math.max(0,L.findIndex(x=>x.k===b.dataset.pk))}; lbShow(); return; }
+  if(b.dataset.pics){ LB={L:pics(SETS.find(x=>x.n===b.dataset.pics)),i:0}; lbShow(); return; }
+  if(b.dataset.jump){ const el=[...document.querySelectorAll('[data-set]')].find(x=>x.dataset.set===b.dataset.jump); if(el) goEl(el,8); return; }
+  if(b.dataset.sel){ const c=SETS.find(x=>x.n===b.dataset.sel); if(groups(c).length&&missing(c).length) openM(c.n); else pickSet(c); return; }
+  if(b.dataset.edit){ openM(b.dataset.edit); return; }
+  if(b.dataset.q){ const n=b.dataset.q; SC[n]=(SC[n]||0)+(+b.dataset.d); if(SC[n]<=0) delete SC[n]; render(); return; }
+});
+document.addEventListener('change',e=>{ const sl=e.target.closest('#sh select[data-l]'); if(!sl||!MS) return; (PK[MS]=PK[MS]||{}); if(sl.value) PK[MS][sl.dataset.l]=sl.value; else delete PK[MS][sl.dataset.l]; save(); const x=drkOf(sl.value); drawM(); if(SC[MS]){ render(); try{ parent.refresh&&parent.refresh(); }catch(z){} } if(x&&x.p>DRINK_FREE) toast(x.v+' giá '+vnd(x.p)+' – set gồm đồ uống đến '+vnd(DRINK_FREE)+'/ly nên bù '+vnd(x.p-DRINK_FREE)+' + VAT'); });
+$('#ov').addEventListener('click',e=>{ if(e.target.id==='ov') closeM(); });
+$('#lb').addEventListener('click',e=>{ if(e.target.id==='lb') $('#lb').hidden=true; });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ $('#lb').hidden=true; closeM(); } });
+render(); (function w(i){ if(DRK().length||i>40){ return; } setTimeout(()=>w(i+1),250); })(0);
+</script>
+</body></html>

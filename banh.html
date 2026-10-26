@@ -1,0 +1,154 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bánh kem &amp; Hoa tươi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
+<style>
+:root{--paper:#f8f4ec;--surface:#fffdf8;--ink:#33463c;--text:#3d3a34;--muted:#7a7264;--gold:#9c7535;--line:rgba(156,117,53,.28);--on-gold:#fff;color-scheme:light;
+--display:"Cormorant Garamond",Georgia,serif;--body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--paper);color:var(--text);font:15px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 40px}
+header{text-align:center;padding:30px 0 6px}
+.br{font:500 11px var(--body);letter-spacing:.42em;color:var(--gold)}
+h1{font:500 38px/1.05 var(--display);color:var(--ink);margin:10px 0 4px}
+h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin-top:6px}
+.lead{color:var(--muted);font-size:13.5px;text-align:center;margin:8px auto 10px;max-width:560px}
+.lead i,.ie{display:block;font-size:12px;font-style:italic;color:var(--muted);font-weight:400}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 14px 18px;margin-top:20px}
+.sec h2{font:500 30px/1.1 var(--display);color:var(--ink);text-align:center;margin:0}
+.sec h2 small{display:block;font:600 11px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:5px}
+.cn{font-size:13px;color:var(--muted);text-align:center;margin:8px 0 0}
+.flp{display:block;font-size:15px;color:var(--gold);font-weight:700;margin-bottom:2px}
+.st{margin-top:16px;font-size:14.5px;font-weight:600;color:var(--ink)}.st .ie{display:inline;margin-left:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);padding:6px 12px;border-radius:3px;font:500 13.5px var(--body);line-height:1.25;text-align:center;cursor:pointer}
+.chip small{display:block;font-size:11px;opacity:.7;font-style:italic}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+@media (min-width:600px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.mc{border:1px solid var(--line);background:var(--surface);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.mc .z{border:0;padding:0;background:#efe7d8;cursor:zoom-in;display:block;width:100%}
+.mc img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.fl .mc img{aspect-ratio:3/4}
+.mc .p{border:0;border-top:1px solid var(--line);background:transparent;color:var(--gold);font:600 13px var(--body);padding:7px 4px;cursor:pointer;width:100%}
+.mc .p span{display:block;font-size:10.5px;font-weight:500;color:var(--muted)}
+.mc.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}.mc.on .p{background:var(--gold);color:#fff}.mc.on .p span{color:#fff}
+.more{margin-top:8px;width:100%;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:3px;padding:9px;font:500 13.5px var(--body);cursor:pointer}
+.sizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.size{border:1px solid var(--line);background:transparent;border-radius:6px;padding:10px 4px;cursor:pointer;text-align:center;color:var(--ink);font-family:var(--body)}
+.size b{display:block;font:500 24px/1 var(--display)}.size span{font-size:11.5px;color:var(--muted)}
+.size i{display:block;font-style:normal;font-weight:600;color:var(--gold);margin-top:4px;font-variant-numeric:tabular-nums}
+.size.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.fld{display:flex;flex-direction:column;gap:5px;margin-top:14px;font-size:14px;font-weight:600;color:var(--ink)}
+.fld .ie{display:inline;margin-left:4px}
+.fld input{font:400 15px var(--body);color:var(--text);background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:10px;min-width:0}
+input::placeholder{color:var(--muted);opacity:1}input:focus::placeholder{color:transparent}
+.fh{font-weight:400;font-size:12.5px;color:#b3412e;min-height:1em}
+.add{margin-top:14px;width:100%;border:0;border-radius:3px;background:var(--gold);color:#fff;padding:12px;font:600 15px var(--body);cursor:pointer;line-height:1.25}
+.add small{display:block;font-size:11px;font-weight:500;opacity:.85}
+.add:disabled{opacity:.45;cursor:default}
+.picked{margin-top:14px;border-top:1px solid var(--line);padding-top:8px}
+.picked>b{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.ln{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)}
+.ln img{width:44px;height:44px;object-fit:cover;border-radius:4px;flex:0 0 44px;background:#efe7d8}
+.ln div{flex:1;min-width:0;font-size:14px;color:var(--ink)}.ln small{display:block;font-size:12px;color:var(--muted)}
+.ln .pr{font-weight:600;color:var(--gold);white-space:nowrap;font-variant-numeric:tabular-nums}
+.rm{border:0;background:none;color:var(--muted);text-decoration:underline;font:12.5px var(--body);cursor:pointer;padding:0 0 0 4px}
+.lb{position:fixed;inset:0;z-index:40;background:rgba(8,12,10,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.lb img{max-width:100%;max-height:76vh;border-radius:6px}
+.lb button{margin-top:12px;border:0;border-radius:3px;padding:10px 18px;font:600 14px var(--body);background:#c9a66b;color:#1b1a16;cursor:pointer}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:50;background:var(--ink);color:#fff;padding:9px 14px;border-radius:4px;font-size:13.5px;max-width:calc(100% - 32px)}
+</style></head><body>
+<div class="wrap">
+<header><div class="br">APES RESTAURANT</div><h1>Bánh kem &amp; Hoa tươi<small>Cake &amp; Flowers</small></h1></header>
+<p class="lead">Đặt kèm bàn tiệc, nhà hàng chuẩn bị sẵn khi anh/chị đến. Giá chưa gồm VAT 8%.<i>Pre-order with your table – ready when you arrive. Prices excl. 8% VAT.</i></p>
+
+<section class="sec" id="cake">
+<h2>Bánh kem<small>Cake</small></h2>
+<p class="cn">Giá theo nhóm bánh và size. Bấm vào ảnh để xem lớn.<span class="ie">Priced by group and size. Tap a photo to enlarge.</span></p>
+<div class="st">1. Chọn mẫu bánh <span class="ie">Pick a design</span></div>
+<div class="chips" id="ckChips"></div>
+<div class="grid" id="ckGrid"></div>
+<button class="more" id="ckMore" type="button"></button>
+<div id="ckS2"><div class="st">2. Chọn size <span class="ie">Pick a size</span></div><div class="sizes" id="ckSizes"></div></div>
+<label class="fld">3. Chữ trên bánh / dĩa <span class="ie">Message</span><input id="ckMsg" type="text" placeholder="VD: Happy Birthday Bé Na"></label>
+<button class="add" id="ckAdd" type="button" disabled></button>
+<div class="picked" id="ckPicked" hidden><b>Bánh đã chọn · Your cakes</b><div id="ckList"></div></div>
+</section>
+
+<section class="sec fl" id="flower">
+<h2>Hoa tươi<small>Flowers</small></h2>
+<p class="cn"><b class="flp">Giá tham khảo: 300.000đ – 900.000đ / bó, tùy mẫu</b>Tùy ngân sách của anh/chị, shop hoa sẽ cân đối lượng hoa cho phù hợp với mẫu đã chọn.<span class="ie">Reference price 300,000đ – 900,000đ per bouquet. The florist adjusts the bouquet to your budget.</span></p>
+<div class="st">1. Chọn mẫu hoa <span class="ie">Pick a design</span></div>
+<div class="grid" id="flGrid"></div>
+<button class="more" id="flMore" type="button"></button>
+<label class="fld">2. Số tiền dành cho hoa <span class="ie">Flower budget</span><input id="flBudget" type="text" inputmode="numeric" placeholder="Từ 300.000 đến 900.000"><span class="fh" id="flHint"></span></label>
+<label class="fld">3. Ghi chú cho bó hoa <span class="ie">Note</span><input id="flNote" type="text" placeholder="VD: tông hồng nhạt, thêm thiệp ghi “Yêu em”"></label>
+<button class="add" id="flAdd" type="button" disabled></button>
+<div class="picked" id="flPicked" hidden><b>Hoa đã chọn · Your flowers</b><div id="flList"></div></div>
+</section>
+</div>
+<div class="lb" id="lb" hidden><img id="lbI" alt=""><button type="button" id="lbX">Đóng · Close</button></div>
+<div class="toast" id="toast" hidden></div>
+<script>
+const CAKES={
+  b:{t:'Bánh kem thường',c:'Bánh thường',en:'Classic',n:48,sz:[{s:12,p:210000},{s:14,p:260000},{s:16,p:300000}]},
+  v:{t:'Bánh vương miện',c:'Vương miện',en:'Crown',n:18,sz:[{s:14,p:350000},{s:16,p:400000},{s:18,p:450000}]},
+  m:{t:'Bánh kem mini trên dĩa',c:'Mini trên dĩa',en:'Mini plated',n:6,sz:[{s:0,p:89000}]}
+};
+const FLOWER_N=32, SHOW_N=12, FMIN=300000, FMAX=900000;
+const $=q=>document.querySelector(q), pad=n=>String(n).padStart(2,'0');
+const vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
+const esc=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const img=(g,i)=>`img/${g}${pad(i)}.jpg`;
+function toast(t){const e=$('#toast');e.textContent=t;e.hidden=false;clearTimeout(toast.h);toast.h=setTimeout(()=>e.hidden=true,2400);}
+let BH=[]; try{BH=JSON.parse(localStorage.getItem('apes_bh')||'[]')||[]}catch(e){}
+const save=()=>{try{localStorage.setItem('apes_bh',JSON.stringify(BH))}catch(e){}};
+/* ---- cake ---- */
+let cg='b', cm=null, cs=null, cShow=SHOW_N;
+function drawCake(){
+  $('#ckChips').innerHTML=Object.entries(CAKES).map(([k,g])=>`<button class="chip" data-g="${k}" aria-pressed="${k===cg}">${g.c}<small>${g.en}</small></button>`).join('');
+  const G=CAKES[cg], n=Math.min(G.n,cShow); let h='';
+  for(let i=1;i<=n;i++){ const code=cg.toUpperCase()+pad(i), on=cm===code;
+    h+=`<div class="mc${on?' on':''}"><button class="z" data-z="${img(cg,i)}" type="button"><img loading="lazy" src="${img(cg,i)}" alt="${G.t} mẫu ${code}"></button><button class="p" data-m="${code}" type="button">${on?'✓ '+code:'Chọn '+code}<span>từ ${vnd(G.sz[0].p)}</span></button></div>`; }
+  $('#ckGrid').innerHTML=h;
+  $('#ckMore').hidden=G.n<=cShow; $('#ckMore').textContent=`Xem thêm ${G.n-cShow} mẫu · See more`;
+  const one=G.sz.length===1; $('#ckS2').hidden=one; if(one) cs=0;
+  $('#ckSizes').innerHTML=G.sz.map((z,i)=>`<button class="size${cs===i?' on':''}" data-s="${i}" type="button"><b>${z.s}</b><span>cm</span><i>${vnd(z.p)}</i></button>`).join('');
+  const ok=cm&&cs!==null; $('#ckAdd').disabled=!ok;
+  $('#ckAdd').innerHTML=ok?`＋ Thêm bánh ${cm}${G.sz[cs].s?' · size '+G.sz[cs].s:''} · ${vnd(G.sz[cs].p)}<small>Add to booking</small>`:(cm?'Chọn size bánh<small>Pick a size</small>':'Chọn mẫu bánh ở trên<small>Pick a design above</small>');
+}
+$('#ckChips').onclick=e=>{const b=e.target.closest('[data-g]'); if(!b) return; cg=b.dataset.g; cm=null; cs=null; cShow=SHOW_N; drawCake();};
+$('#ckGrid').onclick=e=>{const z=e.target.closest('[data-z]'); if(z) return zoom(z.dataset.z); const b=e.target.closest('[data-m]'); if(!b) return; cm=cm===b.dataset.m?null:b.dataset.m; if(CAKES[cg].sz.length>1&&!cm) cs=null; drawCake();};
+$('#ckMore').onclick=()=>{cShow=999; drawCake();};
+$('#ckSizes').onclick=e=>{const b=e.target.closest('[data-s]'); if(!b) return; cs=+b.dataset.s; drawCake();};
+$('#ckAdd').onclick=()=>{ const G=CAKES[cg], z=G.sz[cs]; BH.push({t:'cake',g:cg,code:cm,s:z.s,p:z.p,msg:$('#ckMsg').value.trim(),n:G.t}); save(); cm=null; cs=null; $('#ckMsg').value=''; drawCake(); drawList(); toast('Đã thêm bánh vào phiếu · Added'); };
+/* ---- flower ---- */
+let fm=null, fShow=SHOW_N;
+const budget=()=>{ let x=+($('#flBudget').value.replace(/\D/g,'')||0); if(x&&x<1000) x*=1000; return x; };
+function drawFl(){
+  let h=''; for(let i=1;i<=Math.min(FLOWER_N,fShow);i++){ const code='H'+pad(i), on=fm===code;
+    h+=`<div class="mc${on?' on':''}"><button class="z" data-z="${img('h',i)}" type="button"><img loading="lazy" src="${img('h',i)}" alt="Hoa mẫu ${code}"></button><button class="p" data-m="${code}" type="button">${on?'✓ '+code:'Chọn '+code}</button></div>`; }
+  $('#flGrid').innerHTML=h; $('#flMore').hidden=FLOWER_N<=fShow; $('#flMore').textContent=`Xem thêm ${FLOWER_N-fShow} mẫu · See more`;
+  const b=budget(), bOk=b>=FMIN&&b<=FMAX;
+  $('#flHint').textContent=$('#flBudget').value.trim()&&!bOk?'Ngân sách từ 300.000đ đến 900.000đ':'';
+  const ok=fm&&bOk; $('#flAdd').disabled=!ok;
+  $('#flAdd').innerHTML=ok?`＋ Thêm hoa ${fm} · ${vnd(b)}<small>Add to booking</small>`:(fm?'Nhập số tiền dành cho hoa<small>Enter your budget</small>':'Chọn mẫu hoa ở trên<small>Pick a design above</small>');
+}
+$('#flGrid').onclick=e=>{const z=e.target.closest('[data-z]'); if(z) return zoom(z.dataset.z); const b=e.target.closest('[data-m]'); if(!b) return; fm=fm===b.dataset.m?null:b.dataset.m; drawFl();};
+$('#flMore').onclick=()=>{fShow=999; drawFl();};
+$('#flBudget').addEventListener('input',drawFl);
+$('#flBudget').addEventListener('blur',()=>{const b=budget(); if(b) $('#flBudget').value=b.toLocaleString('vi-VN').replace(/,/g,'.'); drawFl();});
+$('#flAdd').onclick=()=>{ BH.push({t:'flower',code:fm,p:budget(),note:$('#flNote').value.trim(),n:'Hoa tươi'}); save(); fm=null; $('#flBudget').value=''; $('#flNote').value=''; drawFl(); drawList(); toast('Đã thêm hoa vào phiếu · Added'); };
+/* ---- picked list ---- */
+function src(x){ return x.t==='cake'?`img/${x.g}${x.code.slice(1)}.jpg`:`img/h${x.code.slice(1)}.jpg`; }
+function drawList(){
+  const row=(x,i)=>`<div class="ln"><img src="${src(x)}" alt=""><div>${esc(x.n)} ${x.code}${x.s?' · size '+x.s:''}<small>${x.t==='cake'?'Chữ trên bánh: '+(x.msg?esc(x.msg):'(chưa ghi)'):'Ghi chú: '+(x.note?esc(x.note):'—')}</small></div><span class="pr">${vnd(x.p)}</span><button class="rm" data-rm="${i}" type="button">Bỏ</button></div>`;
+  const c=BH.map((x,i)=>x.t==='cake'?row(x,i):'').join(''), f=BH.map((x,i)=>x.t==='flower'?row(x,i):'').join('');
+  $('#ckList').innerHTML=c; $('#ckPicked').hidden=!c; $('#flList').innerHTML=f; $('#flPicked').hidden=!f;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-rm]'); if(b){ BH.splice(+b.dataset.rm,1); save(); drawList(); }});
+/* ---- zoom ---- */
+function zoom(s){ $('#lbI').src=s; $('#lb').hidden=false; }
+$('#lbX').onclick=()=>$('#lb').hidden=true; $('#lb').onclick=e=>{ if(e.target.id==='lb') $('#lb').hidden=true; };
+drawCake(); drawFl(); drawList();
+</script></body></html>

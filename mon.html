@@ -1,0 +1,671 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Menu Apes Món lẻ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --gold:#A8834C; --gold2:#C9AE7C; --ink:#2E241C; --mut:#857463; --bg:#FFFDF8; }
+body { font-family: 'Lora', serif; color: var(--ink); background: var(--bg); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width:135mm; height:240mm; position:relative; overflow:hidden; page-break-after:always; background: var(--bg); }
+.f1 { position:absolute; inset:5mm; border:0.5mm solid var(--gold2); }
+.f2 { position:absolute; inset:6.3mm; border:0.18mm solid var(--gold2); }
+.content { position:absolute; left:10mm; right:10mm; top:9.5mm; bottom:14mm; display:flex; flex-direction:column; align-items:center; }
+.brand { font-family:'Inter'; font-weight:500; font-size:5.2pt; letter-spacing:.32em; color:var(--gold); text-align:center; }
+.spark { color:var(--gold); font-size:5pt; text-align:center; margin-top:.6mm; }
+h1 { font-weight:400; font-size:17pt; letter-spacing:.14em; color:var(--gold); text-align:center; margin-top:2.5mm; line-height:1.15; }
+.sub { font-style:italic; font-size:7pt; color:var(--mut); text-align:center; margin-top:.8mm; }
+.orn { display:flex; align-items:center; gap:2mm; color:var(--gold2); font-size:5pt; margin:1.6mm 0 2.5mm; }
+.orn i { display:block; width:14mm; height:0; border-top:0.18mm solid var(--gold2); }
+
+/* photo */
+.ph { border-radius:50%; position:relative; padding:1.1mm; background:var(--bg);
+      box-shadow: 0 0 0 0.25mm var(--gold2), 0 1.2mm 3mm rgba(80,55,25,.22); flex:none; }
+.ph img { width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; }
+
+.grid { display:flex; flex-wrap:wrap; justify-content:center; width:100%; row-gap:3.6mm; }
+.grid.c2 > .tile { width:50%; padding:0 1.5mm; }
+.grid.c3 > .tile { width:33.33%; padding:0 1mm; }
+.tile { display:flex; flex-direction:column; align-items:center; text-align:center; width:100%; }
+.tile .ph { margin-bottom:2mm; }
+.tile .vn { font-size:8.6pt; line-height:1.22; font-weight:500; }
+.grid.c3 .tile .vn { font-size:7.6pt; }
+.tile .en { font-style:italic; font-size:6.1pt; color:var(--mut); line-height:1.25; margin-top:.4mm; }
+.tile .note { font-size:5.6pt; color:var(--gold); margin-top:.3mm; font-style:italic; }
+.tile .pr { font-size:9pt; color:var(--gold); font-weight:600; margin-top:.8mm; letter-spacing:.03em; }
+.tile .pr::before, .tile .pr::after { content:'—'; color:var(--gold2); font-weight:400; margin:0 1.4mm; font-size:6pt; position:relative; top:-.4mm; }
+.pbar { color:var(--gold); margin:0 1.2mm; font-weight:400; }
+.star { color:var(--gold); font-size:.85em; }
+.hero { width:100%; margin-bottom:3.5mm; }
+.hero .tile .vn { font-size:10pt; }
+.hero .tile .pr { font-size:10pt; }
+
+/* list */
+.list { width:100%; margin-top:3mm; }
+.lhead { display:flex; align-items:center; gap:2mm; margin-bottom:1.6mm; }
+.lhead span { font-family:'Inter'; font-weight:500; font-size:5.6pt; letter-spacing:.22em; color:var(--gold); text-transform:uppercase; white-space:nowrap; }
+.lhead i { flex:1; border-top:0.18mm solid var(--gold2); }
+.lhead em { font-size:6pt; color:var(--mut); white-space:nowrap; }
+.li { margin-bottom:1.55mm; }
+.li .row { display:flex; align-items:baseline; gap:1.2mm; }
+.li .vn { font-size:8.2pt; }
+.li .dots { flex:1; border-bottom:0.25mm dotted var(--gold2); transform:translateY(-.6mm); min-width:4mm; }
+.li .pr { font-size:8.4pt; color:var(--gold); font-weight:600; white-space:nowrap; }
+.li .en { font-style:italic; font-size:6pt; color:var(--mut); margin-top:.2mm; }
+.grid.c2 > .tile.cellist { justify-content:center; align-self:center; padding:0 1mm 0 3mm; }
+.cellist .list { margin-top:0; text-align:left; }
+
+.two { width:100%; display:grid; grid-template-columns:1fr; }
+.two .list { margin-top:2.2mm; }
+
+.opts { width:100%; margin-top:4mm; border-top:0.18mm solid var(--gold2); padding-top:2.6mm; }
+.opts .o { display:flex; gap:3mm; margin-bottom:1.8mm; font-size:7pt; line-height:1.3; }
+.opts b { font-family:'Inter'; font-weight:500; font-size:5.4pt; letter-spacing:.18em; color:var(--gold); width:13mm; flex:none; padding-top:.6mm; }
+.opts em { display:block; font-size:5.8pt; color:var(--mut); }
+
+.quote { margin-top:auto; margin-bottom:2mm; text-align:center; font-style:italic; color:var(--gold); font-size:9pt; }
+.quote em { display:block; font-size:6.2pt; color:var(--mut); margin-top:.8mm; }
+.pre { margin-top:3mm; text-align:center; font-style:italic; color:var(--gold); font-size:7pt; }
+.pre em { display:block; font-size:5.8pt; color:var(--mut); }
+
+.foot { position:absolute; left:0; right:0; bottom:7.8mm; text-align:center; }
+.legend { font-size:5.4pt; color:var(--mut); margin-bottom:1mm; }
+.legend span { font-style:italic; }
+.addr { font-family:'Inter'; font-weight:500; font-size:4.3pt; letter-spacing:.2em; color:var(--gold); }
+
+/* cover */
+.cv { position:absolute; left:10mm; right:10mm; top:20mm; bottom:24mm; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.cvt { font-size:30pt; letter-spacing:.12em; color:var(--gold); margin-top:12mm; font-weight:400; }
+.cvs { font-size:11pt; margin-top:2mm; letter-spacing:.06em; }
+.cve { font-style:italic; font-size:7.5pt; color:var(--mut); margin-top:1mm; }
+.cvphotos { display:flex; align-items:center; justify-content:center; gap:3mm; margin-top:16mm; }
+.cvcat { font-family:'Inter'; font-weight:500; font-size:5pt; letter-spacing:.2em; color:var(--gold); margin-top:auto; line-height:2; }
+.cvfoot { position:absolute; left:0; right:0; bottom:11mm; text-align:center; font-family:'Inter'; font-weight:500; font-size:4.6pt; letter-spacing:.2em; color:var(--gold); line-height:2; }
+.back .cv { top:24mm; }
+.bq { font-style:italic; font-size:12pt; color:var(--gold); margin-top:9mm; line-height:1.4; }
+.bqe { font-style:italic; font-size:6.8pt; color:var(--mut); margin-top:1.5mm; }
+.bimg { width:100%; margin-top:8mm; padding:1.1mm; box-shadow:0 0 0 .25mm var(--gold2), 0 1.2mm 3mm rgba(80,55,25,.2); }
+.bimg img { width:100%; display:block; }
+.bk { font-family:'Inter'; font-weight:500; font-size:6.5pt; letter-spacing:.24em; color:var(--gold); margin-top:9mm; }
+.bke { font-style:italic; font-size:6.4pt; color:var(--mut); margin-top:.8mm; }
+.bz { font-size:15pt; margin-top:3mm; letter-spacing:.04em; }
+.bs { font-size:8pt; margin-top:1.2mm; }
+.bd { font-size:7.6pt; margin-top:6mm; color:var(--ink); }
+.bd em { display:block; font-size:6pt; color:var(--mut); margin-top:.6mm; }
+
+.body { flex:1; width:100%; display:flex; flex-direction:column; justify-content:center; gap:5mm; align-items:center; }
+.body > .list { margin-top:0; }
+.quote { margin-top:4mm; }
+.cvphotos { margin-top:14mm; gap:0; }
+.cvphotos .side.l { margin-right:-5mm; z-index:1; }
+.cvphotos .side.r { margin-left:-5mm; z-index:1; }
+.cvphotos .big { z-index:2; }
+.bk3 { gap:3mm; margin-top:12mm; }
+.wh { font-style:italic; letter-spacing:.02em; font-size:16pt; }
+.wel { justify-content:flex-start; gap:3.2mm; }
+.wel .bimg { margin-top:1mm; margin-bottom:2mm; }
+.wel p { font-size:7.8pt; line-height:1.5; text-align:center; }
+.wel p em { display:block; font-size:6.3pt; color:var(--mut); margin-top:.8mm; line-height:1.4; }
+
+.roomy .li { margin-bottom:3.2mm; }
+.roomy .li .vn { font-size:8.8pt; }
+.roomy .li .en { font-size:6.4pt; }
+.cover .cvphotos { margin-top:20mm; }
+
+.cellist .li { display:flex; flex-direction:column; margin-bottom:2.6mm; }
+.cellist .li .row { display:contents; }
+.cellist .li .vn { order:1; font-size:8.4pt; line-height:1.25; }
+.cellist .li .en { order:2; }
+.cellist .li .dots { display:none; }
+.cellist .li .pr { order:3; margin-top:.5mm; font-size:8.8pt; }
+
+.prw { display:flex; align-items:center; justify-content:center; gap:1.5mm; }
+.pk:empty { display:none; }
+</style>
+<div class="book"><section class="page cover"><div class="f1"></div><div class="f2"></div>
+<div class="cv">
+  <div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+  <div class="cvt">À LA CARTE</div>
+  <div class="cvs">Thực đơn gọi món</div>
+  <div class="cve">Fine Dining Experience</div>
+  <div class="cvphotos">
+    <div class="ph side l" style="width:31mm;height:31mm"><img src="m/salad_thai.jpg"></div>
+    <div class="ph big" style="width:60mm;height:60mm"><img src="m/wellington.jpg"></div>
+    <div class="ph side r" style="width:31mm;height:31mm"><img loading="lazy" decoding="async" src="m/so_diep.jpg"></div>
+  </div>
+  <div class="cvcat">SALAD & SÚP · KHAI VỊ · MÓN CHÍNH · BÍT TẾT<br>HẢI SẢN · MÓN ĐẶC BIỆT · MÌ Ý · PIZZA · TRÁNG MIỆNG</div>
+</div>
+<div class="cvfoot">78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT<br>ZALO 0385 285 768 · FACEBOOK & TIKTOK: APES RESTAURANT</div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div><div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1 class="wh">Chào mừng đến với Apes</h1><div class="sub">Welcome to Apes Restaurant</div><div class="orn"><i></i>✦<i></i></div>
+<div class="body wel">
+<div class="bimg"><img loading="lazy" decoding="async" src="m/interior_r.jpg"></div>
+<p>Có những buổi tối chỉ cần ánh nến dịu, một ly vang đỏ sóng sánh và người mình thương ngồi ngay đối diện.<em>Some evenings need only soft candlelight, a glass of red wine and the one you love sitting across the table.</em></p>
+<p>Apes được tạo nên cho những khoảnh khắc như thế – một nhà hàng Âu nhỏ, ấm áp giữa lòng Thủ Dầu Một, nơi từng món ăn được chăm chút như một lời tỏ bày: miếng bít tết mềm thơm, đĩa mì Ý đậm vị, ly bia thủ công do chính Apes ủ.<em>Apes was created for moments like these – a small, warm European restaurant in the heart of Thu Dau Mot, where every dish is crafted like a quiet declaration: tender steak, rich pasta and craft beer brewed by Apes.</em></p>
+<p>Rèm voan, đèn vàng và những góc bàn riêng tư được trang trí theo từng dịp – hẹn hò, kỷ niệm, cầu hôn hay sinh nhật người thương – để hai người có thể trò chuyện thật lâu, thật chậm.<em>Sheer curtains, golden light and private tables styled for every occasion – dates, anniversaries, proposals or a loved one’s birthday – so two people can talk long and slow.</em></p>
+</div></div>
+<div class="foot"><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 02</div></div></section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>SALAD</h1><div class="sub">Salad</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/salad_rau.jpg"></div>
+  <div class="vn">Salad rau xanh trộn dầu giấm</div>
+  <div class="en">Mixed Green Salad</div>
+  <div class="prw"><div class="pr">74</div><span class="pk" data-k="Salad rau xanh trộn dầu giấm"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/salad_thai.jpg"></div>
+  <div class="vn">Salad Thái tôm xoài&nbsp;<span class="star">★</span></div>
+  <div class="en">Thai Prawn Salad with Mango</div>
+  <div class="prw"><div class="pr">99</div><span class="pk" data-k="Salad Thái tôm xoài"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/salad_caesar.jpg"></div>
+  <div class="vn">Salad Caesar</div>
+  <div class="en">Caesar Salad</div>
+  <div class="prw"><div class="pr">138</div><span class="pk" data-k="Salad Caesar"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/salad_cangu.jpg"></div>
+  <div class="vn">Salad cá ngừ áp chảo</div>
+  <div class="en">Pan-fried Tuna Salad</div>
+  <div class="prw"><div class="pr">169</div><span class="pk" data-k="Salad cá ngừ áp chảo"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/salad_traicay.jpg"></div>
+  <div class="vn">Salad trái cây sốt cam</div>
+  <div class="en">Fruit Salad with Orange Sauce</div>
+  <div class="prw"><div class="pr">169</div><span class="pk" data-k="Salad trái cây sốt cam"></span></div>
+</div><div class="tile cellist"><div class="list"><div class="lhead"><span>Thêm lựa chọn</span><i></i><em>More choices</em></div><div class="li"><div class="row"><span class="vn">Salad tôm</span><span class="dots"></span><span class="pr">125</span><span class="pk" data-k="Salad tôm"></span></div><div class="en">Prawn Salad</div></div></div></div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 03</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>SÚP</h1><div class="sub">Soup</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="hero"><div class="tile">
+  <div class="ph" style="width:72mm;height:72mm"><img loading="lazy" decoding="async" src="m/sup_tomyum.jpg"></div>
+  <div class="vn">Súp Thái Tom Yum&nbsp;<span class="star">★</span></div>
+  <div class="en">Thai Tom Yum Soup</div>
+  <div class="prw"><div class="pr">189</div><span class="pk" data-k="Súp Thái Tom Yum"></span></div>
+</div></div><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:54mm;height:54mm"><img loading="lazy" decoding="async" src="m/sup_bido.jpg"></div>
+  <div class="vn">Súp bí đỏ</div>
+  <div class="en">Pumpkin Soup</div>
+  <div class="prw"><div class="pr">89</div><span class="pk" data-k="Súp bí đỏ"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:54mm;height:54mm"><img loading="lazy" decoding="async" src="m/sup_baongu.jpg"></div>
+  <div class="vn">Súp bào ngư</div>
+  <div class="en">Abalone Soup</div>
+  <div class="prw"><div class="pr">189</div><span class="pk" data-k="Súp bào ngư"></span></div>
+</div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 04</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>MÓN KHAI VỊ</h1><div class="sub">Starters</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c3"><div class="tile">
+  <div class="ph" style="width:33mm;height:33mm"><img loading="lazy" decoding="async" src="m/banhmi_botoi.jpg"></div>
+  <div class="vn">Bánh mì bơ tỏi</div>
+  <div class="en">Garlic Bread</div>
+  <div class="prw"><div class="pr">74</div><span class="pk" data-k="Bánh mì bơ tỏi"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:33mm;height:33mm"><img loading="lazy" decoding="async" src="m/chip_cangu.jpg"></div>
+  <div class="vn">Chip cá ngừ</div>
+  <div class="en">Tuna Chips</div>
+  <div class="prw"><div class="pr">135</div><span class="pk" data-k="Chip cá ngừ"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:33mm;height:33mm"><img loading="lazy" decoding="async" src="m/xien_que.jpg"></div>
+  <div class="vn">Xiên que bò &amp; gà nướng BBQ</div>
+  <div class="en">Mixed Beef &amp; Chicken Skewers</div><div class="note">Chờ khoảng 15 phút</div>
+  <div class="prw"><div class="pr">179</div><span class="pk" data-k="Xiên que bò &amp; gà nướng BBQ"></span></div>
+</div></div><div class="list"><div class="lhead"><span>Thêm lựa chọn</span><i></i><em>More choices</em></div><div class="li"><div class="row"><span class="vn">Hành tây vòng chiên xù bột bia</span><span class="dots"></span><span class="pr">68</span><span class="pk" data-k="Hành tây vòng chiên xù bột bia"></span></div><div class="en">Beer-battered Onion Rings</div></div><div class="li"><div class="row"><span class="vn">Khoai tây chiên</span><span class="dots"></span><span class="pr">85</span><span class="pk" data-k="Khoai tây chiên"></span></div><div class="en">French Fries</div></div><div class="li"><div class="row"><span class="vn">Khoai tây đút lò</span><span class="dots"></span><span class="pr">85</span><span class="pk" data-k="Khoai tây đút lò"></span></div><div class="en">Baked Potato</div></div><div class="li"><div class="row"><span class="vn">Khoai lang múi cau chiên</span><span class="dots"></span><span class="pr">85</span><span class="pk" data-k="Khoai lang múi cau chiên"></span></div><div class="en">Sweet Potato Wedges</div></div><div class="li"><div class="row"><span class="vn">Gân bò Mỹ ngâm</span><span class="dots"></span><span class="pr">88</span><span class="pk" data-k="Gân bò Mỹ ngâm"></span></div><div class="en">Brined Beef Tendon</div></div><div class="li"><div class="row"><span class="vn">Bánh mì bơ tỏi phô mai</span><span class="dots"></span><span class="pr">99</span><span class="pk" data-k="Bánh mì bơ tỏi phô mai"></span></div><div class="en">Cheesy Garlic Bread</div></div><div class="li"><div class="row"><span class="vn">Măng tây xào tỏi</span><span class="dots"></span><span class="pr">120</span><span class="pk" data-k="Măng tây xào tỏi"></span></div><div class="en">Stir-fried Asparagus</div></div><div class="li"><div class="row"><span class="vn">Cánh gà nướng sốt cay</span><span class="dots"></span><span class="pr">128</span><span class="pk" data-k="Cánh gà nướng sốt cay"></span></div><div class="en">Grilled Chicken Wings with Hot Sauce</div></div><div class="li"><div class="row"><span class="vn">Cá hồi muối kèm bánh mì và kem chua</span><span class="dots"></span><span class="pr">145</span><span class="pk" data-k="Cá hồi muối kèm bánh mì và kem chua"></span></div><div class="en">Salmon Gravlax with Bread &amp; Sour Cream</div></div><div class="li"><div class="row"><span class="vn">Xúc xích Đức nướng kèm sốt hành tây</span><span class="dots"></span><span class="pr">155</span><span class="pk" data-k="Xúc xích Đức nướng kèm sốt hành tây"></span></div><div class="en">Grilled German Sausages with Onion Gravy</div></div><div class="li"><div class="row"><span class="vn">Cánh gà chiên sốt phô mai cay</span><span class="dots"></span><span class="pr">165</span><span class="pk" data-k="Cánh gà chiên sốt phô mai cay"></span></div><div class="en">Fried Chicken Wings with Hot Cheese Sauce</div></div><div class="li"><div class="row"><span class="vn">Râu bạch tuộc nướng kiểu Tây Ban Nha</span><span class="dots"></span><span class="pr">185</span><span class="pk" data-k="Râu bạch tuộc nướng kiểu Tây Ban Nha"></span></div><div class="en">Spanish-style Octopus</div></div><div class="li"><div class="row"><span class="vn">Mực vòng chiên xù</span><span class="dots"></span><span class="pr">208</span><span class="pk" data-k="Mực vòng chiên xù"></span></div><div class="en">Fried Calamari</div></div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 05</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>MÓN CHÍNH</h1><div class="sub">Main Course</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/com_chien.jpg"></div>
+  <div class="vn">Cơm chiên hải sản Apes</div>
+  <div class="en">Apes Seafood Fried Rice</div>
+  <div class="prw"><div class="pr">145</div><span class="pk" data-k="Cơm chiên hải sản Apes"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/uc_ga.jpg"></div>
+  <div class="vn">Ức gà nướng sốt BBQ</div>
+  <div class="en">Grilled Chicken Breast with BBQ Sauce</div>
+  <div class="prw"><div class="pr">165</div><span class="pk" data-k="Ức gà nướng sốt BBQ"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/dui_ga.jpg"></div>
+  <div class="vn">Đùi gà nướng sốt cay</div>
+  <div class="en">Grilled Chicken Leg with Hot Sauce</div>
+  <div class="prw"><div class="pr">172</div><span class="pk" data-k="Đùi gà nướng sốt cay"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/uc_vit.jpg"></div>
+  <div class="vn">Ức vịt áp chảo&nbsp;<span class="star">★</span></div>
+  <div class="en">Pan-seared Duck Breast</div>
+  <div class="prw"><div class="pr">259</div><span class="pk" data-k="Ức vịt áp chảo"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:45mm;height:45mm"><img loading="lazy" decoding="async" src="m/be_suon.jpg"></div>
+  <div class="vn">Bẹ sườn heo nướng sốt BBQ</div>
+  <div class="en">Grilled Baby Back Ribs with BBQ Sauce</div>
+  <div class="prw"><div class="pr">452</div><span class="pk" data-k="Bẹ sườn heo nướng sốt BBQ"></span></div>
+</div><div class="tile cellist"><div class="list"><div class="lhead"><span>Thêm lựa chọn</span><i></i><em>More choices</em></div><div class="li"><div class="row"><span class="vn">Sườn cọng heo nướng sốt BBQ</span><span class="dots"></span><span class="pr">295</span><span class="pk" data-k="Sườn cọng heo nướng sốt BBQ"></span></div><div class="en">Grilled Spare Ribs with BBQ Sauce</div></div></div></div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 06</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>BÍT TẾT &amp; MÓN NƯỚNG</h1><div class="sub">Steak &amp; Grill</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="hero"><div class="tile">
+  <div class="ph" style="width:62mm;height:62mm"><img loading="lazy" decoding="async" src="m/than_vai.jpg"></div>
+  <div class="vn">Thăn vai bò Mỹ (200g)&nbsp;<span class="star">★</span></div>
+  <div class="en">Top Blade (200g)</div>
+  <div class="prw"><div class="pr">320</div><span class="pk" data-k="Thăn vai bò Mỹ"></span></div>
+</div></div><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:47mm;height:47mm"><img loading="lazy" decoding="async" src="m/suon_cuu.jpg"></div>
+  <div class="vn">Sườn cừu nướng</div>
+  <div class="en">Grilled Lamb Chops</div>
+  <div class="prw"><div class="pr">542</div><span class="pk" data-k="Sườn cừu nướng"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:47mm;height:47mm"><img loading="lazy" decoding="async" src="m/ribeye.jpg"></div>
+  <div class="vn">Thăn lưng bò Mỹ (260g | 350g)</div>
+  <div class="en">Ribeye (260g | 350g)</div>
+  <div class="prw"><div class="pr">569 <span class="pbar">|</span> 669</div><span class="pk" data-k="Thăn lưng bò Mỹ"></span></div>
+</div></div><div class="opts">
+<div class="o"><b>ĐỘ CHÍN</b><div>Tái · Tái vừa · Chín tới · Chín vừa · Chín kỹ<em>Rare · Medium Rare · Medium · Medium Well · Well Done</em></div></div>
+<div class="o"><b>SỐT</b><div>Sốt nấm · Sốt tiêu đen · Sốt vang đỏ<em>Mushroom · Black Pepper · Red Wine</em></div></div>
+<div class="o"><b>ĂN KÈM</b><div>Khoai tây chiên · Khoai tây nghiền<em>French Fries · Mashed Potatoes</em></div></div>
+</div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 07</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>HẢI SẢN</h1><div class="sub">Seafood · 1/2</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/oc_bulot.jpg"></div>
+  <div class="vn">Ốc bulot nướng tiêu</div>
+  <div class="en">Grilled Bulot with Pepper</div>
+  <div class="prw"><div class="pr">147</div><span class="pk" data-k="Ốc bulot nướng tiêu"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/vem.jpg"></div>
+  <div class="vn">Vẹm xanh New Zealand sốt thảo mộc</div>
+  <div class="en">New Zealand Green-shell Mussels with Herb Sauce</div>
+  <div class="prw"><div class="pr">189</div><span class="pk" data-k="Vẹm xanh New Zealand sốt thảo mộc"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/oc_huong.jpg"></div>
+  <div class="vn">Ốc hương sốt trứng muối</div>
+  <div class="en">Sea Snails with Salted Egg Sauce</div>
+  <div class="prw"><div class="pr">195</div><span class="pk" data-k="Ốc hương sốt trứng muối"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/so_diep.jpg"></div>
+  <div class="vn">Sò điệp Nhật áp chảo&nbsp;<span class="star">★</span></div>
+  <div class="en">Sautéed Scallops</div>
+  <div class="prw"><div class="pr">239</div><span class="pk" data-k="Sò điệp Nhật áp chảo"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/cua_lot.jpg"></div>
+  <div class="vn">Cua lột sốt me</div>
+  <div class="en">Soft-shell Crab with Tamarind Sauce</div>
+  <div class="prw"><div class="pr">245</div><span class="pk" data-k="Cua lột sốt me"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:40mm;height:40mm"><img loading="lazy" decoding="async" src="m/hau.jpg"></div>
+  <div class="vn">Hàu Nhật: ăn sống sashimi |<br>nướng phô mai</div>
+  <div class="en">Japanese Oysters — Sashimi | Baked with Cheese</div>
+  <div class="prw"><div class="pr">257 <span class="pbar">|</span> 289</div><span class="pk" data-k="Hàu Nhật"></span></div>
+</div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 08</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>HẢI SẢN</h1><div class="sub">Seafood · 2/2</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:55mm;height:55mm"><img loading="lazy" decoding="async" src="m/so_diep_mt.jpg"></div>
+  <div class="vn">Sò điệp Nhật xào măng tây</div>
+  <div class="en">Sautéed Scallops with Asparagus</div>
+  <div class="prw"><div class="pr">259</div><span class="pk" data-k="Sò điệp Nhật xào măng tây"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:55mm;height:55mm"><img loading="lazy" decoding="async" src="m/tom_hum_dat.jpg"></div>
+  <div class="vn">Tôm hùm đất sốt Cajun</div>
+  <div class="en">Crawfish with Cajun Sauce</div>
+  <div class="prw"><div class="pr">469</div><span class="pk" data-k="Tôm hùm đất sốt Cajun"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:55mm;height:55mm"><img loading="lazy" decoding="async" src="m/ca_hoi.jpg"></div>
+  <div class="vn">Cá hồi nướng sốt mù tạt vàng</div>
+  <div class="en">Grilled Salmon with Mustard Sauce</div>
+  <div class="prw"><div class="pr">499</div><span class="pk" data-k="Cá hồi nướng sốt mù tạt vàng"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:55mm;height:55mm"><img loading="lazy" decoding="async" src="m/ca_tuyet.jpg"></div>
+  <div class="vn">Cá tuyết áp chảo</div>
+  <div class="en">Pan-seared Cod Fish</div>
+  <div class="prw"><div class="pr">499</div><span class="pk" data-k="Cá tuyết áp chảo"></span></div>
+</div></div><div class="quote">“Hương vị biển cả, chăm chút trong từng đĩa ăn.”<em>The taste of the sea, crafted on every plate.</em></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 09</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>MÓN ĐẶC BIỆT</h1><div class="sub">Chef’s Special · Vui lòng đặt trước 6 tiếng</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="hero"><div class="tile">
+  <div class="ph" style="width:66mm;height:66mm"><img loading="lazy" decoding="async" src="m/wellington.jpg"></div>
+  <div class="vn">Bò cuộn bánh ngàn lớp (200g | 300g)&nbsp;<span class="star">★</span></div>
+  <div class="en">Beef Wellington</div>
+  <div class="prw"><div class="pr">650 <span class="pbar">|</span> 950</div><span class="pk" data-k="Bò cuộn bánh ngàn lớp"></span></div>
+</div></div><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:46mm;height:46mm"><img loading="lazy" decoding="async" src="m/tom_hum_pm.jpg"></div>
+  <div class="vn">Tôm hùm nướng phô mai&nbsp;<span class="star">★</span></div>
+  <div class="en">Grilled Lobster with Cheese</div>
+  <div class="prw"><div class="pr">639</div><span class="pk" data-k="Tôm hùm nướng phô mai"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:46mm;height:46mm"><img loading="lazy" decoding="async" src="m/tom_hum_ri.jpg"></div>
+  <div class="vn">Tôm hùm nướng ăn kèm cơm Ý risotto</div>
+  <div class="en">Lobster Risotto</div>
+  <div class="prw"><div class="pr">679</div><span class="pk" data-k="Tôm hùm nướng ăn kèm cơm Ý risotto"></span></div>
+</div></div><div class="list"><div class="lhead"><span>Thêm lựa chọn</span><i></i><em>More choices</em></div><div class="li"><div class="row"><span class="vn">Cá hồi cuộn bánh ngàn lớp (200g | 300g)</span><span class="dots"></span><span class="pr">650 <span class="pbar">|</span> 950</span><span class="pk" data-k="Cá hồi cuộn bánh ngàn lớp"></span></div><div class="en">Salmon Wellington</div></div></div><div class="pre">✦ Vui lòng đặt trước 6 tiếng để bếp chuẩn bị chu đáo ✦<em>Please pre-order 6 hours in advance</em></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 10</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>MÌ Ý</h1><div class="sub">Spaghetti</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:43mm;height:43mm"><img loading="lazy" decoding="async" src="m/mi_carbo.jpg"></div>
+  <div class="vn">Mì Ý sốt kem thịt xông khói&nbsp;<span class="star">★</span></div>
+  <div class="en">Spaghetti Carbonara</div>
+  <div class="prw"><div class="pr">165</div><span class="pk" data-k="Mì Ý sốt kem thịt xông khói"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:43mm;height:43mm"><img loading="lazy" decoding="async" src="m/mi_tom.jpg"></div>
+  <div class="vn">Mì Ý tôm&nbsp;<span class="star">★</span></div>
+  <div class="en">Prawn Spaghetti</div>
+  <div class="prw"><div class="pr">179</div><span class="pk" data-k="Mì Ý tôm"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:43mm;height:43mm"><img loading="lazy" decoding="async" src="m/mi_bobam.jpg"></div>
+  <div class="vn">Mì Ý bò bằm phủ phô mai&nbsp;<span class="star">★</span></div>
+  <div class="en">Spaghetti Bolognese</div>
+  <div class="prw"><div class="pr">189</div><span class="pk" data-k="Mì Ý bò bằm phủ phô mai"></span></div>
+</div><div class="tile cellist"><div class="list"><div class="lhead"><span>Thêm lựa chọn</span><i></i><em>More choices</em></div><div class="li"><div class="row"><span class="vn">Mì Ý rau củ sốt cà chua</span><span class="dots"></span><span class="pr">135</span><span class="pk" data-k="Mì Ý rau củ sốt cà chua"></span></div><div class="en">Veggie Spaghetti</div></div><div class="li"><div class="row"><span class="vn">Mì Ý bò viên</span><span class="dots"></span><span class="pr">165</span><span class="pk" data-k="Mì Ý bò viên"></span></div><div class="en">Meatball Spaghetti</div></div><div class="li"><div class="row"><span class="vn">Mì Ý gà sốt kem nấm</span><span class="dots"></span><span class="pr">165</span><span class="pk" data-k="Mì Ý gà sốt kem nấm"></span></div><div class="en">Chicken Spaghetti with Creamy Mushroom Sauce</div></div></div></div></div><div class="list roomy"><div class="li"><div class="row"><span class="vn">Mì Ý hải sản</span><span class="dots"></span><span class="pr">179</span><span class="pk" data-k="Mì Ý hải sản"></span></div><div class="en">Seafood Spaghetti</div></div><div class="li"><div class="row"><span class="vn">Mì Ý cá hồi</span><span class="dots"></span><span class="pr">179</span><span class="pk" data-k="Mì Ý cá hồi"></span></div><div class="en">Salmon Spaghetti</div></div><div class="li"><div class="row"><span class="vn">Mì Ý bò lát</span><span class="dots"></span><span class="pr">189</span><span class="pk" data-k="Mì Ý bò lát"></span></div><div class="en">Sliced Beef Spaghetti</div></div><div class="li"><div class="row"><span class="vn">Mì Ý gà phủ phô mai</span><span class="dots"></span><span class="pr">200</span><span class="pk" data-k="Mì Ý gà phủ phô mai"></span></div><div class="en">Chicken Parmigiana Spaghetti</div></div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 11</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>BÁNH CUỘN · BURGER · PIZZA</h1><div class="sub">Wrap · Burger · Pizza</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c2"><div class="tile">
+  <div class="ph" style="width:38mm;height:38mm"><img loading="lazy" decoding="async" src="m/tacos.jpg"></div>
+  <div class="vn">Tacos bò hầm</div>
+  <div class="en">Beef Stew Tacos</div>
+  <div class="prw"><div class="pr">186</div><span class="pk" data-k="Tacos bò hầm"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:38mm;height:38mm"><img loading="lazy" decoding="async" src="m/burrito_ga.jpg"></div>
+  <div class="vn">Bánh cuộn burrito gà</div>
+  <div class="en">Chicken Burrito</div>
+  <div class="prw"><div class="pr">195</div><span class="pk" data-k="Bánh cuộn burrito gà"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:38mm;height:38mm"><img loading="lazy" decoding="async" src="m/burrito_bo.jpg"></div>
+  <div class="vn">Bánh cuộn burrito bò</div>
+  <div class="en">Beef Burrito</div>
+  <div class="prw"><div class="pr">220</div><span class="pk" data-k="Bánh cuộn burrito bò"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:38mm;height:38mm"><img loading="lazy" decoding="async" src="m/pizza_hs.jpg"></div>
+  <div class="vn">Pizza hải sản</div>
+  <div class="en">Seafood Pizza</div>
+  <div class="prw"><div class="pr">245</div><span class="pk" data-k="Pizza hải sản"></span></div>
+</div></div><div class="two"><div class="list"><div class="lhead"><span>Bánh cuộn</span><i></i><em>Wrap</em></div><div class="li"><div class="row"><span class="vn">Bánh quesadilla nhân gà</span><span class="dots"></span><span class="pr">165</span><span class="pk" data-k="Bánh quesadilla nhân gà"></span></div><div class="en">Chicken Quesadilla</div></div><div class="li"><div class="row"><span class="vn">Bánh quesadilla nhân bò <span class="star">★</span></span><span class="dots"></span><span class="pr">185</span><span class="pk" data-k="Bánh quesadilla nhân bò"></span></div><div class="en">Beef Quesadilla</div></div></div><div class="list"><div class="lhead"><span>Burger</span><i></i><em>Burger</em></div><div class="li"><div class="row"><span class="vn">Burger gà</span><span class="dots"></span><span class="pr">125</span><span class="pk" data-k="Burger gà"></span></div><div class="en">Chicken Burger</div></div><div class="li"><div class="row"><span class="vn">Burger bò</span><span class="dots"></span><span class="pr">145</span><span class="pk" data-k="Burger bò"></span></div><div class="en">Beef Burger</div></div></div><div class="list"><div class="lhead"><span>Pizza</span><i></i><em>Pizza</em></div><div class="li"><div class="row"><span class="vn">Pizza rau củ</span><span class="dots"></span><span class="pr">199</span><span class="pk" data-k="Pizza rau củ"></span></div><div class="en">Vegetable Pizza</div></div><div class="li"><div class="row"><span class="vn">Pizza bò nướng BBQ</span><span class="dots"></span><span class="pr">225</span><span class="pk" data-k="Pizza bò nướng BBQ"></span></div><div class="en">BBQ Beef Pizza</div></div></div></div></div></div>
+<div class="foot"><div class="legend">★ Món Best Seller của Apes <span>· Apes Best Seller</span></div><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 12</div></div>
+</section><section class="page"><div class="f1"></div><div class="f2"></div>
+<div class="content">
+<div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+<h1>TRÁNG MIỆNG</h1><div class="sub">Dessert</div><div class="orn"><i></i>✦<i></i></div><div class="body"><div class="grid c3"><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/pc_ly.jpg"></div>
+  <div class="vn">Panna cotta dạng ly</div>
+  <div class="en">Panna Cotta (Glass)</div>
+  <div class="prw"><div class="pr">35</div><span class="pk" data-k="Panna cotta dạng ly"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/french.jpg"></div>
+  <div class="vn">Bánh mì nướng kiểu Pháp</div>
+  <div class="en">French Toast</div>
+  <div class="prw"><div class="pr">45</div><span class="pk" data-k="Bánh mì nướng kiểu Pháp"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/pc_dia.jpg"></div>
+  <div class="vn">Panna cotta dạng bánh, dùng trên đĩa</div>
+  <div class="en">Panna Cotta (Plated)</div>
+  <div class="prw"><div class="pr">89</div><span class="pk" data-k="Panna cotta dạng bánh, dùng trên đĩa"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/lava.jpg"></div>
+  <div class="vn">Bánh lava sô-cô-la</div>
+  <div class="en">Lava Cake</div>
+  <div class="prw"><div class="pr">89</div><span class="pk" data-k="Bánh lava sô-cô-la"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/kem_caramel.jpg"></div>
+  <div class="vn">Kem caramel</div>
+  <div class="en">Caramel Ice Cream</div>
+  <div class="prw"><div class="pr">89</div><span class="pk" data-k="Kem caramel"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/flan.jpg"></div>
+  <div class="vn">Bánh flan caramel</div>
+  <div class="en">Crème Caramel</div>
+  <div class="prw"><div class="pr">89</div><span class="pk" data-k="Bánh flan caramel"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/kem_chanh.jpg"></div>
+  <div class="vn">Kem chanh Nhật</div>
+  <div class="en">Japanese Lemon Ice Cream</div>
+  <div class="prw"><div class="pr">109</div><span class="pk" data-k="Kem chanh Nhật"></span></div>
+</div><div class="tile">
+  <div class="ph" style="width:34mm;height:34mm"><img loading="lazy" decoding="async" src="m/banh_kem.jpg"></div>
+  <div class="vn">Bánh kem mini</div>
+  <div class="en">Mini Cake</div>
+  <div class="prw"><div class="pr">130</div><span class="pk" data-k="Bánh kem mini"></span></div>
+</div></div></div></div>
+<div class="foot"><div class="addr">APES RESTAURANT · 78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT · 13</div></div>
+</section><section class="page cover back"><div class="f1"></div><div class="f2"></div>
+<div class="cv">
+  <div class="brand">APES RESTAURANT</div><div class="spark">✦</div>
+  <div class="bq">“Hãy để Apes giữ giùm bạn<br>những kỷ niệm đẹp nhất.”</div>
+  <div class="bqe">Let Apes keep your most beautiful memories.</div>
+  <div class="cvphotos bk3">
+    <div class="ph" style="width:30mm;height:30mm"><img loading="lazy" decoding="async" src="m/mi_carbo.jpg"></div>
+    <div class="ph" style="width:44mm;height:44mm"><img loading="lazy" decoding="async" src="m/ribeye.jpg"></div>
+    <div class="ph" style="width:30mm;height:30mm"><img loading="lazy" decoding="async" src="m/lava.jpg"></div>
+  </div>
+  <div class="bk">ĐẶT BÀN & TRANG TRÍ TIỆC</div>
+  <div class="bke">Reservations & table decoration</div>
+  <div class="bz">Zalo 0385 285 768</div>
+  <div class="bs">Facebook & TikTok: Apes Restaurant</div>
+  <div class="bd">Hẹn hò · Kỷ niệm · Cầu hôn · Sinh nhật<em>Dates · Anniversaries · Proposals · Birthdays</em></div>
+</div>
+<div class="cvfoot">78 TRẦN PHÚ, KDC CHÁNH NGHĨA, THỦ DẦU MỘT</div>
+</section></div>
+<style>
+/* web layer over the printed layout: same ivory/gold palette, pages scaled to screen */
+:root { --wbg:#EFE8DC; --paper:#FFFDF8; --gold:#A8834C; --gold2:#C9AE7C; --ink:#2E241C; --mut:#857463; --warn:#B4472F; color-scheme:light; }
+[hidden]{display:none!important}
+body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:20px 120px; }
+.book { display:flex; flex-direction:column; align-items:center; gap:18px; }
+.book .page { box-shadow:0 6px 22px rgba(70,48,20,.18); page-break-after:auto; height:auto; min-height:240mm; }
+.book .page > .content { position:relative; left:auto; right:auto; top:auto; bottom:auto; margin:0 10mm; padding:9.5mm 0 14mm; min-height:240mm; }
+.pk button { font-family:'Inter',sans-serif; font-weight:600; font-size:calc(7.2pt * var(--iz,1)); line-height:1; letter-spacing:.03em; border-radius:1mm; cursor:pointer; white-space:nowrap; }
+.pk .add { background:var(--gold); color:#fff; border:0; padding:calc(1.5mm * var(--iz,1)) calc(3mm * var(--iz,1)); }
+.pk .add.has { background:var(--paper); color:var(--gold); border:.3mm solid var(--gold); }
+.pk .stp { display:inline-flex; align-items:center; border:.3mm solid var(--gold); border-radius:1mm; overflow:hidden; }
+.pk .stp button { background:var(--gold); color:#fff; border:0; width:calc(6mm * var(--iz,1)); height:calc(5.6mm * var(--iz,1)); font-size:calc(9pt * var(--iz,1)); border-radius:0; }
+.pk .stp span { min-width:calc(5.5mm * var(--iz,1)); text-align:center; font-family:'Inter',sans-serif; font-weight:600; font-size:calc(7.5pt * var(--iz,1)); color:var(--ink); }
+.li .row .pk { margin-left:1.5mm; align-self:center; }
+.cellist .li .row .pk { order:4; margin:1.2mm 0 0; align-self:flex-start; }
+:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+
+.wbar { position:fixed; left:0; right:0; bottom:0; z-index:25; background:var(--paper); border-top:1px solid var(--gold2);
+  padding:10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); font-family:'Lora',Georgia,serif; }
+.wbar .in { max-width:560px; margin:0 auto; display:flex; gap:12px; align-items:center; }
+.wbar .who { flex:1; min-width:0; font-size:13px; color:var(--mut); line-height:1.3; }
+.wbar .who b { display:block; font-size:20px; color:var(--gold); font-weight:600; font-variant-numeric:tabular-nums; }
+.cta { background:var(--gold); color:#fff; border:0; border-radius:4px; font:600 14px/1.2 'Inter',system-ui,sans-serif; padding:10px 16px; text-align:center; text-decoration:none; cursor:pointer; }
+.cta small { display:block; font-size:11px; font-weight:500; opacity:.85; }
+.cta:disabled { opacity:.45; cursor:default; }
+.cta.ghost { background:transparent; color:var(--gold); border:1px solid var(--gold); }
+
+.ov { position:fixed; inset:0; z-index:45; background:rgba(40,28,15,.5); display:flex; align-items:flex-end; justify-content:center; }
+.sheet { background:var(--paper); color:var(--ink); width:100%; max-width:560px; max-height:92vh; overflow:auto; border-radius:10px 10px 0 0; font-family:'Lora',Georgia,serif;
+  padding:16px max(16px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.sh { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.sh h2 { margin:0; font-weight:400; color:var(--gold); font-size:22px; letter-spacing:.06em; }
+.x { border:1px solid var(--gold2); background:transparent; color:var(--ink); border-radius:4px; padding:6px 12px; cursor:pointer; font:500 13px 'Inter',sans-serif; }
+.ie { display:block; font-style:italic; color:var(--mut); font-size:12px; }
+.mph { width:150px; height:150px; border-radius:50%; object-fit:cover; display:block; margin:6px auto 10px; padding:4px; background:var(--paper); box-shadow:0 0 0 1px var(--gold2), 0 4px 12px rgba(80,55,25,.2); }
+.mt { text-align:center; } .mt b { display:block; font-size:19px; font-weight:500; }
+.grp { margin-top:12px; } .grp > b { display:block; font:500 10.5px 'Inter',sans-serif; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; margin-bottom:6px; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { border:1px solid var(--gold2); background:transparent; color:var(--ink); border-radius:4px; padding:6px 10px; font:14px/1.2 'Lora',serif; text-align:center; cursor:pointer; }
+.chip small { display:block; font-size:11px; color:var(--mut); font-style:italic; }
+.chip[aria-pressed="true"] { background:var(--gold); color:#fff; border-color:var(--gold); } .chip[aria-pressed="true"] small { color:#fff; }
+.qrow { display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
+.bstep { display:inline-flex; align-items:center; border:1px solid var(--gold); border-radius:4px; overflow:hidden; }
+.bstep button { border:0; background:var(--gold); color:#fff; width:36px; height:34px; font-size:18px; cursor:pointer; }
+.bstep span { min-width:36px; text-align:center; font-weight:600; font-variant-numeric:tabular-nums; }
+.merr { color:var(--warn); font-size:13px; min-height:18px; margin-top:8px; }
+.acts { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; } .acts > * { flex:1 1 160px; }
+.line { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 10px; padding:10px 0; border-bottom:1px dashed var(--gold2); align-items:center; }
+.line .ln { font-weight:500; } .line .ln small { display:block; font-weight:400; color:var(--mut); font-size:12.5px; }
+.line .lt { text-align:right; font-variant-numeric:tabular-nums; }
+.line .lc { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; }
+.rm { border:0; background:none; color:var(--mut); text-decoration:underline; font-size:12.5px; cursor:pointer; }
+.sum { display:flex; justify-content:space-between; align-items:baseline; margin-top:12px; padding-top:10px; border-top:1px solid var(--gold); }
+.sum b { font-size:26px; color:var(--gold); font-weight:600; font-variant-numeric:tabular-nums; }
+.fine { font-size:12.5px; color:var(--mut); margin-top:4px; }
+.box { margin-top:14px; border:1px solid var(--gold2); border-radius:6px; padding:12px; }
+.box h3 { margin:0 0 8px; font-weight:500; font-size:18px; }
+.form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.form label { display:flex; flex-direction:column; gap:4px; font-size:12.5px; color:var(--mut); }
+.form .w { grid-column:1/-1; }
+.form input, .form textarea, .msg { font:15px 'Lora',serif; color:var(--ink); background:#fff; border:1px solid var(--gold2); border-radius:4px; padding:8px 10px; min-width:0; width:100%; box-sizing:border-box; }
+.form input.bad { border-color:var(--warn); }
+.warn { margin-top:10px; border:1px solid var(--warn); color:var(--warn); border-radius:4px; padding:8px 10px; font-size:13px; }
+.msg { min-height:150px; resize:vertical; margin-top:8px; font-size:14px; line-height:1.5; }
+.steps { margin:0; padding-left:20px; font-size:14px; display:grid; gap:4px; } .steps b { color:var(--gold); }
+.empty { color:var(--mut); padding:16px 0; text-align:center; }
+.toast { position:fixed; left:50%; transform:translateX(-50%); top:calc(14px + env(safe-area-inset-top, 0px)); z-index:60; background:var(--ink); color:var(--paper); padding:10px 14px; border-radius:4px; font:13.5px 'Inter',sans-serif; max-width:calc(100% - 32px); }
+</style>
+
+<div class="wbar"><div class="in">
+  <div class="who" id="barWho">Bấm <b style="display:inline;font-size:inherit">Chọn</b> bên cạnh giá để gọi món<span class="ie">Tap “Chọn” next to a price to order</span></div>
+  <button class="cta" id="openSheet" disabled>Xem món đã chọn<small>View my order</small></button>
+</div></div>
+
+<div class="ov" id="mOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
+  <div class="sh"><h2>CHỌN MÓN</h2><button class="x" id="mX">Đóng</button></div>
+  <img loading="lazy" decoding="async" class="mph" id="mImg" alt="">
+  <div class="mt"><b id="mName"></b><span class="ie" id="mEn"></span></div>
+  <div id="mBody"></div>
+  <div class="qrow"><span>Số phần · <i>Qty</i></span><span class="bstep"><button id="mMinus" aria-label="Bớt">−</button><span id="mQ">1</span><button id="mPlus" aria-label="Thêm">+</button></span></div>
+  <div class="merr" id="mErr"></div>
+  <div class="acts"><button class="cta" id="mAdd">Thêm vào món đã chọn</button></div>
+</div></div>
+
+<div class="ov" id="sOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sT">
+  <div class="sh"><h2 id="sT">MÓN ĐÃ CHỌN</h2><button class="x" id="sX">Đóng</button></div>
+  <div id="lines"></div>
+  <div class="sum"><span>Tạm tính · <i>Subtotal</i></span><b id="sumT">0đ</b></div>
+  <div class="fine">Tính theo giá trên menu. Nhà hàng xác nhận lại tổng tiền khi trả lời Zalo.</div>
+  <div class="box"><h3>Thông tin đặt bàn <span class="ie" style="display:inline">Booking details</span></h3>
+    <div class="form">
+      <label>Tên của bạn *<input id="fName" autocomplete="name"></label>
+      <label>Số điện thoại *<input id="fPhone" type="tel" inputmode="tel" autocomplete="tel"></label>
+      <label>Ngày đến *<input id="fDate" type="date"></label>
+      <label>Giờ đến * (17:00–23:00)<input id="fTime" type="time" min="17:00" max="22:59"></label>
+      <label>Số khách *<input id="fPax" type="number" min="1" inputmode="numeric" placeholder="2"></label>
+      <label>Dịp đặc biệt<input id="fOcc" placeholder="Sinh nhật, kỷ niệm…"></label>
+      <label class="w">Ghi chú cho bếp<textarea id="fNote" rows="2" placeholder="Ví dụ: ít cay, dị ứng hải sản…"></textarea></label>
+    </div>
+    <div class="warn" id="warn" hidden></div>
+  </div>
+  <div class="box"><h3>Gửi cho nhà hàng qua Zalo</h3>
+    <ol class="steps"><li>Bấm <b>Sao chép tin nhắn</b>.</li><li>Bấm <b>Mở Zalo Apes</b> (hoặc tìm số <b style="user-select:all">0385 285 768</b> trên Zalo).</li><li><b>Dán</b> tin nhắn vào khung chat và <b>gửi</b>. Nhà hàng sẽ trả lời xác nhận.</li></ol>
+    <textarea class="msg" id="msg" aria-label="Tin nhắn gửi nhà hàng"></textarea>
+    <div class="acts"><button class="cta" id="copyBtn">Sao chép tin nhắn<small>Copy message</small></button><a class="cta ghost" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Mở Zalo Apes<small>Open Zalo</small></a></div>
+  </div>
+</div></div>
+<div class="ov" id="nxt" hidden style="z-index:60;background:rgba(40,28,15,.3);display:flex;align-items:center;justify-content:center;padding:16px"><div style="background:#FFFDF8;border:1px solid #A8834C;border-radius:10px;max-width:300px;width:100%;padding:16px 14px 12px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);font-family:'Be Vietnam Pro',system-ui,sans-serif"><div id="nxtT" style="font:600 20px Georgia,serif;color:#A8834C">Đã chọn ✓</div><div style="margin-top:6px;font-size:15px;font-weight:600;color:#2E241C">Mời bạn chọn món kế tiếp, cảm ơn bạn!</div><div style="font-size:12px;font-style:italic;color:#857463">Please choose your next dish. Thank you!</div><button type="button" id="nxtX" style="margin-top:12px;width:100%;border:0;border-radius:4px;background:#A8834C;color:#fff;font-weight:600;padding:10px;font-size:14.5px;cursor:pointer">Chọn tiếp</button></div></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const D={"Salad rau xanh trộn dầu giấm": {"vn": "Salad rau xanh trộn dầu giấm", "en": "Mixed Green Salad", "img": "m/salad_rau.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 74}]}, "Salad Thái tôm xoài": {"vn": "Salad Thái tôm xoài", "en": "Thai Prawn Salad with Mango", "img": "m/salad_thai.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 99}]}, "Salad tôm": {"vn": "Salad tôm", "en": "Prawn Salad", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 125}]}, "Salad Caesar": {"vn": "Salad Caesar", "en": "Caesar Salad", "img": "m/salad_caesar.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 138}]}, "Salad cá ngừ áp chảo": {"vn": "Salad cá ngừ áp chảo", "en": "Pan-fried Tuna Salad", "img": "m/salad_cangu.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 169}]}, "Salad trái cây sốt cam": {"vn": "Salad trái cây sốt cam", "en": "Fruit Salad with Orange Sauce", "img": "m/salad_traicay.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 169}]}, "Súp bí đỏ": {"vn": "Súp bí đỏ", "en": "Pumpkin Soup", "img": "m/sup_bido.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 89}]}, "Súp Thái Tom Yum": {"vn": "Súp Thái Tom Yum", "en": "Thai Tom Yum Soup", "img": "m/sup_tomyum.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 189}]}, "Súp bào ngư": {"vn": "Súp bào ngư", "en": "Abalone Soup", "img": "m/sup_baongu.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 189}]}, "Hành tây vòng chiên xù bột bia": {"vn": "Hành tây vòng chiên xù bột bia", "en": "Beer-battered Onion Rings", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 68}]}, "Bánh mì bơ tỏi": {"vn": "Bánh mì bơ tỏi", "en": "Garlic Bread", "img": "m/banhmi_botoi.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 74}]}, "Khoai tây chiên": {"vn": "Khoai tây chiên", "en": "French Fries", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 85}]}, "Khoai tây đút lò": {"vn": "Khoai tây đút lò", "en": "Baked Potato", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 85}]}, "Khoai lang múi cau chiên": {"vn": "Khoai lang múi cau chiên", "en": "Sweet Potato Wedges", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 85}]}, "Gân bò Mỹ ngâm": {"vn": "Gân bò Mỹ ngâm", "en": "Brined Beef Tendon", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 88}]}, "Bánh mì bơ tỏi phô mai": {"vn": "Bánh mì bơ tỏi phô mai", "en": "Cheesy Garlic Bread", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 99}]}, "Măng tây xào tỏi": {"vn": "Măng tây xào tỏi", "en": "Stir-fried Asparagus", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 120}]}, "Cánh gà nướng sốt cay": {"vn": "Cánh gà nướng sốt cay", "en": "Grilled Chicken Wings with Hot Sauce", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 128}]}, "Chip cá ngừ": {"vn": "Chip cá ngừ", "en": "Tuna Chips", "img": "m/chip_cangu.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 135}]}, "Cá hồi muối kèm bánh mì và kem chua": {"vn": "Cá hồi muối kèm bánh mì và kem chua", "en": "Salmon Gravlax with Bread & Sour Cream", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 145}]}, "Xúc xích Đức nướng kèm sốt hành tây": {"vn": "Xúc xích Đức nướng kèm sốt hành tây", "en": "Grilled German Sausages with Onion Gravy", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 155}]}, "Cánh gà chiên sốt phô mai cay": {"vn": "Cánh gà chiên sốt phô mai cay", "en": "Fried Chicken Wings with Hot Cheese Sauce", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Xiên que bò & gà nướng BBQ": {"vn": "Xiên que bò & gà nướng BBQ", "en": "Mixed Beef & Chicken Skewers", "img": "m/xien_que.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 179}]}, "Râu bạch tuộc nướng kiểu Tây Ban Nha": {"vn": "Râu bạch tuộc nướng kiểu Tây Ban Nha", "en": "Spanish-style Octopus", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 185}]}, "Mực vòng chiên xù": {"vn": "Mực vòng chiên xù", "en": "Fried Calamari", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 208}]}, "Cơm chiên hải sản Apes": {"vn": "Cơm chiên hải sản Apes", "en": "Apes Seafood Fried Rice", "img": "m/com_chien.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 145}]}, "Ức gà nướng sốt BBQ": {"vn": "Ức gà nướng sốt BBQ", "en": "Grilled Chicken Breast with BBQ Sauce", "img": "m/uc_ga.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Đùi gà nướng sốt cay": {"vn": "Đùi gà nướng sốt cay", "en": "Grilled Chicken Leg with Hot Sauce", "img": "m/dui_ga.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 172}]}, "Ức vịt áp chảo": {"vn": "Ức vịt áp chảo", "en": "Pan-seared Duck Breast", "img": "m/uc_vit.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 259}]}, "Sườn cọng heo nướng sốt BBQ": {"vn": "Sườn cọng heo nướng sốt BBQ", "en": "Grilled Spare Ribs with BBQ Sauce", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 295}]}, "Bẹ sườn heo nướng sốt BBQ": {"vn": "Bẹ sườn heo nướng sốt BBQ", "en": "Grilled Baby Back Ribs with BBQ Sauce", "img": "m/be_suon.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 452}]}, "Thăn vai bò Mỹ": {"vn": "Thăn vai bò Mỹ (200g)", "en": "Top Blade (200g)", "img": "m/than_vai.jpg", "flag": "steak", "v": [{"k": "v", "l": "", "p": 320}]}, "Sườn cừu nướng": {"vn": "Sườn cừu nướng", "en": "Grilled Lamb Chops", "img": "m/suon_cuu.jpg", "flag": "steak", "v": [{"k": "v", "l": "", "p": 542}]}, "Thăn lưng bò Mỹ": {"vn": "Thăn lưng bò Mỹ", "en": "Ribeye", "img": "m/ribeye.jpg", "flag": "steak", "v": [{"k": "v0", "l": "260g", "p": 569}, {"k": "v1", "l": "350g", "p": 669}]}, "Ốc bulot nướng tiêu": {"vn": "Ốc bulot nướng tiêu", "en": "Grilled Bulot with Pepper", "img": "m/oc_bulot.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 147}]}, "Vẹm xanh New Zealand sốt thảo mộc": {"vn": "Vẹm xanh New Zealand sốt thảo mộc", "en": "New Zealand Green-shell Mussels with Herb Sauce", "img": "m/vem.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 189}]}, "Ốc hương sốt trứng muối": {"vn": "Ốc hương sốt trứng muối", "en": "Sea Snails with Salted Egg Sauce", "img": "m/oc_huong.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 195}]}, "Sò điệp Nhật áp chảo": {"vn": "Sò điệp Nhật áp chảo", "en": "Sautéed Scallops", "img": "m/so_diep.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 239}]}, "Cua lột sốt me": {"vn": "Cua lột sốt me", "en": "Soft-shell Crab with Tamarind Sauce", "img": "m/cua_lot.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 245}]}, "Hàu Nhật": {"vn": "Hàu Nhật", "en": "Japanese Oysters", "img": "m/hau.jpg", "flag": "", "v": [{"k": "v0", "l": "Ăn sống sashimi · Sashimi", "p": 257}, {"k": "v1", "l": "Nướng phô mai · Baked with Cheese", "p": 289}]}, "Sò điệp Nhật xào măng tây": {"vn": "Sò điệp Nhật xào măng tây", "en": "Sautéed Scallops with Asparagus", "img": "m/so_diep_mt.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 259}]}, "Tôm hùm đất sốt Cajun": {"vn": "Tôm hùm đất sốt Cajun", "en": "Crawfish with Cajun Sauce", "img": "m/tom_hum_dat.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 469}]}, "Cá hồi nướng sốt mù tạt vàng": {"vn": "Cá hồi nướng sốt mù tạt vàng", "en": "Grilled Salmon with Mustard Sauce", "img": "m/ca_hoi.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 499}], "done": true}, "Cá tuyết áp chảo": {"vn": "Cá tuyết áp chảo", "en": "Pan-seared Cod Fish", "img": "m/ca_tuyet.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 499}]}, "Bò cuộn bánh ngàn lớp": {"vn": "Bò cuộn bánh ngàn lớp", "en": "Beef Wellington", "img": "m/wellington.jpg", "flag": "pre", "v": [{"k": "v0", "l": "200g", "p": 650}, {"k": "v1", "l": "300g", "p": 950}], "done": true}, "Cá hồi cuộn bánh ngàn lớp": {"vn": "Cá hồi cuộn bánh ngàn lớp", "en": "Salmon Wellington", "img": "", "flag": "pre", "v": [{"k": "v0", "l": "200g", "p": 650}, {"k": "v1", "l": "300g", "p": 950}]}, "Tôm hùm nướng phô mai": {"vn": "Tôm hùm nướng phô mai", "en": "Grilled Lobster with Cheese", "img": "m/tom_hum_pm.jpg", "flag": "pre", "v": [{"k": "v", "l": "", "p": 639}]}, "Tôm hùm nướng ăn kèm cơm Ý risotto": {"vn": "Tôm hùm nướng ăn kèm cơm Ý risotto", "en": "Lobster Risotto", "img": "m/tom_hum_ri.jpg", "flag": "pre", "v": [{"k": "v", "l": "", "p": 679}]}, "Mì Ý rau củ sốt cà chua": {"vn": "Mì Ý rau củ sốt cà chua", "en": "Veggie Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 135}]}, "Mì Ý sốt kem thịt xông khói": {"vn": "Mì Ý sốt kem thịt xông khói", "en": "Spaghetti Carbonara", "img": "m/mi_carbo.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Mì Ý bò viên": {"vn": "Mì Ý bò viên", "en": "Meatball Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Mì Ý gà sốt kem nấm": {"vn": "Mì Ý gà sốt kem nấm", "en": "Chicken Spaghetti with Creamy Mushroom Sauce", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Mì Ý tôm": {"vn": "Mì Ý tôm", "en": "Prawn Spaghetti", "img": "m/mi_tom.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 179}]}, "Mì Ý hải sản": {"vn": "Mì Ý hải sản", "en": "Seafood Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 179}]}, "Mì Ý cá hồi": {"vn": "Mì Ý cá hồi", "en": "Salmon Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 179}]}, "Mì Ý bò bằm phủ phô mai": {"vn": "Mì Ý bò bằm phủ phô mai", "en": "Spaghetti Bolognese", "img": "m/mi_bobam.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 189}]}, "Mì Ý bò lát": {"vn": "Mì Ý bò lát", "en": "Sliced Beef Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 189}]}, "Mì Ý gà phủ phô mai": {"vn": "Mì Ý gà phủ phô mai", "en": "Chicken Parmigiana Spaghetti", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 200}]}, "Bánh quesadilla nhân gà": {"vn": "Bánh quesadilla nhân gà", "en": "Chicken Quesadilla", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 165}]}, "Bánh quesadilla nhân bò": {"vn": "Bánh quesadilla nhân bò", "en": "Beef Quesadilla", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 185}]}, "Tacos bò hầm": {"vn": "Tacos bò hầm", "en": "Beef Stew Tacos", "img": "m/tacos.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 186}]}, "Bánh cuộn burrito gà": {"vn": "Bánh cuộn burrito gà", "en": "Chicken Burrito", "img": "m/burrito_ga.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 195}]}, "Bánh cuộn burrito bò": {"vn": "Bánh cuộn burrito bò", "en": "Beef Burrito", "img": "m/burrito_bo.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 220}]}, "Burger gà": {"vn": "Burger gà", "en": "Chicken Burger", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 125}]}, "Burger bò": {"vn": "Burger bò", "en": "Beef Burger", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 145}]}, "Pizza rau củ": {"vn": "Pizza rau củ", "en": "Vegetable Pizza", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 199}]}, "Pizza bò nướng BBQ": {"vn": "Pizza bò nướng BBQ", "en": "BBQ Beef Pizza", "img": "", "flag": "", "v": [{"k": "v", "l": "", "p": 225}]}, "Pizza hải sản": {"vn": "Pizza hải sản", "en": "Seafood Pizza", "img": "m/pizza_hs.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 245}]}, "Panna cotta dạng ly": {"vn": "Panna cotta dạng ly", "en": "Panna Cotta (Glass)", "img": "m/pc_ly.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 35}]}, "Bánh mì nướng kiểu Pháp": {"vn": "Bánh mì nướng kiểu Pháp", "en": "French Toast", "img": "m/french.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 45}]}, "Panna cotta dạng bánh, dùng trên đĩa": {"vn": "Panna cotta dạng bánh, dùng trên đĩa", "en": "Panna Cotta (Plated)", "img": "m/pc_dia.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 89}]}, "Bánh lava sô-cô-la": {"vn": "Bánh lava sô-cô-la", "en": "Lava Cake", "img": "m/lava.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 89}]}, "Kem caramel": {"vn": "Kem caramel", "en": "Caramel Ice Cream", "img": "m/kem_caramel.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 89}]}, "Bánh flan caramel": {"vn": "Bánh flan caramel", "en": "Crème Caramel", "img": "m/flan.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 89}]}, "Kem chanh Nhật": {"vn": "Kem chanh Nhật", "en": "Japanese Lemon Ice Cream", "img": "m/kem_chanh.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 109}]}, "Bánh kem mini": {"vn": "Bánh kem mini", "en": "Mini Cake", "img": "m/banh_kem.jpg", "flag": "", "v": [{"k": "v", "l": "", "p": 130}]}};
+const $=s=>document.querySelector(s);
+const fmt=k=>(k*1000).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const OPT={done:['Tái|Rare','Tái vừa|Medium Rare','Chín tới|Medium','Chín vừa|Medium Well','Chín kỹ|Well Done'],sauce:['Sốt nấm|Mushroom','Sốt tiêu đen|Black Pepper','Sốt vang đỏ|Red Wine'],side:['Khoai tây chiên|French Fries','Khoai tây nghiền|Mashed Potatoes']};
+const OPTN={done:['Độ chín','Doneness'],sauce:['Sốt','Sauce'],side:['Ăn kèm','Side']};
+const ORDER=Object.keys(D);
+let cart=[]; // {k,v,q,o}
+try{ cart=JSON.parse(localStorage.getItem('apesAlcP')||'[]').filter(e=>D[e.k]); }catch(e){}
+const save=()=>{ try{ localStorage.setItem('apesAlcP',JSON.stringify(cart)); }catch(e){} };
+const simple=d=>d.v.length===1 && d.flag!=='steak' && !d.done;
+const qOf=k=>cart.filter(e=>e.k===k).reduce((s,e)=>s+e.q,0);
+const vOf=(k,v)=>D[k].v.find(x=>x.k===v);
+const same=(a,b)=>JSON.stringify(a||{})===JSON.stringify(b||{});
+
+function pk(el){ const k=el.dataset.k, d=D[k], q=qOf(k);
+  if(simple(d)) el.innerHTML=q?`<span class="stp"><button data-m="${esc(k)}" aria-label="Bớt">−</button><span>${q}</span><button data-p="${esc(k)}" aria-label="Thêm">+</button></span>`:`<button class="add" data-p="${esc(k)}">Chọn</button>`;
+  else el.innerHTML=`<button class="add${q?' has':''}" data-o="${esc(k)}">${q?'Đã chọn '+q+' · +':'Chọn'}</button>`;
+}
+function paint(){ document.querySelectorAll('.pk').forEach(pk); bar(); save(); if(!$('#sOv').hidden) sheet(); }
+function total(){ return cart.reduce((s,e)=>s+e.q*vOf(e.k,e.v).p,0); }
+function bar(){ const n=cart.reduce((s,e)=>s+e.q,0);
+  $('#barWho').innerHTML=n?`${n} món đã chọn<b>${fmt(total())}</b>`:'Bấm <b style="display:inline;font-size:inherit">Chọn</b> bên cạnh giá để gọi món<span class="ie">Tap “Chọn” next to a price to order</span>';
+  $('#openSheet').disabled=!n; }
+function addEntry(k,v,q,o){ const e=cart.find(e=>e.k===k&&e.v===v&&same(e.o,o)); if(e) e.q+=q; else cart.push({k,v,q,o:o||null}); cart.sort((a,b)=>ORDER.indexOf(a.k)-ORDER.indexOf(b.k)); }
+function nextHint(n){ return; const e=$('#nxt'); $('#nxtT').textContent='Đã chọn: '+n+' ✓'; e.hidden=false; clearTimeout(nextHint.h); nextHint.h=setTimeout(()=>e.hidden=true,4000); }
+document.addEventListener('click',e=>{ if(e.target.closest('#nxtX')||e.target.id==='nxt') $('#nxt').hidden=true; },true);
+function toast(t){ const e=$('#toast'); e.textContent=t; e.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>e.hidden=true,2800); }
+
+/* modal for dishes with sizes or steak options */
+let M=null;
+function openM(k){ const d=D[k]; M={k,v:d.v.length===1?'v':null,o:{},q:1};
+  $('#mImg').hidden=!d.img; if(d.img){ $('#mImg').src=d.img; $('#mImg').alt=d.vn; }
+  $('#mName').textContent=d.vn; $('#mEn').textContent=d.en; drawM(); $('#mOv').hidden=false; document.body.style.overflow='hidden'; }
+function drawM(){ const d=D[M.k]; let h='';
+  if(d.v.length>1) h+=`<div class="grp"><b>Chọn loại · Choose</b><div class="chips">${d.v.map(v=>`<button class="chip" data-mv="${v.k}" aria-pressed="${M.v===v.k}">${esc(v.l.split(' · ')[0])}<small>${fmt(v.p)}</small></button>`).join('')}</div></div>`;
+  else h+=`<div class="grp" style="text-align:center;color:var(--gold);font-size:18px">${fmt(d.v[0].p)}</div>`;
+  if(d.flag==='steak') h+=Object.keys(OPT).map(g=>`<div class="grp"><b>${OPTN[g][0]} · ${OPTN[g][1]}</b><div class="chips">${OPT[g].map(x=>{const [vn,en]=x.split('|');return `<button class="chip" data-mo="${g}|${vn}" aria-pressed="${M.o[g]===vn}">${vn}<small>${en}</small></button>`}).join('')}</div></div>`).join('');
+  if(d.flag!=='steak'&&d.done) h+=`<div class="grp"><b>${OPTN.done[0]} · ${OPTN.done[1]}</b><div class="chips">${OPT.done.map(x=>{const [vn,en]=x.split('|');return `<button class="chip" data-mo="done|${vn}" aria-pressed="${M.o.done===vn}">${vn}<small>${en}</small></button>`}).join('')}</div></div>`;
+  if(d.flag==='pre') h+=`<div class="grp" style="color:var(--gold);font-size:13px;text-align:center">✦ Món đặc biệt – vui lòng đặt trước 6 tiếng ✦</div>`;
+  $('#mBody').innerHTML=h; $('#mQ').textContent=M.q; $('#mErr').textContent='';
+  if(d.flag==='steak') $('#mAdd').textContent=M.q>1?`Thêm ${M.q} phần cùng độ chín, sốt, ăn kèm`:'Thêm vào món đã chọn'; else $('#mAdd').textContent='Thêm vào món đã chọn';
+}
+const closeM=()=>{ $('#mOv').hidden=true; document.body.style.overflow=''; M=null; };
+$('#mX').onclick=closeM; $('#mOv').addEventListener('click',e=>{ if(e.target.id==='mOv') closeM(); });
+$('#mMinus').onclick=()=>{ if(M.q>1){M.q--; drawM();} }; $('#mPlus').onclick=()=>{ M.q++; drawM(); };
+$('#mAdd').onclick=()=>{ const d=D[M.k]; const miss=[];
+  if(!M.v) miss.push('loại / khẩu phần');
+  if(d.flag==='steak') ['done','sauce','side'].forEach(g=>{ if(!M.o[g]) miss.push(OPTN[g][0].toLowerCase()); }); else if(d.done&&!M.o.done) miss.push('độ chín');
+  if(miss.length){ $('#mErr').textContent='Bạn chọn thêm: '+miss.join(', ')+' nhé.'; return; }
+  addEntry(M.k,M.v,M.q,d.flag==='steak'?{...M.o}:(d.done?{done:M.o.done}:null)); closeM(); nextHint(d.vn); paint(); };
+
+document.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.p!==undefined && b.closest('.pk')){ const k=b.dataset.p; addEntry(k,'v',1,null); paint(); if(b.classList.contains('add')) nextHint(D[k].vn); }
+  else if(b.dataset.m!==undefined && b.closest('.pk')){ const k=b.dataset.m; const en=cart.find(x=>x.k===k); if(en){ en.q--; if(!en.q) cart.splice(cart.indexOf(en),1); } paint(); }
+  else if(b.dataset.o!==undefined){ openM(b.dataset.o); }
+  else if(b.dataset.mv){ M.v=b.dataset.mv; drawM(); }
+  else if(b.dataset.mo){ const [g,v]=b.dataset.mo.split('|'); M.o[g]=v; drawM(); }
+  else if(b.dataset.li!==undefined){ const i=+b.dataset.li, en=cart[i]; if(b.dataset.a==='+') en.q++; else if(b.dataset.a==='-'){ en.q--; if(!en.q) cart.splice(i,1); } else cart.splice(i,1); paint(); }
+});
+
+/* order sheet */
+function oTxt(o){ return o?[o.done&&'độ chín '+o.done,o.sauce,o.side&&'ăn kèm '+o.side].filter(Boolean).join(', '):''; }
+function sheet(){
+  $('#lines').innerHTML=cart.length?cart.map((e,i)=>{const d=D[e.k],v=vOf(e.k,e.v);return `<div class="line">
+    <div class="ln">${esc(d.vn)}${v.l?' – '+esc(v.l.split(' · ')[0]):''}<small>${fmt(v.p)} / phần${e.o?' · '+esc(oTxt(e.o)):''}</small></div><div class="lt">${fmt(v.p*e.q)}</div>
+    <div class="lc"><span class="bstep"><button data-li="${i}" data-a="-" aria-label="Bớt">−</button><span>${e.q}</span><button data-li="${i}" data-a="+" aria-label="Thêm">+</button></span><button class="rm" data-li="${i}" data-a="x">Bỏ món</button></div></div>`}).join(''):'<div class="empty">Chưa có món nào.</div>';
+  $('#sumT').textContent=fmt(total()); check(); $('#msg').value=msgText(); }
+function fdate(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return `${d}/${m}/${y}`; }
+function check(){ const w=[], t=$('#fTime').value, d=$('#fDate').value;
+  const badT=!!t&&(t<'17:00'||t>'22:59'); $('#fTime').classList.toggle('bad',badT); if(badT) w.push('Nhà hàng mở cửa 17:00 – 23:00, bạn chọn lại giờ đến nhé.');
+  const now=new Date(), today=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
+  if(d&&d<today) w.push('Ngày đến đã qua, bạn chọn lại ngày nhé.');
+  const pre=[...new Set(cart.filter(e=>D[e.k].flag==='pre').map(e=>D[e.k].vn))];
+  if(pre.length){ let s='Món đặc biệt ('+pre.join(', ')+') cần đặt trước 6 tiếng.'; if(d&&t&&(new Date(d+'T'+t)-Date.now()<6*3600e3)) s+=' Giờ đến bạn chọn chưa đủ 6 tiếng, nhà hàng sẽ báo lại nếu không kịp chuẩn bị.'; w.push(s); }
+  $('#warn').hidden=!w.length; $('#warn').innerHTML=w.map(esc).join('<br>'); }
+function msgText(){ const v=id=>$(id).value.trim();
+  let s='Chào Apes, mình muốn đặt bàn và gọi món trước:\n';
+  s+=`- Tên: ${v('#fName')||'…'}\n- SĐT: ${v('#fPhone')||'…'}\n- Ngày: ${fdate($('#fDate').value)||'…'} · Giờ: ${$('#fTime').value||'…'} · Số khách: ${v('#fPax')||'…'}\n`;
+  if(v('#fOcc')) s+=`- Dịp: ${v('#fOcc')}\n`;
+  s+='\nMón đã chọn:\n';
+  cart.forEach((e,i)=>{ const d=D[e.k],vv=vOf(e.k,e.v); s+=`${i+1}. ${d.vn}${vv.l?' ('+vv.l.split(' · ')[0]+')':''} × ${e.q} = ${fmt(vv.p*e.q)}\n${e.o?'   – '+oTxt(e.o)+'\n':''}`; });
+  s+=`\nTạm tính: ${fmt(total())}\n`; if(v('#fNote')) s+=`Ghi chú: ${v('#fNote')}\n`;
+  return s+'Nhờ nhà hàng xác nhận giúp mình nhé. Cảm ơn Apes!'; }
+$('#openSheet').onclick=()=>{ sheet(); $('#sOv').hidden=false; document.body.style.overflow='hidden'; };
+const closeS=()=>{ $('#sOv').hidden=true; document.body.style.overflow=''; };
+$('#sX').onclick=closeS; $('#sOv').addEventListener('click',e=>{ if(e.target.id==='sOv') closeS(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if(!$('#mOv').hidden) closeM(); else closeS(); } });
+['#fName','#fPhone','#fDate','#fTime','#fPax','#fOcc','#fNote'].forEach(s=>$(s).addEventListener('input',()=>{ check(); $('#msg').value=msgText(); }));
+$('#copyBtn').onclick=()=>{ const miss=[]; if(!$('#fName').value.trim()) miss.push('tên'); if(!$('#fPhone').value.trim()) miss.push('số điện thoại'); if(!$('#fDate').value) miss.push('ngày đến'); if(!$('#fTime').value) miss.push('giờ đến'); if(!$('#fPax').value) miss.push('số khách');
+  const t=$('#msg').value, fall=()=>{ $('#msg').focus(); $('#msg').select(); toast('Tin nhắn đã được bôi đen – bạn bấm giữ và chọn Sao chép'); };
+  if(miss.length) toast('Bạn điền thêm: '+miss.join(', ')+' nhé');
+  try{ navigator.clipboard.writeText(t).then(()=>{ if(!miss.length) toast('Đã sao chép. Bấm Mở Zalo Apes rồi dán và gửi nhé'); },fall); }catch(e){ fall(); } };
+
+/* scale printed pages to the screen */
+function fit(){ const pw=135*96/25.4, avail=Math.min(document.documentElement.clientWidth-32, 560);
+  const z=Math.min(1.1, avail/pw); document.querySelectorAll('.book .page').forEach(p=>{ p.style.zoom=z; p.style.setProperty('--iz', Math.max(1, 1/z).toFixed(3)); }); }
+addEventListener('resize',fit); fit(); paint();
+</script>
+
+</body></html>
