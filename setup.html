@@ -87,10 +87,10 @@ footer a{color:var(--gold)}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Be+Vietnam+Pro:wght@400;500;600&display=swap">
 <div class="wrap">
 <header><img src="img/logo.png" alt="Logo Apes" style="width:56px;height:56px;display:block;margin:0 auto 6px"><div class="br">APES RESTAURANT</div><h1>Mẫu set up bàn<small>Table decoration</small></h1></header>
-<p class="lead">Bấm vào ảnh để xem lớn. Ghi chữ trên bảng nhỏ để bàn vào ô dưới hình, rồi bấm <b>“＋ Chọn mẫu này”</b> (mỗi bàn 1 mẫu). Giá chưa gồm VAT 8%.<i>Tap a photo to enlarge. Tap “Choose” on the photo, then write your board message below it. Prices excl. 8% VAT.</i></p>
+<p class="lead">Bấm vào ảnh để xem lớn. Ghi chữ trên bảng nhỏ để bàn vào ô dưới hình, rồi bấm <b>“＋ Chọn mẫu này”</b> (mỗi bàn 1 mẫu).<i>Tap a photo to enlarge. Tap “Choose” on the photo, then write your board message below it.</i></p><div style="margin:10px auto 14px;max-width:560px;padding:10px 12px;border:1.5px dashed #A8834C;border-radius:8px;background:rgba(168,131,76,.08);font-size:14px;line-height:1.5;text-align:center">💵 Set up bàn, khói đá và các dịch vụ trang trí do <b>nhà hàng hỗ trợ đặt giúp</b> anh/chị, nên vui lòng <b>thanh toán bằng tiền mặt tại quầy</b> (không nhận chuyển khoản). Apes cảm ơn anh/chị!<i style="display:block;font-size:12px;opacity:.75">We arrange décor services on your behalf – please pay in cash at the counter (no bank transfer).</i></div>
 <div id="grid"></div>
 <div class="extra"><h2>Hiệu ứng khói <i>Dry-ice smoke</i></h2>
-<p class="lead" style="text-align:left;margin:4px 0 0">Thêm khói đá cho set up bàn thêm lung linh. Giá chưa gồm VAT 8%.<i>Add dry-ice smoke to your set-up. Prices excl. 8% VAT.</i></p>
+<p class="lead" style="text-align:left;margin:4px 0 0">Thêm khói đá cho set up bàn thêm lung linh.<i>Add dry-ice smoke to your set-up.</i></p>
 <button class="smk" id="smk"><img loading="lazy" src="img/smoke.jpg" alt="Bàn tiệc có hiệu ứng đá khói tại Apes"></button><div id="adds"></div></div>
 <div class="form" id="form"><h2>Phiếu đặt set up</h2><div class="sel" id="sel"></div>
 <div class="fg">
@@ -136,8 +136,8 @@ function grid(){ $('#grid').innerHTML=DECOR.map(g=>`<section class="gs"><h2 clas
 function addsR(){ $('#adds').innerHTML=ADDONS.map(a=>{const on=adds.has(a.k);return `<div class="ad${on?' on':''}"><div><b>${esc(a.n)}</b><i>${esc(a.en)}</i></div><button class="pb" data-add="${a.k}"><b>${vnd(a.p)}</b><span>${on?'✓ Đã chọn':'＋ Chọn'}</span></button></div>`}).join(''); }
 function lines(){ const L=[]; if(pick){const it=ALL[pick]; L.push(['Set up bàn '+(it.lb||'No. '+pad(it.no))+(it.n?' ('+it.n+')':''),it.p*1000]);} ADDONS.forEach(a=>{if(adds.has(a.k)) L.push([a.n,a.p]);}); return L; }
 function sum(){ const L=lines(), t=L.reduce((s,x)=>s+x[1],0);
- $('#sel').innerHTML=L.length?L.map(x=>`<div><span>${esc(x[0])}</span><span>${vnd(x[1])}</span></div>`).join('')+`<div class="tt"><span>Tạm tính (chưa VAT 8%)</span><span>${vnd(t)}</span></div><div style="border:0;color:var(--muted)"><span>Đã gồm VAT 8%</span><span>${vnd(Math.round(t*1.08))}</span></div>`:'<span style="color:var(--muted)">Chưa chọn mẫu nào – bấm vào ô giá ở mẫu anh/chị thích.</span>';
- $('#bar').hidden=!L.length; if(L.length){ $('#barT').textContent=(pick?(ALL[pick].lb||'No. '+pad(ALL[pick].no)):'Hiệu ứng khói')+' · '+vnd(t); $('#barS').textContent='chưa gồm VAT 8%'; } }
+ $('#sel').innerHTML=L.length?L.map(x=>`<div><span>${esc(x[0])}</span><span>${vnd(x[1])}</span></div>`).join('')+`<div class="tt"><span>Tạm tính</span><span>${vnd(t)}</span></div>`:'<span style="color:var(--muted)">Chưa chọn mẫu nào – bấm vào ô giá ở mẫu anh/chị thích.</span>';
+ $('#bar').hidden=!L.length; if(L.length){ $('#barT').textContent=(pick?(ALL[pick].lb||'No. '+pad(ALL[pick].no)):'Hiệu ứng khói')+' · '+vnd(t); $('#barS').textContent='Thanh toán tiền mặt tại quầy'; } }
 let KE=0; try{ KE=+localStorage.getItem('apes_ke')||0; }catch(e){}
 function keR(){ const sec=[...document.querySelectorAll('#grid section.gs')].find(x=>/Mẫu tặng/.test(x.textContent)); if(!sec) return; const grid=sec.querySelector('.grid'); grid.querySelectorAll('.kec').forEach(x=>x.remove());
  grid.insertAdjacentHTML('beforeend',[1,2].map(i=>{const on=KE===i;return '<div class="card kec'+(on?' on':'')+'" id="ke'+i+'"><div class="ph"><img loading="lazy" src="img/ke0'+i+'.jpg" alt="Tặng kệ tiệc 0'+i+'" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block"></div><div class="row"><span class="code">Tặng kệ tiệc 0'+i+'</span><span class="pr"><s style="color:#A89A85;font-weight:400;font-size:.8em">120.000đ</s> 0đ</span></div><button class="pb" data-ke="'+i+'" style="margin-bottom:10px"><b>'+(i===1?'Kệ hoa tông cam':'Kệ hoa tông hồng')+'</b><span>'+(on?'✓ Đã chọn':'＋ Chọn')+'</span></button></div>';}).join('')); }
@@ -161,7 +161,7 @@ const v=k=>$('#'+k).value.trim();
 function fmtD(s){ if(!s) return ''; const [y,m,d]=s.split('-'); return d+'/'+m+'/'+y; }
 function msg(){ const L=lines(), t=L.reduce((s,x)=>s+x[1],0);
  return ['APES · PHIẾU ĐẶT SET UP BÀN','━━━━━━━━━━━━━━━━','Khách: '+v('fName')+' · '+v('fPax')+' khách','SĐT: '+v('fPhone'),'Ngày: '+fmtD(v('fDate'))+' · '+v('fTime'),v('fTbl')?'Bàn: '+v('fTbl'):'Bàn: nhờ nhà hàng xếp giúp','',
- ...L.map(x=>'• '+x[0]+': '+vnd(x[1])),'Tạm tính: '+vnd(t)+' (chưa VAT 8%) · Gồm VAT: '+vnd(Math.round(t*1.08)),'',
+ ...L.map(x=>'• '+x[0]+': '+vnd(x[1])),'Tạm tính: '+vnd(t)+' · Thanh toán tiền mặt tại quầy','',
  'Nội dung bảng để bàn: '+(v('fBoard')||'(chưa ghi)'),v('fNote')?'Ghi chú: '+v('fNote'):'','━━━━━━━━━━━━━━━━','Chờ nhà hàng xác nhận & gửi số tài khoản cọc.'].filter((x,i,a)=>x!==''||a[i-1]!=='').join('\n'); }
 function check(){ const e=[]; if(!pick&&!adds.size) e.push('Chọn 1 mẫu set up (bấm vào ô giá)'); if(!v('fName')) e.push('Tên khách'); if(!/\d{9,}/.test(v('fPhone').replace(/\D/g,''))) e.push('Số điện thoại'); if(!v('fDate')) e.push('Ngày'); if(!v('fTime')) e.push('Giờ');
  const b=$('#err'); if(e.length){ b.innerHTML='<b>Anh/chị bổ sung giúp:</b> '+e.join(', '); b.hidden=false; $('#form').scrollIntoView({behavior:'smooth'}); return false; } b.hidden=true; return true; }
