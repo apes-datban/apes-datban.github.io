@@ -16,8 +16,28 @@ const box=document.getElementById('b');
 function show(o){ box.className='b '+(o.ok?'ok':'no'); box.innerHTML='<div class="t"></div><div class="m"></div>'; box.querySelector('.t').innerHTML=o.title; const m=box.querySelector('.m'); m.innerHTML=o.msg;
   /* link nội bộ (vd "Vẫn chốt") chuyển về trang này để không bị lỗi tài khoản Google */
   m.querySelectorAll('a[href*="/exec?"]').forEach(a=>{ try{ a.href=location.pathname+new URL(a.href).search; }catch(e){} }); }
+function go(extra){ const u=new URLSearchParams(location.search); for(const k in extra) if(extra[k]) u.set(k,extra[k]); history.replaceState(null,'','?'+u.toString()); box.className='b'; box.innerHTML='<div class="t">Đang xử lý…</div><div class="sp"></div>'; run(); }
+const POL='<div style="font-size:13px;color:#857463;margin-top:8px;line-height:1.5">Chính sách: báo <b>trước 8:00 sáng ngày đặt</b> → dời ngày, giữ cọc. Hủy → không hoàn cọc. Sau 8:00 → không dời, mất cọc.</div>';
+function formDoi(){
+  const d=new Date(Date.now()+7*3600e3).toISOString().slice(0,10);
+  box.className='b'; box.innerHTML='<div class="t">📅 Dời ngày cho khách</div>'+POL+
+   '<div style="text-align:left;margin-top:14px;font-size:15px"><label>Ngày mới<br><input id="nd" type="date" min="'+d+'" style="width:100%;padding:10px;font-size:16px;margin:4px 0 10px;box-sizing:border-box"></label>'+
+   '<label>Giờ đến mới <span style="color:#857463;font-size:13px">(để trống = giữ giờ cũ)</span><br><input id="ng" type="time" style="width:100%;padding:10px;font-size:16px;margin:4px 0 10px;box-sizing:border-box"></label>'+
+   '<label>Bàn <span style="color:#857463;font-size:13px">(để trống = giữ bàn cũ)</span><br><input id="nb" type="text" placeholder="VD: 20" style="width:100%;padding:10px;font-size:16px;margin:4px 0 4px;box-sizing:border-box"></label></div>'+
+   '<button class="btn" id="ok" style="background:#1565C0">Xác nhận dời ngày</button><div id="er" style="color:#B4472F;margin-top:8px"></div>';
+  document.getElementById('ok').onclick=()=>{ const nd=document.getElementById('nd').value; if(!nd){ document.getElementById('er').textContent='Vui lòng chọn ngày mới.'; return; }
+    go({nd, ng:document.getElementById('ng').value, nb:document.getElementById('nb').value.trim()}); };
+}
+function formHuy(){
+  box.className='b no'; box.innerHTML='<div class="t">❌ Xác nhận hủy bàn?</div><div class="m">Khách hủy bàn → <b>tiền cọc không hoàn lại</b>.<br>Dòng trong sheet Booking sẽ tô xám, bàn được mở lại cho khách khác.</div>'+POL+
+   '<button class="btn" id="ok" style="background:#B4472F">Đồng ý hủy bàn</button>';
+  document.getElementById('ok').onclick=()=>go({ok:'1'});
+}
 async function run(){
   const q=location.search; if(!/[?&]id=/.test(q)){ show({ok:false,title:'Link không hợp lệ',msg:'Vui lòng mở lại từ email phiếu đặt bàn.'}); return; }
+  const Q=new URLSearchParams(q);
+  if(Q.get('a')==='doi'&&!Q.get('nd')){ formDoi(); return; }
+  if(Q.get('a')==='huy'&&!Q.get('ok')){ formHuy(); return; }
   for(let i=0;i<2;i++){
     try{ const r=await fetch(EXEC+q+'&fmt=json',{credentials:'omit',cache:'no-store'}); const o=await r.json(); show(o); return; }
     catch(e){ if(i) show({ok:false,title:'Chưa kết nối được',msg:'Mạng yếu hoặc máy chủ bận. Bấm thử lại giúp em.<br><button class="btn" onclick="location.reload()">Thử lại</button>'}); }
