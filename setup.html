@@ -103,8 +103,8 @@ footer a{color:var(--gold)}
 <label class="w">Nội dung bảng để bàn<input id="fBoard"></label>
 <label class="w">Ghi chú set up · Note<input id="fNote" placeholder="VD: thêm bóng màu hồng, để hoa bên trái"></label>
 </div><div class="err" id="err" hidden></div>
-<div class="acts"><a class="cta" id="sendForm" href="#" target="_blank" rel="noopener">Gửi phiếu đặt ngay<small>Send now – no Zalo needed</small></a>
-<a class="cta g" id="sendZalo" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Copy phiếu &amp; mở Zalo<small>Copy &amp; open Zalo</small></a></div>
+<div class="acts"><a class="cta" id="sendForm" href="#" target="_blank" rel="noopener">Gửi phiếu đặt ngay<small>Send now</small></a>
+</div>
 <p class="fine">Nhân viên sẽ gọi xác nhận và gửi số tài khoản để chuyển cọc. Hotline <a href="tel:0916398797" style="color:var(--gold)">0916 398 797</a>.</p></div>
 <footer>APES Restaurant · 78 Trần Phú, KDC Chánh Nghĩa, Thủ Dầu Một<br>Zalo 0385 285 768 · Hotline 0916 398 797<br><a href="https://claude.ai/artifact/ARVuwo9zfWu1dod5dg5CwY" target="_blank" rel="noopener">Xem menu đầy đủ &amp; set menu →</a></footer>
 </div>
@@ -166,7 +166,6 @@ function msg(){ const L=lines(), t=L.reduce((s,x)=>s+x[1],0);
 function check(){ const e=[]; if(!pick&&!adds.size) e.push('Chọn 1 mẫu set up (bấm vào ô giá)'); if(!v('fName')) e.push('Tên khách'); if(!/\d{9,}/.test(v('fPhone').replace(/\D/g,''))) e.push('Số điện thoại'); if(!v('fDate')) e.push('Ngày'); if(!v('fTime')) e.push('Giờ');
  const b=$('#err'); if(e.length){ b.innerHTML='<b>Anh/chị bổ sung giúp:</b> '+e.join(', '); b.hidden=false; $('#form').scrollIntoView({behavior:'smooth'}); return false; } b.hidden=true; return true; }
 $('#sendForm').addEventListener('click',e=>{ if(!check()){ e.preventDefault(); return; } e.currentTarget.href=FORM_URL+'?usp=pp_url&'+FORM_ENTRY+'='+encodeURIComponent(msg()); });
-$('#sendZalo').addEventListener('click',e=>{ if(!check()){ e.preventDefault(); return; } const t=msg(); try{ navigator.clipboard.writeText(t).then(()=>toast('Đã copy phiếu – vào Zalo chạm giữ ô tin nhắn → Dán → Gửi · Copied, paste into Zalo'),()=>toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé · Copy failed, please screenshot')); }catch(x){ toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé · Copy failed, please screenshot'); } });
 { const d=new Date(); $('#fDate').min=d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
 render();
 </script>
