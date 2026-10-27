@@ -658,9 +658,9 @@ $('#sX').onclick=closeS; $('#sOv').addEventListener('click',e=>{ if(e.target.id=
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ if(!$('#mOv').hidden) closeM(); else closeS(); } });
 ['#fName','#fPhone','#fDate','#fTime','#fPax','#fOcc','#fNote'].forEach(s=>$(s).addEventListener('input',()=>{ check(); $('#msg').value=msgText(); }));
 $('#copyBtn').onclick=()=>{ const miss=[]; if(!$('#fName').value.trim()) miss.push('tên'); if(!$('#fPhone').value.trim()) miss.push('số điện thoại'); if(!$('#fDate').value) miss.push('ngày đến'); if(!$('#fTime').value) miss.push('giờ đến'); if(!$('#fPax').value) miss.push('số khách');
-  const t=$('#msg').value, fall=()=>{ $('#msg').focus(); $('#msg').select(); toast('Tin nhắn đã được bôi đen – bạn bấm giữ và chọn Sao chép'); };
+  const t=$('#msg').value, fall=()=>{ $('#msg').focus(); $('#msg').select(); toast('Tin nhắn đã được bôi đen – bạn bấm giữ và chọn Sao chép · Long-press to copy'); };
   if(miss.length) toast('Bạn điền thêm: '+miss.join(', ')+' nhé');
-  try{ navigator.clipboard.writeText(t).then(()=>{ if(!miss.length) toast('Đã sao chép. Bấm Mở Zalo Apes rồi dán và gửi nhé'); },fall); }catch(e){ fall(); } };
+  try{ navigator.clipboard.writeText(t).then(()=>{ if(!miss.length) toast('Đã sao chép. Bấm Mở Zalo Apes rồi dán và gửi nhé · Copied, open Zalo and paste'); },fall); }catch(e){ fall(); } };
 
 /* scale printed pages to the screen */
 function fit(){ const pw=135*96/25.4, avail=Math.min(document.documentElement.clientWidth-32, 560);
