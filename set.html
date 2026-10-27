@@ -120,9 +120,11 @@ SETS.forEach(c=>c.c.forEach(s=>s.d.forEach(d=>{ if(/^(Đã bao gồm đồ uốn
 const DGRP={cb:'Bia thủ công',b:'Bia',bc:'Beer cocktail',sg:'Signature cocktail',cl:'Cocktail',mx:'Mixed drink',mk:'Mocktail',sd:'Soda',ju:'Nước ép',te:'Trà',ht:'Trà nóng',cw:'Cold brew',sf:'Nước ngọt'};
 let _DRK=null;
 function DRK(){ if(_DRK) return _DRK; const out=[]; try{ const D=parent.document.getElementById('f-nuoc').contentWindow.eval('D'); Object.keys(D).forEach(k=>{ if(k==='cb6') return; const d=D[k], g=DGRP[(k.match(/^[a-z]+/)||[''])[0]]||'Đồ uống';
-  d.v.forEach(v=>{ if(/Tháp|Bình|Pot|Tower/i.test(v.l||'')) return; const lb=(v.l||'').split(' · ')[0]; out.push({v:d.vn+(lb&&!/^Ly/i.test(lb)?' – '+lb:''),p:v.p*1000,g}); }); }); }catch(e){}
+  d.v.forEach(v=>{ if(/Tháp|Bình|Pot|Tower/i.test(v.l||'')) return; const lb=(v.l||'').split(' · ')[0]; out.push({v:d.vn+(lb&&!/^Ly/i.test(lb)?' – '+lb:''),p:v.p*1000,g,k,vl:lb}); }); }); }catch(e){}
   if(out.length) _DRK=out; return out; }
 const drkOf=v=>DRK().find(x=>x.v===v);
+const V10S=x=>!!x&&(/^(cb|b|sg|cl|mx|bc)\d/.test(x.k||'')||(x.k==='sf1'&&['Coke','7up','Redbull'].includes(x.vl)));
+function vbs(c){ const P=PK[c.n]||{}; return groups(c).filter(g=>g.kind==='d').map(g=>drkOf(P[g.L])).filter(V10S).reduce((s,x)=>s+Math.round(x.p*0.02),0); }
 let SC={}, PK={};
 try{ const o=JSON.parse(localStorage.getItem('apes_set_v1')||'{}'); SC=o.SC||{}; PK=o.PK||{}; Object.keys(SC).forEach(n=>{ if(!SETS.some(c=>c.n===n)) delete SC[n]; }); }catch(e){}
 const save=()=>{ try{ localStorage.setItem('apes_set_v1',JSON.stringify({SC,PK})); }catch(e){} };
@@ -141,7 +143,7 @@ function optText(c){ const P=PK[c.n]||{}, by={}, out=[];
   return out.join(' · '); }
 window.decoIncl=()=>{ const c=SETS.find(c=>SC[c.n]&&c.c.some(s=>s.d.some(d=>/trang trí/i.test(d.vn)))); return c?sn(c):''; };
 function surs(c){ const P=PK[c.n]||{}, out=[]; groups(c).filter(g=>g.kind==='d').forEach(g=>{ const x=drkOf(P[g.L]); if(x&&x.p>DRINK_FREE) out.push({k:g.k,x,diff:x.p-DRINK_FREE}); }); return out; }
-window.getSets=()=>SETS.filter(c=>SC[c.n]).flatMap(c=>[({n:sn(c)+' ('+c.g+' khách)',en:'Set menu · '+c.g+' guests',q:SC[c.n],p:unit(c),o:[optText(c),inc(c)?'giá menu '+vnd(c.price)+' đã gồm VAT 8% → tính '+vnd(unit(c))+' chưa VAT':''].filter(Boolean).join(' · '),f:'f-set'})].concat(surs(c).map(o=>({n:'Bù đồ uống: '+o.x.v+' (ly '+o.k+' · '+sn(c)+')',en:'Drink upgrade',q:SC[c.n],p:o.diff,o:'Set gồm đồ uống đến '+vnd(DRINK_FREE)+'/ly; '+o.x.v+' giá '+vnd(o.x.p)+' nên bù '+vnd(o.diff)+' + VAT',f:'f-set'}))));
+window.getSets=()=>SETS.filter(c=>SC[c.n]).flatMap(c=>[({n:sn(c)+' ('+c.g+' khách)',en:'Set menu · '+c.g+' guests',q:SC[c.n],p:unit(c),vadd:vbs(c),o:[optText(c),inc(c)?'giá menu '+vnd(c.price)+' đã gồm VAT 8% → tính '+vnd(unit(c))+' chưa VAT':''].filter(Boolean).join(' · '),f:'f-set'})].concat(surs(c).map(o=>({n:'Bù đồ uống: '+o.x.v+' (ly '+o.k+' · '+sn(c)+')',en:'Drink upgrade',q:SC[c.n],p:o.diff,o:'Set gồm đồ uống đến '+vnd(DRINK_FREE)+'/ly; '+o.x.v+' giá '+vnd(o.x.p)+' nên bù '+vnd(o.diff)+' + VAT',f:'f-set'}))));
 
 /* ảnh món của set (bấm xem) */
 function pics(c){ const L=[]; c.c.forEach(s=>s.d.forEach(d=>{ if(d.img&&!L.some(x=>x.k===d.img)) L.push({k:d.img,t:d.vn}); })); c.img.forEach(k=>{ if(!L.some(x=>x.k===k)) L.push({k,t:'Set menu '+c.n}); }); return L; }
