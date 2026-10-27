@@ -46,7 +46,7 @@ main iframe+iframe{border-top:6px solid var(--line)}
 .fm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:14px}.fm label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:#857463}.fm .w2{grid-column:1/-1}
 .nm{display:flex;gap:6px}.nm select{flex:0 0 96px;font:15px inherit;border:1px solid var(--line);border-radius:4px;padding:9px 6px;background:#fff;color:var(--ink)}
 .fm input{font:15px inherit;border:1px solid var(--line);border-radius:4px;padding:9px;background:#fff;color:var(--ink);min-width:0;width:100%;box-sizing:border-box}
-.err{margin-top:10px;border:1px solid #B4472F;color:#B4472F;border-radius:4px;padding:8px 10px;font-size:13px}
+.upd{margin:10px 0;padding:10px 12px;border:1.5px solid #1565C0;border-radius:8px;background:#EEF4FC;color:#2E241C;font-size:13.5px;line-height:1.45}.upd i{display:block;font-size:12px;color:#5A6A80}.err{margin-top:10px;border:1px solid #B4472F;color:#B4472F;border-radius:4px;padding:8px 10px;font-size:13px}
 .acts{display:grid;gap:8px;margin-top:12px}
 .toast{position:fixed;left:50%;transform:translateX(-50%);top:70px;z-index:40;background:var(--ink);color:#fff;padding:9px 14px;border-radius:4px;font:13.5px system-ui;max-width:calc(100% - 32px)}
 .nv{position:fixed;left:10px;right:10px;bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:25;display:flex;gap:8px;align-items:flex-end;max-width:420px;font-family:"Be Vietnam Pro",system-ui,sans-serif;animation:nvIn .25s ease-out}
@@ -104,7 +104,8 @@ body.gmode main>section.top,body.gmode main iframe:not(#f-setup){display:none!im
 </div>
 <div class="rv">Anh/chị <b>xem lại phiếu ở trên</b>. Đúng hết rồi thì bấm <b>“Gửi / Submit”</b> ở cuối để gửi phiếu về nhà hàng.<i>Review above, then tap “Submit” to send.</i></div>
 <div class="err" id="kErr" hidden></div>
-<div class="acts"><a class="btn" id="kForm" href="#" target="_blank" rel="noopener">Bấm đặt<small>Gửi phiếu cho nhà hàng · Book now</small></a>
+<div class="upd" id="kUpd" hidden></div>
+<div class="acts"><a class="btn" id="kForm" href="#" target="_blank" rel="noopener"><span id="kFormT">Bấm đặt</span><small id="kFormS">Gửi phiếu cho nhà hàng · Book now</small></a>
 <a class="btn g" id="kZalo" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Copy phiếu &amp; mở Zalo<small>Vào Zalo chạm giữ ô tin nhắn → Dán → Gửi</small></a></div>
 <p class="fine">Nhân viên Apes sẽ gọi xác nhận và gửi số tài khoản để chuyển cọc. Hotline 0916 398 797.<i style="display:block">Our staff will contact you to confirm.</i></p>
 </div></div><div class="toast" id="toast" hidden></div>
@@ -212,8 +213,12 @@ function fields(){ const T=totals(); const it=(arr,sum)=>arr.length?arr.map(x=>`
   return {'entry.311691300':`${v('kCh')}: ${v('kName')||v('kPhone')} · ${v('kPhone')}`,
    'entry.1668269425':`${fd(v('kDate'))} lúc ${v('kTime')} · ${v('kPax')} khách · `+(v('kTbl')?'Bàn '+v('kTbl'):'Nhờ nhà hàng xếp bàn'),
    'entry.787910496':it(C.food,T.a),'entry.1317244926':it(C.drink,T.b),'entry.235255954':su.length?su.join('\n'):'Không chọn','entry.482914039':bh.length?bh.join('\n'):'Không chọn',
-   'entry.1703911514':`${vnd(T.t)} (chưa gồm VAT 8%)`,'entry.1824019516':vnd(T.d),'entry.1039246301':vnd(T.r),'entry.600947442':v('kNote')||'—'}; }
-$('#kForm').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } const F=fields(); const fu=FORM_URL+'?usp=pp_url&'+Object.entries(F).map(([k,x])=>k+'='+encodeURIComponent(x)).join('&'); e.currentTarget.href=fu; /* mở thẳng phiếu Google Form đã điền sẵn (chống trùng bàn do máy chủ kiểm tra khi phiếu gửi về) */ });
+   'entry.1703911514':`${vnd(T.t)} (chưa gồm VAT 8%)`,'entry.1824019516':vnd(T.d),'entry.1039246301':vnd(T.r),'entry.600947442':(sentFor()?'🔄 CẬP NHẬT phiếu gửi lúc '+sentFor().at+(v('kNote')?' · '+v('kNote'):''):(v('kNote')||'—'))}; }
+function sentGet(){ try{ const o=JSON.parse(localStorage.getItem('apes_sent')||'null'); return o&&o.d>=new Date(Date.now()-864e5).toISOString().slice(0,10)?o:null; }catch(e){ return null; } }
+function sentFor(){ const o=sentGet(); return o&&o.d===v('kDate')&&o.p===v('kPhone').replace(/\D/g,'')?o:null; }
+function updUI(){ const o=sentFor(), b=$('#kUpd'); if(!b) return; b.hidden=!o; $('#kFormT').textContent=o?'Gửi phiếu cập nhật':'Bấm đặt'; $('#kFormS').textContent=o?'Thay phiếu cũ · Update booking':'Gửi phiếu cho nhà hàng · Book now'; if(o) b.innerHTML='🔄 Anh/chị đã gửi phiếu cho ngày <b>'+fd(o.d)+'</b> lúc <b>'+o.at+'</b>. Muốn <b>thêm/sửa</b> món, trang trí, giờ… cứ chỉnh rồi bấm <b>“Gửi phiếu cập nhật”</b> – nhà hàng tự cập nhật vào phiếu cũ, không tính thành bàn mới.<i>Already booked? Edit and tap “Update booking” – we will replace your earlier order.</i>'; }
+document.addEventListener('input',e=>{ if(e.target.id==='kDate'||e.target.id==='kPhone') updUI(); }); setTimeout(updUI,300);
+$('#kForm').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } const F=fields(); const fu=FORM_URL+'?usp=pp_url&'+Object.entries(F).map(([k,x])=>k+'='+encodeURIComponent(x)).join('&'); e.currentTarget.href=fu; try{ const z=n=>String(n).padStart(2,'0'), t=new Date(); localStorage.setItem('apes_sent',JSON.stringify({at:z(t.getHours())+':'+z(t.getMinutes())+' '+z(t.getDate())+'/'+z(t.getMonth()+1),d:v('kDate'),p:v('kPhone').replace(/\D/g,'')})); setTimeout(updUI,1500); }catch(x){} /* mở thẳng phiếu Google Form đã điền sẵn (chống trùng bàn do máy chủ kiểm tra khi phiếu gửi về) */ });
 $('#kZalo').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } try{ navigator.clipboard.writeText(msg()).then(()=>toast('Đã copy phiếu – vào Zalo chạm giữ ô tin nhắn → Dán → Gửi'),()=>toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé')); }catch(x){ toast('Không copy được – chụp màn hình phiếu gửi Zalo nhé'); } });
 setInterval(()=>{ if($('#ov').hidden&&!document.hidden) refresh(); },5000);
 function goKe(){ if(!document.body.classList.contains('gmode')) show('setup'); whenReady('f-setup',()=>{ SHOWN=null; try{ const f=document.getElementById('f-setup'), sec=f.contentDocument.getElementById('ke1'); if(sec) window.scrollTo({top:f.offsetTop+sec.getBoundingClientRect().top+(f.contentWindow.scrollY||0)-TOP()-8,behavior:'instant'}); }catch(x){} }); }
