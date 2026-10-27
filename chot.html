@@ -17,7 +17,7 @@ function show(o){ box.className='b '+(o.ok?'ok':'no'); box.innerHTML='<div class
   /* link nội bộ (vd "Vẫn chốt") chuyển về trang này để không bị lỗi tài khoản Google */
   m.querySelectorAll('a[href*="/exec?"]').forEach(a=>{ try{ a.href=location.pathname+new URL(a.href).search; }catch(e){} }); }
 function go(extra){ const u=new URLSearchParams(location.search); for(const k in extra) if(extra[k]) u.set(k,extra[k]); history.replaceState(null,'','?'+u.toString()); box.className='b'; box.innerHTML='<div class="t">Đang xử lý…</div><div class="sp"></div>'; run(); }
-const POL='<div style="font-size:13px;color:#857463;margin-top:8px;line-height:1.5">Chính sách: báo <b>trước 8:00 sáng ngày đặt</b> → dời ngày, giữ cọc. Hủy → không hoàn cọc. Sau 8:00 → không dời, mất cọc.</div>';
+const POL='<div style="font-size:13px;color:#857463;margin-top:8px;line-height:1.5">Chính sách: báo <b>trước 8:00 sáng ngày đặt</b> → dời miễn phí, giữ cọc. <b>8:00–11:00</b> → dời được, phụ thu 50% tiền set up (không có set up thì không phụ thu). Từ 11:00 → không dời, mất cọc. Hủy → không hoàn cọc.</div>';
 function formDoi(){
   const d=new Date(Date.now()+7*3600e3).toISOString().slice(0,10);
   box.className='b'; box.innerHTML='<div class="t">📅 Dời ngày cho khách</div>'+POL+
