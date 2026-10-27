@@ -1,0 +1,27 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apes – Chốt phiếu</title>
+<meta name="robots" content="noindex">
+<style>
+body{margin:0;background:#F8F4EC;font-family:Arial,sans-serif;color:#2E241C}
+.b{max-width:480px;margin:40px auto;padding:22px 18px;border:2px solid #D9C7A2;border-radius:10px;background:#fff;text-align:center}
+.t{font-size:22px;font-weight:bold}.m{margin-top:10px;font-size:15px;line-height:1.5}
+.ok{border-color:#2E7D32}.ok .t{color:#2E7D32}.no{border-color:#B4472F}.no .t{color:#B4472F}
+.btn{display:inline-block;margin-top:14px;background:#2E7D32;color:#fff;text-decoration:none;border-radius:4px;padding:12px 18px;font-weight:bold;font-size:15px;border:0}
+.sp{width:28px;height:28px;border:3px solid #D9C7A2;border-top-color:#A8834C;border-radius:50%;margin:8px auto 0;animation:r 1s linear infinite}@keyframes r{to{transform:rotate(360deg)}}
+</style></head><body>
+<div class="b" id="b"><div class="t">Đang xử lý phiếu…</div><div class="sp"></div><div class="m" style="color:#857463">Vui lòng chờ vài giây, không tắt trang.</div></div>
+<script>
+const EXEC='https://script.google.com/macros/s/AKfycbwfW4VJNrXopoKCDiEJCzl1j6d4fQrVSFjUAYesB7mIlpQj4GGVucjpqvZae1sZ-fOZYA/exec';
+const box=document.getElementById('b');
+function show(o){ box.className='b '+(o.ok?'ok':'no'); box.innerHTML='<div class="t"></div><div class="m"></div>'; box.querySelector('.t').innerHTML=o.title; const m=box.querySelector('.m'); m.innerHTML=o.msg;
+  /* link nội bộ (vd "Vẫn chốt") chuyển về trang này để không bị lỗi tài khoản Google */
+  m.querySelectorAll('a[href*="/exec?"]').forEach(a=>{ try{ a.href=location.pathname+new URL(a.href).search; }catch(e){} }); }
+async function run(){
+  const q=location.search; if(!/[?&]id=/.test(q)){ show({ok:false,title:'Link không hợp lệ',msg:'Vui lòng mở lại từ email phiếu đặt bàn.'}); return; }
+  for(let i=0;i<2;i++){
+    try{ const r=await fetch(EXEC+q+'&fmt=json',{credentials:'omit',cache:'no-store'}); const o=await r.json(); show(o); return; }
+    catch(e){ if(i) show({ok:false,title:'Chưa kết nối được',msg:'Mạng yếu hoặc máy chủ bận. Bấm thử lại giúp em.<br><button class="btn" onclick="location.reload()">Thử lại</button>'}); }
+  }
+}
+run();
+</script></body></html>
