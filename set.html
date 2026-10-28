@@ -98,7 +98,7 @@ button{font:inherit;color:inherit}
 
 /* nút chọn 3D */html body button.sel{background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08));box-shadow:0 3px 0 rgba(0,0,0,.45),0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .08s,box-shadow .08s;}html body button.sel:active{transform:translateY(3px);box-shadow:0 0 0 rgba(0,0,0,.45),0 1px 2px rgba(40,28,15,.2),inset 0 1px 0 rgba(255,255,255,.25)}html body button.sel{box-shadow:0 3px 0 color-mix(in srgb,var(--t,var(--gold)) 60%,#000),0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35);margin-bottom:3px}
 
-/* thẻ set cân xứng: cao theo nội dung, lề đều */.cd{aspect-ratio:auto!important;padding:28px 22px 20px!important}.cd .act{padding-top:16px}@media (min-width:640px){.cd{padding:32px 26px 22px!important}}
+/* canh nội dung giữa khung nền, trên dưới cân nhau */.cd{justify-content:center}.cd .act{margin-top:0!important;padding-top:14px}
 </style>
 <main class="wrap">
 <header class="hd"><small>APES RESTAURANT</small><h1>SET MENU</h1><p>Thực đơn set cho 2 khách<i>Set menus for two</i></p>
@@ -156,10 +156,10 @@ let LB=null;
 function lbShow(){ const x=LB.L[LB.i]; $('#lbI').src='s/'+x.k+'.jpg'; $('#lbT').textContent=x.t+'  ('+(LB.i+1)+'/'+LB.L.length+')'; $('#lb').hidden=false; }
 
 /* thẻ set giống tấm menu */
-function card(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=null; /* bỏ nền theo mẫu gốc */
+function card(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=BG[c.n];
   const dishes=c.c.map(s=>`<div class="co"><h4>${esc(s.h)} <i>· ${CEN[s.h]||''}</i></h4>${s.d.map(d=>`<div class="ds${d.img?' wi':''}">${d.img?`<button type="button" class="dp" data-pset="${esc(c.n)}" data-pk="${d.img}" aria-label="Xem ảnh ${esc(d.vn)}"><img loading="lazy" src="s/${d.img}.jpg" alt=""></button>`:''}<div><b>${esc(d.vn)}${d.qn?` <span>(${esc(d.qn)})</span>`:(d.q&&+d.q>1?` <span>x${esc(d.q)}</span>`:'')}</b>${d.en?`<small>${esc(d.en)}</small>`:''}</div></div>`).join('')}</div>`).join('');
   const per=vnd(Math.round(c.price/c.g/1000)*1000);
-  return `<article class="cd${q?' on':''}" data-set="${esc(c.n)}" style="--c:${S[0]};--t:${S[1]};${bg?`background-image:url(bg/${bg[0]}.jpg);background-color:${bg[1]};`:''}">
+  return `<article class="cd${q?' on':''}" data-set="${esc(c.n)}" style="--c:${S[0]};--t:${S[1]};${bg?`background-image:url(bg/${bg[0]}.jpg);background-color:${bg[1]};`:''}${PAD[c.n]?`padding:${PAD[c.n]};`:''}">
    <div class="br">APES RESTAURANT</div><h3>${esc(c.n)}</h3>${BEST.has(c.n)?'<div class="best">★ BEST SELLER</div>':''}
    <div class="pr">${vnd(c.price)} / ${c.g} khách<small>≈ ${per}/khách · ${esc(c.tax)}</small></div>
    ${dishes}
