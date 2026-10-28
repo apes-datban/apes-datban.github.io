@@ -234,7 +234,7 @@ document.getElementById('gvAll').onclick=()=>show('mon');
 
 /* ---- Nhân viên Apes trò chuyện với khách ---- */
 const NV={last:''};
-function say(html,en,acts){ html=String(html).replace(/([.!?…]|🎁)\s+(?=(<b>)?[\p{Lu}0-9])/gu,'$1<br>'); const n=$('#nv'); $('#nvT').innerHTML=html+(en?`<i>${en}</i>`:''); const AC=(acts||[]).filter(a=>a[0]!=='Để sau'); $('#nvA').innerHTML=AC.map((a,i)=>`<button type="button" data-i="${i}" class="${i===0?'p':''}">${a[0]}</button>`).join('')+'<button type="button" class="c" data-c="1">Đóng</button>'; NV.acts=(acts||[]).filter(a=>a[0]!=='Để sau'); n.hidden=false; n.style.animation='none'; void n.offsetWidth; n.style.animation=''; clearTimeout(NV.h); NV.h=setTimeout(()=>n.hidden=true,16000); }
+function say(html,en,acts){ html=String(html).replace(/([.!?…]|🎁)\s+(?=(<b>)?[\p{Lu}0-9])/gu,'$1<br>'); const n=$('#nv'); $('#nvT').innerHTML=html+(en?`<i>${en}</i>`:''); const AC=(acts||[]).filter(a=>a[0]!=='Để sau'); $('#nvA').innerHTML=AC.map((a,i)=>`<button type="button" data-i="${i}" class="${i===0?'p':''}">${a[0]}</button>`).join('')+'<button type="button" class="c" data-c="1">Đóng</button>'; NV.acts=(acts||[]).filter(a=>a[0]!=='Để sau'); n.hidden=false; n.style.animation='none'; void n.offsetWidth; n.style.animation=''; clearTimeout(NV.h); NV.h=setTimeout(()=>n.hidden=true,25000); }
 $('#nvX').onclick=()=>{ $('#nv').hidden=true; };
 $('#nvA').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; if(b.dataset.c){ $('#nv').hidden=true; return; } const a=NV.acts[+b.dataset.i]; $('#nv').hidden=true; if(a&&a[1]) a[1](); });
 const goSum=()=>$('#sbGo').disabled?show('mon'):$('#sbGo').click();
