@@ -111,7 +111,7 @@ body.gmode main>section.top,body.gmode main iframe:not(#f-setup){display:none!im
 <label>Bàn (chọn ở mục Chọn bàn)<small class="en">Table</small><input id="kTbl" placeholder="Nhà hàng xếp giúp"></label>
 <label class="w2">Ghi chú<small class="en">Notes</small><input id="kNote" placeholder="Dị ứng, ít cay, yêu cầu thêm…"></label>
 </div>
-<div class="rv">Anh/chị <b>xem lại phiếu ở trên</b>. Đúng hết rồi thì bấm <b>“Gửi / Submit”</b> ở cuối để gửi phiếu về nhà hàng.<i>Review above, then tap “Submit” to send.</i></div>
+<div class="rv">Anh/chị <b>xem lại phiếu ở trên</b>. Đúng hết rồi thì bấm <b>“Bấm đặt”</b> – phiếu tự gửi thẳng về nhà hàng, không cần mở trang nào khác.<i>Review above, then tap “Book now” – your booking is sent straight to us.</i></div>
 <div class="err" id="kErr" hidden></div>
 <div class="upd" id="kUpd" hidden></div>
 <div class="desinv" style="margin-top:12px"><b>📌 Chính sách cọc &amp; đổi/hủy bàn</b><br>• Cần đổi ngày, vui lòng báo Apes <b>trước 8:00 sáng ngày đặt bàn</b>: Apes dời bàn sang ngày khác và <b>giữ nguyên tiền cọc</b>.<br>• Báo từ 8:00 đến trước 11:00 sáng ngày đặt bàn: vẫn dời được, <b>phụ thu thêm 50% tiền set up</b>.<br>• Từ 11:00 ngày đặt bàn: không hỗ trợ dời ngày, tiền cọc không hoàn lại.<br>• Hủy bàn: <b>tiền cọc không được hoàn lại</b>.<i>Deposit policy: date changes before 8:00 AM on the booking day are free – your deposit is kept for the new date. From 8:00 to 11:00 AM, changes are possible with a 50% surcharge on the decoration (set-up) fee. From 11:00 AM on the booking day, changes are not accepted and the deposit is non-refundable. Cancellations are non-refundable.</i></div>
@@ -234,7 +234,19 @@ function sentGet(){ try{ const o=JSON.parse(localStorage.getItem('apes_sent')||'
 function sentFor(){ const o=sentGet(); return o&&o.d===v('kDate')&&o.p===v('kPhone').replace(/\D/g,'')?o:null; }
 function updUI(){ const o=sentFor(), b=$('#kUpd'); if(!b) return; b.hidden=!o; $('#kFormT').textContent=o?'Gửi phiếu cập nhật':'Bấm đặt'; $('#kFormS').textContent=o?'Thay phiếu cũ · Update booking':'Gửi phiếu cho nhà hàng · Book now'; if(o) b.innerHTML='🔄 Anh/chị đã gửi phiếu cho ngày <b>'+fd(o.d)+'</b> lúc <b>'+o.at+'</b>. Muốn <b>thêm/sửa</b> món, trang trí, giờ… cứ chỉnh rồi bấm <b>“Gửi phiếu cập nhật”</b> – nhà hàng tự cập nhật vào phiếu cũ, không tính thành bàn mới.<i>Already booked? Edit and tap “Update booking” – we will replace your earlier order.</i>'; }
 document.addEventListener('input',e=>{ if(e.target.id==='kDate'||e.target.id==='kPhone') updUI(); }); setTimeout(updUI,300);
-$('#kForm').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefault(); return; } const F=fields(); const fu=FORM_URL+'?usp=pp_url&'+Object.entries(F).map(([k,x])=>k+'='+encodeURIComponent(x)).join('&'); e.currentTarget.href=fu; try{ const z=n=>String(n).padStart(2,'0'), t=new Date(); localStorage.setItem('apes_sent',JSON.stringify({at:z(t.getHours())+':'+z(t.getMinutes())+' '+z(t.getDate())+'/'+z(t.getMonth()+1),d:v('kDate'),p:v('kPhone').replace(/\D/g,'')})); setTimeout(updUI,1500); }catch(x){} /* mở thẳng phiếu Google Form đã điền sẵn (chống trùng bàn do máy chủ kiểm tra khi phiếu gửi về) */ });
+let kSending=false;
+function kToast(html,ok){ let t=document.getElementById('kToast'); if(!t){ t=document.createElement('div'); t.id='kToast'; t.style.cssText='position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999;max-width:340px;width:calc(100% - 48px);background:#fff;border-radius:16px;padding:18px 18px 14px;text-align:center;font:15px/1.5 "Be Vietnam Pro",system-ui,sans-serif;color:#3d2c1d;box-shadow:0 12px 40px rgba(0,0,0,.28)'; document.body.appendChild(t); } t.innerHTML=html+'<button type="button" style="margin-top:12px;border:0;border-radius:8px;padding:9px 22px;background:'+(ok?'#2E7D32':'#A8834C')+';color:#fff;font:600 14px system-ui">OK</button>'; t.hidden=false; t.querySelector('button').onclick=()=>{ t.hidden=true; }; }
+$('#kForm').addEventListener('click',e=>{ e.preventDefault(); refresh(); if(!check()) return; if(kSending) return; const F=fields(), fu=FORM_URL+'?usp=pp_url&'+Object.entries(F).map(([k,x])=>k+'='+encodeURIComponent(x)).join('&');
+  const btns=[$('#kForm'),$('#kForm2')].filter(Boolean), old=btns.map(b=>b.innerHTML); kSending=true; btns.forEach(b=>{ b.style.opacity='.6'; b.innerHTML='<span>Đang gửi phiếu…</span><small>Sending…</small>'; });
+  const done=()=>{ kSending=false; btns.forEach((b,i)=>{ b.style.opacity=''; b.innerHTML=old[i]; }); };
+  const z=n=>String(n).padStart(2,'0'), t=new Date(), at=z(t.getHours())+':'+z(t.getMinutes());
+  /* gửi thẳng phiếu về nhà hàng (Google Form) – khách không phải mở trang phiếu */
+  fetch(FORM_URL.replace(/\/viewform.*$/,'/formResponse'),{method:'POST',mode:'no-cors',body:new URLSearchParams(F)}).then(()=>{
+    try{ localStorage.setItem('apes_sent',JSON.stringify({at:at+' '+z(t.getDate())+'/'+z(t.getMonth()+1),d:v('kDate'),p:v('kPhone').replace(/\D/g,'')})); }catch(x){}
+    done(); updUI();
+    kToast('<div style="font-size:34px;line-height:1">✅</div><b style="display:block;font-size:17px;margin:6px 0 4px">Đã gửi phiếu về Apes lúc '+at+'</b>Nhân viên Apes sẽ liên hệ xác nhận ngay. Cần sửa món, giờ… anh/chị chỉnh rồi bấm gửi lại nhé.<i style="display:block;font-size:12px;color:#8a7560;margin-top:4px">Your booking has been sent. We will contact you to confirm shortly.</i>',true);
+  }).catch(()=>{ done(); window.open(fu,'_blank'); });
+});
 /* ---- QR chuyển khoản cọc (VietQR) – điền thông tin tài khoản vào BANK ---- */
 const BANK={id:'ACB',acc:'682188',name:'CONG TY TNHH A-CORP VIETNAM'}; /* id: mã ngân hàng VietQR (VCB, ACB, MB, TCB, ICB…) */
 const BAPPS=[['vcb','Vietcombank'],['tcb','Techcombank'],['mb','MB Bank'],['acb','ACB'],['icb','VietinBank'],['bidv','BIDV'],['vpb','VPBank'],['tpb','TPBank'],['vba','Agribank']];
