@@ -308,4 +308,17 @@ const _go=$('#sbGo').onclick; $('#sbGo').onclick=()=>{ _go(); $('#nv').hidden=tr
 <script>(function(){ const tb=document.querySelector('.tb'); if(!tb) return; const c=()=>{ const a=tb.querySelector('[aria-selected="true"]'); if(!a) return; const l=a.offsetLeft-(tb.clientWidth-a.offsetWidth)/2; tb.scrollTo({left:Math.max(0,l),behavior:'smooth'}); }; new MutationObserver(c).observe(tb,{subtree:true,attributes:true,attributeFilter:['aria-selected']}); const f=document.createElement('div'); f.className='tbf'; f.textContent='›'; document.body.appendChild(f); const m=()=>{ f.style.height=tb.offsetHeight+'px'; f.hidden=!(tb.scrollLeft+tb.clientWidth<tb.scrollWidth-4); }; tb.addEventListener('scroll',m,{passive:true}); addEventListener('resize',m); m(); })();</script><script>(function(){ const T=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
  const f=v=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||''); if(!m) return ''; const d=new Date(+m[1],+m[2]-1,+m[3]); return T[d.getDay()]+', '+m[3]+'/'+m[2]+'/'+m[1]; };
  const up=()=>document.querySelectorAll('input[type=date]').forEach(i=>{ let s=i.nextElementSibling; if(!s||!s.classList.contains('dvn')){ s=document.createElement('span'); s.className='dvn'; s.style.cssText='display:block;margin-top:4px;white-space:nowrap;font:600 11.5px/1.25 "Be Vietnam Pro",system-ui,sans-serif;color:#8E6A34;letter-spacing:0;text-transform:none;font-style:normal'; i.after(s); } const t=f(i.value); if(s.textContent!==t) s.textContent=t; s.hidden=!t; });
- document.addEventListener('input',up,true); document.addEventListener('change',up,true); setInterval(up,800); up(); })();</script></body></html>
+ document.addEventListener('input',up,true); document.addEventListener('change',up,true); setInterval(up,800); up(); })();</script><script>
+/* Bản phụ (không phải apes-datban.github.io): mời khách sang trang chính thức */
+(function(){ if(/github\.io$/.test(location.hostname)) return;
+ var d=document.createElement('div'); d.id='goMain';
+ d.style.cssText='position:fixed;inset:0;z-index:10000;background:#F8F4EC;display:flex;align-items:center;justify-content:center;padding:24px;font-family:"Be Vietnam Pro",system-ui,sans-serif;text-align:center;color:#3d2c1d';
+ d.innerHTML='<div style="max-width:380px;width:100%"><div style="font:600 34px Georgia,serif;letter-spacing:6px;color:#A8834C">APES</div><div style="font-size:12px;letter-spacing:3px;color:#8a7560;margin-bottom:22px">RESTAURANT · THỦ DẦU MỘT</div>'+
+ '<div style="font-size:20px;font-weight:700;line-height:1.35">Mời anh/chị đặt bàn tại<br>trang chính thức của Apes</div><div style="font-size:13px;font-style:italic;color:#8a7560;margin:6px 0 20px">Please book on Apes’ official website</div>'+
+ '<a href="https://apes-datban.github.io/" target="_blank" rel="noopener" style="display:block;background:#2E8B3E;color:#fff;text-decoration:none;border-radius:10px;padding:15px 16px;font-size:17px;font-weight:700;box-shadow:0 3px 0 #1B5E20,0 6px 14px rgba(20,60,25,.25)">Mở trang đặt bàn Apes<small style="display:block;font-size:12px;font-weight:500;opacity:.9">apes-datban.github.io · Open booking page</small></a>'+
+ '<div style="font-size:13px;margin-top:18px;line-height:1.6">Hotline <b>0916 398 797</b> · Zalo <b>0385 285 768</b><br>78 Trần Phú, Thủ Dầu Một</div>'+
+ '<button type="button" id="goMainX" style="margin-top:26px;background:none;border:0;color:#b3a28c;font-size:11px;text-decoration:underline;cursor:pointer">Xem bản nội bộ</button></div>';
+ document.body.appendChild(d); document.getElementById('goMainX').onclick=function(){ d.remove(); };
+})();
+</script>
+</body></html>
