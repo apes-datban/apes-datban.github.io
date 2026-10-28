@@ -98,6 +98,7 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
 /* nút 3D đồng bộ */html body .cta:not(.ghost){background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35)!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta:not(.ghost):not(:disabled):active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2)!important}html body .cta.ghost{background-color:#fff!important;background-image:linear-gradient(180deg,#fff,#F2E9D8)!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.16),inset 0 1px 0 #fff!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta.ghost:active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.15)!important}html body .cta:disabled{opacity:.55;filter:saturate(.7)}
 
 .bi{display:block;font-size:.72em;font-weight:500;opacity:.85;line-height:1.15;margin-top:1px;letter-spacing:0;text-transform:none;font-style:normal}
+.pg .pk .add .bi{font-size:.7em;margin-top:0;line-height:1.05}.pg .pk .add{line-height:1.05!important;padding-top:2px!important;padding-bottom:2px!important}
 </style>
 
 <div class="wbar"><div class="in">
@@ -158,9 +159,9 @@ const same=(a,b)=>JSON.stringify(a||{})===JSON.stringify(b||{});
 
 function pk(el){ const k=el.dataset.k, d=D[k], q=qOf(k);
   const nb=d.lab2||'+', wl=d.lab||'Chọn';
-  if(simple(d)) el.innerHTML=q?`<span class="stp wide"><button data-m="${esc(k)}" aria-label="Bớt">−</button><span>${q}</span><button data-p="${esc(k)}" aria-label="Thêm">+</button></span><button class="add has narrow" data-p="${esc(k)}" aria-label="Thêm ${esc(d.vn)}">${q} +</button>`
-    :`<button class="add" data-p="${esc(k)}" aria-label="Chọn ${esc(d.vn)}"><b>${nb}</b><span>${wl}</span></button>`;
-  else el.innerHTML=`<button class="add${q?' has':''}" data-o="${esc(k)}" aria-label="Chọn ${esc(d.vn)}"><b>${q?q+' +':'+'}</b><span>${q?'Đã chọn '+q+' · +':'Chọn'}</span></button>`;
+  if(simple(d)) el.innerHTML=q?`<span class="stp wide"><button data-m="${esc(k)}" aria-label="Bớt">−</button><span>${q}</span><button data-p="${esc(k)}" aria-label="Thêm">+</button></span><button class="add has narrow" data-p="${esc(k)}" aria-label="Thêm ${esc(d.vn)}">${q} +<small class="bi">Add</small></button>`
+    :`<button class="add" data-p="${esc(k)}" aria-label="Chọn ${esc(d.vn)}"><b>${nb}<small class="bi">Add</small></b><span>${wl}<small class="bi">Select</small></span></button>`;
+  else el.innerHTML=`<button class="add${q?' has':''}" data-o="${esc(k)}" aria-label="Chọn ${esc(d.vn)}"><b>${q?q+' +':'+'}<small class="bi">${q?'Added':'Add'}</small></b><span>${q?'Đã chọn '+q+' · +<small class="bi">Selected</small>':'Chọn<small class="bi">Select</small>'}</span></button>`;
 }
 function paint(){ document.querySelectorAll('.pk').forEach(pk); bar(); save(); if(!$('#sOv').hidden) sheet(); }
 function total(){ return cart.reduce((s,e)=>s+e.q*vOf(e.k,e.v).p,0); }
