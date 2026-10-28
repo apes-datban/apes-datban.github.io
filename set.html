@@ -154,10 +154,10 @@ let LB=null;
 function lbShow(){ const x=LB.L[LB.i]; $('#lbI').src='s/'+x.k+'.jpg'; $('#lbT').textContent=x.t+'  ('+(LB.i+1)+'/'+LB.L.length+')'; $('#lb').hidden=false; }
 
 /* thẻ set giống tấm menu */
-function card(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=BG[c.n];
+function card(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=null; /* bỏ nền theo mẫu gốc */
   const dishes=c.c.map(s=>`<div class="co"><h4>${esc(s.h)} <i>· ${CEN[s.h]||''}</i></h4>${s.d.map(d=>`<div class="ds${d.img?' wi':''}">${d.img?`<button type="button" class="dp" data-pset="${esc(c.n)}" data-pk="${d.img}" aria-label="Xem ảnh ${esc(d.vn)}"><img loading="lazy" src="s/${d.img}.jpg" alt=""></button>`:''}<div><b>${esc(d.vn)}${d.qn?` <span>(${esc(d.qn)})</span>`:(d.q&&+d.q>1?` <span>x${esc(d.q)}</span>`:'')}</b>${d.en?`<small>${esc(d.en)}</small>`:''}</div></div>`).join('')}</div>`).join('');
   const per=vnd(Math.round(c.price/c.g/1000)*1000);
-  return `<article class="cd${q?' on':''}" data-set="${esc(c.n)}" style="--c:${S[0]};--t:${S[1]};${bg?`background-image:url(bg/${bg[0]}.jpg);background-color:${bg[1]};`:''}${PAD[c.n]?`padding:${PAD[c.n]};`:''}">
+  return `<article class="cd${q?' on':''}" data-set="${esc(c.n)}" style="--c:${S[0]};--t:${S[1]};${bg?`background-image:url(bg/${bg[0]}.jpg);background-color:${bg[1]};`:''}">
    <div class="br">APES RESTAURANT</div><h3>${esc(c.n)}</h3>${BEST.has(c.n)?'<div class="best">★ BEST SELLER</div>':''}
    <div class="pr">${vnd(c.price)} / ${c.g} khách<small>≈ ${per}/khách · ${esc(c.tax)}</small></div>
    ${dishes}
