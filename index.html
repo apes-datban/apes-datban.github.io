@@ -74,9 +74,26 @@ body.gmode main>section.top,body.gmode main iframe:not(#f-setup){display:none!im
 .nv .ac .bi{opacity:.92}
 .ln .qt{display:flex;width:max-content;margin-top:6px}.ln .qt button{width:34px;height:30px;font-size:18px}.ln .qt b{min-width:30px;font-size:14.5px}
 .pt{margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:8px 12px 10px;background:#fffaf1}.pth{font:600 15px "Be Vietnam Pro",sans-serif;color:var(--gold);border-bottom:1px dashed var(--line);padding-bottom:5px}.pth small{display:block;font:italic 11.5px Lora,Georgia,serif;color:#857463}.pt .dep{margin-top:6px}.pt .dep.ps{border-top:1px solid var(--line);padding-top:6px;margin-top:8px}.pt .dep.ps b{color:var(--gold)}
+
+/* thanh menu dọc trên màn hình rộng */
+.tbh{display:none}
+@media (min-width:760px){
+ .tb{top:0;bottom:0;right:auto;width:200px;flex-direction:column;align-items:stretch;gap:4px;overflow-x:hidden;overflow-y:auto;padding:14px 10px!important;border-bottom:0;border-right:1px solid var(--line);background:#FFFDF8;box-shadow:2px 0 14px rgba(60,40,20,.06)}
+ .tbh{display:block;font:600 17px Lora,Georgia,serif;color:var(--ink);padding:4px 10px 10px;border-bottom:1px solid var(--line);margin-bottom:6px}
+ .tbh small{display:block;font:italic 11.5px Lora,Georgia,serif;color:#857463;margin-top:2px}
+ .tb button{flex:0 0 auto!important;min-width:0!important;display:grid!important;grid-template-columns:28px 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;text-align:left;padding:10px 10px!important;border-bottom:0!important;border-radius:8px;font-size:15px!important;white-space:normal}
+ .tb button .ti{grid-row:1/3;font-size:20px!important;margin:0!important;text-align:center}
+ .tb button small{grid-column:2;font-size:11px!important}
+ .tb button:hover{background:rgba(168,131,76,.08)}
+ .tb button[aria-selected="true"]{background:rgba(168,131,76,.16)!important;color:var(--ink);box-shadow:inset 3px 0 0 var(--gold)}
+ main{margin-left:200px}
+ .sb{left:200px!important}
+ .nv{left:214px!important}
+ .tbf{display:none!important}
+}
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600&display=swap">
-<div class="tb" role="tablist">
+<div class="tb" role="tablist"><div class="tbh" aria-hidden="true">Menu<small>Thực đơn &amp; đặt bàn</small></div>
 <button role="tab" data-t="mon" aria-selected="true"><span class="ti" aria-hidden="true">🍽️</span>Món lẻ<small>À la carte</small></button>
 <button role="tab" data-t="nuoc" aria-selected="false"><span class="ti" aria-hidden="true">🍹</span>Đồ uống<small>Drinks</small></button>
 <button role="tab" data-t="set" aria-selected="false"><span class="ti" aria-hidden="true">📜</span>Menu set<small>Set menu</small></button>
@@ -121,7 +138,8 @@ body.gmode main>section.top,body.gmode main iframe:not(#f-setup){display:none!im
 <div class="nv" id="nv" hidden role="status" aria-live="polite"><div class="av" aria-hidden="true"><svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true"><defs><clipPath id="nvC"><circle cx="32" cy="32" r="31"/></clipPath></defs><g clip-path="url(#nvC)"><rect width="64" height="64" fill="#F3E6CF"/><path d="M8 64c2-11 11-17 24-17s22 6 24 17z" fill="#FFFFFF"/><path d="M8 64c2-11 9-16 18.5-16.8L31 64z" fill="#1E1A18"/><path d="M56 64c-2-11-9-16-18.5-16.8L33 64z" fill="#1E1A18"/><path d="M26 46.4l6 5.2 6-5.2-1.6-1.6h-8.8z" fill="#FFFFFF" stroke="#DDD6CB" stroke-width=".6"/><path d="M30.5 50.6h3l-.7 2.3 1.5 8.6-2.3 2.5-2.3-2.5 1.5-8.6z" fill="#0E0C0B"/><circle cx="29.2" cy="58" r=".7" fill="#C9A66B"/><circle cx="29.6" cy="61.5" r=".7" fill="#C9A66B"/><rect x="27.5" y="38" width="9" height="9" rx="3" fill="#EDC3A0"/><ellipse cx="20.8" cy="31.5" rx="1.8" ry="2.6" fill="#EDC3A0"/><ellipse cx="43.2" cy="31.5" rx="1.8" ry="2.6" fill="#EDC3A0"/><ellipse cx="32" cy="31" rx="11" ry="12.5" fill="#F3D0B0"/><path d="M20.6 30.5c-1.4-9.5 4.3-15 11.4-15s12.8 5.5 11.4 15c-1-4.6-3.6-7.6-6.6-8.6-3.4 1.6-8.6 1.9-12.8.6-1.9 1.5-3 4.3-3.4 8z" fill="#2B211B"/><ellipse cx="27.5" cy="31.5" rx="1.4" ry="1.7" fill="#2E241C"/><ellipse cx="36.5" cy="31.5" rx="1.4" ry="1.7" fill="#2E241C"/><path d="M25.3 28q2.2-1.2 4.4 0M34.3 28q2.2-1.2 4.4 0" stroke="#2B211B" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M28.6 37.2q3.4 2.6 6.8 0" stroke="#8A4A3A" stroke-width="1.4" fill="none" stroke-linecap="round"/></g><circle cx="32" cy="32" r="31" fill="none" stroke="#A8834C" stroke-width="2"/></svg></div><div class="bb"><small>Minh · Nhân viên Apes<span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#3BA55C;margin-left:6px;vertical-align:1px"></span></small><div id="nvT"></div><div class="ac" id="nvA"></div><button class="bx" id="nvX" aria-label="Đóng">×</button></div></div>
 <script>
 const SRC={set:'set.html',ban:'ban.html',mon:'mon.html',nuoc:'nuoc.html',setup:'setup.html',banh:'banh.html'};
-const TOP=()=>document.querySelector('.tb').offsetHeight;
+const VERT=()=>matchMedia('(min-width:760px)').matches;
+const TOP=()=>VERT()?0:document.querySelector('.tb').offsetHeight;
 function mark(t){ document.querySelectorAll('.tb button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.t===t))); }
 let jumping=0;
 /* tải từng phần khi khách kéo tới hoặc bấm tab */
@@ -147,7 +165,7 @@ function fit(){ const top=TOP(), vh=innerHeight-top-64;
     if(!open){ const h=Math.max(d.body.scrollHeight,d.body.offsetHeight); if(Math.abs(h-f.clientHeight)>2){ const old=f.clientHeight, above=f.offsetTop+f.offsetHeight<=scrollY+top; f.style.height=h+'px'; if(above) window.scrollBy({top:h-old,behavior:'instant'}); } } }catch(e){} });
   if(document.body.classList.contains('gmode')){ mark('garden'); return; }
   if(Date.now()-jumping>900){ let cur='mon'; document.querySelectorAll('main iframe').forEach(f=>{ if(f.offsetTop-top-40<=scrollY) cur=f.id.slice(2); }); if(scrollY+innerHeight>=document.documentElement.scrollHeight-4) cur='ban'; mark(cur); } }
-function padTop(){ try{ document.querySelector('main').style.paddingTop=document.querySelector('.tb').offsetHeight+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0; const fitT=()=>{ if(fitQ) return; fitQ=setTimeout(()=>{ fitQ=0; fit(); },150); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(fit,2000);
+function padTop(){ try{ document.querySelector('main').style.paddingTop=(VERT()?0:document.querySelector('.tb').offsetHeight)+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0; const fitT=()=>{ if(fitQ) return; fitQ=setTimeout(()=>{ fitQ=0; fit(); },150); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(fit,2000);
 ['wheel','touchstart','keydown'].forEach(k=>addEventListener(k,()=>{ SHOWN=''; },{passive:true}));
 document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(b.dataset.t);});
 const h=(location.hash||'').slice(1); if(SRC[h]) setTimeout(()=>show(h),1200);
