@@ -106,6 +106,39 @@ button{font:inherit;color:inherit}
 
 /* làm đẹp thẻ set ảnh gốc */.cards{gap:22px!important}.cd.og{border-radius:14px;border:1px solid rgba(168,131,76,.28);box-shadow:0 8px 24px rgba(60,40,20,.13)!important}.cd.og.on{box-shadow:0 0 0 3px var(--t),0 8px 24px rgba(60,40,20,.13)!important}.cd.og .act{background:color-mix(in srgb,var(--t) 7%,#fffdf8)!important;border-top:1px solid color-mix(in srgb,var(--t) 22%,transparent);padding:14px 14px 16px!important}.cd.og .sel{max-width:280px;border-radius:8px;padding:11px 12px;font-size:15px}.sec{grid-column:1/-1;margin:14px 0 -6px;text-align:center;font:500 22px Lora,Georgia,serif;color:var(--gold);letter-spacing:.04em;display:flex;align-items:center;gap:12px}.sec::before,.sec::after{content:"";flex:1;height:1px;background:var(--gold);opacity:.45}.sec i{display:block;font:italic 12px Lora,Georgia,serif;color:var(--mut);letter-spacing:0}.tr .p small.g4{display:block;font-size:10px;font-weight:500;color:var(--mut);text-align:right;line-height:1.1;letter-spacing:0;font-family:"Be Vietnam Pro",sans-serif}.tr .n{white-space:normal!important;overflow:visible!important;overflow-wrap:anywhere}@media (max-width:400px){.tr .n{font-size:13px!important}.tr{gap:4px!important}}
 </style>
+<style>
+@font-face{font-family:SVibes;src:url(fonts/greatvibes.woff) format('woff');font-display:swap}
+@font-face{font-family:SPlay;font-weight:600;src:url(fonts/playfair-600.woff) format('woff');font-display:swap}
+@font-face{font-family:SPlay;font-weight:700;src:url(fonts/playfair-700.woff) format('woff');font-display:swap}
+@font-face{font-family:SCorm;font-style:italic;font-weight:500;src:url(fonts/cormorant-i500.woff) format('woff');font-display:swap}
+@font-face{font-family:SCorm;font-weight:600;src:url(fonts/cormorant-600.woff) format('woff');font-display:swap}
+@font-face{font-family:SBvp;font-weight:500;src:url(fonts/bvp-500.woff) format('woff');font-display:swap}
+@font-face{font-family:SBvp;font-weight:600;src:url(fonts/bvp-600.woff) format('woff');font-display:swap}
+/* thẻ set: nền hoa gốc + chữ đồng bộ */
+.cd.pz{aspect-ratio:auto!important;padding:0!important;background:#fff!important;overflow:hidden;border-radius:14px;border:1px solid rgba(168,131,76,.28);box-shadow:0 8px 24px rgba(60,40,20,.13)!important;display:block!important}
+.cd.pz.on{box-shadow:0 0 0 3px var(--t),0 8px 24px rgba(60,40,20,.13)!important}
+.pzp{position:relative;container-type:inline-size;aspect-ratio:var(--ar,904/1280);background:var(--bgc,#fff) var(--bg) center top/100% auto no-repeat}
+.pzb{position:absolute;inset:var(--box);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--cx);font-size:calc(1cqw*var(--k,1))}
+.pzb .zb1{font:600 2.5em/1 SPlay,Georgia,serif;letter-spacing:.32em;margin-right:-.32em;color:var(--ch);opacity:.85}
+.pzb .znm{font:400 12.5em/1 SVibes,cursive;color:var(--ct);margin:.06em 0 .02em;white-space:nowrap}
+.pzb .zbs{font:600 2.3em/1 SPlay,serif;letter-spacing:.24em;color:var(--ch);margin-bottom:.5em}.pzb .zb1{margin-bottom:.55em}.pzb .znm{line-height:1.12!important;margin:0 0 .08em!important;padding-top:.05em}.pzb .zbs{margin-top:.25em}
+.pzb .zpr{font:700 4.6em/1.1 SPlay,Georgia,serif;color:var(--ct);letter-spacing:.02em}
+.pzb .zpr2{font:italic 500 3.1em/1.25 SCorm,Georgia,serif;margin-top:.15em;opacity:.9}
+.pzb .zorn{display:flex;align-items:center;gap:.6em;width:46%;margin:1.3em 0 .4em;color:var(--ch);font-size:2.4em;line-height:1}
+.pzb .zorn::before,.pzb .zorn::after{content:"";flex:1;height:1px;background:currentColor;opacity:.55}
+.pzb .zsc{margin-top:1.15em;width:100%}
+.pzb .zsc:first-of-type{margin-top:.4em}
+.pzb .zh{font:700 3.25em/1.15 SPlay,Georgia,serif;letter-spacing:.2em;margin-right:-.2em;text-transform:uppercase;color:var(--ch)}
+.pzb .zhe{font:italic 500 2.7em/1.1 SCorm,Georgia,serif;color:var(--ch);opacity:.85;margin:.05em 0 .4em}
+.pzb .zdi{margin:.45em 0 0}
+.pzb .zdv{font:500 3.45em/1.22 SBvp,sans-serif}
+.pzb .zdv span{font-weight:600;color:var(--ch);font-size:.88em;margin-left:.2em}
+.pzb .zde{font:italic 500 3.05em/1.15 SCorm,Georgia,serif;opacity:.85}
+.pzb .znt{margin-top:1.2em;font:italic 500 3.05em/1.25 SCorm,Georgia,serif;color:var(--ch)}
+.cd.pz .act{margin-top:0!important;padding:14px 14px 16px!important;background:color-mix(in srgb,var(--t) 7%,#fffdf8)!important;border-top:1px solid color-mix(in srgb,var(--t) 22%,transparent)}
+.cd.pz .sel{max-width:280px;border-radius:8px;padding:11px 12px;font-size:15px}
+</style>
+
 <main class="wrap">
 <header class="hd"><small>APES RESTAURANT</small><h1>SET MENU</h1><p>Thực đơn set cho 2 &amp; 4 khách<i>Set menus for two &amp; four</i></p>
 <section class="tbl" aria-label="Bảng giá set menu"><h2>Bảng giá set menu <i>· bấm tên set để xem</i></h2><div class="tg" id="tg"></div><div class="tf"><b class="bs">★</b> Best seller · <sup>✦</sup> giá đã gồm VAT 8%, còn lại chưa gồm VAT 8%</div></section></header>
@@ -163,7 +196,35 @@ function lbShow(){ const x=LB.L[LB.i]; $('#lbI').src='s/'+x.k+'.jpg'; $('#lbT').
 
 /* thẻ set giống tấm menu */
 const OG={'Fresco':'fresco','Simple Love':'simple_love','Feasty':'feasty','The Tasty':'the_tasty','Miss You':'miss_you','My Honey':'my_honey','U & I':'u_i','Miss You 2':'miss_you_2','With Love':'with_love','Together':'together','Menu for Us':'menu_for_us','Thanksgiving':'thanksgiving','Smile':'smile'};
+const PZ={
+ 'Simple Love':{nob:1,bg:'simple_love',box:'15.5% 8% 13% 27%',ct:'#3b2b6b',ch:'#4a3a7e',cx:'#2b2048',bgc:'#ece6fa'},
+ 'Fresco':{bg:'fresco',box:'16% 25% 4% 31%',ct:'#55553c',ch:'#6d6a48',cx:'#2f2d22',bgc:'#f4efe9'},
+ 'Together':{bg:'together',box:'9.5% 19% 18% 18%',ct:'#b0592a',ch:'#b0592a',cx:'#3a2a1e',bgc:'#fcefe2'},
+ 'Feasty':{nob:1,bg:'feasty',box:'19% 14% 20% 14%',ct:'#6b5040',ch:'#8a6a4a',cx:'#3a2e24',bgc:'#fbf8f4'},
+ 'The Tasty':{bg:'the_tasty',ar:'828/1280',box:'7% 20% 6% 26%',ct:'#6e5a5a',ch:'#7a6464',cx:'#3e3434',bgc:'#ece8e6'},
+ 'Miss You':{bg:'miss_you',box:'7% 13% 17% 13%',ct:'#2e2a26',ch:'#7a5c3a',cx:'#2e2a26',bgc:'#faf6f2'},
+ 'Miss You 2':{bg:'miss_you_2',box:'7% 13% 17% 13%',ct:'#2e2a26',ch:'#7a5c3a',cx:'#2e2a26',bgc:'#faf6f2'},
+ 'My Honey':{bg:'my_honey',box:'12% 12% 21% 12%',ct:'#c8314a',ch:'#c8314a',cx:'#5a3a40',bgc:'#fde9e6'},
+ 'U & I':{nob:1,bg:'u_i',box:'21% 18% 15% 18%',ct:'#b84f86',ch:'#b84f86',cx:'#5a4050',bgc:'#ffffff'},
+ 'With Love':{bg:'with_love',box:'5% 16% 14% 24%',ct:'#33332b',ch:'#4f6a4a',cx:'#33332b',bgc:'#f3f0e9'},
+ 'Menu for Us':{nob:1,bg:'menu_for_us',box:'27% 12% 15% 12%',ct:'#b8742e',ch:'#b8742e',cx:'#5a3a1e',bgc:'#ffffff'},
+ 'Thanksgiving':{bg:'thanksgiving',box:'6% 9% 23% 9%',ct:'#a87a42',ch:'#a87a42',cx:'#4a4a4a',bgc:'#ffffff'},
+ 'Smile':{bg:'smile',box:'15.5% 6% 22% 6%',ct:'#7a1f3d',ch:'#7a1f3d',cx:'#5a2a3a',bgc:'#f3f2f2'}
+};
+const SEC_EN={'Khai vị':'Starters','Món chính':'Main Course','Món kèm':'Side Dishes','Tráng miệng':'Dessert','Đồ uống':'Drinks','Đã bao gồm':'Included'};
+function cardP(c,q){ const P=PZ[c.n], per=vnd(Math.round(c.price/c.g/1000)*1000);
+  const secs=c.c.map(s=>`<div class="zsc"><div class="zh">${esc(s.h)}</div><div class="zhe">${esc(SEC_EN[s.h]||CEN[s.h]||'')}</div>${s.d.map(d=>`<div class="zdi"><div class="zdv">${esc(d.vn)}${d.qn?` <span>(${esc(d.qn)})</span>`:(d.q&&+d.q>1?`<span>×${esc(d.q)}</span>`:'')}</div>${d.en?`<div class="zde">${esc(d.en)}</div>`:''}</div>`).join('')}</div>`).join('');
+  return `<article class="cd pz${q?' on':''}" data-set="${esc(c.n)}" style="--t:${P.ct}"><div class="pzp" style="--bg:url(sb/${P.bg}.jpg?v=2);${P.ar?'--ar:'+P.ar+';':''}--bgc:${P.bgc};--box:${P.box};--ct:${P.ct};--ch:${P.ch};--cx:${P.cx}"><div class="pzb">
+   ${P.nob?'':'<div class="zb1">APES RESTAURANT</div>'}<div class="znm">${esc(c.n)}</div>${BEST.has(c.n)?'<div class="zbs">★ BEST SELLER ★</div>':''}
+   <div class="zpr">${vnd(c.price)} / ${c.g} khách</div><div class="zpr2">≈ ${per}/khách · ${esc(c.tax)}</div>
+   <div class="zorn">✦</div>${secs}${c.note?`<div class="znt">✦ ${esc(c.note)}</div>`:''}</div></div>
+   <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
+     :`<button type="button" class="sel" data-sel="${esc(c.n)}">Chọn set ${esc(c.n)}<small>Select this set</small></button>`}</div></article>`; }
+/* tự co chữ cho vừa khung nền */
+addEventListener('resize',()=>{ clearTimeout(pzFit.t); pzFit.t=setTimeout(pzFit,200); });
+function pzFit(){ document.querySelectorAll('.cd.pz .pzb').forEach(b=>{ let k=1; b.style.setProperty('--k',k); for(let i=0;i<14&&b.scrollHeight>b.clientHeight+1;i++){ k-=.03; b.style.setProperty('--k',k.toFixed(2)); } }); }
 function card(c){ const q=SC[c.n]||0;
+  if(PZ[c.n]) return cardP(c,q);
   if(OG[c.n]) return `<article class="cd og${q?' on':''}" data-set="${esc(c.n)}" style="--t:${(STY[c.n]||[0,'#A8834C'])[1]}"><img class="ogi" src="sg/${OG[c.n]}.jpg?v=1" alt="Menu set ${esc(c.n)}" loading="lazy">
    <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
      :`<button type="button" class="sel" data-sel="${esc(c.n)}">Chọn set ${esc(c.n)}<small>Select this set</small></button>`}</div></article>`;
@@ -202,7 +263,7 @@ function pickSet(c){ SC[c.n]=SC[c.n]||1; save(); render(); toast('Đã chọn '+
 
 const ORD=()=>[...SETS].sort((a,b)=>(a.g-b.g)||(b.price-a.price));
 function render(){ $('#tg').style.gridTemplateRows='repeat('+Math.ceil(SETS.length/2)+',auto)'; $('#tg').innerHTML=ORD().map(c=>`<button type="button" class="tr${SC[c.n]?' on':''}" data-jump="${esc(c.n)}"><span class="n">${SC[c.n]?'✓ ':''}${esc(c.n)}${BEST.has(c.n)?' <b class="bs">★</b>':''}</span><span class="p">${kk(c.price)}${inc(c)?'<sup>✦</sup>':''}${c.g!==2?'<small class="g4">'+c.g+' khách</small>':''}</span></button>`).join('');
-  $('#cards').innerHTML=ORD().map((c,i,a)=>(c.g!==2&&(i===0||a[i-1].g===2)?'<h2 class="sec">Set cho '+c.g+' khách<i>Set menus for '+(c.g===4?'four':c.g)+'</i></h2>':'')+card(c)).join(''); save(); }
+  $('#cards').innerHTML=ORD().map((c,i,a)=>(c.g!==2&&(i===0||a[i-1].g===2)?'<h2 class="sec">Set cho '+c.g+' khách<i>Set menus for '+(c.g===4?'four':c.g)+'</i></h2>':'')+card(c)).join(''); save(); pzFit(); try{ document.fonts.ready.then(pzFit); }catch(e){} }
 function goEl(el,off){ try{ const f=window.frameElement; if(f&&parent!==window){ let tb=70; try{ tb=parent.document.querySelector('.tb').offsetHeight; }catch(x){} parent.scrollTo({top:f.offsetTop+el.getBoundingClientRect().top+(window.scrollY||0)-tb-(off||8),behavior:'instant'}); return; } }catch(e){} el.scrollIntoView({behavior:'instant',block:'start'}); }
 document.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return;
   if(b.id==='mX'){ closeM(); return; }
