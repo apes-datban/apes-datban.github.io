@@ -67,6 +67,10 @@ h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin
 .hc .go{display:block;width:100%;margin-top:12px;border:0;border-radius:4px;background:var(--gold);color:#fff;font-weight:600;padding:11px;font-size:14.5px}
 .hc .cl{margin-top:6px;border:0;background:none;color:var(--muted);font-size:13px;text-decoration:underline}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:30;background:var(--ink);color:#fff;padding:9px 14px;border-radius:4px;font-size:13.5px;max-width:calc(100% - 32px);text-align:center}
+
+/* nút 3D đồng bộ */html body button.go{background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35)!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body button.go:not(:disabled):active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2)!important}
+
+.bi{display:block;font-size:.72em;font-weight:500;opacity:.85;line-height:1.15;margin-top:1px;letter-spacing:0;text-transform:none;font-style:normal}
 </style></head><body>
 <div class="wrap">
 <header><div class="br">APES RESTAURANT</div><h1>Chọn bàn<small>Choose your table</small></h1>
@@ -77,7 +81,7 @@ h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin
 <div class="picked" id="picked" hidden></div>
 <p class="fine">Bàn hiện "Đã đặt" là bàn đã có khách cọc ngày đó. Nhà hàng giữ bàn sau khi nhận cọc.</p>
 </div>
-<div class="ov" id="hint" hidden><div class="hc"><div class="ok" id="hintT">Đã chọn bàn ✓</div><p>Bạn kéo xuống để order món, cảm ơn bạn!</p><i>Scroll down to order food. Thank you!</i><button type="button" class="go" id="hintGo">Order món ↓</button><button type="button" class="cl" id="hintX">Đóng</button></div></div>
+<div class="ov" id="hint" hidden><div class="hc"><div class="ok" id="hintT">Đã chọn bàn ✓</div><p>Bạn kéo xuống để order món, cảm ơn bạn!</p><i>Scroll down to order food. Thank you!</i><button type="button" class="go" id="hintGo">Order món ↓<small class="bi">Order food</small></button><button type="button" class="cl" id="hintX">Đóng<small class="bi">Close</small></button></div></div>
 <div class="toast" id="toast" hidden></div>
 <script>
 const ZONES=[
@@ -114,7 +118,7 @@ function render(){
     <div class="tbls">${ts.map(t=>`<button class="tb${locked(t)?' lk':''}" data-t="${t}" aria-pressed="${PICK===t}"><b>${t}</b><small>${locked(t)?'Đã đặt':PICK===t?'Đang chọn':seats(t)}</small></button>`).join('')}</div>
     ${z.gallery.length?`<div class="gal">${z.gallery.map(g=>`<img src="img/${g}.jpg" alt="${z.name}" loading="lazy">`).join('')}</div>`:''}`; }
   const pk=$('#picked');
-  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn</button>`; }
+  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
   else { pk.hidden=true; pk.innerHTML=''; }
   keep();
 }

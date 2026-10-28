@@ -94,6 +94,10 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
 
 /* nút chọn 3D */html body .pk .add{background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08));box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .08s,box-shadow .08s;}html body .pk .add:active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2),inset 0 1px 0 rgba(255,255,255,.25)}html body .pk .add.has{background-color:#fff;background-image:linear-gradient(180deg,#fff,#F2E9D8);box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.16),inset 0 1px 0 #fff;transition:transform .08s,box-shadow .08s;}html body .pk .add.has:active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.15),inset 0 1px 0 #fff}
 
+
+/* nút 3D đồng bộ */html body .cta:not(.ghost){background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35)!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta:not(.ghost):not(:disabled):active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2)!important}html body .cta.ghost{background-color:#fff!important;background-image:linear-gradient(180deg,#fff,#F2E9D8)!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.16),inset 0 1px 0 #fff!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta.ghost:active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.15)!important}html body .cta:disabled{opacity:.55;filter:saturate(.7)}
+
+.bi{display:block;font-size:.72em;font-weight:500;opacity:.85;line-height:1.15;margin-top:1px;letter-spacing:0;text-transform:none;font-style:normal}
 </style>
 
 <div class="wbar"><div class="in">
@@ -102,17 +106,17 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
 </div></div>
 
 <div class="ov" id="mOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
-  <div class="sh"><h2>CHỌN MÓN</h2><button class="x" id="mX">Đóng</button></div>
+  <div class="sh"><h2>CHỌN MÓN</h2><button class="x" id="mX">Đóng<small class="bi">Close</small></button></div>
   <img class="mph" id="mImg" alt="">
   <div class="mt"><b id="mName"></b><span class="ie" id="mEn"></span></div>
   <div id="mBody"></div>
   <div class="qrow"><span>Số phần · <i>Qty</i></span><span class="bstep"><button id="mMinus" aria-label="Bớt">−</button><span id="mQ">1</span><button id="mPlus" aria-label="Thêm">+</button></span></div>
   <div class="merr" id="mErr"></div>
-  <div class="acts"><button class="cta" id="mAdd">Thêm vào món đã chọn</button></div>
+  <div class="acts"><button class="cta" id="mAdd">Thêm vào món đã chọn<small>Add to my order</small></button></div>
 </div></div>
 
 <div class="ov" id="sOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sT">
-  <div class="sh"><h2 id="sT">MÓN ĐÃ CHỌN</h2><button class="x" id="sX">Đóng</button></div>
+  <div class="sh"><h2 id="sT">MÓN ĐÃ CHỌN</h2><button class="x" id="sX">Đóng<small class="bi">Close</small></button></div>
   <div id="lines"></div>
   <div class="sum"><span>Tạm tính · <i>Subtotal</i></span><b id="sumT">0đ</b></div>
   <div class="fine">Tính theo giá trên menu. Nhà hàng xác nhận lại tổng tiền khi trả lời Zalo.</div>
@@ -177,7 +181,7 @@ function drawM(){ const d=D[M.k]; let h='';
   if(d.flag==='steak') h+=Object.keys(OPT).map(g=>`<div class="grp"><b>${OPTN[g][0]} · ${OPTN[g][1]}</b><div class="chips">${OPT[g].map(x=>{const [vn,en]=x.split('|');return `<button class="chip" data-mo="${g}|${vn}" aria-pressed="${M.o[g]===vn}">${vn}<small>${en}</small></button>`}).join('')}</div></div>`).join('');
   if(d.flag==='pre') h+=`<div class="grp" style="color:var(--gold);font-size:13px;text-align:center">✦ Món đặc biệt – vui lòng đặt trước 6 tiếng ✦</div>`;
   $('#mBody').innerHTML=h; $('#mQ').textContent=M.q; $('#mErr').textContent='';
-  if(d.flag==='steak') $('#mAdd').textContent=M.q>1?`Thêm ${M.q} phần cùng độ chín, sốt, ăn kèm`:'Thêm vào món đã chọn'; else $('#mAdd').textContent='Thêm vào món đã chọn';
+  if(d.flag==='steak') $('#mAdd').innerHTML=M.q>1?`Thêm ${M.q} phần cùng độ chín, sốt, ăn kèm<small>Add ${M.q} portions</small>`:'Thêm vào món đã chọn<small>Add to my order</small>'; else $('#mAdd').innerHTML='Thêm vào món đã chọn<small>Add to my order</small>';
 }
 const closeM=()=>{ $('#mOv').hidden=true; document.body.style.overflow=''; M=null; };
 $('#mX').onclick=closeM; $('#mOv').addEventListener('click',e=>{ if(e.target.id==='mOv') closeM(); });

@@ -529,6 +529,10 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
 
 /* chữ to trên điện thoại */.book.mob .tile .vn{font-size:calc(15px / var(--z,1))}.book.mob .grid.c3 .tile .vn{font-size:calc(13.5px / var(--z,1))}.book.mob .hero .tile .vn{font-size:calc(16px / var(--z,1))}.book.mob .tile .en{font-size:calc(12px / var(--z,1))}.book.mob .tile .note{font-size:calc(11.5px / var(--z,1))}.book.mob .tile .pr{font-size:calc(15.5px / var(--z,1))}.book.mob .hero .tile .pr{font-size:calc(16px / var(--z,1))}.book.mob .li .vn{font-size:calc(15px / var(--z,1))}.book.mob .roomy .li .vn{font-size:calc(15px / var(--z,1))}.book.mob .cellist .li .vn{font-size:calc(15px / var(--z,1))}.book.mob .li .pr{font-size:calc(15.5px / var(--z,1))}.book.mob .cellist .li .pr{font-size:calc(15.5px / var(--z,1))}.book.mob .li .en{font-size:calc(12px / var(--z,1))}.book.mob .roomy .li .en{font-size:calc(12px / var(--z,1))}.book.mob .sub{font-size:calc(12.5px / var(--z,1))}.book.mob .legend{font-size:calc(11px / var(--z,1))}.book.mob .lhead span{font-size:calc(10.5px / var(--z,1))}.book.mob .lhead em{font-size:calc(11.5px / var(--z,1))}.book.mob .opts .o{font-size:calc(13px / var(--z,1))}.book.mob .opts em{font-size:calc(11.5px / var(--z,1))}.book.mob .opts b{font-size:calc(10px / var(--z,1))}.book.mob .pre{font-size:calc(13px / var(--z,1))}.book.mob .pre em{font-size:calc(11.5px / var(--z,1))}.book.mob .quote{font-size:calc(14px / var(--z,1))}.book.mob .quote em{font-size:calc(11.5px / var(--z,1))}.book.mob .wel p{font-size:calc(13px / var(--z,1))}.book.mob .wel p em{font-size:calc(11.5px / var(--z,1))}.book.mob .bd{font-size:calc(13px / var(--z,1))}.book.mob .bd em{font-size:calc(11.5px / var(--z,1))}.book.mob .bs{font-size:calc(13px / var(--z,1))}.book.mob .bke{font-size:calc(11.5px / var(--z,1))}.book.mob .cve{font-size:calc(12px / var(--z,1))}.book.mob .bqe{font-size:calc(11.5px / var(--z,1))}.book.mob .tile .pr::before,.book.mob .tile .pr::after{font-size:calc(11px / var(--z,1))}.book.mob .tile .pr{color:#8E6A34}.book.mob .li .pr{color:#8E6A34}.book.mob .li{margin-bottom:calc(9px / var(--z,1))}.book.mob .pk button{font-size:calc(14px / var(--z,1));min-height:calc(34px / var(--z,1));padding:0 calc(14px / var(--z,1));border-radius:calc(5px / var(--z,1))}.book.mob .pk .stp button{width:calc(34px / var(--z,1));height:calc(34px / var(--z,1));font-size:calc(18px / var(--z,1))}.book.mob .pk .stp span{min-width:calc(30px / var(--z,1));font-size:calc(15px / var(--z,1))}
 .book.mob .page>.content{padding-bottom:calc(58px / var(--z,1))}.book.mob .prw{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:calc(6px / var(--z,1))}.book.mob .grid.c3 .prw{flex-direction:column;gap:calc(4px / var(--z,1))}.book.mob .grid.c3 .tile .pr::before,.book.mob .grid.c3 .tile .pr::after{display:none}.book.mob .lhead{flex-wrap:wrap}.book.mob .lhead span,.book.mob .lhead em{white-space:normal}
+
+/* nút 3D đồng bộ */html body .cta:not(.ghost){background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35)!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta:not(.ghost):not(:disabled):active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2)!important}html body .cta.ghost{background-color:#fff!important;background-image:linear-gradient(180deg,#fff,#F2E9D8)!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.16),inset 0 1px 0 #fff!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .cta.ghost:active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.15)!important}html body .cta:disabled{opacity:.55;filter:saturate(.7)}
+
+.bi{display:block;font-size:.72em;font-weight:500;opacity:.85;line-height:1.15;margin-top:1px;letter-spacing:0;text-transform:none;font-style:normal}
 </style>
 
 <div class="wbar"><div class="in">
@@ -537,17 +541,17 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
 </div></div>
 
 <div class="ov" id="mOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
-  <div class="sh"><h2>CHỌN MÓN</h2><button class="x" id="mX">Đóng</button></div>
+  <div class="sh"><h2>CHỌN MÓN</h2><button class="x" id="mX">Đóng<small class="bi">Close</small></button></div>
   <img loading="lazy" decoding="async" class="mph" id="mImg" alt="">
   <div class="mt"><b id="mName"></b><span class="ie" id="mEn"></span></div>
   <div id="mBody"></div>
   <div class="qrow"><span>Số phần · <i>Qty</i></span><span class="bstep"><button id="mMinus" aria-label="Bớt">−</button><span id="mQ">1</span><button id="mPlus" aria-label="Thêm">+</button></span></div>
   <div class="merr" id="mErr"></div>
-  <div class="acts"><button class="cta" id="mAdd">Thêm vào món đã chọn</button></div>
+  <div class="acts"><button class="cta" id="mAdd">Thêm vào món đã chọn<small>Add to my order</small></button></div>
 </div></div>
 
 <div class="ov" id="sOv" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sT">
-  <div class="sh"><h2 id="sT">MÓN ĐÃ CHỌN</h2><button class="x" id="sX">Đóng</button></div>
+  <div class="sh"><h2 id="sT">MÓN ĐÃ CHỌN</h2><button class="x" id="sX">Đóng<small class="bi">Close</small></button></div>
   <div id="lines"></div>
   <div class="sum"><span>Tạm tính · <i>Subtotal</i></span><b id="sumT">0đ</b></div>
   <div class="fine">Tính theo giá trên menu. Nhà hàng xác nhận lại tổng tiền khi trả lời Zalo.</div>
@@ -569,7 +573,7 @@ body { background:var(--wbg)!important; color:var(--ink); padding-left:max(16px,
     <div class="acts"><button class="cta" id="copyBtn">Sao chép tin nhắn<small>Copy message</small></button><a class="cta ghost" href="https://zalo.me/0385285768" target="_blank" rel="noopener">Mở Zalo Apes<small>Open Zalo</small></a></div>
   </div>
 </div></div>
-<div class="ov" id="nxt" hidden style="z-index:60;background:rgba(40,28,15,.3);display:flex;align-items:center;justify-content:center;padding:16px"><div style="background:#FFFDF8;border:1px solid #A8834C;border-radius:10px;max-width:300px;width:100%;padding:16px 14px 12px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);font-family:'Be Vietnam Pro',system-ui,sans-serif"><div id="nxtT" style="font:600 20px Georgia,serif;color:#A8834C">Đã chọn ✓</div><div style="margin-top:6px;font-size:15px;font-weight:600;color:#2E241C">Mời bạn chọn món kế tiếp, cảm ơn bạn!</div><div style="font-size:12px;font-style:italic;color:#857463">Please choose your next dish. Thank you!</div><button type="button" id="nxtX" style="margin-top:12px;width:100%;border:0;border-radius:4px;background:#A8834C;color:#fff;font-weight:600;padding:10px;font-size:14.5px;cursor:pointer">Chọn tiếp</button></div></div>
+<div class="ov" id="nxt" hidden style="z-index:60;background:rgba(40,28,15,.3);display:flex;align-items:center;justify-content:center;padding:16px"><div style="background:#FFFDF8;border:1px solid #A8834C;border-radius:10px;max-width:300px;width:100%;padding:16px 14px 12px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.25);font-family:'Be Vietnam Pro',system-ui,sans-serif"><div id="nxtT" style="font:600 20px Georgia,serif;color:#A8834C">Đã chọn ✓</div><div style="margin-top:6px;font-size:15px;font-weight:600;color:#2E241C">Mời bạn chọn món kế tiếp, cảm ơn bạn!</div><div style="font-size:12px;font-style:italic;color:#857463">Please choose your next dish. Thank you!</div><button type="button" id="nxtX" style="margin-top:12px;width:100%;border:0;border-radius:4px;background:#A8834C;color:#fff;font-weight:600;padding:10px;font-size:14.5px;cursor:pointer">Chọn tiếp<small class="bi">Continue</small></button></div></div>
 <div class="toast" id="toast" hidden></div>
 
 <script>
@@ -589,8 +593,8 @@ const vOf=(k,v)=>D[k].v.find(x=>x.k===v);
 const same=(a,b)=>JSON.stringify(a||{})===JSON.stringify(b||{});
 
 function pk(el){ const k=el.dataset.k, d=D[k], q=qOf(k);
-  if(simple(d)) el.innerHTML=q?`<span class="stp"><button data-m="${esc(k)}" aria-label="Bớt">−</button><span>${q}</span><button data-p="${esc(k)}" aria-label="Thêm">+</button></span>`:`<button class="add" data-p="${esc(k)}">Chọn</button>`;
-  else el.innerHTML=`<button class="add${q?' has':''}" data-o="${esc(k)}">${q?'Đã chọn '+q+' · +':'Chọn'}</button>`;
+  if(simple(d)) el.innerHTML=q?`<span class="stp"><button data-m="${esc(k)}" aria-label="Bớt">−</button><span>${q}</span><button data-p="${esc(k)}" aria-label="Thêm">+</button></span>`:`<button class="add" data-p="${esc(k)}">Chọn<small class="bi">Select</small></button>`;
+  else el.innerHTML=`<button class="add${q?' has':''}" data-o="${esc(k)}">${q?'Đã chọn '+q+' · +<small class="bi">Selected</small>':'Chọn<small class="bi">Select</small>'}</button>`;
 }
 function paint(){ document.querySelectorAll('.pk').forEach(pk); bar(); save(); if(!$('#sOv').hidden) sheet(); }
 function total(){ return cart.reduce((s,e)=>s+e.q*vOf(e.k,e.v).p,0); }
@@ -614,7 +618,7 @@ function drawM(){ const d=D[M.k]; let h='';
   if(d.flag!=='steak'&&d.done) h+=`<div class="grp"><b>${OPTN.done[0]} · ${OPTN.done[1]}</b><div class="chips">${OPT.done.map(x=>{const [vn,en]=x.split('|');return `<button class="chip" data-mo="done|${vn}" aria-pressed="${M.o.done===vn}">${vn}<small>${en}</small></button>`}).join('')}</div></div>`;
   if(d.flag==='pre') h+=`<div class="grp" style="color:var(--gold);font-size:13px;text-align:center">✦ Món đặc biệt – vui lòng đặt trước 6 tiếng ✦</div>`;
   $('#mBody').innerHTML=h; $('#mQ').textContent=M.q; $('#mErr').textContent='';
-  if(d.flag==='steak') $('#mAdd').textContent=M.q>1?`Thêm ${M.q} phần cùng độ chín, sốt, ăn kèm`:'Thêm vào món đã chọn'; else $('#mAdd').textContent='Thêm vào món đã chọn';
+  if(d.flag==='steak') $('#mAdd').innerHTML=M.q>1?`Thêm ${M.q} phần cùng độ chín, sốt, ăn kèm<small>Add ${M.q} portions</small>`:'Thêm vào món đã chọn<small>Add to my order</small>'; else $('#mAdd').innerHTML='Thêm vào món đã chọn<small>Add to my order</small>';
 }
 const closeM=()=>{ $('#mOv').hidden=true; document.body.style.overflow=''; M=null; };
 $('#mX').onclick=closeM; $('#mOv').addEventListener('click',e=>{ if(e.target.id==='mOv') closeM(); });

@@ -8,6 +8,8 @@ body{margin:0;background:#F8F4EC;font-family:Arial,sans-serif;color:#2E241C}
 .ok{border-color:#2E7D32}.ok .t{color:#2E7D32}.no{border-color:#B4472F}.no .t{color:#B4472F}
 .btn{display:inline-block;margin-top:14px;background:#2E7D32;color:#fff;text-decoration:none;border-radius:4px;padding:12px 18px;font-weight:bold;font-size:15px;border:0}
 .sp{width:28px;height:28px;border:3px solid #D9C7A2;border-top-color:#A8834C;border-radius:50%;margin:8px auto 0;animation:r 1s linear infinite}@keyframes r{to{transform:rotate(360deg)}}
+
+/* nút 3D đồng bộ */html body .btn{background-image:linear-gradient(180deg,rgba(255,255,255,.24),rgba(255,255,255,0) 55%,rgba(0,0,0,.08))!important;box-shadow:0 3px 0 #6E5226,0 5px 9px rgba(40,28,15,.22),inset 0 1px 0 rgba(255,255,255,.35)!important;border-radius:6px;transition:transform .08s,box-shadow .08s;margin-bottom:3px}html body .btn:not(:disabled):active{transform:translateY(3px);box-shadow:0 0 0 #6E5226,0 1px 2px rgba(40,28,15,.2)!important}
 </style></head><body>
 <div class="b" id="b"><div class="t">Đang xử lý phiếu…</div><div class="sp"></div><div class="m" style="color:#857463">Vui lòng chờ vài giây, không tắt trang.</div></div>
 <script>
