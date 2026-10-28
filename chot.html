@@ -44,4 +44,7 @@ async function run(){
   }
 }
 run();
-</script></body></html>
+</script><script>(function(){ const T=['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+ const f=v=>{ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(v||''); if(!m) return ''; const d=new Date(+m[1],+m[2]-1,+m[3]); return T[d.getDay()]+', '+m[3]+'/'+m[2]+'/'+m[1]; };
+ const up=()=>document.querySelectorAll('input[type=date]').forEach(i=>{ let s=i.nextElementSibling; if(!s||!s.classList.contains('dvn')){ s=document.createElement('span'); s.className='dvn'; s.style.cssText='display:block;margin-top:4px;white-space:nowrap;font:600 11.5px/1.25 "Be Vietnam Pro",system-ui,sans-serif;color:#8E6A34;letter-spacing:0;text-transform:none;font-style:normal'; i.after(s); } const t=f(i.value); if(s.textContent!==t) s.textContent=t; s.hidden=!t; });
+ document.addEventListener('input',up,true); document.addEventListener('change',up,true); setInterval(up,800); up(); })();</script></body></html>
