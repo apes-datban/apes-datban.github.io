@@ -250,7 +250,7 @@ $('#kForm').addEventListener('click',e=>{ refresh(); if(!check()){ e.preventDefa
   fetch(FORM_URL.replace(/\/viewform.*$/,'/formResponse'),{method:'POST',mode:'no-cors',body:new URLSearchParams(F)}).then(()=>{
     try{ localStorage.setItem('apes_sent',JSON.stringify({at:at+' '+z(t.getDate())+'/'+z(t.getMonth()+1),d:v('kDate'),p:v('kPhone').replace(/\D/g,'')})); }catch(x){}
     done(); updUI();
-    kToast('<div style="font-size:34px;line-height:1">✅</div><b style="display:block;font-size:17px;margin:6px 0 4px">Đã gửi phiếu về Apes lúc '+at+'</b>Nhân viên Apes sẽ liên hệ xác nhận ngay. Cần sửa món, giờ… anh/chị chỉnh rồi bấm gửi lại nhé.<i style="display:block;font-size:12px;color:#8a7560;margin-top:4px">Your booking has been sent. We will contact you to confirm shortly.</i>',true);
+    kToast('<div style="font-size:34px;line-height:1">✅</div><b style="display:block;font-size:17px;margin:6px 0 4px">Đã gửi phiếu về Apes lúc '+at+'</b>Nhân viên Apes sẽ liên hệ xác nhận ngay. Cần sửa món, giờ… anh/chị chỉnh rồi bấm gửi lại nhé.<i style="display:block;font-size:12px;color:#8a7560;margin-top:4px">Your booking has been sent. We will contact you to confirm shortly.</i><b style="display:block;margin-top:10px;color:#2E7D32">👉 Anh/chị bấm OK để hoàn tất đặt bàn.</b><i style="display:block;font-size:12px;color:#8a7560">Tap OK to complete your booking.</i>',true);
   }).catch(()=>{ done(); kToast('<b style="display:block;font-size:16px;margin-bottom:6px">Bấm nút dưới để gửi phiếu</b><a href="'+fu+'" target="_blank" rel="noopener" class="btn gr" style="font-size:15px">Mở phiếu & gửi<small>Open & submit booking</small></a>',false); });
 });
 /* ---- QR chuyển khoản cọc (VietQR) – điền thông tin tài khoản vào BANK ---- */
