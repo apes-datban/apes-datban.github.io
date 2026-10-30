@@ -128,7 +128,7 @@ html body .btn.gr{background-color:#2E8B3E!important;color:#fff!important;box-sh
 <script>
 const SRC={set:'set.html',ban:'ban.html',mon:'mon.html',nuoc:'nuoc.html',setup:'setup.html',banh:'banh.html'};
 const TOP=()=>document.querySelector('.tb').offsetHeight;
-function mark(t){ document.querySelectorAll('.tb button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.t===t))); }
+function mark(t){ document.querySelectorAll('.tb button').forEach(b=>{ const v=String(b.dataset.t===t); if(b.getAttribute('aria-selected')!==v) b.setAttribute('aria-selected',v); }); }
 let jumping=0;
 /* tải từng phần khi khách kéo tới hoặc bấm tab */
 function loadF(f){ if(f&&!f.getAttribute('src')&&f.dataset.src) f.src=f.dataset.src; }
