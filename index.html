@@ -147,7 +147,7 @@ let SHOWN='';
 /* chiều cao iframe theo nội dung + lớp phủ bên trong iframe hiện đúng chỗ đang xem */
 const OVCSS='html,body{overflow:hidden!important} .ov,.lb{position:absolute!important;inset:auto!important;left:0!important;right:0!important;top:var(--vt,0px)!important;height:var(--vh,100vh)!important} .ov>*{max-height:calc(var(--vh,100vh) - 16px)!important} .lb img{max-height:calc(var(--vh,100vh) - 90px)!important} .toast{position:absolute!important;top:calc(var(--vt,0px) + var(--vh,100vh) - 70px)!important;bottom:auto!important}';
 function fit(){ const top=TOP(), vh=innerHeight-top-64;
-  document.querySelectorAll('main iframe').forEach(f=>{ try{ if(!f.getAttribute('src')) return; const d=f.contentDocument; if(!d||!d.body||d.URL==='about:blank'||d.readyState==='loading') return;
+  document.querySelectorAll('main iframe').forEach(f=>{ try{ if(!f.getAttribute('src')||!f.offsetParent) return; const d=f.contentDocument; if(!d||!d.body||d.URL==='about:blank'||d.readyState==='loading') return;
     const vt=Math.max(0,scrollY+top-f.offsetTop); d.documentElement.style.setProperty('--vt',vt+'px'); d.documentElement.style.setProperty('--vh',vh+'px');
     const open=[...d.querySelectorAll('.ov,.lb')].some(o=>!o.hidden&&getComputedStyle(o).display!=='none');
     if(!open){ const h=Math.max(d.body.scrollHeight,d.body.offsetHeight); if(Math.abs(h-f.clientHeight)>2){ const old=f.clientHeight, above=f.offsetTop+f.offsetHeight<=scrollY+top; f.style.height=h+'px'; if(above) window.scrollBy({top:h-old,behavior:'instant'}); } } }catch(e){} });
