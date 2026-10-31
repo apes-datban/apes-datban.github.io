@@ -264,7 +264,7 @@ function drawM(){ const c=SETS.find(x=>x.n===MS), P=PK[c.n]||{}, G=groups(c); le
   $('#sh').innerHTML=h; }
 function openM(n){ MS=n; MERR=false; drawM(); $('#ov').hidden=false; }
 function closeM(){ $('#ov').hidden=true; MS=null; }
-function pickSet(c){ SC[c.n]=SC[c.n]||1; save(); render(); toast('Đã chọn '+sn(c)+' ✓'); try{ parent.refresh&&parent.refresh(); }catch(z){} }
+function pickSet(c){ const moi=!SC[c.n]; SC[c.n]=SC[c.n]||1; save(); render(); toast('Đã chọn '+sn(c)+' ✓'); try{ parent.refresh&&parent.refresh(); }catch(z){} if(moi&&PHU) try{ parent.goBanh&&parent.goBanh(); }catch(z){} }
 
 const ORD=()=>[...SETS].sort((a,b)=>(a.g-b.g)||(b.price-a.price));
 function render(){ $('#tg').style.gridTemplateRows='repeat('+Math.ceil(SETS.length/2)+',auto)'; $('#tg').innerHTML=ORD().map(c=>`<button type="button" class="tr${SC[c.n]?' on':''}" data-jump="${esc(c.n)}"><span class="n">${SC[c.n]?'✓ ':''}${esc(c.n)}${BEST.has(c.n)?' <b class="bs">★</b>':''}</span><span class="p">${kk(c.price)}${inc(c)?'<sup>✦</sup>':''}${c.g!==2?'<small class="g4">'+c.g+' khách</small>':''}</span></button>`).join('');
