@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Đặt bàn & order online tại Apes – 78 Trần Phú, Thủ Dầu Một. Nhân viên Apes sẽ liên hệ xác nhận ngay. Hotline 0916 398 797 · Zalo 0385 285 768. Book your table online – we will confirm right away."><meta property="og:type" content="website"><meta property="og:url" content="https://apes-datban.github.io/"><meta property="og:title" content="Apes Restaurant – Đặt bàn online · Book your table"><meta property="og:description" content="Đặt bàn & order online tại Apes – 78 Trần Phú, Thủ Dầu Một. Nhân viên Apes sẽ liên hệ xác nhận ngay. Hotline 0916 398 797 · Zalo 0385 285 768. Book your table online – we will confirm right away."><meta property="og:image" content="https://apes-datban.github.io/img/kg11.jpg"><meta property="og:locale" content="vi_VN"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.tb.tb2 button{flex:1 1 50%;min-width:0;font-size:15px;padding:8px 6px}.tb.tb2 button small{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap&subset=vietnamese"></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Đặt bàn & order online tại Apes – 78 Trần Phú, Thủ Dầu Một. Nhân viên Apes sẽ liên hệ xác nhận ngay. Hotline 0916 398 797 · Zalo 0385 285 768. Book your table online – we will confirm right away."><meta property="og:type" content="website"><meta property="og:url" content="https://apes-datban.github.io/"><meta property="og:title" content="Apes Restaurant – Đặt bàn online · Book your table"><meta property="og:description" content="Đặt bàn & order online tại Apes – 78 Trần Phú, Thủ Dầu Một. Nhân viên Apes sẽ liên hệ xác nhận ngay. Hotline 0916 398 797 · Zalo 0385 285 768. Book your table online – we will confirm right away."><meta property="og:image" content="https://apes-datban.github.io/img/kg11.jpg"><meta property="og:locale" content="vi_VN"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.tb.tb2 button{flex:1 1 25%;min-width:0;font-size:13.5px;padding:7px 2px}.tb.tb2 button small{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap&subset=vietnamese"></head><body>
 <title>Khách Đặt Bàn</title>
 <style>
 :root{--bg:#F8F4EC;--ink:#2E241C;--gold:#A8834C;--line:#D9C7A2;color-scheme:light}
@@ -82,8 +82,10 @@ html body .btn.gr{background-color:#2E8B3E!important;color:#fff!important;box-sh
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600&display=swap">
 <div class="tb tb2" role="tablist">
-<button role="tab" data-t="mon" aria-selected="true"><span class="ti" aria-hidden="true">🍽️</span>Khách đặt<small>Đặt bàn · Book</small></button>
-<button role="tab" data-t="garden" class="tg-g" aria-selected="false"><span class="ti" aria-hidden="true">🎁</span>Ưu đãi<small>Sảnh Garden · Offer</small></button>
+<button role="tab" data-t="kd" aria-selected="false"><span class="ti" aria-hidden="true">📝</span>Khách đặt<small>Đặt bàn · Book</small></button>
+<button role="tab" data-t="set" aria-selected="false"><span class="ti" aria-hidden="true">📜</span>Set menu<small>Set menu</small></button>
+<button role="tab" data-t="mon" aria-selected="true"><span class="ti" aria-hidden="true">🍽️</span>Món lẻ<small>À la carte</small></button>
+<button role="tab" data-t="garden" class="tg-g" aria-selected="false"><span class="ti" aria-hidden="true">🎁</span>Ưu đãi<small>Sảnh Garden</small></button>
 </div>
 <main><section class="top" aria-label="Thông tin đặt bàn">
 <div class="th">Đặt bàn tại Apes<small>Book your table</small></div>
@@ -123,7 +125,7 @@ html body .btn.gr{background-color:#2E8B3E!important;color:#fff!important;box-sh
 <script>
 const SRC={set:'set.html',ban:'ban.html',mon:'mon.html',nuoc:'nuoc.html',setup:'setup.html',banh:'banh.html'};
 const TOP=()=>document.querySelector('.tb').offsetHeight;
-function mark(t){ t=t==='garden'?'garden':'mon'; document.querySelectorAll('.tb button').forEach(b=>{ const v=String(b.dataset.t===t); if(b.getAttribute('aria-selected')!==v) b.setAttribute('aria-selected',v); }); }
+function mark(t){ t=['garden','set','mon'].includes(t)?t:'kd'; document.querySelectorAll('.tb button').forEach(b=>{ const v=String(b.dataset.t===t); if(b.getAttribute('aria-selected')!==v) b.setAttribute('aria-selected',v); }); }
 let jumping=0;
 /* tải từng phần khi khách kéo tới hoặc bấm tab */
 function loadF(f){ if(f&&!f.getAttribute('src')&&f.dataset.src) f.src=f.dataset.src; }
@@ -136,7 +138,7 @@ function whenReady(id,fn){ const f=document.getElementById(id); loadF(f); let n=
 })();
 function gmode(on){ document.body.classList.toggle('gmode',on); try{ const d=document.getElementById('f-setup').contentDocument; d.documentElement.classList.toggle('gmode',on); if(!d.getElementById('gmcss')){ const st=d.createElement('style'); st.id='gmcss'; st.textContent='.gmode header,.gmode .lead,.gmode .extra,.gmode footer,.gmode #grid section.gs.nokec{display:none!important} html.gmode,html.gmode body{overflow:visible!important;touch-action:pan-y pinch-zoom!important}'; d.head.appendChild(st); } d.querySelectorAll('#grid section.gs').forEach(x=>x.classList.toggle('nokec',!x.querySelector('.kec'))); }catch(e){} setTimeout(fit,50); setTimeout(fit,400); }
 function show(t){ if(document.body.classList.contains('gmode')) gmode(false); const f=t==='garden'?document.getElementById('gview'):document.getElementById('f-'+t); if(!f) return; if(t!=='garden') loadF(f); mark(t); jumping=Date.now();
- const go=()=>window.scrollTo({top:t==='mon'?0:f.offsetTop-TOP()+1,behavior:'instant'}); go(); const tok={t}; SHOWN=tok; const again=()=>{ if(SHOWN===tok&&!document.body.classList.contains('gmode')){ jumping=Date.now(); go(); mark(t); } };
+ const go=()=>window.scrollTo({top:f.offsetTop-TOP()+1,behavior:'instant'}); go(); const tok={t}; SHOWN=tok; const again=()=>{ if(SHOWN===tok&&!document.body.classList.contains('gmode')){ jumping=Date.now(); go(); mark(t); } };
  whenReady(f.id,()=>{ again(); setTimeout(again,700); setTimeout(again,1600); setTimeout(again,3000); }); try{ history.replaceState(null,'','#'+t); }catch(e){} }
 let SHOWN='';
 /* chiều cao iframe theo nội dung + lớp phủ bên trong iframe hiện đúng chỗ đang xem */
@@ -147,10 +149,10 @@ function fit(){ const top=TOP(), vh=innerHeight-top-64;
     if(open){ const vt=Math.max(0,scrollY+top-f.offsetTop); d.documentElement.style.setProperty('--vt',vt+'px'); d.documentElement.style.setProperty('--vh',vh+'px'); }
     if(!open){ const h=Math.max(d.body.scrollHeight,d.body.offsetHeight); if(Math.abs(h-f.clientHeight)>2){ const old=f.clientHeight, above=f.offsetTop+f.offsetHeight<=scrollY+top; f.style.height=h+'px'; if(above) window.scrollBy({top:h-old,behavior:'instant'}); } } }catch(e){} });
   if(document.body.classList.contains('gmode')){ mark('garden'); return; }
-  if(Date.now()-jumping>900){ let cur='mon'; document.querySelectorAll('main iframe, #gview').forEach(f=>{ if(f.offsetParent&&f.offsetTop-top-40<=scrollY) cur=f.id==='gview'?'garden':f.id.slice(2); }); if(scrollY+innerHeight>=document.documentElement.scrollHeight-4) cur='ban'; mark(cur); } }
+  if(Date.now()-jumping>900){ let cur='kd'; document.querySelectorAll('main iframe, #gview').forEach(f=>{ if(f.offsetParent&&f.offsetTop-top-40<=scrollY) cur=f.id==='gview'?'garden':f.id.slice(2); }); if(scrollY+innerHeight>=document.documentElement.scrollHeight-4) cur='ban'; mark(cur); } }
 function padTop(){ try{ document.querySelector('main').style.paddingTop=document.querySelector('.tb').offsetHeight+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0, lastSc=0; const fitT=()=>{ lastSc=Date.now(); clearTimeout(fitQ); fitQ=setTimeout(fit,180); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(()=>{ if(Date.now()-lastSc>1200) fit(); },2000);
 ['wheel','touchstart','keydown'].forEach(k=>addEventListener(k,()=>{ SHOWN=''; },{passive:true}));
-document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(b.dataset.t);});
+document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; if(b.dataset.t==='kd'){ if(document.body.classList.contains('gmode')) gmode(false); jumping=Date.now(); window.scrollTo({top:0,behavior:'smooth'}); mark('kd'); return; } show(b.dataset.t);});
 const h=(location.hash||'').slice(1); if(SRC[h]) setTimeout(()=>show(h),1200);
 
 const CHECK_URL='https://script.google.com/macros/s/AKfycbwfW4VJNrXopoKCDiEJCzl1j6d4fQrVSFjUAYesB7mIlpQj4GGVucjpqvZae1sZ-fOZYA/exec';
