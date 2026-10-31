@@ -118,7 +118,7 @@ function render(){
     <div class="tbls">${ts.map(t=>`<button class="tb${locked(t)?' lk':''}" data-t="${t}" aria-pressed="${PICK===t}"><b>${t}</b><small>${locked(t)?'Đã đặt':PICK===t?'Đang chọn':seats(t)}</small></button>`).join('')}</div>
     ${z.gallery.length?`<div class="gal">${z.gallery.map(g=>`<img src="img/${g}.jpg" alt="${z.name}" loading="lazy">`).join('')}</div>`:''}`; }
   const pk=$('#picked');
-  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
+  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}${/^B/.test(PICK)?' (trên lầu)':''}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
   else { pk.hidden=true; pk.innerHTML=''; }
   keep();
 }
