@@ -174,8 +174,8 @@ const drkOf=v=>DRK().find(x=>x.v===v);
 const V10S=x=>!!x&&(/^(cb|b|sg|cl|mx|bc)\d/.test(x.k||'')||(x.k==='sf1'&&['Coke','7up','Redbull'].includes(x.vl)));
 function vbs(c){ const P=PK[c.n]||{}; return groups(c).filter(g=>g.kind==='d').map(g=>drkOf(P[g.L])).filter(V10S).reduce((s,x)=>s+Math.round(x.p*0.02),0); }
 if((()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })()){ if(!SETS.some(c=>c.n==='Miss and Love')) SETS.push({n:'Miss and Love',g:2,price:1250000,tax:'Đã gồm VAT 8%',tag:'Món mới của Apes cho hai người',tagEn:'Our new dishes for two',c:[
-  {h:'Khai vị',d:[{q:'',vn:'Salad tôm',en:'Prawn Salad',img:'n_saladtom'},{q:'',vn:'Bánh cua',en:'Crab Cake',img:'n_banhcua'},{q:'',vn:'Bào ngư nướng thảo mộc',qn:'4 con',en:'Herb-grilled Abalone',img:'n_baongu'}]},
-  {h:'Món chính',d:[{q:'',vn:'Beef Pithivier',qn:'100g',en:'Beef Pithivier',img:'n_pithivier',done:true},{q:'',vn:'Mì Ý pesto má đùi gà',en:'Pesto Pasta with Chicken Thigh',img:'n_pesto'}]}],note:''});
+  {h:'Khai vị',d:[{q:'2',vn:'Salad tôm',en:'Prawn Salad',img:'n_saladtom'},{q:'2',vn:'Bánh cua',en:'Crab Cake',img:'n_banhcua'},{q:'2',vn:'Bào ngư nướng thảo mộc (4 con)',en:'Herb-grilled Abalone',img:'n_baongu'}]},
+  {h:'Món chính',d:[{q:'2',vn:'Beef Pithivier (100g)',en:'Beef Pithivier',img:'n_pithivier',done:true},{q:'2',vn:'Mì Ý pesto má đùi gà',en:'Pesto Pasta with Chicken Thigh',img:'n_pesto'}]}],note:''});
  if(!SETS.some(c=>c.n==='Softly by your side')) SETS.push({n:'Softly by your side',g:2,price:1100000,tax:'Chưa gồm VAT 8%',tag:'Nhẹ nhàng bên nhau',tagEn:'Softly, side by side',c:[
   {h:'Khai vị',d:[{q:'',vn:'Salad tôm',en:'Prawn Salad',img:'n_saladtom'}]},
   {h:'Món chính',d:[{q:'',vn:'Sườn cừu Pháp thảo mộc',en:'Herb-crusted French Lamb Rack',img:'n_cuu',done:true},{q:'',vn:'Gà nướng sốt mù tạt vàng',en:'Grilled Chicken with Mustard Sauce',img:'n_ga'},{q:'',vn:'Fusilli Granchio – mì xoắn sốt cua',en:'Fusilli Granchio (Crab Fusilli)',img:'n_fusilli'}]}],note:''}); } /* menu phụ: set mới */
