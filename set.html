@@ -118,6 +118,18 @@ button{font:inherit;color:inherit}
 .cd.ml .mln{margin:18px 0 4px;font:italic 400 13px 'Lora',serif;color:#56627e}
 .cd.ml .act{margin-top:14px;position:relative;z-index:1}.cd.ml .sel{background:#56627e!important;background-image:none!important;box-shadow:0 3px 0 #3a435c!important;color:#fff!important}
 .cd.ml.on{outline:3px solid #56627e;outline-offset:-3px}
+.cd.so{aspect-ratio:auto;padding:7% 9%;background:radial-gradient(38% 26% at 12% 14%,#f3c9b8 0,#f3c9b8cc 30%,transparent 72%),radial-gradient(34% 24% at 88% 30%,#efb9a5 0,#efb9a5aa 35%,transparent 75%),radial-gradient(40% 28% at 16% 70%,#f6d6c6 0,#f2c2ae99 40%,transparent 78%),radial-gradient(36% 26% at 86% 86%,#eab09a 0,#eab09aaa 35%,transparent 76%),radial-gradient(30% 20% at 50% 100%,#f1cdbd 0,transparent 70%),linear-gradient(160deg,#f7e3d8,#ecd2c4 45%,#e9c9b8);overflow:hidden}
+.cd.so .sop{background:#faf7f2;width:100%;padding:22px 16px 18px;box-shadow:0 14px 22px -10px rgba(70,40,25,.45);color:#6d5546;display:flex;flex-direction:column;align-items:center;text-align:center}
+.cd.so .sor{width:44px;color:#c9c4bd}.cd.so .sor svg{display:block;width:100%;height:auto}
+.cd.so .sok{margin-top:6px;font:500 12px 'Be Vietnam Pro',sans-serif;letter-spacing:.28em;color:#e28a3a}
+.cd.so .sot{margin:10px 0 4px;font:700 clamp(30px,8.5vw,42px)/1.05 'Dancing Script',cursive;color:#7a5c48}
+.cd.so .sopr{font:700 clamp(17px,4.6vw,21px) 'Dancing Script',cursive;color:#7a5c48}.cd.so .sopr small{display:block;font:italic 400 12px 'Lora',serif;color:#9a8474}
+.cd.so .soh{margin:16px 0 4px;font:700 clamp(22px,6vw,27px)/1.1 'Dancing Script',cursive;color:#4e3c30}.cd.so .soh i{display:block;font:italic 400 12px 'Lora',serif;color:#9a8474;margin-top:1px}
+.cd.so .sod{margin:6px 0;font:400 clamp(14px,3.8vw,16px)/1.3 'Be Vietnam Pro',sans-serif;color:#6d5546}.cd.so .sod span{font-weight:600;color:#b08a6e}.cd.so .sod i{display:block;font:italic 400 12px 'Lora',serif;color:#9a8474}
+.cd.so .son{margin:14px 0 2px;font:italic 400 13px 'Lora',serif;color:#7a5c48}
+.cd.so .act{margin-top:14px}.cd.so .sel{background:#b07a5a!important;background-image:none!important;box-shadow:0 3px 0 #7d5238!important;color:#fff!important}
+.cd.so .sof{margin-top:14px;font:500 14px 'Be Vietnam Pro',sans-serif;color:#4e3c30;letter-spacing:.04em}
+.cd.so.on .sop{outline:3px solid #b07a5a;outline-offset:-3px}
 </style>
 <style>
 @font-face{font-family:SVibes;src:url(fonts/greatvibes.woff) format('woff');font-display:swap}
@@ -188,7 +200,7 @@ function vbs(c){ const P=PK[c.n]||{}; return groups(c).filter(g=>g.kind==='d').m
 if((()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })()){ if(!SETS.some(c=>c.n==='Miss and Love')) SETS.push({n:'Miss and Love',ml:1,g:2,price:1250000,tax:'Đã gồm VAT 8%',tag:'Món mới của Apes cho hai người',tagEn:'Our new dishes for two',c:[
   {h:'Khai vị',d:[{q:'2',vn:'Salad tôm',en:'Prawn Salad',img:'n_saladtom'},{q:'2',vn:'Bánh cua',en:'Crab Cake',img:'n_banhcua'},{q:'2',vn:'Bào ngư nướng thảo mộc (4 con)',en:'Herb-grilled Abalone',img:'n_baongu'}]},
   {h:'Món chính',d:[{q:'2',vn:'Beef Pithivier (100g)',en:'Beef Pithivier',img:'n_pithivier',done:true},{q:'2',vn:'Mì Ý pesto má đùi gà',en:'Pesto Pasta with Chicken Thigh',img:'n_pesto'}]}],note:'Vui lòng đặt trước 15 giờ trong ngày (order before 3 PM)'});
- if(!SETS.some(c=>c.n==='Softly by your side')) SETS.push({n:'Softly by your side',g:2,price:1100000,tax:'Chưa gồm VAT 8%',tag:'Nhẹ nhàng bên nhau',tagEn:'Softly, side by side',c:[
+ if(!SETS.some(c=>c.n==='Softly by your side')) SETS.push({n:'Softly by your side',so:1,g:2,price:1100000,tax:'Chưa gồm VAT 8%',tag:'Nhẹ nhàng bên nhau',tagEn:'Softly, side by side',c:[
   {h:'Khai vị',d:[{q:'',vn:'Salad tôm',en:'Prawn Salad',img:'n_saladtom'}]},
   {h:'Món chính',d:[{q:'',vn:'Sườn cừu Pháp thảo mộc',en:'Herb-crusted French Lamb Rack',img:'n_cuu',done:true},{q:'',vn:'Gà nướng sốt mù tạt vàng',en:'Grilled Chicken with Mustard Sauce',img:'n_ga'},{q:'',vn:'Fusilli Granchio – mì xoắn sốt cua',en:'Fusilli Granchio (Crab Fusilli)',img:'n_fusilli'}]}],note:''}); } /* menu phụ: set mới */
 let SC={}, PK={};
@@ -257,7 +269,14 @@ function cardML(c,q){ const sec=c.c.map(s=>`<h4 class="mlh">${esc(s.h)}<i>${CEN[
    ${c.note?`<div class="mln">${esc(c.note)}</div>`:''}
    <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
      :`<button type="button" class="sel" data-sel="${esc(c.n)}">Chọn set ${esc(c.n)}<small>Select this set</small></button>`}</div></article>`; }
-function card(c){ const q=SC[c.n]||0; if(c.ml) return cardML(c,q);
+/* kiểu thiệp hoa hồng cho set Softly by your side – menu phụ */
+const RING='<svg viewBox="0 0 64 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.2"><ellipse cx="24" cy="22" rx="14" ry="12"/><ellipse cx="40" cy="22" rx="14" ry="12"/><path d="M19 9 l5 -5 l5 5"/></g></svg>';
+function cardSO(c,q){ const sec=c.c.map(s=>`<h4 class="soh">${esc(s.h)}<i>${CEN[s.h]||''}</i></h4>`+s.d.map(d=>`<div class="sod">${esc(d.vn)}${d.q&&+d.q>1?' <span>x'+esc(d.q)+'</span>':''}${d.en?`<i>${esc(d.en)}</i>`:''}</div>`).join('')).join('');
+  return `<article class="cd so${q?' on':''}" data-set="${esc(c.n)}"><div class="sop"><span class="sor">${RING}</span><div class="sok">APES RESTAURANT · ${c.g} KHÁCH</div><h3 class="sot">${esc(c.n)}</h3><div class="sopr">${vnd(c.price)} / ${c.g} khách<small>${esc(c.tax)}</small></div>${sec}
+   ${c.note?`<div class="son">${esc(c.note)}</div>`:''}
+   <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
+     :`<button type="button" class="sel" data-sel="${esc(c.n)}">Chọn set ${esc(c.n)}<small>Select this set</small></button>`}</div><div class="sof">Apes Restaurant</div></div></article>`; }
+function card(c){ const q=SC[c.n]||0; if(c.ml) return cardML(c,q); if(c.so) return cardSO(c,q);
   if(PZ[c.n]) return cardP(c,q);
   if(OG[c.n]) return `<article class="cd og${q?' on':''}" data-set="${esc(c.n)}" style="--t:${(STY[c.n]||[0,'#A8834C'])[1]}"><img class="ogi" src="sg/${OG[c.n]}.jpg?v=1" alt="Menu set ${esc(c.n)}" loading="lazy">
    <div class="act">${q?`<div class="onr"><b>✓ Đã chọn</b><span class="st"><button type="button" data-q="${esc(c.n)}" data-d="-1" aria-label="Bớt 1 set">−</button><span>${q}</span><button type="button" data-q="${esc(c.n)}" data-d="1" aria-label="Thêm 1 set">+</button></span></div>${groups(c).length?`<button type="button" class="lk" data-edit="${esc(c.n)}">Sửa lựa chọn · Edit</button>`:''}`
