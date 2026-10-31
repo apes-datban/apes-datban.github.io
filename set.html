@@ -186,7 +186,7 @@ function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
   else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?x.concat([['Chọn sau','Decide later']]):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
  })); return G; }
 const PHU=(()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })();
-if(PHU) SETS.forEach(c=>c.c.forEach(s=>s.d.forEach(d=>{ if(/Wellington|Tenderloin/i.test(d.en||'')&&!d.done) d.done=1; }))); /* menu phụ: bò Wellington / tenderloin luôn hỏi độ chín */
+if(PHU) SETS.forEach(c=>c.c.forEach(s=>s.d.forEach(d=>{ if(/Wellington|Tenderloin|Duck Breast/i.test(d.en||'')&&!d.done) d.done=1; }))); /* menu phụ: bò Wellington / tenderloin luôn hỏi độ chín */
 const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]&&!(PHU&&g.d&&g.d.dsel&&!DRK().length));
 function optText(c){ const P=PK[c.n]||{}, by={}, out=[];
   groups(c).forEach(g=>{ const v=P[g.L]||'…'; if(g.kind!=='c') out.push(g.L+': '+v); else { const key=g.d.vn; (by[key]=by[key]||{})[g.k]=((by[key]||{})[g.k]||[]).concat(v); } });

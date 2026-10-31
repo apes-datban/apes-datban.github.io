@@ -583,7 +583,7 @@ const fmt=k=>(k*1000).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const OPT={done:['Tái|Rare','Tái vừa|Medium Rare','Chín tới|Medium','Chín vừa|Medium Well','Chín kỹ|Well Done'],sauce:['Sốt nấm|Mushroom','Sốt tiêu đen|Black Pepper','Sốt vang đỏ|Red Wine'],side:['Khoai tây chiên|French Fries','Khoai tây nghiền|Mashed Potatoes']};
 const OPTN={done:['Độ chín','Doneness'],sauce:['Sốt','Sauce'],side:['Ăn kèm','Side']};
-try{ if(/menu2/.test(parent.location.pathname)){ OPT.done.push('Chọn sau|NV hỏi tại bàn · Decide later'); OPT.sauce.push('Sốt chọn sau|NV hỏi tại bàn · Decide later'); OPT.side.push('Chọn sau|NV hỏi tại bàn · Decide later'); Object.keys(D).forEach(k=>{ if(/Wellington|Tenderloin/i.test(D[k].en||'')&&D[k].flag!=='steak') D[k].done=true; }); } }catch(e){} /* menu phụ: khách chưa biết bạn dùng gì – nhân viên hỏi tại bàn */
+try{ if(/menu2/.test(parent.location.pathname)){ OPT.done.push('Chọn sau|NV hỏi tại bàn · Decide later'); OPT.sauce.push('Sốt chọn sau|NV hỏi tại bàn · Decide later'); OPT.side.push('Chọn sau|NV hỏi tại bàn · Decide later'); Object.keys(D).forEach(k=>{ if(/Wellington|Tenderloin|Duck Breast/i.test(D[k].en||'')&&D[k].flag!=='steak') D[k].done=true; }); } }catch(e){} /* menu phụ: khách chưa biết bạn dùng gì – nhân viên hỏi tại bàn */
 const ORDER=Object.keys(D);
 let cart=[]; // {k,v,q,o}
 try{ cart=JSON.parse(localStorage.getItem('apesAlcP')||'[]').filter(e=>D[e.k]); }catch(e){}
