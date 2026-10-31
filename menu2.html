@@ -204,7 +204,7 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
   $('#qkMsg').addEventListener('input',()=>{ const it=qc(); if(it){ it.msg=$('#qkMsg').value.trim(); save(); drawList(); ref(); } });
   /* ---- hoa ---- */
   const pf=document.createElement('div'); pf.className='qk'; pf.id='qkFl';
-  pf.innerHTML=`<div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkBud" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkFh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkNote" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"><div class="qok" id="qkFOk" hidden></div>`;
+  pf.innerHTML=`<label class="tk" style="margin-top:0"><input type="checkbox" id="qkFTk"><b>Đặt 1 bó hoa tươi<small style="display:block;font-weight:500;font-style:italic;font-size:11.5px;color:var(--muted)">Order a bouquet</small></b></label><div id="qkFBox" hidden><div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkBud" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkFh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkNote" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"></div><div class="qok" id="qkFOk" hidden></div>`;
   $('#flower .cn').after(pf);
   const bud=()=>{ let x=+($('#qkBud').value.replace(/\D/g,'')||0); if(x&&x<1000) x*=1000; return x; };
   const flSet=()=>{ const b=bud(), ok=b>=FMIN&&b<=FMAX; let it=qf();
@@ -213,6 +213,8 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
     else if(it) BH.splice(BH.indexOf(it),1);
     save(); drawList(); syncF(); ref(); };
   $('#qkBud').addEventListener('input',flSet);
+  $('#qkFTk').addEventListener('change',()=>{ const on=$('#qkFTk').checked; $('#qkFBox').hidden=!on; $('#qkFTk').closest('label').classList.toggle('on',on);
+    if(on){ setTimeout(()=>{ try{ $('#qkBud').focus(); }catch(e){} },50); } else { $('#qkBud').value=''; $('#qkNote').value=''; } flSet(); });
   $('#qkBud').addEventListener('blur',()=>{ const b=bud(); if(b) $('#qkBud').value=b.toLocaleString('vi-VN').replace(/,/g,'.'); });
   $('#qkNote').addEventListener('input',()=>{ const it=qf(); if(it){ it.note=$('#qkNote').value.trim(); save(); drawList(); ref(); } });
   /* ---- gắn mẫu chọn ở hình vào món đã tick; ẩn phần size/thêm trùng ---- */
@@ -227,7 +229,7 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
   $('#ckChips').addEventListener('click',()=>setTimeout(sync,0));
   $('#flGrid').addEventListener('click',()=>setTimeout(()=>{ const it=qf(); if(it){ it.code=fm||'(shop tư vấn mẫu)'; save(); drawList(); syncF(); ref(); } },0));
   document.addEventListener('click',e=>{ if(e.target.closest('[data-rm]')) setTimeout(()=>{ sync(); const f=qf(); if(!f) $('#qkBud').value=''; },0); });
-  const f0=qf(); if(f0){ $('#qkBud').value=f0.p.toLocaleString('vi-VN').replace(/,/g,'.'); $('#qkNote').value=f0.note||''; }
+  const f0=qf(); if(f0){ $('#qkFTk').checked=true; $('#qkFTk').closest('label').classList.add('on'); $('#qkFBox').hidden=false; $('#qkBud').value=f0.p.toLocaleString('vi-VN').replace(/,/g,'.'); $('#qkNote').value=f0.note||''; }
   try{ [...document.querySelectorAll('#cake .st,#flower .st')].forEach(s=>{ if(/^1\./.test(s.textContent.trim())) s.firstChild.textContent=s.firstChild.textContent.replace(/^1\.\s*Chọn mẫu (bánh|hoa)\s*/,'Mẫu $1 (không bắt buộc) '); }); }catch(e){}
   ['#cake','#flower'].forEach(sec=>{ [...document.querySelectorAll(sec+'>*')].forEach(e=>{ if(e.tagName!=='H2'&&!e.classList.contains('qk')) e.style.display='none'; }); });
   drawList(); sync();
