@@ -183,7 +183,8 @@ function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
   else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc}))});
   else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:DONE5,lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:d.sauce,lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:d.side,lab:'Ăn kèm · Side'}); } }
  })); return G; }
-const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]);
+const PHU=(()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })();
+const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]&&!(PHU&&g.d&&g.d.dsel&&!DRK().length));
 function optText(c){ const P=PK[c.n]||{}, by={}, out=[];
   groups(c).forEach(g=>{ const v=P[g.L]||'…'; if(g.kind!=='c') out.push(g.L+': '+v); else { const key=g.d.vn; (by[key]=by[key]||{})[g.k]=((by[key]||{})[g.k]||[]).concat(v); } });
   Object.keys(by).forEach(k=>{ const ps=by[k], ks=Object.keys(ps); out.push(k+': '+ks.map(i=>(ks.length>1?'phần '+i+' ':'')+ps[i].join(', ')).join(' / ')); });
@@ -248,8 +249,8 @@ function card0(c){ const q=SC[c.n]||0, S=STY[c.n]||['#3a2f26','#A8834C'], bg=BG[
 /* hộp chọn độ chín / đồ uống khi bấm Chọn set */
 let MS=null, MERR=false;
 function drawM(){ const c=SETS.find(x=>x.n===MS), P=PK[c.n]||{}, G=groups(c); let h=`<div class="hh"><h3>${esc(c.n)}<small>Mời anh/chị chọn giúp em vài lựa chọn · Please choose</small></h3><button type="button" class="x" id="mX">Đóng<small class="bi">Close</small></button></div>`;
-  const byD=[]; G.forEach(g=>{ if(!byD.includes(g.d)) byD.push(g.d); });
-  byD.forEach(d=>{ const gs=G.filter(g=>g.d===d), ms=MERR&&gs.some(g=>!P[g.L]);
+  const MM=missing(c), byD=[]; G.forEach(g=>{ if(!byD.includes(g.d)) byD.push(g.d); });
+  byD.forEach(d=>{ const gs=G.filter(g=>g.d===d), ms=MERR&&gs.some(g=>MM.some(x=>x.L===g.L));
     if(d.dsel){ const L=DRK(), sx=surs(c);
       const opts=sel=>{ let o='<option value="">— Chọn đồ uống —</option>', last=''; L.forEach(x=>{ if(x.g!==last){ if(last) o+='</optgroup>'; o+=`<optgroup label="${esc(x.g)}">`; last=x.g; } o+=`<option value="${esc(x.v)}"${sel===x.v?' selected':''}>${esc(x.v)} – ${Math.round(x.p/1000)}k${x.p>DRINK_FREE?' · bù '+Math.round((x.p-DRINK_FREE)/1000)+'k':' · miễn phí'}</option>`; }); return o+(last?'</optgroup>':''); };
       h+=`<div class="blk${ms?' miss':''}"><div class="h">Đồ uống trong set – ${d.dsel} ly (mỗi khách 1 ly)<i>Drinks – 1 per guest</i></div>`+(L.length?`<div class="dk">${gs.map(g=>`<div class="pc"><b>Ly ${g.k}</b><select data-l="${esc(g.L)}"${ms&&!P[g.L]?' class="mi"':''}>${opts(P[g.L]||'')}</select></div>`).join('')}</div>`:'<div class="dsn">Nhân viên sẽ hỏi anh/chị chọn đồ uống khi xác nhận.</div>')+`<div class="dsn">${/trang trí/i.test(d.vn)?'Set up bàn đến <b>130K</b> &amp; ':''}Đồ uống đến <b>75K/ly</b> đã gồm trong set – chọn loại cao hơn chỉ <b>bù phần chênh lệch + VAT</b>.</div>${sx.length?`<div class="dsx">Bù thêm: ${sx.map(o=>esc(o.x.v)+' +'+vnd(o.diff)).join(' · ')} (chưa VAT)</div>`:''}</div>`; }
