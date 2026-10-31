@@ -148,12 +148,12 @@ let SHOWN='';
 const OVCSS='html,body{overflow:hidden!important} .ov,.lb{position:absolute!important;inset:auto!important;left:0!important;right:0!important;top:var(--vt,0px)!important;height:var(--vh,100vh)!important} .ov>*{max-height:calc(var(--vh,100vh) - 16px)!important} .lb img{max-height:calc(var(--vh,100vh) - 90px)!important} .toast{position:absolute!important;top:calc(var(--vt,0px) + var(--vh,100vh) - 70px)!important;bottom:auto!important}';
 function fit(){ const top=TOP(), vh=innerHeight-top-64;
   document.querySelectorAll('main iframe').forEach(f=>{ try{ if(!f.getAttribute('src')||!f.offsetParent) return; const d=f.contentDocument; if(!d||!d.body||d.URL==='about:blank'||d.readyState==='loading') return;
-    const vt=Math.max(0,scrollY+top-f.offsetTop); d.documentElement.style.setProperty('--vt',vt+'px'); d.documentElement.style.setProperty('--vh',vh+'px');
     const open=[...d.querySelectorAll('.ov,.lb')].some(o=>!o.hidden&&getComputedStyle(o).display!=='none');
+    if(open){ const vt=Math.max(0,scrollY+top-f.offsetTop); d.documentElement.style.setProperty('--vt',vt+'px'); d.documentElement.style.setProperty('--vh',vh+'px'); }
     if(!open){ const h=Math.max(d.body.scrollHeight,d.body.offsetHeight); if(Math.abs(h-f.clientHeight)>2){ const old=f.clientHeight, above=f.offsetTop+f.offsetHeight<=scrollY+top; f.style.height=h+'px'; if(above) window.scrollBy({top:h-old,behavior:'instant'}); } } }catch(e){} });
   if(document.body.classList.contains('gmode')){ mark('garden'); return; }
   if(Date.now()-jumping>900){ let cur='mon'; document.querySelectorAll('main iframe, #gview').forEach(f=>{ if(f.offsetParent&&f.offsetTop-top-40<=scrollY) cur=f.id==='gview'?'garden':f.id.slice(2); }); if(scrollY+innerHeight>=document.documentElement.scrollHeight-4) cur='ban'; mark(cur); } }
-function padTop(){ try{ document.querySelector('main').style.paddingTop=document.querySelector('.tb').offsetHeight+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0; const fitT=()=>{ if(fitQ) return; fitQ=setTimeout(()=>{ fitQ=0; fit(); },150); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(fit,2000);
+function padTop(){ try{ document.querySelector('main').style.paddingTop=document.querySelector('.tb').offsetHeight+'px'; }catch(e){} } padTop(); addEventListener('resize',padTop); let fitQ=0, lastSc=0; const fitT=()=>{ lastSc=Date.now(); clearTimeout(fitQ); fitQ=setTimeout(fit,180); }; addEventListener('scroll',fitT,{passive:true}); addEventListener('resize',fitT); setInterval(()=>{ if(Date.now()-lastSc>1200) fit(); },2000);
 ['wheel','touchstart','keydown'].forEach(k=>addEventListener(k,()=>{ SHOWN=''; },{passive:true}));
 document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) show(b.dataset.t);});
 const h=(location.hash||'').slice(1); if(SRC[h]) setTimeout(()=>show(h),1200);
@@ -268,7 +268,7 @@ function qOK(){ const t=v('kTime'); return !!v('kName')&&v('kPhone').replace(/\D
 let qrT=0, kTouch=false; document.addEventListener('input',e=>{ if(['kName','kPhone','kDate','kTime','kPax'].includes(e.target.id)) kTouch=true; },true);
 const qrUpd=()=>{ clearTimeout(qrT); qrT=setTimeout(()=>{ const b=$('#kQR'); if(!b) return; if(qOK()) showQR(); else b.hidden=true; if(kTouch) check(1); },400); };
 document.addEventListener('input',qrUpd); document.addEventListener('change',qrUpd); setInterval(()=>{ if(!$('#ov').hidden&&qOK()) showQR(); },6000);
-setInterval(()=>{ if($('#ov').hidden&&!document.hidden) refresh(); },5000);
+setInterval(()=>{ if($('#ov').hidden&&!document.hidden&&Date.now()-lastSc>1500) refresh(); },5000);
 function goKe(id){ show('setup'); whenReady('f-setup',()=>{ SHOWN=null; try{ const f=document.getElementById('f-setup'), sec=f.contentDocument.getElementById(id||'ke1'); if(sec) window.scrollTo({top:f.offsetTop+sec.getBoundingClientRect().top+(f.contentWindow.scrollY||0)-TOP()-8,behavior:'instant'}); }catch(x){} }); }
 function goGift(){ show('setup'); whenReady('f-setup',()=>{ SHOWN=null; try{ const f=document.getElementById('f-setup'), d=f.contentDocument; const sec=[...d.querySelectorAll('section.gs')].find(x=>/Mẫu tặng/.test(x.textContent)); if(sec) window.scrollTo({top:f.offsetTop+sec.getBoundingClientRect().top+(f.contentWindow.scrollY||0)-TOP()-8,behavior:'instant'}); }catch(x){} }); }
 $('#gpGo').addEventListener('click',e=>{ if(e.target.closest('.gogift')){ e.preventDefault(); e.stopImmediatePropagation(); goGift(); return; } if(e.target.closest('.goke')){ e.preventDefault(); e.stopImmediatePropagation(); goKe(); return; } if(e.target.closest('.gocake')){ e.preventDefault(); e.stopImmediatePropagation(); goKe('cake1'); return; } },true);
