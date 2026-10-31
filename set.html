@@ -181,7 +181,7 @@ function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
   if(d.dsel){ for(let k=1;k<=d.dsel;k++) G.push({L:'Đồ uống ly '+k,kind:'d',d,k}); }
   else if(isWD(d)) G.push({L:'Welcome drink',kind:'w',d,opts:WD.map(w=>({n:w.n,img:w.img,desc:w.vn}))});
   else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc}))});
-  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:DONE5,lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:d.sauce,lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:d.side,lab:'Ăn kèm · Side'}); } }
+  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?x.concat([['Chọn sau','NV hỏi tại bàn · Decide later']]):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
  })); return G; }
 const PHU=(()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })();
 const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]&&!(PHU&&g.d&&g.d.dsel&&!DRK().length));
