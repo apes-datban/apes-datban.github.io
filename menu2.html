@@ -187,22 +187,23 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
 .qk .qok{margin-top:10px;font-size:14px;color:#2E7D32;font-weight:600;text-align:center}.qk .fh{text-align:center;margin-top:6px}`;
   document.head.appendChild(st);
   const qc=()=>BH.find(x=>x.qk&&x.t==='cake'), qf=()=>BH.find(x=>x.qk&&x.t==='flower');
+  function goHoa(){ try{ const q=document.getElementById('qFl')||document.getElementById('flower'), fr=window.frameElement, tb=parent.document.querySelector('.tb').offsetHeight; parent.scrollTo({top:fr.getBoundingClientRect().top+parent.scrollY+q.getBoundingClientRect().top-tb-6,behavior:'instant'}); }catch(e){} }
   const ref=()=>{ try{ parent.refresh&&parent.refresh(); parent.fit&&parent.fit(); }catch(e){} };
   const up=()=>{ save(); drawList(); sync(); ref(); };
   const oldSrc=src; src=function(x){ return /^[A-Z]\d+$/.test(x.code||'')?oldSrc(x):'img/'+(x.t==='cake'?'b01':'h01')+'.jpg'; };
   /* ---- bánh ---- */
   const pc=document.createElement('div'); pc.className='qk'; pc.id='qkCake';
-  pc.innerHTML=`<div class="qt">Chữ ghi lên bánh<small>Message on the cake</small></div><input class="qi" type="text" id="qkMsg" placeholder="VD: Happy Birthday Bé Na"><div class="qt">Chọn size bánh<small>Choose a size</small></div>`+CS.map((z,i)=>`<label class="tk" data-i="${i}"><input type="checkbox" data-qs="${i}"><b>Size ${z.s}cm</b><i>${vnd(z.p)}</i></label>`).join('')+`<div class="qok" id="qkOk" hidden></div><div class="qh">Muốn chọn mẫu bánh, anh/chị xem hình bên dưới ↓ – không chọn thì nhân viên tư vấn mẫu.<i>Want a specific design? See the photos below – otherwise our staff will advise.</i></div>`;
+  pc.innerHTML=`<div class="qt">Chữ ghi lên bánh<small>Message on the cake</small></div><input class="qi" type="text" id="qkMsg" placeholder="VD: Happy Birthday Bé Na"><div class="qt">Chọn size bánh<small>Choose a size</small></div>`+CS.map((z,i)=>`<label class="tk" data-i="${i}"><input type="checkbox" data-qs="${i}"><b>Size ${z.s}cm</b><i>${vnd(z.p)}</i></label>`).join('')+`<div class="qok" id="qkOk" hidden></div>`;
   $('#cake .cn').after(pc);
   pc.addEventListener('change',e=>{ const c=e.target.closest('[data-qs]'); if(!c) return; const z=CS[+c.dataset.qs]; let it=qc();
     if(!c.checked){ if(it) BH.splice(BH.indexOf(it),1); }
     else if(!it) BH.push({t:'cake',g:'b',code:(cg==='b'&&cm)||NM,s:z.s,p:z.p,msg:$('#qkMsg').value.trim(),n:'Bánh kem thường',qk:1});
     else { it.s=z.s; it.p=z.p; }
-    up(); });
+    up(); if(c.checked) setTimeout(goHoa,350); });
   $('#qkMsg').addEventListener('input',()=>{ const it=qc(); if(it){ it.msg=$('#qkMsg').value.trim(); save(); drawList(); ref(); } });
   /* ---- hoa ---- */
   const pf=document.createElement('div'); pf.className='qk'; pf.id='qkFl';
-  pf.innerHTML=`<div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkBud" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkFh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkNote" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"><div class="qok" id="qkFOk" hidden></div><div class="qh">Muốn chọn mẫu hoa, anh/chị xem hình bên dưới ↓ – không chọn thì shop hoa tư vấn mẫu.<i>Want a specific design? See the photos below – otherwise the florist will advise.</i></div>`;
+  pf.innerHTML=`<div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkBud" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkFh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkNote" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"><div class="qok" id="qkFOk" hidden></div>`;
   $('#flower .cn').after(pf);
   const bud=()=>{ let x=+($('#qkBud').value.replace(/\D/g,'')||0); if(x&&x<1000) x*=1000; return x; };
   const flSet=()=>{ const b=bud(), ok=b>=FMIN&&b<=FMAX; let it=qf();
@@ -216,12 +217,11 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
   /* ---- gắn mẫu chọn ở hình vào món đã tick; ẩn phần size/thêm trùng ---- */
   const fld=id=>{ const e=document.getElementById(id); return e&&(e.closest('.fld')||e); };
   function syncF(){ const it=qf(); $('#qkFOk').hidden=!it; if(it) $('#qkFOk').textContent='✓ Đã thêm hoa '+vnd(it.p)+(/^H\d+$/.test(it.code)?' · mẫu '+it.code:'')+' vào phiếu';
-    ['flBudget','flNote','flAdd'].forEach(id=>{ const e=fld(id); if(e) e.style.display=it?'none':''; }); }
+  }
   function sync(){ const it=qc();
     pc.querySelectorAll('[data-qs]').forEach(c=>{ const on=!!it&&CS[+c.dataset.qs].s===it.s; c.checked=on; c.closest('label').classList.toggle('on',on); });
     if(it&&document.activeElement!==$('#qkMsg')) $('#qkMsg').value=it.msg||'';
     $('#qkOk').hidden=!it; if(it) $('#qkOk').textContent='✓ Đã thêm bánh size '+it.s+'cm · '+vnd(it.p)+(/^B\d+$/.test(it.code)?' · mẫu '+it.code:'')+' vào phiếu';
-    const hide=!!it&&cg==='b'; ['ckS2','ckAdd','ckMsg'].forEach(id=>{ const e=fld(id); if(e) e.style.display=hide?'none':''; });
     syncF(); }
   $('#ckGrid').addEventListener('click',()=>setTimeout(()=>{ const it=qc(); if(it&&cg==='b'){ it.code=cm||NM; up(); } },0));
   $('#ckChips').addEventListener('click',()=>setTimeout(sync,0));
@@ -229,6 +229,7 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
   document.addEventListener('click',e=>{ if(e.target.closest('[data-rm]')) setTimeout(()=>{ sync(); const f=qf(); if(!f) $('#qkBud').value=''; },0); });
   const f0=qf(); if(f0){ $('#qkBud').value=f0.p.toLocaleString('vi-VN').replace(/,/g,'.'); $('#qkNote').value=f0.note||''; }
   try{ [...document.querySelectorAll('#cake .st,#flower .st')].forEach(s=>{ if(/^1\./.test(s.textContent.trim())) s.firstChild.textContent=s.firstChild.textContent.replace(/^1\.\s*Chọn mẫu (bánh|hoa)\s*/,'Mẫu $1 (không bắt buộc) '); }); }catch(e){}
+  ['#cake','#flower'].forEach(sec=>{ [...document.querySelectorAll(sec+'>*')].forEach(e=>{ if(e.tagName!=='H2'&&!e.classList.contains('qk')) e.style.display='none'; }); });
   drawList(); sync();
 }
 function banhQ(f){ const d=f.contentDocument; if(!d||d.getElementById('qCake')) return; try{ const hd=d.querySelector('header'); if(hd) hd.style.display='none'; }catch(x){} try{ [...d.querySelectorAll('div')].filter(x=>x.textContent.trim().startsWith('💵')&&!x.querySelector('div')).forEach(x=>x.style.display='none'); }catch(x){} try{ const ld=d.querySelector('p.lead'); if(ld) ld.innerHTML='Apes hỗ trợ đặt hoa và bánh kem giúp anh/chị bận rộn.<br><b>Do Apes hỗ trợ đặt dùm nên chỉ nhận thanh toán bằng tiền mặt tại quầy.</b><i>Busy? Apes can order flowers and cakes for you. As we order on your behalf, payment is cash only at the counter.</i>'; }catch(x){} const mk=(id,sec,vi,hl,en,btn,ben)=>{ const el=d.getElementById(sec); if(!el) return; const q=d.createElement('div'); q.id=id; q.style.cssText='text-align:center;padding:18px 12px 10px;font-family:inherit'; q.innerHTML='<button type="button" style="margin-top:0;border:1.5px solid #A8834C;background:#fff;color:#A8834C;border-radius:12px;padding:11px 34px;font-family:inherit;font-weight:700;font-size:16px;cursor:pointer">'+btn+'<small style="display:block;font-weight:500;font-style:italic;font-size:11px;opacity:.9">'+ben+'</small></button>'; el.before(q); const b=q.querySelector('button'); const open=()=>{ el.style.display=''; b.style.background='#A8834C'; b.style.color='#fff'; setTimeout(fit,60); setTimeout(fit,400); }; b.onclick=()=>{ open(); setTimeout(()=>window.scrollTo({top:scrollY+f.getBoundingClientRect().top+el.getBoundingClientRect().top-TOP()-6,behavior:'smooth'}),120); }; el.style.display='none'; let has=false; try{ has=(f.contentWindow.eval('typeof BH==="undefined"?[]:BH')||[]).some(x=>sec==='cake'?x.t==='cake':x.t!=='cake'); }catch(x){} if(has) open(); };
