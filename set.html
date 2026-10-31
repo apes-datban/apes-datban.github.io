@@ -177,11 +177,12 @@ try{ const o=JSON.parse(localStorage.getItem('apes_set_v1')||'{}'); SC=o.SC||{};
 const save=()=>{ try{ localStorage.setItem('apes_set_v1',JSON.stringify({SC,PK})); }catch(e){} };
 function toast(t){ const e=$('#toast'); e.textContent=t; e.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>e.hidden=true,3200); }
 const isWD=d=>/^Welcome drink/i.test(d.vn);
+const LW=x=>PHU?x.concat([{n:'Chọn sau',desc:'NV hỏi tại bàn · Decide later'}]):x;
 function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
   if(d.dsel){ for(let k=1;k<=d.dsel;k++) G.push({L:'Đồ uống ly '+k,kind:'d',d,k}); }
-  else if(isWD(d)) G.push({L:'Welcome drink',kind:'w',d,opts:WD.map(w=>({n:w.n,img:w.img,desc:w.vn}))});
-  else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc}))});
-  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?x.concat([['Chọn sau','NV hỏi tại bàn · Decide later']]):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
+  else if(isWD(d)) G.push({L:'Welcome drink',kind:'w',d,opts:LW(WD.map(w=>({n:w.n,img:w.img,desc:w.vn})))});
+  else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:LW(d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc})))});
+  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?x.concat([['Chọn sau','Decide later']]):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
  })); return G; }
 const PHU=(()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })();
 const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]&&!(PHU&&g.d&&g.d.dsel&&!DRK().length));
@@ -252,7 +253,7 @@ function drawM(){ const c=SETS.find(x=>x.n===MS), P=PK[c.n]||{}, G=groups(c); le
   const MM=missing(c), byD=[]; G.forEach(g=>{ if(!byD.includes(g.d)) byD.push(g.d); });
   byD.forEach(d=>{ const gs=G.filter(g=>g.d===d), ms=MERR&&gs.some(g=>MM.some(x=>x.L===g.L));
     if(d.dsel){ const L=DRK(), sx=surs(c);
-      const opts=sel=>{ let o='<option value="">— Chọn đồ uống —</option>', last=''; L.forEach(x=>{ if(x.g!==last){ if(last) o+='</optgroup>'; o+=`<optgroup label="${esc(x.g)}">`; last=x.g; } o+=`<option value="${esc(x.v)}"${sel===x.v?' selected':''}>${esc(x.v)} – ${Math.round(x.p/1000)}k${x.p>DRINK_FREE?' · bù '+Math.round((x.p-DRINK_FREE)/1000)+'k':' · miễn phí'}</option>`; }); return o+(last?'</optgroup>':''); };
+      const opts=sel=>{ let o='<option value="">— Chọn đồ uống —</option>'+(PHU?`<option value="Chọn sau"${sel==='Chọn sau'?' selected':''}>Chọn sau · Decide later</option>`:''), last=''; L.forEach(x=>{ if(x.g!==last){ if(last) o+='</optgroup>'; o+=`<optgroup label="${esc(x.g)}">`; last=x.g; } o+=`<option value="${esc(x.v)}"${sel===x.v?' selected':''}>${esc(x.v)} – ${Math.round(x.p/1000)}k${x.p>DRINK_FREE?' · bù '+Math.round((x.p-DRINK_FREE)/1000)+'k':' · miễn phí'}</option>`; }); return o+(last?'</optgroup>':''); };
       h+=`<div class="blk${ms?' miss':''}"><div class="h">Đồ uống trong set – ${d.dsel} ly (mỗi khách 1 ly)<i>Drinks – 1 per guest</i></div>`+(L.length?`<div class="dk">${gs.map(g=>`<div class="pc"><b>Ly ${g.k}</b><select data-l="${esc(g.L)}"${ms&&!P[g.L]?' class="mi"':''}>${opts(P[g.L]||'')}</select></div>`).join('')}</div>`:'<div class="dsn">Nhân viên sẽ hỏi anh/chị chọn đồ uống khi xác nhận.</div>')+`<div class="dsn">${/trang trí/i.test(d.vn)?'Set up bàn đến <b>130K</b> &amp; ':''}Đồ uống đến <b>75K/ly</b> đã gồm trong set – chọn loại cao hơn chỉ <b>bù phần chênh lệch + VAT</b>.</div>${sx.length?`<div class="dsx">Bù thêm: ${sx.map(o=>esc(o.x.v)+' +'+vnd(o.diff)).join(' · ')} (chưa VAT)</div>`:''}</div>`; }
     else if(gs[0].kind==='w'){ const g=gs[0], sel=P[g.L];
       h+=`<div class="blk${ms?' miss':''}"><div class="h">${esc(g.L)}${+d.q>1?' (cho cả '+d.q+' '+(isWD(d)?'ly':'phần')+')':''}<i>Choose 1</i></div><div class="wg">${g.opts.map(o=>`<button type="button" data-l="${esc(g.L)}" data-v="${esc(o.n)}" aria-pressed="${sel===o.n}">${o.img?`<img loading="lazy" src="s/${o.img}.jpg" alt="">`:''}<div><b>${esc(o.n)}</b>${o.desc?`<span>${esc(o.desc)}</span>`:''}</div></button>`).join('')}</div></div>`; }
