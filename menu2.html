@@ -177,7 +177,7 @@ function banhQ(f){ const d=f.contentDocument; if(!d||d.getElementById('qCake')) 
  mk('qFl','flower','Anh/chị có muốn đặt hoa tươi không ạ?','hoa tươi','Would you like to order fresh flowers?','💐 Hoa tươi','Flowers'); setTimeout(fit,100); }
 document.querySelector('.mt2').addEventListener('click',e=>{ const b=e.target.closest('[data-jump]'); if(b) show(b.dataset.jump); });
 document.querySelector('.tb').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b) return; if(b.dataset.t==='garden'){ enterGarden(); return; } if(b.dataset.t==='kd'){ if(document.body.classList.contains('gmode')) gmode(false); jumping=Date.now(); window.scrollTo({top:0,behavior:'smooth'}); mark('kd'); return; } show(b.dataset.t);});
-const h=(location.hash||'').slice(1); if(SRC[h]) setTimeout(()=>show(h),1200);
+const h=(location.hash||'').slice(1); if(h==='uudai'||h==='garden') setTimeout(()=>enterGarden(),1200); else if(SRC[h]) setTimeout(()=>show(h),1200);
 
 const CHECK_URL='https://script.google.com/macros/s/AKfycbwfW4VJNrXopoKCDiEJCzl1j6d4fQrVSFjUAYesB7mIlpQj4GGVucjpqvZae1sZ-fOZYA/exec';
 const FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLSe5evOKq9HNmMRkpO8_TDH-U1voqXLBxv9S5B6QSXSzqgzG9g/viewform',FORM_ENTRY='entry.172677733';
