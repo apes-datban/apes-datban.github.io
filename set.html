@@ -105,6 +105,7 @@ button{font:inherit;color:inherit}
 /* set = ảnh menu gốc + nút chọn */.cd.og{aspect-ratio:auto!important;padding:0!important;background:#fff!important;overflow:hidden;justify-content:flex-start}.cd.og .ogi{display:block;width:100%;height:auto}.cd.og .act{margin-top:0!important;padding:12px 12px 14px;background:#fff}
 
 /* làm đẹp thẻ set ảnh gốc */.cards{gap:22px!important}.cd.og{border-radius:14px;border:1px solid rgba(168,131,76,.28);box-shadow:0 8px 24px rgba(60,40,20,.13)!important}.cd.og.on{box-shadow:0 0 0 3px var(--t),0 8px 24px rgba(60,40,20,.13)!important}.cd.og .act{background:color-mix(in srgb,var(--t) 7%,#fffdf8)!important;border-top:1px solid color-mix(in srgb,var(--t) 22%,transparent);padding:14px 14px 16px!important}.cd.og .sel{max-width:280px;border-radius:8px;padding:11px 12px;font-size:15px}.sec{grid-column:1/-1;margin:14px 0 -6px;text-align:center;font:500 22px Lora,Georgia,serif;color:var(--gold);letter-spacing:.04em;display:flex;align-items:center;gap:12px}.sec::before,.sec::after{content:"";flex:1;height:1px;background:var(--gold);opacity:.45}.sec i{display:block;font:italic 12px Lora,Georgia,serif;color:var(--mut);letter-spacing:0}.tr .p small.g4{display:block;font-size:10px;font-weight:500;color:var(--mut);text-align:right;line-height:1.1;letter-spacing:0;font-family:"Be Vietnam Pro",sans-serif}.tr .n{white-space:normal!important;overflow:visible!important;overflow-wrap:anywhere}@media (max-width:400px){.tr .n{font-size:13px!important}.tr{gap:4px!important}}
+.later{display:block;width:100%;margin:6px 0 10px;border:1.5px dashed #A8834C;background:#fff;color:#8a6a35;border-radius:10px;padding:9px 10px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;line-height:1.25}.later small{display:block;font-weight:500;font-style:italic;font-size:11.5px;opacity:.85}.later.on{background:#A8834C;color:#fff;border-style:solid}
 </style>
 <style>
 @font-face{font-family:SVibes;src:url(fonts/greatvibes.woff) format('woff');font-display:swap}
@@ -182,7 +183,7 @@ function groups(c){ const G=[]; c.c.forEach(s=>s.d.forEach(d=>{
   if(d.dsel){ for(let k=1;k<=d.dsel;k++) G.push({L:'Đồ uống ly '+k,kind:'d',d,k}); }
   else if(isWD(d)) G.push({L:'Welcome drink',kind:'w',d,opts:LW(WD.map(w=>({n:w.n,img:w.img,desc:w.vn})))});
   else if(d.pick) G.push({L:d.pl||d.vn,kind:'w',d,opts:LW(d.pick.map(p=>({n:p.n,img:p.img,desc:p.desc})))});
-  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?x.concat([['Chọn sau','Decide later']]):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
+  else if(d.done||d.sauce||d.side){ const n=Math.max(1,+(d.q||1)); for(let k=1;k<=n;k++){ const sf=n>1?' · phần '+k:''; const LT=x=>PHU?[['Chọn sau','Decide later']].concat(x):x; if(d.done) G.push({L:d.vn+' – độ chín'+sf,kind:'c',d,k,n,opts:LT(DONE5),lab:'Độ chín · Doneness'}); if(d.sauce) G.push({L:d.vn+' – sốt'+sf,kind:'c',d,k,n,opts:LT(d.sauce),lab:'Sốt · Sauce'}); if(d.side) G.push({L:d.vn+' – ăn kèm'+sf,kind:'c',d,k,n,opts:LT(d.side),lab:'Ăn kèm · Side'}); } }
  })); return G; }
 const PHU=(()=>{ try{ return /menu2/.test(parent.location.pathname); }catch(e){ return false; } })();
 const missing=c=>groups(c).filter(g=>!(PK[c.n]||{})[g.L]&&!(PHU&&g.d&&g.d.dsel&&!DRK().length));
@@ -262,7 +263,11 @@ function drawM(){ const c=SETS.find(x=>x.n===MS), P=PK[c.n]||{}, G=groups(c); le
   });
   const m=missing(c);
   h+=`<button type="button" class="ok" id="mOk">${SC[c.n]?'Lưu lựa chọn<small class="bi">Save</small>':'Xác nhận chọn set '+esc(c.n)+'<small class="bi">Confirm set</small>'}<small>${vnd(c.price)} / ${c.g} khách</small></button>${MERR&&m.length?'<div class="err">Anh/chị chọn giúp đủ các ô viền đỏ nhé · Please complete the red boxes</div>':''}`;
-  $('#sh').innerHTML=h; }
+  $('#sh').innerHTML=h;
+  if(PHU) document.querySelectorAll('#sh .blk').forEach(b=>{ const ss=[...b.querySelectorAll('select[data-l]')]; if(!ss.length) return; const all=ss.every(x=>x.value==='Chọn sau');
+    const bt=document.createElement('button'); bt.type='button'; bt.className='later'+(all?' on':''); bt.innerHTML=(all?'✓ ':'⏳ ')+'Chọn sau – nhân viên hỏi tại bàn<small>Decide later – our staff will ask at the table</small>';
+    bt.onclick=()=>{ const P=(PK[MS]=PK[MS]||{}); ss.forEach(x=>{ P[x.dataset.l]='Chọn sau'; }); save(); drawM(); if(SC[MS]){ render(); try{ parent.refresh&&parent.refresh(); }catch(z){} } };
+    b.querySelector('.h').after(bt); }); }
 function openM(n){ MS=n; MERR=false; drawM(); $('#ov').hidden=false; }
 function closeM(){ $('#ov').hidden=true; MS=null; }
 function pickSet(c){ const moi=!SC[c.n]; SC[c.n]=SC[c.n]||1; save(); render(); toast('Đã chọn '+sn(c)+' ✓'); try{ parent.refresh&&parent.refresh(); }catch(z){} if(moi&&PHU) try{ parent.goBanh&&parent.goBanh(); }catch(z){} }
