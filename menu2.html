@@ -321,10 +321,9 @@ function nvWatch(){ if(!$('#ov').hidden){ NVP=null; } try{ const fs=document.get
       say(`Dạ em ghi <b>${esc(it.n)}</b> rồi ạ. Anh/chị có muốn Apes trang trí bàn cho buổi hẹn thêm đặc biệt không ạ?`,'Would you like a table decoration?',[['Xem set up bàn',()=>show('setup')],['Chọn thêm nước',()=>{}]]); }
     else if(su!==NVP.su && C.su.it && !C.su.it.b && Date.now()-bvAskT<5000){
       bvAskT=0; }
-    else if(C.su.it && C.su.it.b && !NVP.b && su===NVP.su){
-      say(`Dạ em đã ghi nội dung bảng: <b>“${esc(C.su.it.b)}”</b>. Em cảm ơn anh/chị ạ! Anh/chị có muốn đặt thêm <b>bánh kem</b> hay <b>hoa tươi</b> không ạ?`,'Thank you! Would you like a cake or flowers?',[['Xem bánh & hoa',()=>show('banh')],['Sửa nội dung bảng',askBv],['Không cần, chọn vị trí bàn',()=>show('ban')]]); }
+    else if(C.su.it && C.su.it.b && !NVP.b && su===NVP.su){ }
     else if(su!==NVP.su && (C.su.it||C.su.ad.length)){
-      say(`Dạ em đã ghi rồi ạ. Anh/chị có muốn đặt thêm <b>bánh kem</b> hay <b>hoa tươi</b> không ạ?`,'Add a cake or flowers?',[['Xem bánh & hoa',()=>show('banh')],['Không cần, chọn vị trí bàn',()=>show('ban')]]); }
+      }
     else if(bh>NVP.bh){
       say(`Dạ em ghi rồi ạ. Mời anh/chị chọn <b>bàn</b> mình thích ở phía dưới nhé.`,'Noted! Now pick your table below.',[['Chọn vị trí bàn',()=>show('ban')],['Xem tổng kết',goSum]]); }
   }
