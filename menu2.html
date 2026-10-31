@@ -352,7 +352,7 @@ const _go=$('#sbGo').onclick; $('#sbGo').onclick=()=>{ _go(); $('#nv').hidden=tr
 })();
 
 /* Thống kê lượt mở link / xem tổng kết / gửi phiếu (chỉ đếm trên trang chính thức) */
-(function(){ if(location.host!=='apes-datban.github.io') return; const H=q=>{ try{ fetch(CHECK_URL+'?a=hit&v=b&e='+q,{mode:'no-cors',cache:'no-store',keepalive:true}); }catch(x){} };
+(function(){ if(location.host!=='apes-datban.github.io') return; try{ if(/[?&]test=1/.test(location.search)) localStorage.setItem('apes_test','1'); if(/[?&]test=0/.test(location.search)) localStorage.removeItem('apes_test'); if(localStorage.getItem('apes_test')==='1') return; }catch(x){} const H=q=>{ try{ fetch(CHECK_URL+'?a=hit&v=b&e='+q,{mode:'no-cors',cache:'no-store',keepalive:true}); }catch(x){} };
  let u='0'; try{ const k='apes_seen', d=new Date().toISOString().slice(0,10); if(localStorage.getItem(k)!==d){ localStorage.setItem(k,d); u='1'; } }catch(x){}
  H('open&u='+u); let s1=0; document.addEventListener('click',ev=>{ const t=ev.target.closest&&ev.target.closest('#sbGo,#kForm,#kForm2'); if(!t) return; if(t.id==='sbGo'){ if(!s1){ s1=1; H('sum'); } } else H('send'); },true); })();
 </script>
