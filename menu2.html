@@ -208,14 +208,19 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
     const cols=(getComputedStyle($('#flGrid')).gridTemplateColumns.split(' ').filter(Boolean).length)||3, end=all[Math.min(i-i%cols+cols-1,all.length-1)];
     card.classList.add('on');
     const x=document.createElement('div'); x.id='qkH'; x.className='qk qkx'; x.dataset.code=code;
-    x.innerHTML=`<div class="qkh"><span>Hoa tươi · ${code}</span><button type="button" id="qkHc">Đóng · Close</button></div><div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkHb" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkHh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkHn" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"><button type="button" class="add" id="qkHa" disabled>Nhập số tiền dành cho hoa<small>Enter your budget</small></button>`;
+    x.innerHTML=`<div class="qkh"><span>Hoa tươi · ${code}</span><button type="button" id="qkHc">Đóng · Close</button></div><div class="qt">Số tiền anh/chị dành cho hoa<small>Your flower budget</small></div><input class="qi" type="text" inputmode="numeric" id="qkHb" placeholder="Từ 300.000 đến 900.000"><div class="fh" id="qkHh"></div><div class="qh" style="margin-top:6px">Shop hoa sẽ cân chỉnh lượng hoa theo số tiền anh/chị chọn.<i>The florist adjusts the bouquet to your budget.</i></div><div class="qt">Ghi chú / lời nhắn cho bó hoa<small>Note or card message</small></div><input class="qi" type="text" id="qkHn" placeholder="VD: tông hồng nhạt, thiệp ghi “Yêu em”"><div class="qok" id="qkHok" hidden></div>`;
     end.after(x);
-    const inp=x.querySelector('#qkHb'), btn=x.querySelector('#qkHa');
+    const inp=x.querySelector('#qkHb'), nt=x.querySelector('#qkHn'), okm=x.querySelector('#qkHok'); let it=BH.find(y=>y.t==='flower'&&y.code===code)||null;
+    if(it){ inp.value=it.p.toLocaleString('vi-VN').replace(/,/g,'.'); nt.value=it.note||''; }
     const val=()=>{ let v=+(inp.value.replace(/\D/g,'')||0); if(v&&v<1000) v*=1000; return v; };
-    const draw=()=>{ const v=val(), ok=v>=FMIN&&v<=FMAX; x.querySelector('#qkHh').textContent=inp.value.trim()&&!ok?'Số tiền cho hoa từ 300.000đ đến 900.000đ':''; btn.disabled=!ok; btn.innerHTML=ok?`＋ Thêm hoa ${code} · ${vnd(v)}<small>Add to booking</small>`:'Nhập số tiền dành cho hoa<small>Enter your budget</small>'; };
+    const draw=()=>{ const v=val(), ok=v>=FMIN&&v<=FMAX; x.querySelector('#qkHh').textContent=inp.value.trim()&&!ok?'Số tiền cho hoa từ 300.000đ đến 900.000đ':'';
+      if(ok){ if(!it){ it={t:'flower',code:code,p:v,note:nt.value.trim(),n:'Hoa tươi'}; BH.push(it); } else it.p=v; }
+      else if(it){ const k=BH.indexOf(it); if(k>=0) BH.splice(k,1); it=null; }
+      save(); drawList(); ref(); okm.hidden=!it; if(it) okm.textContent='✓ Đã thêm hoa '+code+' · '+vnd(it.p)+' vào phiếu'; };
+    nt.addEventListener('input',()=>{ if(it){ it.note=nt.value.trim(); save(); drawList(); ref(); } });
     inp.addEventListener('input',draw); inp.addEventListener('blur',()=>{ const v=val(); if(v) inp.value=v.toLocaleString('vi-VN').replace(/,/g,'.'); draw(); });
     x.querySelector('#qkHc').onclick=()=>{ x.remove(); card.classList.remove('on'); };
-    btn.onclick=()=>{ const v=val(); if(!(v>=FMIN&&v<=FMAX)) return; BH.push({t:'flower',code:code,p:v,note:x.querySelector('#qkHn').value.trim(),n:'Hoa tươi'}); save(); drawList(); ref(); toast('Đã thêm hoa '+code+' vào phiếu · Added'); x.remove(); card.classList.remove('on'); };
+    if(it){ okm.hidden=false; okm.textContent='✓ Đã thêm hoa '+code+' · '+vnd(it.p)+' vào phiếu'; }
     setTimeout(()=>{ try{ const fr=window.frameElement, tb=parent.document.querySelector('.tb').offsetHeight; parent.scrollTo({top:fr.getBoundingClientRect().top+parent.scrollY+card.getBoundingClientRect().top-tb-6,behavior:'instant'}); inp.focus({preventScroll:true}); }catch(q){} },60); ref(); }
   function openX(bt){ const old=document.getElementById('qkX'), code=bt.dataset.m; document.querySelectorAll('#ckGrid .mc.on').forEach(x=>x.classList.remove('on'));
     if(old){ const same=old.dataset.code===code; old.remove(); if(same) return; }
