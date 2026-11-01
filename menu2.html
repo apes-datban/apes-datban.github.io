@@ -210,6 +210,12 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
   ['ckS2','ckAdd','ckMsg','flBudget','flNote','flAdd'].forEach(id=>{ const e=document.getElementById(id), t=e&&(e.closest('.fld')||e); if(t) t.style.display='none'; });
   const xst=document.createElement('style'); xst.textContent='.qkx{grid-column:1/-1;margin:2px 0 6px}.qkx .qkh{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:16px;color:var(--ink)}.qkx .qkh button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 10px;font:500 13px var(--body);color:var(--muted);cursor:pointer}';
   document.head.appendChild(xst);
+  /* giá bánh nhỏ kèm theo cho 1 số mẫu (menu phụ) */
+  const XN={B46:10000,B48:35000}; const xnH=c=>`<div class="xn">Bánh nhỏ<b>${vnd(XN[c])}/cái</b><small>Mini cake ${XN[c]/1000}K each</small></div>`;
+  const xst2=document.createElement('style'); xst2.textContent='.xn{margin:6px 8px 0;padding:5px 3px;border:1px dashed #A8834C;border-radius:4px;background:#FBF6EC;text-align:center;font:600 12.5px var(--body);color:#8A6A35;line-height:1.3}.xn b{display:block;font-size:14px;font-weight:700;white-space:nowrap}.xn small{display:block;font-weight:500;font-style:italic;font-size:10.5px;color:var(--muted)}.qkx .xn{margin:10px 0 0;padding:8px;font-size:14px}.qkx .xn b{display:inline;margin-left:6px;font-size:16px}';
+  document.head.appendChild(xst2);
+  const xnAdd=()=>{ document.querySelectorAll('#ckGrid .mc').forEach(m=>{ const b=m.querySelector('[data-m]'); if(b&&XN[b.dataset.m]&&!m.querySelector('.xn')) b.insertAdjacentHTML('beforebegin',xnH(b.dataset.m)); }); };
+  xnAdd(); try{ new MutationObserver(xnAdd).observe(document.getElementById('ckGrid'),{childList:true,subtree:true}); }catch(e){}
   document.addEventListener('click',e=>{ const bt=e.target.closest('#ckGrid [data-m]'); if(!bt) return; e.stopPropagation(); e.preventDefault(); openX(bt); },true);
   document.addEventListener('click',e=>{ const bt=e.target.closest('#flGrid [data-m]'); if(!bt) return; e.stopPropagation(); e.preventDefault(); openH(bt); },true);
   function openH(bt){ const old=document.getElementById('qkH'), code=bt.dataset.m; document.querySelectorAll('#flGrid .mc.on').forEach(x=>x.classList.remove('on'));
@@ -239,6 +245,7 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
     card.classList.add('on');
     const x=document.createElement('div'); x.id='qkX'; x.className='qk qkx'; x.dataset.code=code;
     x.innerHTML=`<div class="qkh"><span>${G.t} · ${code}</span><button type="button" id="qkXc">Đóng · Close</button></div><div class="qt">Chữ ghi lên bánh${cg==='m'?' / dĩa':''}<small>Message on the cake</small></div><input class="qi" type="text" id="qkXm" placeholder="VD: Happy Birthday Bé Na"><div class="qt">Chọn size &amp; giá<small>Choose a size</small></div>`+G.sz.map((z,k)=>`<label class="tk"><input type="checkbox" data-xs="${k}"><b>${z.s?'Size '+z.s+'cm':'1 bánh mini trên dĩa'}</b><i>${vnd(z.p)}</i></label>`).join('');
+    if(XN[code]) x.querySelector('.qkh').insertAdjacentHTML('afterend',xnH(code));
     end.after(x);
     x.querySelector('#qkXc').onclick=()=>{ x.remove(); card.classList.remove('on'); };
     x.addEventListener('change',ev=>{ const c=ev.target.closest('[data-xs]'); if(!c||!c.checked) return; const z=G.sz[+c.dataset.xs];
