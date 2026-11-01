@@ -1,0 +1,116 @@
+/**
+ * TRANG ĐẶT HÀNG CHO BẾP (mở bằng điện thoại hoặc máy tính)
+ * Bấm nút "🛒 ĐẶT HÀNG" ở ô C2 sheet Order → mở trang này.
+ * - Gõ 1 chữ là ra tên hàng → chọn → nhập số lượng, ghi chú → Lưu.
+ * - Số tự ghi vào cột "Order" đúng ngày của sheet Order (chỉ hôm nay và ngày mai).
+ * - Ghi chú tự lưu sang file QUẢN LÝ (sheet "Ghi chú theo ngày") + gắn chú thích vào ô order.
+ * - Thêm hàng mới: điền vào dòng vàng của đúng nhóm hàng (mã tự tạo như khi gõ tay).
+ */
+const DH_QL_ID = '1b0_CmUW-YRuNksgcNIeCfs_HzIKORuDzIUxsAUcEglo'; // file QUẢN LÝ cùng tháng
+const DH_TZ = 'Asia/Saigon';
+const DH_COT_DAU = 16, DH_SO_NGAY = 31;
+
+function doGet() {
+  return HtmlService.createHtmlOutputFromFile('DatHangTrang')
+    .setTitle('Apes – Đặt hàng Bếp')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function dhSheet_() {
+  return SpreadsheetApp.getActive().getSheets().filter(function (s) { return s.getName().indexOf('Order T') === 0; })[0];
+}
+function dhKey_(d) { return Utilities.formatDate(d, DH_TZ, 'yyyy-MM-dd'); }
+
+function dhLayDuLieu() {
+  const sh = dhSheet_();
+  const last = sh.getLastRow();
+  const v = sh.getRange(1, 1, last, DH_COT_DAU - 1 + DH_SO_NGAY * 3).getValues();
+  const days = [];
+  for (let k = 0; k < DH_SO_NGAY; k++) { const d = v[2][DH_COT_DAU - 1 + 3 * k]; days.push(d instanceof Date ? dhKey_(d) : ''); }
+  const items = [], groups = [];
+  let grp = '';
+  for (let r = 10; r < last; r++) {
+    const a = String(v[r][0]).trim();
+    if (a === 'HẾT DANH SÁCH') break;
+    const m = a.match(/\[mã ([A-Z]{2})\]\s*$/);
+    if (m) { grp = m[1]; groups.push({ ma: m[1], ten: a.replace(/^[A-Z]\d+\.\s*/, '').replace(/\s*\[mã [A-Z]{2}\]\s*$/, '') }); continue; }
+    if (/^[A-Z]{2}\d{3}$/.test(a)) {
+      const q = [];
+      for (let k = 0; k < DH_SO_NGAY; k++) { const x = v[r][DH_COT_DAU - 1 + 3 * k + 2]; q.push(typeof x === 'number' ? x : 0); }
+      items.push({ ma: a, en: String(v[r][1] || ''), vn: String(v[r][2] || ''), dvt: String(v[r][3] || ''), nhom: grp, q: q });
+    }
+  }
+  const now = new Date();
+  return { days: days, items: items, groups: groups, homNay: dhKey_(now), ngayMai: dhKey_(new Date(now.getTime() + 86400000)), thang: sh.getName() };
+}
+
+function dhLuuOrder(o) {
+  const lock = LockService.getDocumentLock();
+  lock.waitLock(30000);
+  try {
+    const sh = dhSheet_();
+    const now = new Date(), homNay = dhKey_(now), ngayMai = dhKey_(new Date(now.getTime() + 86400000));
+    if (o.ngay !== homNay && o.ngay !== ngayMai) throw new Error('Chỉ đặt được cho hôm nay hoặc ngày mai.');
+    const d3 = sh.getRange(3, DH_COT_DAU, 1, DH_SO_NGAY * 3).getValues()[0];
+    let k = -1;
+    for (let i = 0; i < DH_SO_NGAY; i++) { const d = d3[i * 3]; if (d instanceof Date && dhKey_(d) === o.ngay) { k = i; break; } }
+    if (k < 0) throw new Error('Ngày này không có trong file tháng ' + sh.getName() + '.');
+    const colA = sh.getRange(1, 1, sh.getLastRow(), 1).getValues().map(function (x) { return String(x[0]).trim(); });
+    const r = colA.indexOf(String(o.ma).trim()) + 1;
+    if (r < 1) throw new Error('Không thấy mã ' + o.ma);
+    const col = DH_COT_DAU + 3 * k + 2;
+    const o1 = sh.getRange(r, col);
+    const sl = (o.sl === '' || o.sl === null) ? '' : Number(o.sl);
+    if (sl !== '' && (isNaN(sl) || sl < 0)) throw new Error('Số lượng phải là số ≥ 0');
+    if (sl === '' || sl === 0) o1.clearContent(); else o1.setValue(sl);
+    const gc = String(o.ghiChu || '').trim();
+    o1.setNote(gc ? ('Ghi chú: ' + gc + (o.nguoi ? '\n– ' + o.nguoi : '')) : '');
+    if (o.nguoi) { const p = sh.getRange(7, DH_COT_DAU + 3 * k + 2); const cu = String(p.getValue() || ''); if (cu.indexOf(o.nguoi) < 0) p.setValue(cu ? cu + ', ' + o.nguoi : o.nguoi); }
+    dhGhiChuQL_(o.ngay, o.ma, gc);
+    SpreadsheetApp.flush();
+    return dhLayDuLieu();
+  } finally { lock.releaseLock(); }
+}
+
+/** Ghi chú theo ngày + mã sang file QUẢN LÝ để Sếp thấy ở cột Ghi chú của Phiếu order. */
+function dhGhiChuQL_(ngay, ma, gc) {
+  try {
+    const log = SpreadsheetApp.openById(DH_QL_ID).getSheetByName('Ghi chú theo ngày');
+    const p = ngay.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    const last = log.getLastRow();
+    const data = last > 1 ? log.getRange(2, 1, last - 1, 2).getValues() : [];
+    const idx = data.findIndex(function (x) { return x[0] instanceof Date && dhKey_(x[0]) === ngay && String(x[1]).trim() === ma; });
+    if (!gc) { if (idx >= 0) log.deleteRow(idx + 2); return; }
+    if (idx >= 0) { log.getRange(idx + 2, 3).setValue('Bếp: ' + gc); return; }
+    const nr = last + 1;
+    log.getRange(nr, 1, 1, 3).setValues([[d, ma, 'Bếp: ' + gc]]);
+    log.getRange(nr, 4).setFormula('=A' + nr + '&"|"&B' + nr);
+  } catch (e) { /* không chặn việc đặt hàng */ }
+}
+
+function dhThemHang(o) {
+  const lock = LockService.getDocumentLock();
+  lock.waitLock(30000);
+  try {
+    const sh = dhSheet_();
+    const vn = String(o.vn || '').trim(), dvt = String(o.dvt || '').trim();
+    if (!vn || !dvt || !o.nhom) throw new Error('Cần nhập Tên tiếng Việt, ĐVT và chọn Nhóm hàng.');
+    const last = sh.getLastRow();
+    const vals = sh.getRange(1, 1, last, 3).getValues(), fs = sh.getRange(1, 1, last, 1).getFormulas();
+    const trung = vals.find(function (x) { return String(x[2]).trim().toLowerCase() === vn.toLowerCase(); });
+    if (trung) throw new Error('Đã có hàng "' + vn + '" (mã ' + trung[0] + ') – chọn hàng đó để đặt.');
+    let r = -1;
+    for (let i = 10; i < last; i++) {
+      if (fs[i][0].indexOf('"' + o.nhom) >= 0 && String(vals[i][2]).trim() === '') { r = i + 1; break; }
+    }
+    if (r < 0) throw new Error('Nhóm này đã hết dòng trống để thêm hàng – nhắn Sếp/Trợ Lý thêm dòng.');
+    sh.getRange(r, 3, 1, 2).setValues([[vn, dvt]]);
+    if (o.en) sh.getRange(r, 2).setValue(String(o.en).trim());
+    if (o.ghiChu) sh.getRange(r, 8).setValue(String(o.ghiChu).trim());
+    SpreadsheetApp.flush();
+    const ma = String(sh.getRange(r, 1).getValue()).trim();
+    const d = dhLayDuLieu(); d.maMoi = ma;
+    return d;
+  } finally { lock.releaseLock(); }
+}
