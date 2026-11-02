@@ -83,11 +83,11 @@ input::placeholder{color:var(--muted);opacity:1}input:focus::placeholder{color:t
 
 <section class="sec fl" id="flower">
 <h2>Hoa tươi<small>Flowers</small></h2>
-<p class="cn"><b class="flp">Giá tham khảo: 300.000đ – 900.000đ / bó, tùy mẫu</b>Tùy ngân sách của anh/chị, shop hoa sẽ cân đối lượng hoa cho phù hợp với mẫu đã chọn.<span class="ie">Reference price 300,000đ – 900,000đ per bouquet. The florist adjusts the bouquet to your budget.</span></p>
+<p class="cn"><b class="flp">Giá tham khảo: 350.000đ – 900.000đ / bó, tùy mẫu</b>Tùy ngân sách của anh/chị, shop hoa sẽ cân đối lượng hoa cho phù hợp với mẫu đã chọn.<span class="ie">Reference price 350,000đ – 900,000đ per bouquet. The florist adjusts the bouquet to your budget.</span></p>
 <div class="st">1. Chọn mẫu hoa <span class="ie">Pick a design</span></div>
 <div class="grid" id="flGrid"></div>
 <button class="more" id="flMore" type="button"></button>
-<label class="fld">2. Số tiền dành cho hoa <span class="ie">Flower budget</span><input id="flBudget" type="text" inputmode="numeric" placeholder="Từ 300.000 đến 900.000"><span class="fh" id="flHint"></span></label>
+<label class="fld">2. Số tiền dành cho hoa <span class="ie">Flower budget</span><input id="flBudget" type="text" inputmode="numeric" placeholder="Từ 350.000 đến 900.000"><span class="fh" id="flHint"></span></label>
 <label class="fld">3. Ghi chú cho bó hoa <span class="ie">Note</span><input id="flNote" type="text" placeholder="VD: tông hồng nhạt, thêm thiệp ghi “Yêu em”"></label>
 <button class="add" id="flAdd" type="button" disabled></button>
 <div class="picked" id="flPicked" hidden><b>Hoa đã chọn · Your flowers</b><div id="flList"></div></div>
@@ -101,7 +101,7 @@ const CAKES={
   v:{t:'Bánh vương miện',c:'Vương miện',en:'Crown',n:18,sz:[{s:14,p:350000},{s:16,p:400000},{s:18,p:450000}]},
   m:{t:'Bánh kem mini trên dĩa',c:'Mini trên dĩa',en:'Mini plated',n:6,sz:[{s:0,p:89000}]}
 };
-const FLOWER_N=32, SHOW_N=12, FMIN=300000, FMAX=900000;
+const FLOWER_N=32, SHOW_N=12, FMIN=350000, FMAX=900000;
 const $=q=>document.querySelector(q), pad=n=>String(n).padStart(2,'0');
 const vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
 const esc=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -136,7 +136,7 @@ function drawFl(){
     h+=`<div class="mc${on?' on':''}"><button class="z" data-z="${img('h',i)}" type="button"><img loading="lazy" src="${img('h',i)}" alt="Hoa mẫu ${code}"></button><button class="p" data-m="${code}" type="button">${on?'✓ '+code+'<small class="bi">Selected</small>':'Chọn '+code+'<small class="bi">Select</small>'}</button></div>`; }
   $('#flGrid').innerHTML=h; $('#flMore').hidden=FLOWER_N<=fShow; $('#flMore').textContent=`Xem thêm ${FLOWER_N-fShow} mẫu · See more`;
   const b=budget(), bOk=b>=FMIN&&b<=FMAX;
-  $('#flHint').textContent=$('#flBudget').value.trim()&&!bOk?'Ngân sách từ 300.000đ đến 900.000đ':'';
+  $('#flHint').textContent=$('#flBudget').value.trim()&&!bOk?'Ngân sách từ 350.000đ đến 900.000đ':'';
   const ok=fm&&bOk; $('#flAdd').disabled=!ok;
   $('#flAdd').innerHTML=ok?`＋ Thêm hoa ${fm} · ${vnd(b)}<small>Add to booking</small>`:(fm?'Nhập số tiền dành cho hoa<small>Enter your budget</small>':'Chọn mẫu hoa ở trên<small>Pick a design above</small>');
 }
