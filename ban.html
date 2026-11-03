@@ -131,7 +131,7 @@ window.setPick=t=>{ t=String(t||'').trim().toUpperCase(); PICK=ZOF[t]&&!locked(t
 document.addEventListener('click',e=>{
   if(e.target.closest('#hintGo')){ $('#hint').hidden=true; try{ parent.show('mon'); }catch(x){} return; }
   if(e.target.closest('#hintX')||e.target.id==='hint'){ $('#hint').hidden=true; return; }
-  const zb=e.target.closest('[data-z]'); if(zb){ zoneId=zoneId===zb.dataset.z?null:zb.dataset.z; render(); if(zoneId) setTimeout(()=>{ try{ const f=frameElement; parent.scrollTo({top:f.offsetTop+$('#zone').offsetTop-70,behavior:'smooth'}); }catch(x){} },50); return; }
+  const zb=e.target.closest('[data-z]'); if(zb){ zoneId=zoneId===zb.dataset.z?null:zb.dataset.z; render(); if(zoneId){ const go=()=>{ try{ const f=frameElement, P=parent, tb=P.document.querySelector('.tb'); P.scrollTo({top:f.getBoundingClientRect().top+P.scrollY+$('#zone').offsetTop-(tb?tb.offsetHeight:0)-10,behavior:'smooth'}); }catch(x){ try{ $('#zone').scrollIntoView({behavior:'smooth'}); }catch(y){} } }; setTimeout(go,120); setTimeout(go,600); } return; }
   if(e.target.closest('#unpick')){ PICK=''; render(); changed(); return; }
   const b=e.target.closest('[data-t]'); if(!b) return; const t=b.dataset.t;
   if(!DATE){ toast('Anh/chị ghi Ngày đến ở đầu trang trước nhé.'); try{ parent.document.getElementById('hDate').focus(); parent.scrollTo({top:0,behavior:'smooth'}); }catch(x){} return; }
