@@ -18,6 +18,7 @@ h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin
 .day.no{color:#B4472F}
 .zones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
 .zc{position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;padding:0;background:var(--surface);text-align:left}
+.zc .zgo{position:absolute;left:6px;top:6px;right:auto;width:max-content;max-width:calc(100% - 12px);white-space:nowrap;z-index:2;background:#A8834C;color:#fff;font:700 11.5px/1.2 "Be Vietnam Pro",system-ui,sans-serif;padding:5px 9px 4px;border-radius:999px;box-shadow:0 2px 0 #6E5226,0 3px 8px rgba(0,0,0,.3);text-align:center}.zc .zgo small{display:block;font-weight:500;font-style:italic;font-size:10px;opacity:.9}.zc[aria-pressed="true"] .zgo{background:#2E7D32;box-shadow:0 2px 0 #1B5E20}
 .zc img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
 .zc .zb{position:absolute;inset:auto 0 0 0;padding:34px 10px 10px;background:linear-gradient(180deg,rgba(20,16,10,0),rgba(20,16,10,.88) 55%);color:#f3eadb}
 .zc h3{font:600 19px/1.1 var(--display);margin:0;color:#fff}
@@ -108,7 +109,7 @@ function zoneFree(z){ const ts=z.shots.flatMap(s=>s.spots.map(p=>p[0])); return 
 function render(){
   $('#day').className='day'+(DATE?'':' no');
   $('#day').textContent=DATE?'Bàn trống ngày '+fmt(DATE):'Anh/chị ghi Ngày đến ở đầu trang để xem bàn còn trống';
-  $('#zones').innerHTML=ZONES.map(z=>{ const [f,n]=zoneFree(z); return `<button class="zc" data-z="${z.id}" aria-pressed="${z.id===zoneId}"><img src="img/${z.cover}.jpg" alt="${z.name}" loading="lazy"><div class="zb"><h3>${z.name}</h3><div class="zv">${z.en}</div><div class="zf">${f?f+'/'+n+' bàn còn trống':'Đã kín bàn ngày này'}</div>${z.id==='garden'?'<div class="zg">🎁 01–09/11: Tặng set up + bánh kem</div>':''}</div></button>`; }).join('');
+  $('#zones').innerHTML=ZONES.map(z=>{ const [f,n]=zoneFree(z); return `<button class="zc" data-z="${z.id}" aria-pressed="${z.id===zoneId}"><img src="img/${z.cover}.jpg" alt="${z.name}" loading="lazy"><span class="zgo">👆 Bấm vào đây để chọn<small>Tap to choose</small></span><div class="zb"><h3>${z.name}</h3><div class="zv">${z.en}</div><div class="zf">${f?f+'/'+n+' bàn còn trống':'Đã kín bàn ngày này'}</div>${z.id==='garden'?'<div class="zg">🎁 01–09/11: Tặng set up + bánh kem</div>':''}</div></button>`; }).join('');
   const z=ZONES.find(x=>x.id===zoneId), el=$('#zone');
   if(!z){ el.hidden=true; el.innerHTML=''; }
   else { const ts=z.shots.flatMap(s=>s.spots.map(p=>p[0])); el.hidden=false;
