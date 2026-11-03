@@ -327,7 +327,16 @@ const _go=$('#sbGo').onclick; $('#sbGo').onclick=()=>{ _go(); $('#nv').hidden=tr
 
 /* Thống kê lượt mở link / xem tổng kết / gửi phiếu (chỉ đếm trên trang chính thức) */
 (function(){ if(location.host!=='apes-datban.github.io') return; try{ if(/[?&]test=1/.test(location.search)) localStorage.setItem('apes_test','1'); if(/[?&]test=0/.test(location.search)) localStorage.removeItem('apes_test'); if(localStorage.getItem('apes_test')==='1') return; }catch(x){} const H=q=>{ try{ fetch(CHECK_URL+'?a=hit&e='+q,{mode:'no-cors',cache:'no-store',keepalive:true}); }catch(x){} };
- let u='0'; try{ const k='apes_seen', d=new Date().toISOString().slice(0,10); if(localStorage.getItem(k)!==d){ localStorage.setItem(k,d); u='1'; } }catch(x){}
- H('open&u='+u); let s1=0; document.addEventListener('click',ev=>{ const t=ev.target.closest&&ev.target.closest('#sbGo,#kForm,#kForm2'); if(!t) return; if(t.id==='sbGo'){ if(!s1){ s1=1; H('sum'); } } else H('send'); },true); })();
+ let u='0'; try{ const k='apes_seen', d=new Date().toISOString().slice(0,10), ls=localStorage.getItem(k); if(ls!==d){ if(ls&&ls<d){ const n=Math.round((Date.parse(d)-Date.parse(ls))/864e5); if(n>0) H('ret&k='+n); } localStorage.setItem(k,d); u='1'; } }catch(x){}
+ H('open&u='+u);
+ /* khách đang xem tab nào, thoát ở tab nào, bấm Gửi bị chặn vì thiếu ô nào */
+ const SEC=['set','mon','nuoc','setup','banh','ban']; let cur='dau', seen={}, sent=0, outd=0;
+ const where=()=>{ try{ const ov=document.getElementById('ov'); if(ov&&!ov.hidden) return 'tongket'; if(document.body.classList.contains('gmode')) return 'garden'; const y=innerHeight*0.45; let r='dau'; SEC.forEach(t=>{ const f=document.getElementById('f-'+t); if(!f||!f.offsetParent) return; const b=f.getBoundingClientRect(); if(b.top<=y&&b.bottom>y) r=t; }); return r; }catch(x){ return cur; } };
+ const tick=()=>{ const w=where(); cur=w; if(w!=='dau'&&!seen[w]){ seen[w]=1; H('tab&k='+w); } };
+ let tq=0; addEventListener('scroll',()=>{ clearTimeout(tq); tq=setTimeout(tick,800); },{passive:true});
+ const hasCart=()=>{ try{ const c=collect(); return (c.food.length+c.drink.length+(c.su.it?1:0)+c.su.ad.length+c.bh.length)>0; }catch(x){ return false; } };
+ const leave=()=>{ if(sent||outd) return; outd=1; tick(); H('out&k='+cur+'&c='+(hasCart()?1:0)); };
+ document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') leave(); }); addEventListener('pagehide',leave);
+ let s1=0; document.addEventListener('click',ev=>{ setTimeout(tick,900); const t=ev.target.closest&&ev.target.closest('#sbGo,#kForm,#kForm2'); if(!t) return; if(t.id==='sbGo'){ if(!s1){ s1=1; H('sum'); } } else { H('send'); let ok=true; try{ ok=check(true); }catch(x){} if(ok) sent=1; else { try{ const m=(document.getElementById('kErr').textContent||'').replace(/^.*?giúp:\s*/,'').replace(/Please fill.*$/,'').trim(); m.split(/,\s*/).filter(Boolean).forEach(f=>H('err&k='+encodeURIComponent(f))); }catch(x){} } } },true); })();
 </script>
 </body></html>
