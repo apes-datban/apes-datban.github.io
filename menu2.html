@@ -258,7 +258,7 @@ function qkInit(){ /* chạy BÊN TRONG banh.html (menu phụ): ô ghi chữ + 3
     const cols=(getComputedStyle($('#ckGrid')).gridTemplateColumns.split(' ').filter(Boolean).length)||3, end=all[Math.min(i-i%cols+cols-1,all.length-1)];
     card.classList.add('on');
     const x=document.createElement('div'); x.id='qkX'; x.className='qk qkx'; x.dataset.code=code;
-    x.innerHTML=`<div class="qkh"><span>${G.t} · ${code}</span><button type="button" id="qkXc">Đóng · Close</button></div><div class="qt">Chữ ghi lên bánh${cg==='m'?' / dĩa':''}<small>Message on the cake</small></div><input class="qi" type="text" id="qkXm" placeholder="VD: Happy Birthday Bé Na"><div class="qt">Chọn size &amp; giá<small>Choose a size</small></div>`+G.sz.map((z,k)=>`<label class="tk"><input type="checkbox" data-xs="${k}"><b>${z.s?'Size '+z.s+'cm':'1 bánh mini trên dĩa'}</b><i>${vnd(z.p)}</i></label>`).join('');
+    x.innerHTML=`<div class="qkh"><span>${G.t} · ${code}</span><button type="button" id="qkXc">Đóng · Close</button></div><div class="qt">Chữ ghi lên bánh${cg==='m'?' / dĩa':''}<small>Message on the cake</small></div><input class="qi" type="text" id="qkXm" placeholder="VD: Happy Birthday Bé Na"><div class="qt">Dạ bánh có giá như sau:<small>Our cake prices:</small></div>`+G.sz.map((z,k)=>`<label class="tk"><input type="checkbox" data-xs="${k}"><b>${z.s?'Size '+z.s+'cm':'1 bánh mini trên dĩa'}</b><i>${vnd(z.p)}</i></label>`).join('');
     if(XN[code]) x.querySelector('.qkh').insertAdjacentHTML('afterend',xnH(code));
     end.after(x);
     x.querySelector('#qkXc').onclick=()=>{ x.remove(); card.classList.remove('on'); };
