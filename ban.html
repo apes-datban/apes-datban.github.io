@@ -80,11 +80,11 @@ h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin
 <div class="zones" id="zones"></div>
 <section class="zone" id="zone" hidden></section>
 <div class="picked" id="picked" hidden></div>
-<p class="fine">Bàn hiện "Đã đặt" là bàn đã có khách cọc ngày đó. Nhà hàng giữ bàn sau khi nhận cọc.</p>
+<p class="fine" id="lkNote">Bàn hiện "Đã đặt" là bàn đã có khách cọc ngày đó. Nhà hàng giữ bàn sau khi nhận cọc.</p>
 </div>
 <div class="ov" id="hint" hidden><div class="hc"><div class="ok" id="hintT">Đã chọn bàn ✓</div><p>Bạn kéo xuống để order món, cảm ơn bạn!</p><i>Scroll down to order food. Thank you!</i><button type="button" class="go" id="hintGo">Order món ↓<small class="bi">Order food</small></button><button type="button" class="cl" id="hintX">Đóng<small class="bi">Close</small></button></div></div>
 <div class="toast" id="toast" hidden></div>
-<script>
+<script>const AN=/[?&]an=1/.test(location.search); function lkV(t){ return !AN&&locked(t); } if(AN) document.addEventListener('DOMContentLoaded',()=>{ const n=document.getElementById('lkNote'); if(n) n.style.display='none'; });
 const ZONES=[
  {id:'guong',name:'Phòng Gương & Đèn chùm',en:'Mirror Hall',vibe:'Đèn chùm pha lê, tường gương, trang trí sang trọng – hợp kỷ niệm, tiệc nhỏ.',cover:'kg2',
   shots:[{img:'kg2',ar:'1400/933',spots:[['B17',41.3,50.1],['B15',30.4,67.8],['B16',57.4,59.5],['B6',66.6,65.0],['B7',82.3,77.4]]}],gallery:['kg9','kg0']},
@@ -114,9 +114,9 @@ function render(){
   if(!z){ el.hidden=true; el.innerHTML=''; }
   else { const ts=z.shots.flatMap(s=>s.spots.map(p=>p[0])); el.hidden=false;
     el.innerHTML=`<h2>${z.name}<small>${z.en}</small></h2><p class="v">${z.vibe}</p>${z.id==='garden'?`<div class="pr"><img src="img/chocolava.jpg" alt="Bánh kem tặng"><div><b>🎁 Ưu đãi Sảnh Garden</b><span><b>Từ 01/11 đến 09/11/2026</b></span><span>Bill từ <b>450K/người</b> (món + nước), Apes tặng:</span><ul><li>Set up bàn miễn phí</li><li><b>Bánh kem</b> (185K) – vẽ chữ theo yêu cầu</li><li>Ghi chữ trên dĩa</li><li><b>Kệ hoa tiệc</b> (3 mẫu)</li></ul><i>Garden Hall, 01–09 Nov 2026: from 450K/guest – free decoration, cake with message &amp; party flower stand.</i></div></div>`:''}
-    <div class="howto"><b>Chạm vào vòng sáng trên ảnh để chọn bàn</b><br><span><i class="f"></i>Còn trống</span><span><i class="s"></i>Đang chọn</span><span><i class="k"></i>Đã đặt</span></div>
-    ${z.shots.map(s=>{ const [w,h]=s.ar.split('/'); return `<div class="shot${w/h>1?' wide':''}" style="aspect-ratio:${s.ar}"><img src="img/${s.img}.jpg" alt="Không gian ${z.name}">${s.spots.map(p=>`<button class="spot${locked(p[0])?' lk':''}${PICK===p[0]?' on':''}" data-t="${p[0]}" style="left:${p[1]}%;top:${p[2]}%" aria-label="Bàn ${p[0]}${locked(p[0])?' – đã đặt':''}"><b>${locked(p[0])?'Đã đặt':p[0]}</b></button>`).join('')}</div>`; }).join('')}
-    <div class="tbls">${ts.map(t=>`<button class="tb${locked(t)?' lk':''}" data-t="${t}" aria-pressed="${PICK===t}"><b>${t}</b><small>${locked(t)?'Đã đặt':PICK===t?'Đang chọn':seats(t)}</small></button>`).join('')}</div>
+    <div class="howto"><b>Chạm vào vòng sáng trên ảnh để chọn bàn</b>${AN?'':'<br><span><i class="f"></i>Còn trống</span><span><i class="s"></i>Đang chọn</span><span><i class="k"></i>Đã đặt</span>'}</div>
+    ${z.shots.map(s=>{ const [w,h]=s.ar.split('/'); return `<div class="shot${w/h>1?' wide':''}" style="aspect-ratio:${s.ar}"><img src="img/${s.img}.jpg" alt="Không gian ${z.name}">${s.spots.map(p=>`<button class="spot${lkV(p[0])?' lk':''}${PICK===p[0]?' on':''}" data-t="${p[0]}" style="left:${p[1]}%;top:${p[2]}%" aria-label="Bàn ${p[0]}${lkV(p[0])?' – đã đặt':''}"><b>${lkV(p[0])?'Đã đặt':p[0]}</b></button>`).join('')}</div>`; }).join('')}
+    <div class="tbls">${ts.map(t=>`<button class="tb${lkV(t)?' lk':''}" data-t="${t}" aria-pressed="${PICK===t}"><b>${t}</b><small>${lkV(t)?'Đã đặt':PICK===t?'Đang chọn':seats(t)}</small></button>`).join('')}</div>
     ${z.gallery.length?`<div class="gal">${z.gallery.map(g=>`<img src="img/${g}.jpg" alt="${z.name}" loading="lazy">`).join('')}</div>`:''}`; }
   const pk=$('#picked');
   if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}${/^B/.test(PICK)?' (trên lầu)':''}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
@@ -125,7 +125,7 @@ function render(){
 }
 function changed(){ try{ parent.postMessage({apesBan:PICK},'*'); if(parent.onBanPick) parent.onBanPick(PICK); }catch(e){} }
 /* gọi từ trang chính */
-window.setDate=function(d){ DATE=d||''; if(PICK&&locked(PICK)){ toast('Bàn '+PICK+' đã có khách ngày '+fmt(DATE)+' – anh/chị chọn bàn khác nhé.'); PICK=''; changed(); } render(); };
+window.setDate=function(d){ DATE=d||''; if(PICK&&locked(PICK)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+PICK+' đã có khách ngày '+fmt(DATE)+' – anh/chị chọn bàn khác nhé.'); PICK=''; changed(); } render(); };
 window.getPick=()=>PICK;
 window.setPick=t=>{ t=String(t||'').trim().toUpperCase(); PICK=ZOF[t]&&!locked(t)?t:''; if(PICK) zoneId=ZOF[PICK].id; else if(ZOF[t]) changed(); render(); };
 document.addEventListener('click',e=>{
@@ -135,7 +135,7 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#unpick')){ PICK=''; render(); changed(); return; }
   const b=e.target.closest('[data-t]'); if(!b) return; const t=b.dataset.t;
   if(!DATE){ toast('Anh/chị ghi Ngày đến ở đầu trang trước nhé.'); try{ parent.document.getElementById('hDate').focus(); parent.scrollTo({top:0,behavior:'smooth'}); }catch(x){} return; }
-  if(locked(t)){ toast('Bàn '+t+' đã có khách ngày '+fmt(DATE)+'. Anh/chị chọn bàn khác giúp nhà hàng nhé.'); return; }
+  if(locked(t)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+t+' đã có khách ngày '+fmt(DATE)+'. Anh/chị chọn bàn khác giúp nhà hàng nhé.'); return; }
   PICK=PICK===t?'':t; render(); changed(); 
 });
 fetch('locks.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).then(j=>{ LOCKS=(j&&j.d)||{}; window.setDate(DATE); }).catch(()=>{});
