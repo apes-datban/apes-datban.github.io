@@ -101,6 +101,9 @@ const CAKES={
   v:{t:'Bánh vương miện',c:'Vương miện',en:'Crown',n:18,sz:[{s:14,p:350000},{s:16,p:400000},{s:18,p:450000}]},
   m:{t:'Bánh kem mini trên dĩa',c:'Mini trên dĩa',en:'Mini plated',n:6,sz:[{s:0,p:89000}]}
 };
+/* giá riêng từng mẫu (mẫu không có ở đây thì theo giá chung của nhóm) */
+const CAKE_SZ={B38:[{s:0,p:300000}]};
+const szOf=(g,code)=>CAKE_SZ[code]||CAKES[g].sz;
 const FLOWER_N=32, SHOW_N=12, FMIN=350000, FMAX=1e12;
 const $=q=>document.querySelector(q), pad=n=>String(n).padStart(2,'0');
 const vnd=n=>Math.round(n).toLocaleString('vi-VN').replace(/,/g,'.')+'đ';
@@ -115,19 +118,19 @@ function drawCake(){
   $('#ckChips').innerHTML=Object.entries(CAKES).map(([k,g])=>`<button class="chip" data-g="${k}" aria-pressed="${k===cg}">${g.c}<small>${g.en}</small></button>`).join('');
   const G=CAKES[cg], n=Math.min(G.n,cShow); let h='';
   for(let i=1;i<=n;i++){ const code=cg.toUpperCase()+pad(i), on=cm===code;
-    h+=`<div class="mc${on?' on':''}"><button class="z" data-z="${img(cg,i)}" type="button"><img loading="lazy" src="${img(cg,i)}" alt="${G.t} mẫu ${code}"></button><button class="p" data-m="${code}" type="button">${on?'✓ '+code+'<small class="bi">Selected</small>':'Chọn '+code+'<small class="bi">Select</small>'}<span>từ ${vnd(G.sz[0].p)}</span></button></div>`; }
+    h+=`<div class="mc${on?' on':''}"><button class="z" data-z="${img(cg,i)}" type="button"><img loading="lazy" src="${img(cg,i)}" alt="${G.t} mẫu ${code}"></button><button class="p" data-m="${code}" type="button">${on?'✓ '+code+'<small class="bi">Selected</small>':'Chọn '+code+'<small class="bi">Select</small>'}<span>${CAKE_SZ[code]&&CAKE_SZ[code].length===1?'':'từ '}${vnd(szOf(cg,code)[0].p)}</span></button></div>`; }
   $('#ckGrid').innerHTML=h;
   $('#ckMore').hidden=G.n<=cShow; $('#ckMore').textContent=`Xem thêm ${G.n-cShow} mẫu · See more`;
-  const one=G.sz.length===1; $('#ckS2').hidden=one; if(one) cs=0;
-  $('#ckSizes').innerHTML=G.sz.map((z,i)=>`<button class="size${cs===i?' on':''}" data-s="${i}" type="button"><b>${z.s}</b><span>cm</span><i>${vnd(z.p)}</i></button>`).join('');
+  const SZ=cm?szOf(cg,cm):G.sz, one=SZ.length===1; if(cs!==null&&cs>=SZ.length) cs=null; $('#ckS2').hidden=one; if(one) cs=0;
+  $('#ckSizes').innerHTML=SZ.map((z,i)=>`<button class="size${cs===i?' on':''}" data-s="${i}" type="button"><b>${z.s}</b><span>cm</span><i>${vnd(z.p)}</i></button>`).join('');
   const ok=cm&&cs!==null; $('#ckAdd').disabled=!ok;
-  $('#ckAdd').innerHTML=ok?`＋ Thêm bánh ${cm}${G.sz[cs].s?' · size '+G.sz[cs].s:''} · ${vnd(G.sz[cs].p)}<small>Add to booking</small>`:(cm?'Chọn size bánh<small>Pick a size</small>':'Chọn mẫu bánh ở trên<small>Pick a design above</small>');
+  $('#ckAdd').innerHTML=ok?`＋ Thêm bánh ${cm}${SZ[cs].s?' · size '+SZ[cs].s:''} · ${vnd(SZ[cs].p)}<small>Add to booking</small>`:(cm?'Chọn size bánh<small>Pick a size</small>':'Chọn mẫu bánh ở trên<small>Pick a design above</small>');
 }
 $('#ckChips').onclick=e=>{const b=e.target.closest('[data-g]'); if(!b) return; cg=b.dataset.g; cm=null; cs=null; cShow=SHOW_N; drawCake();};
-$('#ckGrid').onclick=e=>{const z=e.target.closest('[data-z]'); if(z) return zoom(z.dataset.z); const b=e.target.closest('[data-m]'); if(!b) return; cm=cm===b.dataset.m?null:b.dataset.m; if(CAKES[cg].sz.length>1&&!cm) cs=null; drawCake();};
+$('#ckGrid').onclick=e=>{const z=e.target.closest('[data-z]'); if(z) return zoom(z.dataset.z); const b=e.target.closest('[data-m]'); if(!b) return; cm=cm===b.dataset.m?null:b.dataset.m; if(szOf(cg,cm||'').length>1) cs=null; drawCake();};
 $('#ckMore').onclick=()=>{cShow=999; drawCake();};
 $('#ckSizes').onclick=e=>{const b=e.target.closest('[data-s]'); if(!b) return; cs=+b.dataset.s; drawCake();};
-$('#ckAdd').onclick=()=>{ const G=CAKES[cg], z=G.sz[cs]; BH.push({t:'cake',g:cg,code:cm,s:z.s,p:z.p,msg:$('#ckMsg').value.trim(),n:G.t}); save(); cm=null; cs=null; $('#ckMsg').value=''; drawCake(); drawList(); toast('Đã thêm bánh vào phiếu · Added'); };
+$('#ckAdd').onclick=()=>{ const G=CAKES[cg], z=szOf(cg,cm)[cs]; BH.push({t:'cake',g:cg,code:cm,s:z.s,p:z.p,msg:$('#ckMsg').value.trim(),n:G.t}); save(); cm=null; cs=null; $('#ckMsg').value=''; drawCake(); drawList(); toast('Đã thêm bánh vào phiếu · Added'); };
 /* ---- flower ---- */
 let fm=null, fShow=SHOW_N;
 const budget=()=>{ let x=+($('#flBudget').value.replace(/\D/g,'')||0); if(x&&x<1000) x*=1000; return x; };
