@@ -86,16 +86,14 @@ h1 small{display:block;font:italic 16px var(--display);color:var(--muted);margin
 <div class="toast" id="toast" hidden></div>
 <script>const AN=/[?&]an=1/.test(location.search); function lkV(t){ return !AN&&locked(t); } if(AN) document.addEventListener('DOMContentLoaded',()=>{ const n=document.getElementById('lkNote'); if(n) n.style.display='none'; });
 const ZONES=[
- {id:'guong',name:'Phòng Gương & Đèn chùm',en:'Mirror Hall',vibe:'Đèn chùm pha lê, tường gương, trang trí sang trọng – hợp kỷ niệm, tiệc nhỏ.',cover:'kg2',
-  shots:[{img:'kg2',ar:'1400/933',spots:[['B17',41.3,50.1],['B15',30.4,67.8],['B16',57.4,59.5],['B6',66.6,65.0],['B7',82.3,77.4]]}],gallery:['kg9','kg0']},
- {id:'kinh',name:'Cửa kính rèm voan',en:'Window Side',vibe:'Ngồi sát cửa kính, rèm voan trắng, đèn neon – lãng mạn cho hẹn hò.',cover:'kg10',
-  shots:[{img:'kg5',ar:'960/1280',spots:[['B12',15.7,55.4],['B1',77.5,61.0]]},{img:'kg4',ar:'960/1280',spots:[['B9',35.7,59.3],['B10',84.8,62.2]]}],gallery:['kg10']},
- {id:'tranh',name:'Góc tranh vàng · Riêng tư',en:'Private Corner',vibe:'Ánh đèn vàng ấm, tranh sơn dầu, yên tĩnh – riêng tư cho hai người.',cover:'kg6',
-  shots:[{img:'kg1',ar:'960/1280',spots:[['B3',22.4,50.0],['B4',59.2,50.0],['B2',14.4,66.3],['B5',85.9,67.7]]}],gallery:['kg6','kg8']},
- {id:'garden',name:'Sảnh Garden · Vòm đèn hoa',en:'Garden Hall',vibe:'Trần cao, tranh tường lớn, vòm đèn hoa, cạnh quầy bar – sôi động, hợp nhóm bạn, gia đình.',cover:'kg11',
-  shots:[{img:'kg3',ar:'960/1280',spots:[['A2',50.0,54.5],['A3',77.6,58.8],['A6',29.8,60.7],['A4',50.0,66.1],['A7',8.3,67.0],['A8',28.8,76.6],['A9',83.5,72.4],['A10',66.0,83.5]]}],gallery:['kg11']}
+ {id:'kinh',name:'Trên lầu · Cửa kính rèm voan',en:'Upstairs · Window Side',vibe:'Ngồi sát cửa kính, rèm voan trắng, đèn chùm pha lê – lãng mạn cho hẹn hò, kỷ niệm.',cover:'kgn1',
+  shots:[{img:'kgn1',ar:'960/1274',spots:[['N12',14.6,43.5],['N11',37.3,43.7],['N10',52.4,44.8],['N9',86.4,45.5],['N15',6.7,50.9],['N8',52.4,71.7]]}],gallery:[]},
+ {id:'guong',name:'Trên lầu · Phòng Gương & Đèn chùm',en:'Upstairs · Mirror Hall',vibe:'Tường gương, đèn chùm vàng ấm, trang trí sang trọng – hợp sinh nhật, kỷ niệm, tiệc nhỏ.',cover:'kgn2',
+  shots:[{img:'kgn2',ar:'960/709',spots:[['N1',83.7,31.3],['N2',67.3,33.8],['N3',59.8,34.6],['N4',52.6,36.3],['N5',40.8,38.6],['N6',14.2,50.4],['N14',87.1,45.8],['N7',55.1,76.9]]}],gallery:[]},
+ {id:'garden',name:'Sảnh Garden · Vòm đèn hoa',en:'Garden Hall',vibe:'Tầng trệt, trần cao, tranh tường lớn, vòm đèn hoa – sôi động, hợp nhóm bạn, gia đình.',cover:'kgn3',
+  shots:[{img:'kgn3',ar:'960/1391',spots:[['M3',43.6,51.0],['M2',57.1,51.0],['M1',79.7,53.9],['M5',14.1,55.6],['M4',36.4,55.5],['M11',46.7,56.4],['M9',89.3,59.6],['M6',29.5,60.4],['M8',85.0,72.5]]}],gallery:[]}
 ];
-const SEATS={A7:'4 khách',A10:'4–6 khách',A2:'2 khách · vòm hoa',A9:'2 khách',A8:'2 khách'};
+const SEATS={M2:'2 khách · vòm hoa',M8:'4–6 khách'};
 const seats=t=>SEATS[t]||'2 khách';
 const ZOF={}; ZONES.forEach(z=>z.shots.forEach(s=>s.spots.forEach(p=>ZOF[p[0]]=z)));
 const $=s=>document.querySelector(s);
@@ -119,7 +117,7 @@ function render(){
     <div class="tbls">${ts.map(t=>`<button class="tb${lkV(t)?' lk':''}" data-t="${t}" aria-pressed="${PICK===t}"><b>${t}</b><small>${lkV(t)?'Đã đặt':PICK===t?'Đang chọn':seats(t)}</small></button>`).join('')}</div>
     ${z.gallery.length?`<div class="gal">${z.gallery.map(g=>`<img src="img/${g}.jpg" alt="${z.name}" loading="lazy">`).join('')}</div>`:''}`; }
   const pk=$('#picked');
-  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}${/^B/.test(PICK)?' (trên lầu)':''}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
+  if(PICK){ pk.hidden=false; pk.innerHTML=`<span>Bàn đã chọn<br><b>${PICK}${/^N/.test(PICK)?' (trên lầu)':''}</b> · ${ZOF[PICK]?ZOF[PICK].name:''}</span><button type="button" id="unpick">Bỏ chọn<small class="bi">Unselect</small></button>`; }
   else { pk.hidden=true; pk.innerHTML=''; }
   keep();
 }
