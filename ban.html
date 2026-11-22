@@ -97,10 +97,12 @@ const SEATS={M2:'2 khách · vòm hoa',M8:'4–6 khách'};
 const seats=t=>SEATS[t]||'2 khách';
 const ZOF={}; ZONES.forEach(z=>z.shots.forEach(s=>s.spots.forEach(p=>ZOF[p[0]]=z)));
 const $=s=>document.querySelector(s);
-let LOCKS={}, DATE='', zoneId=null, PICK='';
+let LOCKS={}, DATE='', TIME='', zoneId=null, PICK='';
 try{ const s=JSON.parse(sessionStorage.getItem('apes_ban')||'null'); if(s){ zoneId=s.z||null; PICK=s.p||''; } }catch(e){}
 const keep=()=>{ try{ sessionStorage.setItem('apes_ban',JSON.stringify({z:zoneId,p:PICK})); }catch(e){} };
-const locked=t=>!!DATE&&(LOCKS[DATE]||[]).includes(t);
+const _mn=h=>{ const m=/^(\d{1,2}):(\d{2})/.exec(h||''); return m?(+m[1])*60+(+m[2]):null; };
+/* khóa theo giờ: bàn đã có khách trong vòng 2,5 tiếng quanh giờ khách chọn (Sếp chốt 22/11) */
+const locked=t=>{ if(!DATE) return false; const me=_mn(TIME); return (LOCKS[DATE]||[]).some(x=>{ const [tb,h]=String(x).split('@'); if(tb!==t) return false; const o=_mn(h); if(o==null||me==null) return true; return Math.abs(o-me)<150; }); };
 const fmt=s=>{ if(!s) return ''; const [y,m,d]=s.split('-'); return d+'/'+m+'/'+y; };
 function toast(t){ const e=$('#toast'); e.textContent=t; e.hidden=false; clearTimeout(toast.h); toast.h=setTimeout(()=>e.hidden=true,2600); }
 function zoneFree(z){ const ts=z.shots.flatMap(s=>s.spots.map(p=>p[0])); return [ts.filter(t=>!locked(t)).length, ts.length]; }
@@ -123,7 +125,7 @@ function render(){
 }
 function changed(){ try{ parent.postMessage({apesBan:PICK},'*'); if(parent.onBanPick) parent.onBanPick(PICK); }catch(e){} }
 /* gọi từ trang chính */
-window.setDate=function(d){ DATE=d||''; if(PICK&&locked(PICK)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+PICK+' đã có khách ngày '+fmt(DATE)+' – anh/chị chọn bàn khác nhé.'); PICK=''; changed(); } render(); };
+window.setDate=function(d,tm){ DATE=d||''; if(tm!==undefined) TIME=tm||''; if(PICK&&locked(PICK)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+PICK+' đã có khách gần giờ này ngày '+fmt(DATE)+' – anh/chị chọn bàn khác nhé.'); PICK=''; changed(); } render(); };
 window.getPick=()=>PICK;
 window.setPick=t=>{ t=String(t||'').trim().toUpperCase(); PICK=ZOF[t]&&!locked(t)?t:''; if(PICK) zoneId=ZOF[PICK].id; else if(ZOF[t]) changed(); render(); };
 document.addEventListener('click',e=>{
@@ -133,7 +135,7 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#unpick')){ PICK=''; render(); changed(); return; }
   const b=e.target.closest('[data-t]'); if(!b) return; const t=b.dataset.t;
   if(!DATE){ toast('Anh/chị ghi Ngày đến ở đầu trang trước nhé.'); try{ parent.document.getElementById('hDate').focus(); parent.scrollTo({top:0,behavior:'smooth'}); }catch(x){} return; }
-  if(locked(t)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+t+' đã có khách ngày '+fmt(DATE)+'. Anh/chị chọn bàn khác giúp nhà hàng nhé.'); return; }
+  if(locked(t)){ toast(AN?'Bàn này đã có khách đặt, anh/chị chọn bàn khác giúp Apes ạ.':'Bàn '+t+' đã có khách gần giờ này ngày '+fmt(DATE)+'. Anh/chị chọn bàn khác giúp nhà hàng nhé.'); return; }
   PICK=PICK===t?'':t; render(); changed(); 
 });
 fetch('locks.json',{cache:'no-store'}).then(r=>r.ok?r.json():{}).then(j=>{ LOCKS=(j&&j.d)||{}; window.setDate(DATE); }).catch(()=>{});
